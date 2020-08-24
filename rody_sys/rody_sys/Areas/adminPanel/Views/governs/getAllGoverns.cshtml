@@ -1,0 +1,326 @@
+﻿@*@{
+    ViewBag.Title = "govern";
+    Layout = "~/Areas/adminPanel/Views/Shared/_adminLayout.cshtml";
+}*@
+
+<html  xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title></title>
+    @*<script src="~/assets/general/js/angular.js"></script>
+    <script src="~/assets/admin/js/ang/governs.js"></script>*@
+
+    <style>
+    h4 {
+        color: #456e82;
+    }
+
+    h3 {
+        color: #5c4f4f;
+    }
+</style>
+
+</head>
+
+<body ng-controller="ctr_govern" >
+
+    <section id="main-content">
+        <section class="wrapper">
+            <div class="table-agile-info">
+                <ol class="breadcrumb breadcrumb-2">
+                    <li><a><i class="icon-home"></i> القائمه</a></li>
+                    <li class="active"><a style="color: #ec407a">المحافظات</a> </li>
+                </ol>
+
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <strong style="color: #5c4f4f">المحافظات</strong>
+
+                    </div>
+                    <div class="row w3-res-tb">
+                        <div class="col-lg-7">
+                            <div class="input-group" style="margin-top:5px">
+                                <input ng-model="gov" style="width:100%" type="text" class="input-sm form-control" dir="rtl" placeholder="بحث ....." />
+                            </div>
+                        </div>
+                        <div style="float:right; margin-right:3%">
+                            <table>
+                                <tr>
+
+                                    <td style="border:0px">
+                                        <span style="font-size: 18px; color: #5c4f4f;" class="hidden-sm">
+                                            اضافه محافظه
+                                        </span>
+                                    </td>
+                                    <td style="border:0px">
+                                        <i class="fa fa-plus-circle text-info btn-lg" data-toggle="modal" data-target="#addGovern" style="font-size: 25px; color: #5c4f4f; margin-left: -10px; cursor: pointer;">
+                                        </i>
+
+                                    </td>
+                                    @*<td style="border:0px">
+                                        <input style="width:70px" type="number" step="1" min="1" max="@ViewBag.govern_size" ng-model="pageSize" />
+                                    </td>*@
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <br/>
+                    
+                    <div class="table-responsive">
+                       
+                    <table class="table table-striped b-t b-light" dir="rtl" id="example">
+                            <thead>
+                                <tr style="background: #ddede0; padding:5px ">
+                                    <th><h5 style="padding:5px;" ng-click="sort('id')">الكود <i class="fa {{icon_id}}"></i> </h5></th>
+                                    <th><h5 style="padding: 5px" ng-click="sort('name')">المحافظه <i class="fa {{icon_name}}"></i></h5></th>
+                                    <th><h5 style="padding: 5px">تعديل</h5></th>
+                                    <th><h5 style="padding: 5px">حذف</h5></th>
+                                </tr>
+                            </thead>
+                        <tbody ng-repeat="gov in allGovern | filter: gov | limitTo:pageSize:start | orderBy:sortedCol">
+
+                            <tr class="tr" id="tbr">
+                                <td style="border: 1px solid #D9E4E6; ">
+                                    <h4>
+                                        {{gov.id}}
+                                    </h4>
+                                </td>
+                                <td style="border: 1px solid #D9E4E6">
+                                    <h4>
+                                        {{gov.name}}
+                                    </h4>
+                                </td>
+
+                                <td style="border: 1px solid #D9E4E6">
+                                    <button class="btn btn-sm btn-success" ng-click="update_govern(gov.id,gov.name)" data-toggle="modal" data-target="#update">
+                                        <i class="fa fa-edit fa-lg"></i>
+                                    </button>
+
+                                </td>
+                                <td style="border: 1px solid #D9E4E6">
+                                    <button class="btn btn-sm btn-danger" ng-click="get_govern(gov.id)" data-toggle="modal" data-target="#delete">
+                                        <i class="fa fa-remove fa-lg"></i>
+                                    </button>
+
+                                </td>
+                            </tr>
+                            
+                        </tbody>
+                        </table>
+                        <br/>
+                        <center>
+                            <button id="btn_pre" ng-click="get_previous()" class="fa fa-caret-left btn btn-primary btn-sm fa-lg" style="border-radius: 0%"></button>
+                            <span style="font-weight: bold; color: #456e82;">{{currentPage}} / {{numPages}}  </span>
+                            <button id="btn_next" ng-click="get_next()" style="border-radius:0%" class="btn btn-sm btn-primary fa fa-caret-right fa-lg"></button>
+                        </center>
+                             <br />      
+                    </div>
+                   
+                </div>
+            </div>
+
+        
+        </section>
+
+        <!--main content end-->
+    </section>
+
+    <div id="add1" class="modal fade" role="dialog" style="">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="text-center" style="color: #5c4f4f">اضافه محافظه</h4>
+                </div>
+                <div class="modal-body text-left">
+                    <center>
+                        <table>
+                            <tr>
+
+                                <td>
+
+                                    <input ng-model="govName" type="text" class="form-control" style="border-radius:0px" dir="rtl" />
+
+                                </td>
+                                <td>
+                                    <h4 style="margin-left:20px">اسم المحافظه</h4>
+                                </td>
+
+                            </tr>
+                        </table>
+                    </center>
+
+                </div>
+                <div class="modal-footer">
+                    <center>
+                        <button type="button" class="btn btn-success btn-sm" data-dismiss="modal">الغاء</button>
+                        <button type="submit" class="btn btn-danger btn-sm" ng-click="add()" data-dismiss="modal">اضافه</button>
+                    </center>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+    <div id="addGovern" class="modal fade left" role="dialog" style="top: 15%; background-color: transparent !important">
+        <div class=" modal-dialog" style="width: 400px; background-color: transparent !important">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="text-center" style="color: #5c4f4f">اضافه محافظه</h4>
+                </div>
+                <div class="modal-body text-left">
+                    <br />
+                    <center>
+                        <table>
+                            <tr>
+
+                                <td style="border:0px">
+
+                                    <input ng-model="govName" type="text" class="form-control" style="border-radius:0px" dir="rtl" />
+
+                                </td>
+                                <td style="border:0px">
+                                    <h4 style="margin-left:20px">اسم المحافظه</h4>
+                                </td>
+
+                            </tr>
+                        </table>
+                    </center>
+
+                </div>
+                <div class="modal-footer">
+                    <center>
+                        <button type="button" class="btn btn-success btn-sm" data-dismiss="modal">الغاء</button>
+                        <button type="submit" class="btn btn-primary btn-sm" ng-click="add()" data-dismiss="modal">اضافه</button>
+                    </center>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="delete" class="modal fade" role="dialog" style="background-color: rgba(25, 23, 23, 0.49); z-index: 1000000000; ">
+       
+        
+         <div class="modal-dialog modal-sm" style="top:25%">
+            <div class="modal-content">
+
+                <div class="modal-body text-left">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <br />
+                    <center>
+                        <h4 style="color:crimson"> هل تريد حذف هذه المحافظه؟</h4>
+                    </center>
+
+                </div>
+                <div class="modal-footer">
+                    <center>
+                        <button type="button" class="btn btn-success btn-sm" data-dismiss="modal">الغاء</button>
+                        <button type="submit" class="btn btn-danger btn-sm" ng-click="delete()" data-dismiss="modal">حذف</button>
+                    </center>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+    <div id="update1" class="modal fade" role="dialog" style="">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="text-center" style="color: #5c4f4f">تعديل محافظه</h4>
+                </div>
+                <div class="modal-body text-left">
+                    <center>
+                        <table>
+                            <tr>
+
+                                <td style="border:0px">
+
+                                    <input ng-model="gName" type="text" class="form-control" style="border-radius:0px" dir="rtl" />
+
+                                </td>
+                                <td style="border:0px">
+                                    <h4 style="margin-left:20px">اسم المحافظه</h4>
+                                </td>
+
+                            </tr>
+                        </table>
+                    </center>
+
+                </div>
+                <div class="modal-footer">
+                    <center>
+                        <button type="button" class="btn btn-success btn-sm" data-dismiss="modal">الغاء</button>
+                        <button type="submit" class="btn btn-danger btn-sm" ng-click="updateDB()" data-dismiss="modal">تعديل</button>
+                    </center>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+    <div id="update" class="modal fade left" role="dialog" style="top: 15%; background-color: transparent !important">
+        <div class=" modal-dialog" style="width: 400px; background-color: transparent !important">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="text-center" style="color: #5c4f4f">تعديل محافظه</h4>
+                </div>
+                <div class="modal-body text-left">
+                    <center>
+                        <div class="modal-body text-left">
+                            <br />
+                            <center>
+                                <table>
+                                    <tr>
+
+                                        <td style="border:0px">
+
+                                            <input ng-model="gName" type="text" class="form-control" style="border-radius:0px" dir="rtl" />
+
+                                        </td>
+                                        <td style="border:0px">
+                                            <h4 style="margin-left:20px">اسم المحافظه</h4>
+                                        </td>
+
+                                    </tr>
+                                </table>
+                            </center>
+
+                        </div>
+                        <div class="modal-footer">
+                            <center>
+                                <button type="button" class="btn btn-success btn-sm" data-dismiss="modal">الغاء</button>
+                                <button type="submit" class="btn btn-danger btn-sm" ng-click="updateDB()" data-dismiss="modal">تعديل</button>
+                            </center>
+                        </div>
+                    </center>
+                </div>
+            </div>
+        </div>
+    </div>
+
+  @*@{Html.RenderPartial("../management/_scriptPartial");}*@
+
+    @*<script src="~/assets/general/js/angular.js"></script>
+    <script src="~/assets/general/js/dirPagination.js"></script>*@
+   
+    
+
+
+
+    @*<script src="~/assets/general/js/ui-bootstrap-tpls.js"></script>*@
+
+</body>
+</html>

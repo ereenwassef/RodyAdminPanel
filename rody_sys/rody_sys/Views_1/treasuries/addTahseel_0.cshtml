@@ -1,0 +1,508 @@
+﻿
+@*@{
+    ViewBag.Title = "add_tahseel";
+    Layout = "~/Areas/adminPanel/Views/Shared/_adminLayout.cshtml";
+}*@
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title></title>
+    @*<script src="~/assets/general/js/angular.js"></script>
+    <script src="~/assets/admin/js/ang/client_tahseel.js"></script>*@
+
+    <style>
+
+        td{
+            border:0px;
+        }
+
+        h4 {
+            color: #456e82;
+        }
+
+        h3 {
+            color: #5c4f4f;
+        }
+
+        input::-webkit-input-placeholder {
+            font-size: 12px;
+        }
+
+        .modal-backdrop {
+            background-color: transparent !important;
+        }
+
+        .modal.left .modal-dialog,
+        .modal.right .modal-dialog {
+            position: fixed;
+            margin: auto;
+            height: 100%;
+            width: 450px;
+            -webkit-transform: translate3d(0%, 0, 0);
+            -ms-transform: translate3d(0%, 0, 0);
+            -o-transform: translate3d(0%, 0, 0);
+            transform: translate3d(0%, 0, 0);
+        }
+
+        .modal.left .modal-content,
+        .modal.right .modal-content {
+            height: 100%;
+            overflow-y: auto;
+        }
+
+        .modal.left .modal-body,
+        .modal.right .modal-body {
+            padding: 15px 15px 80px;
+        }
+
+        /*Left*/
+        .modal.left.fade .modal-dialog {
+            left: -320px;
+            -webkit-transition: opacity 0.3s linear, left 0.3s ease-out;
+            -moz-transition: opacity 0.3s linear, left 0.3s ease-out;
+            -o-transition: opacity 0.3s linear, left 0.3s ease-out;
+            transition: opacity 0.3s linear, left 0.3s ease-out;
+        }
+
+        .modal.left.fade.in .modal-dialog {
+            left: 0;
+        }
+
+        /*Right*/
+        .modal.right.fade .modal-dialog {
+            right: -320px;
+            -webkit-transition: opacity 0.3s linear, right 0.3s ease-out;
+            -moz-transition: opacity 0.3s linear, right 0.3s ease-out;
+            -o-transition: opacity 0.3s linear, right 0.3s ease-out;
+            transition: opacity 0.3s linear, right 0.3s ease-out;
+        }
+
+        .modal.right.fade.in .modal-dialog {
+            right: 0;
+        }
+
+        /* ----- MODAL STYLE ----- */
+        .modal-content {
+            border-radius: 0;
+            border: none;
+        }
+
+        .modal-header {
+            border-bottom-color: #EEEEEE;
+            background-color: #FAFAFA;
+        }
+
+        /* ----- v CAN BE DELETED v ----- */
+
+
+        .demo {
+            padding-top: 60px;
+            padding-bottom: 110px;
+        }
+
+        .btn-demo {
+            margin: 15px;
+            padding: 10px 15px;
+            border-radius: 0;
+            font-size: 16px;
+            background-color: #FFFFFF;
+        }
+
+            .btn-demo:focus {
+                outline: 0;
+            }
+
+        .demo-footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            padding: 15px;
+            background-color: #212121;
+            text-align: center;
+        }
+
+            .demo-footer > a {
+                text-decoration: none;
+                font-weight: bold;
+                font-size: 16px;
+                color: #fff;
+            }
+    </style>
+
+</head>
+
+<body ng-controller="ctr_tahseel">
+
+    <section id="main-content">
+        <section class="wrapper">
+            <div class="table-agile-info">
+                <ol class="breadcrumb breadcrumb-2">
+                    <li><a><i class="icon-home"></i> القائمه</a></li>
+                    <li class="active"><a> الخزائن</a> </li>
+                    <li class="active"><a> التحصيلات</a> </li>
+                    <li class="active"><a style="color: #ec407a"> اضافه حركه تحصيل </a> </li>
+                </ol>
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <strong style="color: #5c4f4f">اضافه حركه تحصيل</strong>
+                    </div>
+                    <div class="row w3-res-tb">
+                        <form action="../treasuries/add_new_get">
+                            <div class="col-lg-12">
+                                <div class="row">
+
+                                    <div class="col-lg-3 col-lg-offset-2">
+
+                                        <input name="date" placeholder="التاريخ" style="border-radius: 0px;" class="form-control" type="text" onfocus="(this.type='date')">
+
+                                    </div>
+
+                                    <div class="col-lg-2">
+
+                                        <select class="form-control" dir="rtl" style="border-radius: 0px;">
+                                            <option value="">نقدي</option>
+                                            <option value="">اوراق دفع</option>
+                                            <option value="">اوراق قبض</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-lg-2">
+
+                                        <select class="form-control" dir="rtl" style="border-radius: 0px;">
+                                            <option value="">نوع الاذن</option>
+                                            <option>وارد</option>
+                                            <option>منصرف</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="col-lg-3">
+
+                                        <select name="storeId" required ng-change="get_store_value(store)" ng-model="store" class="form-control" dir="rtl" style="border-radius: 0px;">
+                                            <option value="">الخزنه</option>
+                                            <option ng-repeat="x2 in allStores" value="{{x2.id}}">{{x2.name}}</option>
+
+                                        </select>
+
+
+                                    </div>
+                                </div>
+                                <br />
+                                <!--========================================-->
+                                <div class="row">
+
+                                    <div class="col-lg-2 col-lg-offset-4">
+
+                                        <i class="btn btn-info" data-toggle="modal" data-target="#get_client"><span style="font-style:normal">بحث</span></i>
+
+                                    </div>
+
+                                    <div class="col-lg-3">
+                                        <input type="text" id="cid" required style="display:none" name="cid" />
+                                        <input dir="rtl" ng-model="cName" readonly placeholder="العميل" style="border-radius: 0px;" class="form-control" type="text">
+
+                                    </div>
+
+
+                                    <div class="col-lg-3">
+
+                                        <select class="form-control" dir="rtl" style="border-radius: 0px;">
+                                            <option value="">نوع الاذن</option>
+                                            <option>عميل</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <br />
+                                <!--================================-->
+                                <div class="row">
+
+                                    <div class="col-lg-3"></div>
+
+
+                                    <div class="col-lg-9" dir="rtl" style="background: #EEEEEE; height: 50px; margin-left:23%">
+                                        <div style="padding-right:2px">
+                                            <table class="table-responsive">
+                                                <tr>
+                                                    <td>
+                                                        <h4 style=" margin-top: 10px" ng-bind="current"></h4>
+                                                    </td>
+                                                    <td>
+                                                        <h4 style=" margin-top: 10px; font-weight: bold; margin-right: 5px" ng-bind="currentValue"></h4>
+                                                    </td>
+                                                    <td>
+                                                        <h4 style=" margin-top: 10px; padding:5px; margin-right:5px; color:white; font-size:13px" ng-bind="currentType" ng-style="myStyle"></h4>
+                                                    </td>
+
+                                                    <td>
+                                                        <h4 style=" margin-top: 10px; margin-right: 90px" ng-bind="des"></h4>
+                                                    </td>
+                                                    <td>
+                                                        <h4 style=" margin-top: 10px; font-weight: bold; margin-right: 5px" ng-bind="desValue"></h4>
+                                                    </td>
+                                                    <td>
+                                                        <h4 style=" margin-top: 10px; padding:5px; margin-right:5px; color:white; font-size:13px" ng-bind="desType" ng-style="myStyle2"></h4>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <br />
+
+                                <div class="row">
+
+
+
+                                    <div class="col-lg-4" dir="rtl">
+
+                                        <table>
+                                            <tr>
+                                                <td>
+
+                                                    <h4>الرصيد الجديد</h4>
+
+                                                </td>
+                                                <td>&nbsp;</td>
+                                                <td>
+
+                                                    <input readonly type="number" name="storeValue" class="form-control" style="border-radius: 0px;" ng-model="newValue" value="{{store_value_old+getValue}}" />
+
+                                                </td>
+                                        </table>
+                                    </div>
+
+                                    <div class="col-lg-4" dir="rtl">
+
+                                        <table>
+                                            <tr>
+                                                <td>
+
+                                                    <h4>قيمه الاذن</h4>
+
+                                                </td>
+                                                <td>&nbsp;</td>
+                                                <td>
+
+                                                    <input required name="getValue" type="number" step="0.00001" class="form-control" style="border-radius: 0px;" ng-model="getValue" />
+
+                                                </td>
+                                        </table>
+                                    </div>
+                                    <div class="col-lg-4" dir="rtl">
+
+                                        <table>
+                                            <tr>
+                                                <td>
+
+                                                    <h4>رصيد المخزن</h4>
+
+                                                </td>
+                                                <td>&nbsp;</td>
+                                                <td>
+
+                                                    <input readonly class="form-control" style="border-radius: 0px;" ng-model="store_value_old" />
+
+                                                </td>
+                                        </table>
+                                    </div>
+                                </div>
+                                <br />
+
+                                <br />
+                                <div class="row" dir="rtl">
+
+
+                                    <div class="col-lg-4">
+                                        <i style="width: 205px;border-radius:4px;background: #eee; border: 1px solid white; height: 35px;" class="btn btn-warning" ng-click="get_omolat()" data-toggle="modal" data-target="#omola"><span style="font-style:normal">بيان بالعمولات</span></i>
+
+                                    </div>
+                                    <div class="col-lg-8" dir="rtl">
+
+                                        <input type="text" name="notes" class="form-control" style="border-radius: 0px;" placeholder="ملاحظات" />
+                                    </div>
+                                </div>
+
+
+
+
+                                <br /><br />
+                                <div class="row">
+
+                                    <div class="col-lg-1 col-lg-offset-10">
+                                        <a href="sales">
+                                            <button class="btn btn-success" style="border-radius: 0px;">الغاء</button>
+                                        </a>
+                                    </div>
+                                    <div class="col-lg-1">
+
+                                        <button class="btn btn-primary" style="border-radius: 0px;" type="submit">اضافه</button>
+
+                                    </div>
+
+                                </div>
+                                <br />
+
+                            </div>
+
+
+
+
+                            <br /><br />
+                        </form>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </section>
+    </section>
+
+
+    <div id="omola" class="modal fade left" role="dialog" style="top:10%; right:8%;width:40%">
+        <div class=" modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="text-center" style="color: #5c4f4f">توزيع العمولات</h4>
+                </div>
+                <div class="modal-body text-right">
+                    
+                    <br/>
+                        <table dir="ltr" style="float: right;">
+                            <tr>
+                                <td>
+                                    <h4 ng-bind="total_omola" style="font-weight:bold;" class="text-primary"></h4>
+                                </td>
+
+                                <td>
+                                    <h4 style="font-weight: bold;margin-right:7px;" class="text-primary;"> : اجمالي العموله</h4>
+                                </td>
+                               
+                            </tr>
+                        </table>
+                    <br/><br/>
+                    <center>
+                        <table class="table table-striped b-t b-light" dir="rtl">
+                            <thead>
+                                <tr style="background:#FAFAFA; ">
+                                    <th><h3 style="padding:2px;"> الكود  </h3></th>
+                                    <th><h3 style="padding:2px;">  العميل  </h3></th>
+                                    <th><h3 style="padding:2px;"> العموله   </h3></th>
+
+                                </tr>
+                            </thead>
+                            <tbody ng-repeat="c in pList">
+
+                                <tr style="background:white">
+                                    <td style="border: 2px solid #D9E4E6;"><h4 style="font-size:13px">{{c.id}}</h4></td>
+                                    <td style="border: 2px solid #D9E4E6;"><h4 style="font-size:13px">{{c.name}}</h4></td>
+                                    <td style="border: 2px solid #D9E4E6;"><h4 style="font-size:14px;">{{c.value}}</h4></td>
+
+                                </tr>
+                            </tbody>
+
+
+                            <tbody></tbody>
+                        </table>
+                    </center>
+                    </div>
+                <center>
+                    <button type="button" class="btn btn-default" data-dismiss="modal" style="width:100px"><h4>تم</h4></button>
+                </center>
+                </div>
+            </div>
+        </div>
+    
+    <!--===================================================-->
+
+                        <div id="get_client" class="modal fade left" role="dialog" style="top:10%; right:8%;width:40%">
+                            <div class=" modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        <h4 class="text-center" style="color: #5c4f4f">اختيار العميل</h4>
+                                    </div>
+                                    <div class="modal-body text-left">
+                                        <center>
+                                            <br />
+                                            <table>
+                                                <tr>
+
+                                                    <td >
+
+                                                        <select style="border-radius:0px; margin-top:5px; width:200px" ng-model="govern" class="form-control" dir="rtl" ng-options="x2.name as x2.name for x2  in allGovern "></select>
+
+                                                    </td>
+                                                    <td>
+                                                        <h4 style="margin-left: 20px; color: #5c4f4f"> المحافظه</h4>
+                                                    </td>
+
+                                                </tr>
+                                                <tr>
+
+                                                    <td>
+                                                        <select ng-model="area" class="form-control" dir="rtl" ng-options="x1.name as x1.name for x1  in allArea | filter:govern " style="border-radius: 0px; margin-top: 5px; width: 200px"></select>
+
+                                                    </td>
+                                                    <td>
+                                                        <h4 style="margin-left: 20px; color: #5c4f4f"> المنطقه</h4>
+                                                    </td>
+
+                                                </tr>
+
+                                            </table>
+
+                                            <br />
+                                            <div class="table-responsive" style="height:300px; overflow:auto">
+
+                                                <table class="table table-striped b-t b-light" dir="rtl">
+                                                    <thead>
+                                                        <tr style="background:#FAFAFA; ">
+                                                            <th><h3 style="padding:2px;"> اختر  </h3></th>
+                                                            <th><h3 style="padding:2px;"> الرقم  </h3></th>
+                                                            <th><h3 style="padding:2px;"> الاسم </h3></th>
+                                                            <th><h3 style="padding:2px">المنطقه </h3></th>
+
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody ng-repeat="c in allClients | filter:{areaName:area}">
+
+                                                        <tr style="background:white">
+                                                            <td style="border: 2px solid #D9E4E6;">
+                                                                <button class="btn btn-sm" ng-click="get_sale_info(c.id,c.name)" type="button" data-dismiss="modal">
+                                                                    <i class="fa fa-check " style="color: #5c4f4f"></i>
+                                                                </button>
+                                                            </td>
+                                                            <td style="border: 2px solid #D9E4E6;"><h4 style="font-size:11px">{{c.id}}</h4></td>
+                                                            <td style="border: 2px solid #D9E4E6;"><h4 style="font-size:11px;">{{c.name}}</h4></td>
+                                                            <td style="border: 2px solid #D9E4E6;"><h4 style="font-size:11px"> {{c.areaName}}</h4></td>
+                                                        </tr>
+                                                    </tbody>
+
+
+                                                    <tbody></tbody>
+                                                </table>
+
+                                            </div>
+                                            <br />
+                                            <center>
+                                                <button type="button" class="btn btn-default" data-dismiss="modal" style="width:100px"><h4>الغاء</h4></button>
+                                            </center>
+
+                                        </center>
+
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+
+
+    @*@{Html.RenderPartial("../management/_scriptPartial");}*@
+
+</body>
+</html>
+

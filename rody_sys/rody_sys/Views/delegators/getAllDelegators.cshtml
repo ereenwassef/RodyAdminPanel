@@ -1,0 +1,472 @@
+﻿
+@*@{
+    ViewBag.Title = "delegators";
+    Layout = "~/Areas/adminPanel/Views/Shared/_adminLayout.cshtml";
+}*@
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title></title>
+    @*<script src="~/assets/general/js/angular.js"></script>
+    <script src="~/assets/admin/js/ang/delegators.js"></script>*@
+
+    <style>
+        h4 {
+            color: #456e82;
+        }
+
+        h3 {
+            color: #5c4f4f;
+        }
+    </style>
+
+</head>
+
+<body ng-controller="ctr_area">
+
+    <section id="main-content">
+        <section class="wrapper">
+            <div class="table-agile-info">
+                <ol class="breadcrumb breadcrumb-2">
+                    <li><a><i class="icon-home"></i> القائمه</a></li>
+                    <li class="active"><a style="color: #ec407a">المندوبين</a> </li>
+                </ol>
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <strong style="color: #5c4f4f">المندوبين</strong>
+
+                    </div>
+
+                    <div class="row w3-res-tb">
+                        <div class="col-lg-7">
+                            <div class="input-group" style="margin-top:5px">
+                                <table>
+                                    <tr>
+                                        <td style="margin-right: 200px; border: 0px">
+                                            <div style="margin-right:33px">
+                                                <input ng-model="token.agentName" style="width: 120%;" type="text" class="input-sm form-control" dir="rtl" placeholder="الوكيل" />
+                                            </div>
+                                        </td>
+                                        <td style="margin-left: 30px; border: 0px">
+                                            <input ng-model="token.name" style="" type="text" class="input-sm form-control" dir="rtl" placeholder="المندوب" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="margin-right:200px; border:0px">
+                                            @*<div style="margin-right:33px">
+                                                    <input ng-model="token.govern" style="width: 120%;" type="text" class="input-sm form-control" dir="rtl" placeholder="المحافظه" />
+                                                </div>*@
+
+                                            <select ng-model="token.areaName" class="form-control" dir="rtl" style="margin-right:33px; border-radius:0px">
+                                                <option value=""> المناطق</option>
+                                                <option ng-repeat="x2 in allArea | filter: token.govern">{{x2.name}}</option>
+                                            </select>
+                                        </td>
+                                        <td style="margin-right: 200px; border: 0px">
+                                            @*<div style="margin-right:33px">
+                                                    <input ng-model="token.areaName" style="width: 120%;" type="text" class="input-sm form-control" dir="rtl" placeholder="المنطقه" />
+                                                </div>*@
+                                            <select ng-model="token.govern" class="form-control" dir="rtl" style="margin-right: 35px; border-radius: 0px">
+                                                <option value=""> المحافظات</option>
+                                                <option ng-repeat="x2 in allGovern">{{x2.name}}</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                </table>
+
+                            </div>
+                        </div>
+                        <div class="col-sm-3" style="float: right; color: #5c4f4f; ">
+                            <i class="fa fa-plus-circle text-info btn-lg" data-toggle="modal" data-target="#add" style="font-size: 25px; color: #5c4f4f">
+                                <span style="font-size: 18px; color: #5c4f4f; " class="hidden-sm">
+                                    اضافه مندوب
+                                </span>
+                            </i>
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+
+                        <table class="table table-striped b-t b-light" dir="rtl">
+                            <thead>
+                                <tr style="background: #ddede0; padding:5px ">
+                                    <th><h3 style="padding:5px;">الكود</h3></th>
+                                    <th><h3 style="padding: 5px">الاسم</h3></th>
+                                    <th><h3 style="padding: 5px">التليفون</h3></th>
+                                    <th><h3 style="padding: 5px">العنوان</h3></th>
+                                    <th><h3 style="padding: 5px">الوكيل</h3></th>
+                                    <th><h3 style="padding: 5px">المنطقه</h3></th>
+                                    <th><h3 style="padding: 5px">المحافظه</h3></th>
+                                    <th><h3 style="padding: 5px">تعديل</h3></th>
+                                    <th><h3 style="padding: 5px">حذف</h3></th>
+                                </tr>
+                            </thead>
+                            <tbody ng-repeat="del in allDelegators | filter: token">
+
+                                <tr class="tr" ng-if="del.active==1">
+                                    <td>
+                                        <h4>
+                                            {{del.id}}
+                                        </h4>
+                                    </td>
+                                    <td>
+                                        <h4>
+                                            {{del.name}}
+                                        </h4>
+                                    </td>
+                                    <td>
+                                        <h4>
+                                            {{del.phone}}
+                                        </h4>
+                                    </td>
+                                    <td>
+                                        <h4>
+                                            {{del.address}}
+                                        </h4>
+                                    </td>
+                                    <td>
+                                        <h4>
+                                            {{del.agentName}}
+                                        </h4>
+                                    </td>
+                                    <td>
+                                        <h4>
+                                            {{del.areaName}}
+                                        </h4>
+                                    </td>
+                                    <td>
+                                        <h4>
+                                            {{del.govern}}
+                                        </h4>
+                                    </td>
+
+                                    <td>
+                                        <button ng-click="update(del.id,del.name,del.phone,del.address,del.agentId,1)" class="btn btn-sm btn-success" data-toggle="modal" data-target="#update">
+                                            <i class="fa fa-edit fa-lg"></i>
+                                        </button>
+                                    </td>
+                                    <td>
+                                        <button ng-click="get_delegator(del.id)" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#delete">
+                                            <i class="fa fa-remove fa-lg"></i>
+                                        </button>
+
+                                    </td>
+                                </tr>
+
+
+
+                                <tr class="tr" ng-if="del.active==0" style="background: #f9e8a7">
+                                    <td>
+                                        <h4>
+                                            {{del.id}}
+                                        </h4>
+                                    </td>
+                                    <td>
+                                        <h4>
+                                            {{del.name}}
+                                        </h4>
+                                    </td>
+                                    <td>
+                                        <h4>
+                                            {{del.phone}}
+                                        </h4>
+                                    </td>
+                                    <td>
+                                        <h4>
+                                            {{del.address}}
+                                        </h4>
+                                    </td>
+                                    <td>
+                                        <h4>
+                                            {{del.agentName}}
+                                        </h4>
+                                    </td>
+                                    <td>
+                                        <h4>
+                                            {{del.areaName}}
+                                        </h4>
+                                    </td>
+                                    <td>
+                                        <h4>
+                                            {{del.govern}}
+                                        </h4>
+                                    </td>
+
+                                    <td>
+                                        <button ng-click="update(del.id,del.name,del.phone,del.address,del.agentId,0)" class="btn btn-sm btn-success" data-toggle="modal" data-target="#update">
+                                            <i class="fa fa-edit fa-lg"></i>
+                                        </button>
+                                      
+                                    </td>
+                                    <td>
+                                        <button ng-click="get_delegator(del.id)" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#delete">
+                                            <i class="fa fa-remove fa-lg"></i>
+                                        </button>
+
+                                    </td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!--main content end-->
+    </section>
+
+
+    <div id="delete" class="modal fade" role="dialog" style="background-color: rgba(25, 23, 23, 0.49); ">
+        <div class="modal-dialog modal-sm" style="top:25%">
+            <div class="modal-content">
+
+                <div class="modal-body text-left">
+                    <center>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <br />
+                        <h4 style="color:crimson"> هل تريد حذف المندوب؟</h4>
+                    </center>
+
+                </div>
+                <div class="modal-footer">
+                    <center>
+                        <button type="button" class="btn btn-success btn-sm" data-dismiss="modal">الغاء</button>
+                        <button type="submit" class="btn btn-danger btn-sm" ng-click="delete()" data-dismiss="modal">حذف</button>
+                    </center>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!--===========================================-->
+
+    <div id="add" class="modal fade left" role="dialog" style="top:15%;">
+        <div class=" modal-dialog" style="width:400px;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="text-center" style="color: #5c4f4f">اضافه مندوب</h4>
+                </div>
+                <div class="modal-body text-left">
+                    
+                    <center>
+                        <br/>
+                        <table>
+                            <tr>
+
+                                <td style=" border: 0px">
+
+                                    <input ng-model="name" type="text" class="form-control" style="border-radius:0px" dir="rtl" />
+
+                                </td>
+                                <td style=" border: 0px">
+                                    <h4 style="margin-left:20px">اسم المندوب</h4>
+                                </td>
+
+                            </tr>
+                            <tr>
+
+                                <td style=" border: 0px">
+
+                                    <input ng-model="phone" type="text" class="form-control" style="border-radius:0px" dir="rtl" />
+
+                                </td>
+                                <td style=" border: 0px">
+                                    <h4 style="margin-left:20px">التليفون</h4>
+                                </td>
+
+                            </tr>
+                            <tr>
+
+                                <td style=" border: 0px">
+
+                                    <input ng-model="address" type="text" class="form-control" style="border-radius:0px" dir="rtl" />
+
+                                </td>
+                                <td style=" border: 0px">
+                                    <h4 style="margin-left:20px">العنوان</h4>
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td style="margin-right: 200px; border: 0px">
+                                    <div style="border-radius:0px">
+                                        <select ng-model="agentId" class="selectpicker form-control" dir="rtl" style="border-radius:0px">
+                                            <option ng-repeat="ag in allAgents" value="{{ag.id}}">{{ag.name}}</option>
+                                        </select>
+
+                                    </div>
+                                </td>
+                                <td style=" border: 0px">
+                                    <h4 style="margin-left:20px">الوكيل</h4>
+                                </td>
+                            </tr>
+                            @*<tr>
+                                <td style="margin-right: 200px; border: 0px">
+                                    <div style="border-radius:0px">
+                                        <select ng-model="governId" class="selectpicker form-control" dir="rtl" style="border-radius:0px">
+                                            <option ng-repeat="x2 in allGovern2">{{x2.name}}</option>
+                                        </select>
+
+                                    </div>
+                                </td>
+                                <td style=" border: 0px">
+                                    <h4 style="margin-left:20px">المحافظه</h4>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="margin-right:200px; border:0px">
+                                    <div style="border-radius:0px">
+                                        <select ng-model="areaId" class="form-control" dir="rtl" style="border-radius:0px">
+                                            <option value="{{x2.id}}" ng-repeat="x2 in allArea2 | filter: governId">{{x2.name}}</option>
+                                        </select>
+
+                                    </div>
+                                </td>
+                                <td style=" border: 0px">
+                                    <h4 style="margin-left:20px">المنطقه</h4>
+                                </td>
+                            </tr>*@
+
+                        </table>
+                        <br /><hr />
+                        <button type="button" class="btn btn-success btn-sm" data-dismiss="modal">الغاء</button>
+                        <button type="submit" class="btn btn-primary btn-sm" ng-click="add()" data-dismiss="modal">اضافه</button>
+                    </center>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!--================================================-->
+
+
+    <div id="update" class="modal fade left" role="dialog" style="top:15%;">
+        <div class=" modal-dialog" style="width:400px;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="text-center" style="color: #5c4f4f">تعديل بيانات المندوب</h4>
+                </div>
+                <div class="modal-body text-left">
+
+                    <center>
+                        <br />
+                        <table>
+                            <tr>
+
+                                <td style=" border: 0px">
+
+                                    <input ng-model="name2" type="text" class="form-control" style="border-radius:0px" dir="rtl" />
+
+                                </td>
+                                <td style=" border: 0px">
+                                    <h4 style="margin-left:20px">اسم المندوب</h4>
+                                </td>
+
+                            </tr>
+                            <tr>
+
+                                <td style=" border: 0px">
+
+                                    <input ng-model="phone2" type="text" class="form-control" style="border-radius:0px" dir="rtl" />
+
+                                </td>
+                                <td style=" border: 0px">
+                                    <h4 style="margin-left:20px">التليفون</h4>
+                                </td>
+
+                            </tr>
+                            <tr>
+
+                                <td style=" border: 0px">
+
+                                    <input ng-model="address2" type="text" class="form-control" style="border-radius:0px" dir="rtl" />
+
+                                </td>
+                                <td style=" border: 0px">
+                                    <h4 style="margin-left:20px">العنوان</h4>
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td style="margin-right: 200px; border: 0px">
+                                    <div style="border-radius:0px">
+                                        <select ng-options="ag.id as ag.name for ag  in allAgents " ng-model="agentId2" class="selectpicker form-control" dir="rtl" style="border-radius:0px"></select>
+
+                                    </div>
+                                </td>
+                                <td style=" border: 0px">
+                                    <h4 style="margin-left:20px">الوكيل</h4>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="margin-right: 200px; border: 0px">
+                                       <select class="form-control" style="border-radius:0px" id="active">
+                                           <option value="1">
+                                              متاح
+                                           </option>
+                                           <option value="0">
+                                               غير متاح
+                                           </option>
+                                       </select>
+
+                                </td>
+                                <td style=" border: 0px">
+                                    <h4 style="margin-left:20px">الحاله</h4>
+                                </td>
+                            </tr>
+                            @*<tr>
+                                    <td style="margin-right: 200px; border: 0px">
+                                        <div style="border-radius:0px">
+                                            <select ng-model="governId" class="selectpicker form-control" dir="rtl" style="border-radius:0px">
+                                                <option ng-repeat="x2 in allGovern2">{{x2.name}}</option>
+                                            </select>
+
+                                        </div>
+                                    </td>
+                                    <td style=" border: 0px">
+                                        <h4 style="margin-left:20px">المحافظه</h4>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="margin-right:200px; border:0px">
+                                        <div style="border-radius:0px">
+                                            <select ng-model="areaId" class="form-control" dir="rtl" style="border-radius:0px">
+                                                <option value="{{x2.id}}" ng-repeat="x2 in allArea2 | filter: governId">{{x2.name}}</option>
+                                            </select>
+
+                                        </div>
+                                    </td>
+                                    <td style=" border: 0px">
+                                        <h4 style="margin-left:20px">المنطقه</h4>
+                                    </td>
+                                </tr>*@
+
+                        </table>
+                        <br /><hr />
+                        <button type="button" class="btn btn-success btn-sm" data-dismiss="modal">الغاء</button>
+                        <button type="submit" class="btn btn-danger btn-sm" ng-click="updateDB()" data-dismiss="modal">تعديل</button>
+                    </center>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    @*@{Html.RenderPartial("../management/_scriptPartial");}*@
+
+
+</body>
+</html>
+
+
+

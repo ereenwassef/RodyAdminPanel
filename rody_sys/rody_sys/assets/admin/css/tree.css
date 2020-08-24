@@ -1,0 +1,64 @@
+.file-list, .file-list ul{
+    list-style-type: none;
+    font-size:1em;
+    line-height:1.8em;
+    margin-right:20px;
+    padding-right:18px;
+    border-right:1px dotted #aaa;
+}
+.file-list li{
+    position: relative;
+    padding-right:25px;
+}
+.file-list li a{
+    text-decoration: none;
+    color:#444;  
+}
+.file-list li a:before{
+    content: " ";
+    height:1px;
+    position:absolute;
+    border-bottom:1px dotted #aaa;
+    top:.6em;
+    right:-14px;
+}
+.file-list li:before{
+    list-style-type: none;
+    font-family: FontAwesome;
+    display:block;
+    content:'*';
+    position:absolute;
+    top:0px;
+    right:0px;
+    height:20px;
+    font-size:1.3em;
+    color:#555;
+    direction:rtl;
+}
+.file-list .folder-root{
+    list-style-type: none;
+}
+.file-list .folder-root a{
+    text-decoration:none;
+}
+.file-list .folder-root:before{
+    color:red;
+    content: "+";
+     direction:rtl;
+}
+.file-list .folder-root.open:before{
+    content: "-";
+     direction:rtl;
+}
+li.folder-root ul{
+    transition: all .3s ease-in-out;
+}
+li.folder-root.closed>ul{
+   opacity:0;
+   max-height:0px;
+}
+li.folder-root.open>ul{
+   opacity:1;
+   display:block;
+   max-height:1000px;
+}

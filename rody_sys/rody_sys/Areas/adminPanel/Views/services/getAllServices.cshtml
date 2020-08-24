@@ -1,0 +1,281 @@
+﻿
+@*@{
+    ViewBag.Title = "getAllServices";
+    Layout = "~/Areas/adminPanel/Views/Shared/_adminLayout.cshtml";
+}*@
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title></title>
+   
+    <style>
+        h4 {
+            color: #456e82;
+        }
+
+        h3 {
+            color: #5c4f4f;
+        }
+    </style>
+
+</head>
+
+<body ng-controller="services">
+
+    <section id="main-content">
+        <section class="wrapper">
+            <div class="table-agile-info">
+                <ol class="breadcrumb breadcrumb-2">
+                    <li><a><i class="icon-home"></i> القائمه</a></li>
+                    <li><a> الشرائح</a></li>
+                    <li class="active"><a style="color: #ec407a">الخدمات</a> </li>
+                </ol>
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <strong style="color: #5c4f4f">الخدمات</strong>
+
+                    </div>
+
+                    <div class="row w3-res-tb">
+                        <div class="col-lg-3">                           
+                            <select ng-model="token.shName" class="form-control" dir="rtl" style="margin-right: 35px; border-radius: 0px">
+                                <option value=""> الشريحه</option>
+                                <option ng-repeat="x2 in totalCharge">{{x2.name}}</option>
+                            </select>     
+                        </div>
+
+                        <div class="col-sm-3">
+                           <input class="form-control" style="border-radius:0px" placeholder="اسم الخدمه" dir="rtl" ng-model="token.name"/>
+                        </div>
+
+                        <div class="col-sm-1 col-lg-offset-4">
+                            <button class="btn btn-info" data-target="#add" data-toggle="modal">اضافه</button>
+                        </div>
+                    </div>
+                    <br/><br/>
+                    <div class="table-responsive">
+
+                        <table class="table table-striped b-t b-light" dir="rtl">
+                            <thead>
+                                <tr style="background: #ddede0; padding:5px ">
+                                    <th><h3 style="padding:5px;">الكود</h3></th>
+                                    <th><h3 style="padding: 5px">الاسم</h3></th>
+                                    <th><h3 style="padding: 5px">الشريحه</h3></th>
+                                    <th><h3 style="padding: 5px">سعر البيع</h3></th>                                   
+                                    <th><h3 style="padding: 5px">تعديل</h3></th>
+                                    <th><h3 style="padding: 5px">حذف</h3></th>
+                                </tr>
+                            </thead>
+                            <tbody ng-repeat="ser in allServices | filter: token">
+
+                                <tr class="tr" >
+                                    <td>
+                                        <h4>
+                                            {{ser.id}}
+                                        </h4>
+                                    </td>
+                                    <td>
+                                        <h4>
+                                            {{ser.name}}
+                                        </h4>
+                                    </td>
+                                    <td>
+                                        <h4>
+                                            {{ser.shName}}
+                                        </h4>
+                                    </td>
+                                    <td>
+                                        <h4>
+                                            {{ser.sellPrice}}
+                                        </h4>
+                                    </td>
+
+
+                                   
+                                    <td>
+                                        <button ng-click="update(ser.id,ser.name,ser.sharehaId,ser.sellPrice)" class="btn btn-sm btn-success" data-toggle="modal" data-target="#update">
+                                            <i class="fa fa-edit fa-lg"></i>
+                                        </button>
+
+                                    </td>
+                                    <td>
+                                        <button ng-click="get_service(ser.id)" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#delete">
+                                            <i class="fa fa-remove fa-lg"></i>
+                                        </button>
+
+                                    </td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!--main content end-->
+    </section>
+
+
+    <div id="delete" class="modal fade" role="dialog" style="background-color: rgba(25, 23, 23, 0.49); ">
+        <div class="modal-dialog modal-sm" style="top:25%">
+            <div class="modal-content">
+
+                <div class="modal-body text-left">
+                    <center>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <br />
+                        <h4 style="color:crimson"> هل تريد حذف هذه الخدمه؟</h4>
+                    </center>
+
+                </div>
+                <div class="modal-footer">
+                    <center>
+                        <button type="button" class="btn btn-success btn-sm" data-dismiss="modal">الغاء</button>
+                        <button type="submit" class="btn btn-danger btn-sm" ng-click="delete()" data-dismiss="modal">حذف</button>
+                    </center>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!--===========================================-->
+
+    <div id="add" class="modal fade left" role="dialog" style="top:15%;">
+        <div class=" modal-dialog" style="width:400px;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="text-center" style="color: #5c4f4f">اضافه خدمه</h4>
+                </div>
+                <div class="modal-body text-left">
+
+                    <center>
+                        <br />
+                        <table>
+                            <tr>
+
+                                <td style=" border: 0px">
+
+                                    <input ng-model="name" type="text" class="form-control" style="border-radius:0px" dir="rtl" />
+
+                                </td>
+                                <td style=" border: 0px">
+                                    <h4 style="margin-left:20px">اسم الخدمه</h4>
+                                </td>
+
+                            </tr>
+                            <tr>
+
+                                <td style=" border: 0px">
+
+                                    <input ng-model="price" type="number" step="0.00001" class="form-control" style="border-radius:0px" dir="rtl" />
+
+                                </td>
+                                <td style=" border: 0px">
+                                    <h4 style="margin-left:20px">سعر البيع</h4>
+                                </td>
+
+                            </tr>
+                          
+                            <tr>
+                                <td style="margin-right: 200px; border: 0px">
+                                    <div style="border-radius:0px">
+                                        <select ng-model="sharehaId" class="selectpicker form-control" dir="rtl" style="border-radius:0px">
+                                            <option ng-repeat="ag in totalCharge" value="{{ag.id}}">{{ag.name}}</option>
+                                        </select>
+
+                                    </div>
+                                </td>
+                                <td style=" border: 0px">
+                                    <h4 style="margin-left:20px">الشريحه</h4>
+                                </td>
+                            </tr>
+
+                        </table>
+                        <br /><hr />
+                        <button type="button" class="btn btn-success btn-sm" data-dismiss="modal">الغاء</button>
+                        <button type="submit" class="btn btn-primary btn-sm" ng-click="add()" data-dismiss="modal">اضافه</button>
+                    </center>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--================================================-->
+    <div id="update" class="modal fade left" role="dialog" style="top:15%;">
+        <div class=" modal-dialog" style="width:400px;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="text-center" style="color: #5c4f4f"> تعديل بيانات الخدمه</h4>
+                </div>
+                <div class="modal-body text-left">
+
+                    <center>
+                        <br />
+                        <table>
+                            <tr>
+
+                                <td style=" border: 0px">
+
+                                    <input ng-model="name2" type="text" class="form-control" style="border-radius:0px" dir="rtl" />
+
+                                </td>
+                                <td style=" border: 0px">
+                                    <h4 style="margin-left:20px">اسم الخدمه</h4>
+                                </td>
+
+                            </tr>
+                            <tr>
+
+                                <td style=" border: 0px">
+
+                                    <input ng-model="price2" type="number" step="0.00001" class="form-control" style="border-radius:0px" dir="rtl" />
+
+                                </td>
+                                <td style=" border: 0px">
+                                    <h4 style="margin-left:20px">سعر البيع</h4>
+                                </td>
+
+                            </tr>
+
+                            <tr>
+                                <td style="margin-right: 200px; border: 0px">
+                                    <div style="border-radius:0px">
+                                        <select class="selectpicker form-control" dir="rtl" style="border-radius:0px" id="sharehaId2">
+                                            <option ng-repeat="ag in totalCharge" value="{{ag.id}}">{{ag.name}}</option>
+                                        </select>
+
+                                    </div>
+                                </td>
+                                <td style=" border: 0px">
+                                    <h4 style="margin-left:20px">الشريحه</h4>
+                                </td>
+                            </tr>
+
+                        </table>
+                        <br /><hr />
+                        <button type="button" class="btn btn-success btn-sm" data-dismiss="modal">الغاء</button>
+                        <button type="submit" class="btn btn-danger btn-sm" ng-click="updateDB()" data-dismiss="modal">تعديل</button>
+                    </center>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    @*@{Html.RenderPartial("../management/_scriptPartial");}*@
+
+
+</body>
+</html>
+
+

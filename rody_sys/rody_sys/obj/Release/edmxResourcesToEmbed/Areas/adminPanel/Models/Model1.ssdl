@@ -1,0 +1,790 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Rody_DBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="agent">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nchar" MaxLength="500" />
+    <Property Name="address" Type="nchar" MaxLength="500" />
+    <Property Name="phone" Type="nchar" MaxLength="30" />
+    <Property Name="areaId" Type="int" />
+  </EntityType>
+  <EntityType Name="area">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nchar" MaxLength="200" />
+    <Property Name="govId" Type="int" />
+  </EntityType>
+  <EntityType Name="banks">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nchar" MaxLength="100" />
+    <Property Name="address" Type="nchar" MaxLength="500" />
+    <Property Name="phone1" Type="nchar" MaxLength="50" />
+    <Property Name="phone2" Type="nchar" MaxLength="50" />
+    <Property Name="phone3" Type="nchar" MaxLength="50" />
+    <Property Name="fax" Type="nchar" MaxLength="50" />
+    <Property Name="responsible" Type="nchar" MaxLength="100" />
+    <Property Name="notes" Type="nchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="client">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="my_childs" Type="nvarchar(max)" />
+    <Property Name="name" Type="nchar" MaxLength="100" />
+    <Property Name="gender" Type="int" />
+    <Property Name="num_followers" Type="int" />
+    <Property Name="id_num" Type="nchar" MaxLength="30" />
+    <Property Name="date_of_birth" Type="nchar" MaxLength="100" />
+    <Property Name="client_type" Type="int" />
+    <Property Name="jop" Type="nchar" MaxLength="100" />
+    <Property Name="work_name" Type="nchar" MaxLength="200" />
+    <Property Name="work_place" Type="nchar" MaxLength="300" />
+    <Property Name="id_place" Type="nchar" MaxLength="300" />
+    <Property Name="stay_place" Type="nchar" MaxLength="300" />
+    <Property Name="stay_place_flat" Type="int" />
+    <Property Name="stay_place_floor" Type="int" />
+    <Property Name="stay_place_get" Type="nchar" MaxLength="300" />
+    <Property Name="areaId" Type="int" />
+    <Property Name="delegatorId" Type="int" />
+    <Property Name="available" Type="int" />
+    <Property Name="contract_state" Type="int" />
+    <Property Name="activation_date" Type="nchar" MaxLength="100" />
+    <Property Name="notes" Type="nchar" MaxLength="200" />
+    <Property Name="charge" Type="float" />
+    <Property Name="my_parents" Type="nvarchar(max)" />
+    <Property Name="parentId" Type="int" />
+    <Property Name="contract_date" Type="nchar" MaxLength="100" />
+    <Property Name="MsgCharge" Type="float" />
+    <Property Name="done" Type="int" />
+  </EntityType>
+  <EntityType Name="client_type">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="type" Type="nchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="delegator">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nchar" MaxLength="500" />
+    <Property Name="address" Type="nchar" MaxLength="500" />
+    <Property Name="phone" Type="nchar" MaxLength="30" />
+    <Property Name="agentId" Type="int" />
+    <Property Name="active" Type="int" />
+  </EntityType>
+  <EntityType Name="govern">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nchar" MaxLength="30" />
+  </EntityType>
+  <EntityType Name="main_category_supplier">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="tasneef_name" Type="nchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="notes">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="date" Type="nchar" MaxLength="100" />
+    <Property Name="note" Type="nvarchar(max)" />
+    <Property Name="clientId" Type="int" />
+  </EntityType>
+  <EntityType Name="operations_client">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="debtor" Type="float" />
+    <Property Name="creditor" Type="float" />
+    <Property Name="actual_date" Type="nchar" MaxLength="50" />
+    <Property Name="get_date" Type="nchar" MaxLength="50" />
+    <Property Name="clientId" Type="int" />
+    <Property Name="phone_id" Type="int" />
+    <Property Name="charge" Type="float" />
+    <Property Name="notes" Type="nchar" MaxLength="300" />
+    <Property Name="serviceId" Type="int" />
+    <Property Name="declaration" Type="nchar" MaxLength="50" />
+    <Property Name="time" Type="nchar" MaxLength="50" />
+    <Property Name="otherPhoneNum" Type="nchar" MaxLength="50" />
+    <Property Name="saleOpId" Type="int" />
+  </EntityType>
+  <EntityType Name="operations_store">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="storeId" Type="int" />
+    <Property Name="get_value" Type="float" />
+    <Property Name="clientId" Type="int" />
+    <Property Name="date" Type="nchar" MaxLength="50" />
+    <Property Name="supplierId" Type="int" />
+    <Property Name="give_value" Type="float" />
+    <Property Name="charge" Type="float" />
+    <Property Name="fromToStoreId" Type="int" />
+  </EntityType>
+  <EntityType Name="operations_supplier">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="debtor" Type="float" />
+    <Property Name="creditor" Type="float" />
+    <Property Name="charg" Type="float" />
+    <Property Name="opType" Type="nchar" MaxLength="100" />
+    <Property Name="date" Type="nchar" MaxLength="100" />
+    <Property Name="supId" Type="int" />
+  </EntityType>
+  <EntityType Name="partner">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nchar" MaxLength="300" />
+    <Property Name="address" Type="nchar" MaxLength="300" />
+    <Property Name="phone" Type="nchar" MaxLength="50" />
+    <Property Name="mobile" Type="nchar" MaxLength="50" />
+    <Property Name="money" Type="float" />
+  </EntityType>
+  <EntityType Name="phones">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="number" Type="nchar" MaxLength="50" />
+    <Property Name="clientId" Type="int" />
+    <Property Name="sharehaId" Type="int" />
+  </EntityType>
+  <EntityType Name="purchases">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="date" Type="nchar" MaxLength="50" />
+    <Property Name="supplierId" Type="int" />
+    <Property Name="shareehaId" Type="int" />
+    <Property Name="quantity" Type="float" />
+    <Property Name="price" Type="float" />
+    <Property Name="total" Type="float" />
+    <Property Name="discount" Type="float" />
+    <Property Name="total_after" Type="float" />
+    <Property Name="clientId" Type="int" />
+  </EntityType>
+  <EntityType Name="reportClientTahseel">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="cltId" Type="int" />
+    <Property Name="treasuryId" Type="int" />
+    <Property Name="charge" Type="float" />
+    <Property Name="diserved" Type="float" />
+    <Property Name="cltName" Type="nchar" MaxLength="500" />
+    <Property Name="cltAddress" Type="nchar" MaxLength="500" />
+    <Property Name="cltAreaName" Type="nchar" MaxLength="500" />
+    <Property Name="phone1" Type="nchar" MaxLength="100" />
+    <Property Name="phone2" Type="nchar" MaxLength="100" />
+    <Property Name="phone3" Type="nchar" MaxLength="100" />
+    <Property Name="count" Type="int" />
+  </EntityType>
+  <EntityType Name="sales">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="date" Type="nchar" MaxLength="50" />
+    <Property Name="serviceId" Type="int" />
+    <Property Name="clientId" Type="int" />
+    <Property Name="phoneId" Type="int" />
+    <Property Name="total" Type="float" />
+    <Property Name="notes" Type="nchar" MaxLength="200" />
+    <Property Name="time" Type="nchar" MaxLength="50" />
+    <Property Name="otherPhoneNum" Type="nchar" MaxLength="50" />
+    <Property Name="quantity" Type="float" />
+    <Property Name="price" Type="float" />
+  </EntityType>
+  <EntityType Name="services">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nchar" MaxLength="300" />
+    <Property Name="sharehaId" Type="int" />
+    <Property Name="sellPrice" Type="float" />
+  </EntityType>
+  <EntityType Name="shareha">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nchar" MaxLength="100" />
+    <Property Name="value" Type="float" />
+  </EntityType>
+  <EntityType Name="stores">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nchar" MaxLength="200" />
+    <Property Name="value" Type="decimal" Precision="18" Scale="0" />
+  </EntityType>
+  <EntityType Name="sub_category_supplier">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="tasneef_name" Type="nchar" MaxLength="200" />
+    <Property Name="mainId" Type="int" />
+  </EntityType>
+  <EntityType Name="supplier">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="tasneefId" Type="int" />
+    <Property Name="name" Type="nchar" MaxLength="300" />
+    <Property Name="address" Type="nchar" MaxLength="300" />
+    <Property Name="responsible" Type="nchar" MaxLength="300" />
+    <Property Name="phone1" Type="nchar" MaxLength="50" />
+    <Property Name="phone2" Type="nchar" MaxLength="50" />
+    <Property Name="phone3" Type="nchar" MaxLength="50" />
+    <Property Name="fax" Type="nchar" MaxLength="50" />
+    <Property Name="notes" Type="nchar" MaxLength="100" />
+    <Property Name="type" Type="int" />
+    <Property Name="business_type" Type="int" />
+    <Property Name="charge" Type="float" />
+  </EntityType>
+  <Association Name="FK_agent_area">
+    <End Role="area" Type="Self.area" Multiplicity="0..1" />
+    <End Role="agent" Type="Self.agent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="area">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="agent">
+        <PropertyRef Name="areaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_area_govern">
+    <End Role="govern" Type="Self.govern" Multiplicity="0..1" />
+    <End Role="area" Type="Self.area" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="govern">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="area">
+        <PropertyRef Name="govId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_client_area">
+    <End Role="area" Type="Self.area" Multiplicity="0..1" />
+    <End Role="client" Type="Self.client" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="area">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="client">
+        <PropertyRef Name="areaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_client_client_type">
+    <End Role="client_type" Type="Self.client_type" Multiplicity="0..1" />
+    <End Role="client" Type="Self.client" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="client_type">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="client">
+        <PropertyRef Name="client_type" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_client_client1">
+    <End Role="client" Type="Self.client" Multiplicity="0..1" />
+    <End Role="client1" Type="Self.client" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="client">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="client1">
+        <PropertyRef Name="parentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_client_delegator">
+    <End Role="delegator" Type="Self.delegator" Multiplicity="0..1" />
+    <End Role="client" Type="Self.client" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="delegator">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="client">
+        <PropertyRef Name="delegatorId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_delegator_agent">
+    <End Role="agent" Type="Self.agent" Multiplicity="0..1" />
+    <End Role="delegator" Type="Self.delegator" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="agent">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="delegator">
+        <PropertyRef Name="agentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_notes_client">
+    <End Role="client" Type="Self.client" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="notes" Type="Self.notes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="client">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="notes">
+        <PropertyRef Name="clientId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_operations_client_sales">
+    <End Role="sales" Type="Self.sales" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="operations_client" Type="Self.operations_client" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="sales">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="operations_client">
+        <PropertyRef Name="saleOpId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_operations_client_services">
+    <End Role="services" Type="Self.services" Multiplicity="0..1" />
+    <End Role="operations_client" Type="Self.operations_client" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="services">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="operations_client">
+        <PropertyRef Name="serviceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_operations_phones">
+    <End Role="phones" Type="Self.phones" Multiplicity="0..1" />
+    <End Role="operations_client" Type="Self.operations_client" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="phones">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="operations_client">
+        <PropertyRef Name="phone_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_operations_store_client">
+    <End Role="client" Type="Self.client" Multiplicity="0..1" />
+    <End Role="operations_store" Type="Self.operations_store" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="client">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="operations_store">
+        <PropertyRef Name="clientId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_operations_store_stores">
+    <End Role="stores" Type="Self.stores" Multiplicity="0..1" />
+    <End Role="operations_store" Type="Self.operations_store" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="stores">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="operations_store">
+        <PropertyRef Name="storeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_operations_store_stores1">
+    <End Role="stores" Type="Self.stores" Multiplicity="0..1" />
+    <End Role="operations_store" Type="Self.operations_store" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="stores">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="operations_store">
+        <PropertyRef Name="fromToStoreId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_operations_store_supplier">
+    <End Role="supplier" Type="Self.supplier" Multiplicity="0..1" />
+    <End Role="operations_store" Type="Self.operations_store" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="supplier">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="operations_store">
+        <PropertyRef Name="supplierId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_operations_supplier_supplier">
+    <End Role="supplier" Type="Self.supplier" Multiplicity="0..1" />
+    <End Role="operations_supplier" Type="Self.operations_supplier" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="supplier">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="operations_supplier">
+        <PropertyRef Name="supId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_phones_client">
+    <End Role="client" Type="Self.client" Multiplicity="0..1" />
+    <End Role="phones" Type="Self.phones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="client">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="phones">
+        <PropertyRef Name="clientId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_phones_shareha">
+    <End Role="shareha" Type="Self.shareha" Multiplicity="0..1" />
+    <End Role="phones" Type="Self.phones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="shareha">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="phones">
+        <PropertyRef Name="sharehaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_purchases_client">
+    <End Role="client" Type="Self.client" Multiplicity="0..1" />
+    <End Role="purchases" Type="Self.purchases" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="client">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="purchases">
+        <PropertyRef Name="clientId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_purchases_shareha">
+    <End Role="shareha" Type="Self.shareha" Multiplicity="0..1" />
+    <End Role="purchases" Type="Self.purchases" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="shareha">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="purchases">
+        <PropertyRef Name="shareehaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_purchases_supplier">
+    <End Role="supplier" Type="Self.supplier" Multiplicity="0..1" />
+    <End Role="purchases" Type="Self.purchases" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="supplier">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="purchases">
+        <PropertyRef Name="supplierId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_reportClientTahseel_client">
+    <End Role="client" Type="Self.client" Multiplicity="0..1" />
+    <End Role="reportClientTahseel" Type="Self.reportClientTahseel" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="client">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="reportClientTahseel">
+        <PropertyRef Name="cltId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_reportClientTahseel_stores">
+    <End Role="stores" Type="Self.stores" Multiplicity="0..1" />
+    <End Role="reportClientTahseel" Type="Self.reportClientTahseel" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="stores">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="reportClientTahseel">
+        <PropertyRef Name="treasuryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_sales_client">
+    <End Role="client" Type="Self.client" Multiplicity="0..1" />
+    <End Role="sales" Type="Self.sales" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="client">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="sales">
+        <PropertyRef Name="clientId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_sales_phones">
+    <End Role="phones" Type="Self.phones" Multiplicity="0..1" />
+    <End Role="sales" Type="Self.sales" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="phones">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="sales">
+        <PropertyRef Name="phoneId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_sales_services">
+    <End Role="services" Type="Self.services" Multiplicity="0..1" />
+    <End Role="sales" Type="Self.sales" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="services">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="sales">
+        <PropertyRef Name="serviceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_services_shareha">
+    <End Role="shareha" Type="Self.shareha" Multiplicity="0..1" />
+    <End Role="services" Type="Self.services" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="shareha">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="services">
+        <PropertyRef Name="sharehaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_sub_category_supplier_main_category_supplier">
+    <End Role="main_category_supplier" Type="Self.main_category_supplier" Multiplicity="0..1" />
+    <End Role="sub_category_supplier" Type="Self.sub_category_supplier" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="main_category_supplier">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="sub_category_supplier">
+        <PropertyRef Name="mainId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_supplier_sub_category_supplier">
+    <End Role="sub_category_supplier" Type="Self.sub_category_supplier" Multiplicity="0..1" />
+    <End Role="supplier" Type="Self.supplier" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="sub_category_supplier">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="supplier">
+        <PropertyRef Name="tasneefId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="add_operation_supplier_give" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="supId" Type="int" Mode="In" />
+    <Parameter Name="getval" Type="float" Mode="In" />
+    <Parameter Name="dat" Type="date" Mode="In" />
+  </Function>
+  <Function Name="add_store_operation_sup" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="supId" Type="int" Mode="In" />
+    <Parameter Name="storeId" Type="int" Mode="In" />
+    <Parameter Name="giveval" Type="float" Mode="In" />
+    <Parameter Name="dat" Type="date" Mode="In" />
+  </Function>
+  <Function Name="call_add_new_give_supplier" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="supId" Type="int" Mode="In" />
+    <Parameter Name="storeId" Type="int" Mode="In" />
+    <Parameter Name="getValue" Type="float" Mode="In" />
+    <Parameter Name="date" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="decrease_charge_of_store" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="storeId" Type="int" Mode="In" />
+    <Parameter Name="val" Type="float" Mode="In" />
+  </Function>
+  <Function Name="decrease_charge_of_supplier" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="sId" Type="int" Mode="In" />
+    <Parameter Name="value" Type="float" Mode="In" />
+  </Function>
+  <EntityContainer Name="Rody_DBModelStoreContainer">
+    <EntitySet Name="agent" EntityType="Self.agent" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="area" EntityType="Self.area" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="banks" EntityType="Self.banks" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="client" EntityType="Self.client" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="client_type" EntityType="Self.client_type" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="delegator" EntityType="Self.delegator" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="govern" EntityType="Self.govern" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="main_category_supplier" EntityType="Self.main_category_supplier" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="notes" EntityType="Self.notes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="operations_client" EntityType="Self.operations_client" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="operations_store" EntityType="Self.operations_store" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="operations_supplier" EntityType="Self.operations_supplier" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="partner" EntityType="Self.partner" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="phones" EntityType="Self.phones" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="purchases" EntityType="Self.purchases" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="reportClientTahseel" EntityType="Self.reportClientTahseel" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sales" EntityType="Self.sales" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="services" EntityType="Self.services" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="shareha" EntityType="Self.shareha" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="stores" EntityType="Self.stores" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sub_category_supplier" EntityType="Self.sub_category_supplier" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="supplier" EntityType="Self.supplier" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_agent_area" Association="Self.FK_agent_area">
+      <End Role="area" EntitySet="area" />
+      <End Role="agent" EntitySet="agent" />
+    </AssociationSet>
+    <AssociationSet Name="FK_area_govern" Association="Self.FK_area_govern">
+      <End Role="govern" EntitySet="govern" />
+      <End Role="area" EntitySet="area" />
+    </AssociationSet>
+    <AssociationSet Name="FK_client_area" Association="Self.FK_client_area">
+      <End Role="area" EntitySet="area" />
+      <End Role="client" EntitySet="client" />
+    </AssociationSet>
+    <AssociationSet Name="FK_client_client_type" Association="Self.FK_client_client_type">
+      <End Role="client_type" EntitySet="client_type" />
+      <End Role="client" EntitySet="client" />
+    </AssociationSet>
+    <AssociationSet Name="FK_client_client1" Association="Self.FK_client_client1">
+      <End Role="client" EntitySet="client" />
+      <End Role="client1" EntitySet="client" />
+    </AssociationSet>
+    <AssociationSet Name="FK_client_delegator" Association="Self.FK_client_delegator">
+      <End Role="delegator" EntitySet="delegator" />
+      <End Role="client" EntitySet="client" />
+    </AssociationSet>
+    <AssociationSet Name="FK_delegator_agent" Association="Self.FK_delegator_agent">
+      <End Role="agent" EntitySet="agent" />
+      <End Role="delegator" EntitySet="delegator" />
+    </AssociationSet>
+    <AssociationSet Name="FK_notes_client" Association="Self.FK_notes_client">
+      <End Role="client" EntitySet="client" />
+      <End Role="notes" EntitySet="notes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_operations_client_sales" Association="Self.FK_operations_client_sales">
+      <End Role="sales" EntitySet="sales" />
+      <End Role="operations_client" EntitySet="operations_client" />
+    </AssociationSet>
+    <AssociationSet Name="FK_operations_client_services" Association="Self.FK_operations_client_services">
+      <End Role="services" EntitySet="services" />
+      <End Role="operations_client" EntitySet="operations_client" />
+    </AssociationSet>
+    <AssociationSet Name="FK_operations_phones" Association="Self.FK_operations_phones">
+      <End Role="phones" EntitySet="phones" />
+      <End Role="operations_client" EntitySet="operations_client" />
+    </AssociationSet>
+    <AssociationSet Name="FK_operations_store_client" Association="Self.FK_operations_store_client">
+      <End Role="client" EntitySet="client" />
+      <End Role="operations_store" EntitySet="operations_store" />
+    </AssociationSet>
+    <AssociationSet Name="FK_operations_store_stores" Association="Self.FK_operations_store_stores">
+      <End Role="stores" EntitySet="stores" />
+      <End Role="operations_store" EntitySet="operations_store" />
+    </AssociationSet>
+    <AssociationSet Name="FK_operations_store_stores1" Association="Self.FK_operations_store_stores1">
+      <End Role="stores" EntitySet="stores" />
+      <End Role="operations_store" EntitySet="operations_store" />
+    </AssociationSet>
+    <AssociationSet Name="FK_operations_store_supplier" Association="Self.FK_operations_store_supplier">
+      <End Role="supplier" EntitySet="supplier" />
+      <End Role="operations_store" EntitySet="operations_store" />
+    </AssociationSet>
+    <AssociationSet Name="FK_operations_supplier_supplier" Association="Self.FK_operations_supplier_supplier">
+      <End Role="supplier" EntitySet="supplier" />
+      <End Role="operations_supplier" EntitySet="operations_supplier" />
+    </AssociationSet>
+    <AssociationSet Name="FK_phones_client" Association="Self.FK_phones_client">
+      <End Role="client" EntitySet="client" />
+      <End Role="phones" EntitySet="phones" />
+    </AssociationSet>
+    <AssociationSet Name="FK_phones_shareha" Association="Self.FK_phones_shareha">
+      <End Role="shareha" EntitySet="shareha" />
+      <End Role="phones" EntitySet="phones" />
+    </AssociationSet>
+    <AssociationSet Name="FK_purchases_client" Association="Self.FK_purchases_client">
+      <End Role="client" EntitySet="client" />
+      <End Role="purchases" EntitySet="purchases" />
+    </AssociationSet>
+    <AssociationSet Name="FK_purchases_shareha" Association="Self.FK_purchases_shareha">
+      <End Role="shareha" EntitySet="shareha" />
+      <End Role="purchases" EntitySet="purchases" />
+    </AssociationSet>
+    <AssociationSet Name="FK_purchases_supplier" Association="Self.FK_purchases_supplier">
+      <End Role="supplier" EntitySet="supplier" />
+      <End Role="purchases" EntitySet="purchases" />
+    </AssociationSet>
+    <AssociationSet Name="FK_reportClientTahseel_client" Association="Self.FK_reportClientTahseel_client">
+      <End Role="client" EntitySet="client" />
+      <End Role="reportClientTahseel" EntitySet="reportClientTahseel" />
+    </AssociationSet>
+    <AssociationSet Name="FK_reportClientTahseel_stores" Association="Self.FK_reportClientTahseel_stores">
+      <End Role="stores" EntitySet="stores" />
+      <End Role="reportClientTahseel" EntitySet="reportClientTahseel" />
+    </AssociationSet>
+    <AssociationSet Name="FK_sales_client" Association="Self.FK_sales_client">
+      <End Role="client" EntitySet="client" />
+      <End Role="sales" EntitySet="sales" />
+    </AssociationSet>
+    <AssociationSet Name="FK_sales_phones" Association="Self.FK_sales_phones">
+      <End Role="phones" EntitySet="phones" />
+      <End Role="sales" EntitySet="sales" />
+    </AssociationSet>
+    <AssociationSet Name="FK_sales_services" Association="Self.FK_sales_services">
+      <End Role="services" EntitySet="services" />
+      <End Role="sales" EntitySet="sales" />
+    </AssociationSet>
+    <AssociationSet Name="FK_services_shareha" Association="Self.FK_services_shareha">
+      <End Role="shareha" EntitySet="shareha" />
+      <End Role="services" EntitySet="services" />
+    </AssociationSet>
+    <AssociationSet Name="FK_sub_category_supplier_main_category_supplier" Association="Self.FK_sub_category_supplier_main_category_supplier">
+      <End Role="main_category_supplier" EntitySet="main_category_supplier" />
+      <End Role="sub_category_supplier" EntitySet="sub_category_supplier" />
+    </AssociationSet>
+    <AssociationSet Name="FK_supplier_sub_category_supplier" Association="Self.FK_supplier_sub_category_supplier">
+      <End Role="sub_category_supplier" EntitySet="sub_category_supplier" />
+      <End Role="supplier" EntitySet="supplier" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,449 @@
+﻿
+@*@{
+    ViewBag.Title = "getAllPurchases";
+    Layout = "~/Areas/adminPanel/Views/Shared/_adminLayout.cshtml";
+}*@
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title></title>
+        <style>
+        h4 {
+            color: #456e82;
+        }
+
+        h3 {
+            color: #5c4f4f;
+        }
+    </style>
+
+</head>
+
+<body ng-controller="purchases">
+
+    <section id="main-content">
+        <section class="wrapper">
+            <div class="table-agile-info">
+                <ol class="breadcrumb breadcrumb-2">
+                    <li><a><i class="icon-home"></i> القائمه</a></li>
+                    <li><a> المشتريات</a></li>
+                    <li class="active"><a style="color: #ec407a"> حركات المشتريات</a> </li>
+                </ol>
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <strong style="color: #5c4f4f"> حركات المشتريات</strong>
+
+                    </div>
+                    <div class="row w3-res-tb" >
+
+                        <div class="col-lg-1 col-lg-offset-2" dir="ltr">
+                            <button class="btn btn-info" data-toggle="modal" data-target="#getSuppliers">
+                                بحث
+                            </button>
+                        </div>
+                        <div class="col-lg-3" dir="ltr">
+                            <input ng-model="sId" type="hidden" />
+                            <input dir="rtl" style="border-radius:0px" type="text" readonly placeholder="اسم المورد" class="form-control" ng-model="supName_2" />
+                        </div>
+                        <div class="col-lg-3" dir="ltr">
+                            <select dir="rtl" class="form-control" style="border-radius:0px"ng-model="supType">
+                                <option value="" selected>نوع المتعامل معه</option>
+                                <option ng-value="1">مورد</option>
+                                <option ng-value="2">عميل</option>
+                            </select>
+
+                        </div>
+
+                        <div class="col-lg-3" dir="ltr">
+                            <select class="form-control" style="border-radius:0px" dir="rtl" ng-model="token.shName">
+                                <option value="" selected>الشريحه</option>
+                                <option ng-repeat="x2 in kroot ">{{x2.name}}</option>
+
+                            </select>
+
+                        </div>
+
+                    </div>
+                    <div class="row w3-res-tb">
+
+                        <div class="col-lg-3 col-lg-offset-6" dir="ltr">
+                            <input dir="rtl" style="border-radius:0px" type="text" placeholder="الي تاريخ" class="form-control" ng-model="to"  onfocus="this.type='date'"/>
+                        </div>
+                        <div class="col-lg-3" dir="ltr">
+                            <input dir="rtl" style="border-radius:0px" type="text" placeholder=" من تاريخ" class="form-control" ng-model="from" onfocus="this.type='date'" />
+                        </div>                     
+
+                    </div>
+                    <br />
+                    <div class="table-responsive">
+
+                        <table class="table table-striped b-t b-light" dir="rtl">
+                            <thead>
+                                <tr style="background: #ddede0; padding:5px ">
+                                    <th><h5 style="padding:5px;" ng-click="sort('id')">الكود <i class="fa {{icon_id}}"></i></h5></th>
+                                    <th><h5 style="padding: 5px" ng-click="sort('name')"> التاريخ <i class="fa {{icon_name}}"></i></h5></th>
+                                    <th><h5 style="padding: 5px" ng-click="sort('name')"> مورد / عميل <i class="fa {{icon_name}}"></i></h5></th>
+                                    <th><h5 style="padding: 5px" ng-click="sort('name')"> المورد <i class="fa {{icon_name}}"></i></h5></th>
+                                    <th><h5 style="padding: 5px" ng-click="sort('name')"> الشريحه <i class="fa {{icon_name}}"></i></h5></th>
+                                    <th><h5 style="padding: 5px" ng-click="sort('name')"> الكميه <i class="fa {{icon_name}}"></i></h5></th>
+                                    <th><h5 style="padding: 5px" ng-click="sort('name')"> السعر <i class="fa {{icon_name}}"></i></h5></th>
+                                    <th><h5 style="padding: 5px" ng-click="sort('name')"> الاجمالي  <i class="fa {{icon_name}}"></i></h5></th>
+                                    <th><h5 style="padding: 5px" ng-click="sort('name')"> الخصم <i class="fa {{icon_name}}"></i></h5></th>
+                                    <th><h5 style="padding: 5px" ng-click="sort('name')"> الاجمالي بعد الخصم <i class="fa {{icon_name}}"></i></h5></th>
+                                  
+                                </tr>
+                            </thead>
+                            <tbody ng-repeat="t in allPurchases | myGenericDateFilter:from:to |filter:token |filter:{supId:sId} | limitTo:limit | orderBy:sortedCol">
+
+                                <tr class="tr" id="tbr" ng-if="t.supId!=null&&supType!=2">
+                                    <td>
+                                        <h4>
+                                            {{t.id}}
+                                        </h4>
+                                    </td>
+                                    <td>
+                                        <h4>
+                                            {{t.date}}
+                                        </h4>
+                                    </td>
+                                    <td>
+                                        <h4>
+                                            مورد
+                                        </h4>
+                                    </td>
+                                    <td>
+                                        <h4>
+                                            {{t.supName}}
+                                        </h4>
+                                    </td>
+                                    <td>
+                                        <h4>
+                                            {{t.shName}}
+                                        </h4>
+                                    </td>
+                                    <td>
+                                        <h4>
+                                            {{t.quantity}}
+                                        </h4>
+                                    </td>
+                                    <td>
+                                        <h4>
+                                            {{t.price}}
+                                        </h4>
+                                    </td>
+                                    <td>
+                                        <h4>
+                                            {{t.total}}
+                                        </h4>
+                                    </td>
+                                    <td>
+                                        <h4>
+                                            {{t.discount}}
+                                        </h4>
+                                    </td>
+                                    <td>
+                                        <h4>
+                                            {{t.total_after}}
+                                        </h4>
+                                    </td>
+                                </tr>
+
+                                <tr class="tr" id="tbr" ng-if="t.clientId!=null&&supType!=1">
+                                    <td>
+                                        <h4>
+                                            {{t.id}}
+                                        </h4>
+                                    </td>
+                                    <td>
+                                        <h4>
+                                            {{t.date}}
+                                        </h4>
+                                    </td>
+                                    <td>
+                                        <h4>
+                                            عميل
+                                        </h4>
+                                    </td>
+                                    <td>
+                                        <h4>
+                                            {{t.cName}}
+                                        </h4>
+                                    </td>
+                                    <td>
+                                        <h4>
+                                            {{t.shName}}
+                                        </h4>
+                                    </td>
+                                    <td>
+                                        <h4>
+                                            {{t.quantity}}
+                                        </h4>
+                                    </td>
+                                    <td>
+                                        <h4>
+                                            {{t.price}}
+                                        </h4>
+                                    </td>
+                                    <td>
+                                        <h4>
+                                            {{t.total}}
+                                        </h4>
+                                    </td>
+                                    <td>
+                                        <h4>
+                                            {{t.discount}}
+                                        </h4>
+                                    </td>
+                                    <td>
+                                        <h4>
+                                            {{t.total_after}}
+                                        </h4>
+                                    </td>
+                                </tr>
+
+
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!--main content end-->
+    </section>
+
+
+    <div id="delete" class="modal fade" role="dialog" style="background-color: rgba(25, 23, 23, 0.49); ">
+        <div class="modal-dialog modal-sm" style="top:25%">
+            <div class="modal-content">
+
+                <div class="modal-body text-left">
+                    <center>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <br />
+                        <h4 style="color:crimson"> هل تريد حذف هذه الخزنه؟</h4>
+                    </center>
+
+                </div>
+                <div class="modal-footer">
+                    <center>
+                        <button type="button" class="btn btn-success btn-sm" data-dismiss="modal">الغاء</button>
+                        <button type="submit" class="btn btn-danger btn-sm" ng-click="delete()" data-dismiss="modal">حذف</button>
+                    </center>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div id="add" class="modal fade left" role="dialog" style="top: 15%; background-color: transparent !important">
+        <div class=" modal-dialog" style="width: 400px; background-color: transparent !important">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="text-center" style="color: #5c4f4f">اضافه خزنه</h4>
+                </div>
+                <div class="modal-body text-left">
+                    <center>
+                        <br />
+                        <table>
+                            <tr>
+
+                                <td style=" border: 0px">
+
+                                    <input ng-model="name" type="text" class="form-control" style="border-radius:0px" dir="rtl" />
+
+                                </td>
+                                <td style=" border: 0px">
+                                    <h4 style="margin-left:20px">اسم الخزنه</h4>
+                                </td>
+
+                            </tr>
+                            <tr>
+
+                                <td style=" border: 0px">
+
+                                    <input ng-model="value" type="number" class="form-control" style="border-radius:0px" dir="rtl" />
+
+                                </td>
+                                <td style=" border: 0px">
+                                    <h4 style="margin-left:20px">المبلغ</h4>
+                                </td>
+
+                            </tr>
+
+                        </table>
+                        <br /><hr />
+                        <button type="button" class="btn btn-success btn-sm" data-dismiss="modal">الغاء</button>
+                        <button type="submit" class="btn btn-primary btn-sm" ng-click="add()" data-dismiss="modal">اضافه</button>
+                    </center>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+
+    <div id="update" class="modal fade left" role="dialog" style="top: 15%; background-color: transparent !important">
+        <div class=" modal-dialog" style="width: 400px; background-color: transparent !important">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="text-center" style="color: #5c4f4f">تعديل بيانات الخزنه</h4>
+                </div>
+                <div class="modal-body text-left">
+                    <center>
+                        <br />
+                        <table>
+                            <tr>
+
+                                <td style=" border: 0px">
+
+                                    <input ng-model="name2" type="text" class="form-control" style="border-radius:0px" dir="rtl" />
+
+                                </td>
+                                <td style=" border: 0px">
+                                    <h4 style="margin-left:20px">اسم الخزنه</h4>
+                                </td>
+
+                            </tr>
+                            <tr>
+
+                                <td style=" border: 0px">
+
+                                    <input ng-model="value2" type="number" class="form-control" style="border-radius:0px" dir="rtl" />
+
+                                </td>
+                                <td style=" border: 0px">
+                                    <h4 style="margin-left:20px">المبلغ</h4>
+                                </td>
+
+                            </tr>
+
+                        </table>
+                        <br /><hr />
+                        <button type="button" class="btn btn-success btn-sm" data-dismiss="modal">الغاء</button>
+                        <button type="submit" class="btn btn-danger btn-sm" ng-click="updateDB()" data-dismiss="modal">تعديل</button>
+                    </center>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+
+<!--=================================================-->
+
+    <div id="getSuppliers" class="modal fade left" role="dialog" style="top:10%">
+        <div class=" modal-dialog" style="width:400px">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="text-center" style="color: #5c4f4f">اختيار المورد</h4>
+                </div>
+                <div class="modal-body text-left">
+                    <center>
+                        <br />
+                        <table>
+                            <tr>
+
+                                <td style="border:0px">
+
+                                    <select ng-model="t.mainId" class="form-control" dir="rtl" style="border-radius:0px; width:250px">
+                                        <option value=""> التصنيف الرئيسي</option>
+                                        <option ng-repeat="x2 in all_main_category " value="{{x2.id}}">{{x2.tasneef_name}}</option>
+                                    </select>
+                                </td>
+
+                            </tr>
+                            <tr>
+
+                                <td style="border:0px">
+                                    <select ng-model="tok.subc" class="form-control" dir="rtl" style="border-radius: 0px; margin-top: 5px; ">
+                                        <option value=""> التصنيف الفرعي</option>
+                                        <option ng-repeat="x2 in all_sub_category | filter:t" value="{{x2.id}}">{{x2.tasneef_name}}</option>
+
+                                    </select>
+                                </td>
+
+
+                            </tr>
+                            <tr>
+                                <td style="border:0px">
+                                    <input type="text" placeholder="اسم المورد" class="form-control" style="border-radius:0px; margin-top:5px" ng-model="tok.name" dir="rtl" />
+                                </td>
+                            </tr>
+
+
+                        </table>
+
+                        <br />
+                        <div class="table-responsive">
+
+                            <table class="table table-striped b-t b-light" dir="rtl">
+                                <thead>
+                                    <tr style="background: #ddede0; padding:5px ">
+                                        <th><h5 style="padding:5px;" ng-click="sort('id')">اختر <i class="fa {{icon_id}}"></i></h5></th>
+                                        <th><h5 style="padding:5px;" ng-click="sort('id')">الكود <i class="fa {{icon_id}}"></i></h5></th>
+                                        <th><h5 style="padding: 5px" ng-click="sort('name')">الاسم <i class="fa {{icon_name}}"></i></h5></th>
+                                        <th><h5 style="padding: 5px" ng-click="sort('name')">المسئول <i class="fa {{icon_name}}"></i></h5></th>
+                                    </tr>
+                                </thead>
+                                <tbody ng-repeat="s in allSuppliers | filter: tok | limitTo:limit | orderBy:sortedCol">
+
+                                    <tr class="tr" id="tbr">
+                                        <td>
+                                            <button class="btn btn-default btn-sm" ng-click="chooseSup(s.id,s.name)" type="button" data-dismiss="modal">
+                                                <i class="fa fa-check "></i>
+                                            </button>
+                                        </td>
+                                        <td>
+                                            <h4>
+                                                {{s.id}}
+                                            </h4>
+                                        </td>
+                                        <td>
+                                            <h4>
+                                                {{s.name}}
+                                            </h4>
+                                        </td>
+                                        <td>
+                                            <h4>
+                                                {{s.responsible}}
+                                            </h4>
+                                        </td>
+
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                        <br />
+                        <center>
+                            <button type="button" class="btn btn-default" data-dismiss="modal" style="width:100px"><h4>الغاء</h4></button>
+                        </center>
+
+                    </center>
+
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    @*@{Html.RenderPartial("../management/_scriptPartial");}*@
+
+
+</body>
+</html>
+
+

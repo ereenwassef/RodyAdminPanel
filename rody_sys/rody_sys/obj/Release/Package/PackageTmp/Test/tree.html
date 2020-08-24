@@ -1,0 +1,63 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>jQuery explr-js Plugin Demo</title>
+
+    <link href="~/assets/admin/css/tree_css/jquery-explr-1.4.css" rel="stylesheet" />
+
+
+
+<style>
+body {
+  background-color: #fafafa;
+  font-family: 'Open Sans';
+}
+
+.container {
+  margin: 150px auto;
+  max-width: 640px;
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+
+    <ul id="tree">
+
+        <li class="icon-chain">
+            <a href="#" style="margin-right: 35px;color:crimson">
+                مصطفي محمد عبد الونيس
+            </a>
+            <ul>
+                <li class="icon-text"> <a href="#">احمد حافظ</a> </li>
+                <li class="icon-text"> <a href="#">باسم اشرف</a> </li>
+                <li class="icon-text"> <a href="#">وليد مدحت</a> </li>
+                <li class="icon-text">
+                    <a href="#" style="margin-right: 35px; color: crimson">Link 4</a>
+                    <ul>
+                        <li class="icon-text"> <a href="#">Link 1</a> </li>
+                        <li class="icon-text"> <a href="#">Link 2</a> </li>
+                        <li class="icon-text"> <a href="#">Link 3</a> </li>
+                    </ul>
+                </li>
+
+            </ul>
+        </li>
+    </ul>
+
+
+</div>
+
+    <script src="~/assets/general/js/jquery.min.js"></script>
+    <script src="~/assets/general/js/jquery-explr-1.4.js"></script>
+<script>
+$(document).ready(function() {
+		        $("#tree").explr();
+	        });
+</script>
+</body>
+</html>

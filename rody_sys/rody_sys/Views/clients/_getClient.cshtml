@@ -1,0 +1,95 @@
+﻿
+<div id="get_client" class="modal fade left" role="dialog" style="top:10%; right:8%;width:40%">
+    <div class=" modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="text-center" style="color: #5c4f4f">اختيار العميل</h4>
+            </div>
+            <div class="modal-body text-left">
+                <center>
+                    <br />
+                    <table>
+                        <tr>
+
+                            <td>
+
+                                <select style="border-radius:0px; margin-top:5px; width:200px" ng-model="govern" class="form-control" dir="rtl" ng-options="x2.name as x2.name for x2  in allGovern "></select>
+
+                            </td>
+                            <td>
+                                <h4 style="margin-left: 20px; color: #5c4f4f"> المحافظه</h4>
+                            </td>
+
+                        </tr>
+                        <tr>
+
+                            <td>
+                                <select ng-model="area" class="form-control" dir="rtl" ng-options="x1.name as x1.name for x1  in allArea | filter:govern " style="border-radius: 0px; margin-top: 5px; width: 200px"></select>
+
+                            </td>
+                            <td>
+                                <h4 style="margin-left: 20px; color: #5c4f4f"> المنطقه</h4>
+                            </td>
+
+                        </tr>
+
+                    </table>
+
+                    <br />
+                    <div class="table-responsive" style="height:300px; overflow:auto">
+
+                        <table class="table table-striped b-t b-light" dir="rtl">
+                            <thead>
+                                <tr style="background:#FAFAFA; ">
+                                    <th><h3 style="padding:2px;"> اختر  </h3></th>
+                                    <th><h3 style="padding:2px;"> الرقم  </h3></th>
+                                    <th><h3 style="padding:2px;"> الاسم </h3></th>
+                                    <th><h3 style="padding:2px">المنطقه </h3></th>
+
+                                </tr>
+                            </thead>
+                            <tr>
+                            <tr style="background:white;">
+                                <td style="border: 2px solid #D9E4E6;">
+                                    <button class="btn btn-sm" ng-click="getClient(c.id,c.name)" type="button" data-dismiss="modal">
+                                        <i class="fa fa-check " style="color: #5c4f4f"></i>
+                                    </button>
+                                </td>
+                                <td style="border: 2px solid #D9E4E6;"><h4 style="font-size:11px">-</h4></td>
+                                <td style="border: 2px solid #D9E4E6;"><h4 style="font-size:11px;">-</h4></td>
+                                <td style="border: 2px solid #D9E4E6;"><h4 style="font-size:11px">-</h4></td>
+                            </tr>
+                            </tr>
+                            <tbody ng-repeat="c in allClients2 | filter:{areaName:area}">
+
+                                <tr style="background:white">
+                                    <td style="border: 2px solid #D9E4E6;">
+                                        <button class="btn btn-sm" ng-click="getClient(c.id,c.name)" type="button" data-dismiss="modal">
+                                            <i class="fa fa-check " style="color: #5c4f4f"></i>
+                                        </button>
+                                    </td>
+                                    <td style="border: 2px solid #D9E4E6;"><h4 style="font-size:11px">{{c.id}}</h4></td>
+                                    <td style="border: 2px solid #D9E4E6;"><h4 style="font-size:11px;">{{c.name}}</h4></td>
+                                    <td style="border: 2px solid #D9E4E6;"><h4 style="font-size:11px"> {{c.areaName}}</h4></td>
+                                </tr>
+                            </tbody>
+
+
+                            <tbody></tbody>
+                        </table>
+
+                    </div>
+                    <br />
+                    <center>
+                        <button type="button" class="btn btn-default" data-dismiss="modal" style="width:100px"><h4>الغاء</h4></button>
+                    </center>
+
+                </center>
+
+
+            </div>
+
+        </div>
+    </div>
+</div>

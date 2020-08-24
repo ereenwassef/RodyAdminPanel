@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<command>
+  Install-Package LinqToExcel -Version 1.11.0
+
+   Install-Package Microsoft.Report.Viewer -Version 10.0.0
+
+  </command>
+

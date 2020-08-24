@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script src="../assets/general/js/jquery.min.js"></script>
+
+    <script src="../assets/general/js/Chart.js"></script>
+
+
+    <script>
+        function fun() {
+            $(document).ready(function () {
+
+                var ctx = $("#mycanvas").get(0).getContext("2d");
+
+                //pie chart data
+                //sum of values = 360
+                var data = [
+
+                    {
+                        // value: parseInt(document.getElementById('sp').value),
+                        value:25,
+                        color: "#97efbe",
+                       // highlight: "yellow",
+                        label: "title1"
+                    },
+                   
+                    {
+                        value: 50,
+                        color: "#2a2727",
+                       // highlight: "yellow",
+                        label: "title3"
+                    },
+
+
+
+                ];
+
+                //draw
+                var piechart = new Chart(ctx).PolarArea(data);
+            });
+        }
+    </script>
+</head>
+<body onload="fun()">
+
+    <canvas id="mycanvas" width="250" height="350" style="margin-top:-30px"></canvas>
+
+
+</body>
+</html>

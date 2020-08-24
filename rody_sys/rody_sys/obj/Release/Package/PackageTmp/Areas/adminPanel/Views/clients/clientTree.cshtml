@@ -1,0 +1,112 @@
+﻿@model rody_sys.Areas.adminPanel.Models.treeNode
+@*@{
+    ViewBag.Title = "ClientTree";
+    Layout = "~/Areas/adminPanel/Views/Shared/_adminLayout.cshtml";
+}*@
+
+@using rody_sys.Areas.adminPanel.Models;
+
+<html>
+<head>
+    <title></title>
+    <link href="~/assets/admin/css/tree_css/jquery-explr-1.4.css" rel="stylesheet" />
+
+    <style>
+        .container {
+            max-width: 100%;
+        }
+
+        .explr-tree li a {
+            width: 30px;
+            font-size: 14px;
+        }
+
+            .explr-tree li a:hover {
+                text-decoration: none;
+            }
+    </style>
+</head>
+<body>
+
+    <section id="main-content" dir="rtl" >
+        <section class="wrapper">
+            <div class="table-agile-info" style="min-height:500px;">
+                <ol class="breadcrumb breadcrumb-2" dir="ltr">
+                    <li><a href="#"><i class="icon-home"></i> القائمه</a></li>
+                    <li><a href="#">العملاء</a></li>
+                    <li class="active" style="color: #ec407a"><strong> شجره العميل</strong></li>
+                </ol>
+
+                <div class="panel panel-default" style="background: white; min-height: 400px;">
+                    <div class="panel-heading">
+                        <strong style="color: #5c4f4f">
+                            شجره العميل
+                        </strong>
+                    </div>
+                    <!--===============================================-->
+                    <br /><br />
+
+                    <div class="container" >
+
+
+
+                        <ul id="tree" style="min-height:100%; padding:10px">
+
+                            @helper  getFirstChilds(treeNode node)
+{
+
+
+    if (node.childs.Count() == 0)
+    {
+                    <li class="icon-text"><a href="#">(@node.Numfollow , @node.childs.Count()) @node.name </a></li>
+    }
+    else
+    {
+                    <li class="icon-text">
+                        <a href="#" style="margin-right: 35px; color: #337ab7">(@node.Numfollow , @node.childs.Count()) @node.name </a>
+                        <ul>
+                            @foreach (treeNode child in node.childs)
+                            {
+                                @getFirstChilds(child);
+
+                            }
+                        </ul>
+                    </li>
+    }
+
+}
+                            @getFirstChilds(Model)
+
+                        </ul>
+
+                    </div>
+
+
+                    <br /><br />
+   <!--===============================================-->
+                </div>
+            </div>
+        </section>
+
+        <!--main content end-->
+    </section>
+
+
+   
+    @*@{Html.RenderPartial("../management/_scriptPartial");}
+    <script src="~/assets/general/js/jquery-explr-1.4.js"></script>*@
+
+
+    <script>
+       // $(document).ready(function () {
+      $("#tree").explr();
+     //   });
+    </script>
+
+
+
+</body>
+</html>
+
+
+

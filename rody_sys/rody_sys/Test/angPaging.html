@@ -1,0 +1,109 @@
+﻿<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+    <title>
+
+        AngularJs Table with Pagination Example
+
+    </title>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet" media="screen">
+
+    <link rel="stylesheet" href="https://rawgit.com/esvit/ng-table/master/dist/ng-table.min.css">
+
+    <script src="https://rawgit.com/esvit/ng-table/master/dist/ng-table.min.js"></script>
+
+    <script type="text/javascript">
+
+        var app = angular.module("ngtableApp", ["ngTable"]);
+
+        app.controller("ngtableCtrl", function ($scope, ngTableParams) {
+
+            $scope.users = [
+
+            { name: "Madhav Sai", age: 10, location: 'Nagpur' },
+
+            { name: "Suresh Dasari", age: 30, location: 'Chennai' },
+
+            { name: "Rohini Alavala", age: 29, location: 'Chennai' },
+
+            { name: "Praveen Kumar", age: 25, location: 'Bangalore' },
+
+            { name: "Sateesh Chandra", age: 27, location: 'Vizag' },
+
+            { name: "Siva Prasad", age: 38, location: 'Nagpur' },
+
+            { name: "Sudheer Rayana", age: 25, location: 'Kakinada' },
+
+            { name: "Honey Yemineni", age: 7, location: 'Nagpur' },
+
+            { name: "Mahendra Dasari", age: 22, location: 'Vijayawada' },
+
+            { name: "Mahesh Dasari", age: 23, location: 'California' },
+
+            { name: "Nagaraju Dasari", age: 34, location: 'Atlanta' },
+
+            { name: "Gopi Krishna", age: 29, location: 'Repalle' },
+
+            { name: "Sudheer Uppala", age: 19, location: 'Guntur' },
+
+            { name: "Sushmita", age: 27, location: 'Vizag' }
+
+            ];
+
+            $scope.usersTable = new ngTableParams({
+
+                page: 1,
+
+                count: 5
+
+            }, {
+
+                total: $scope.users.length,
+
+                getData: function ($defer, params) {
+
+                    $scope.data = $scope.users.slice((params.page() - 1) * params.count(), params.page() * params.count());
+
+                    $defer.resolve($scope.data);
+
+                }
+
+            });
+
+        });
+
+    </script>
+
+</head>
+
+<body ng-app="ngtableApp">
+
+    <div ng-controller="ngtableCtrl">
+
+        <h2>AngularJS ng-table Pagination Example</h2>
+
+        <table ng-table="usersTable" class="table table-striped">
+
+            <tr ng-repeat="user in users">
+
+                <td data-title="'Name'">{{user.name}}</td>
+
+                <td data-title="'Age'">{{user.age}}</td>
+
+                <td data-title="'Location'">{{user.location}}</td>
+
+            </tr>
+
+        </table>
+
+    </div>
+
+</body>
+
+</html>

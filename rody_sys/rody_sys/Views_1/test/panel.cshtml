@@ -1,0 +1,38 @@
+﻿
+@{
+    ViewBag.Title = "panel";
+    Layout = "~/Areas/adminPanel/Views/Shared/_adminLayout.cshtml";
+}
+
+<html ng-app="myApp">
+<head>
+    <title></title>
+    <script src="~/assets/general/js/angular.js"></script>
+    <script src="~/assets/general/js/angular-route.min.js"></script>
+    <script src="~/assets/admin/js/ang/app.js"></script>
+</head>
+<body>
+
+    <br/><br/><br/><br /><br /><br />
+    <a href="#!page_1">page_111</a>
+
+    <br/>
+
+    <a href="#!page_2">page_222</a>
+
+    <br />
+
+    <a href="#!agents/getAllAgents">agents</a>
+
+
+    <div ng-view>
+
+    </div>
+
+
+   
+
+    @{Html.RenderPartial("../home/_scriptPartial");}
+
+</body>
+</html>

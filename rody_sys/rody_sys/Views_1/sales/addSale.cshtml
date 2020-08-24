@@ -1,0 +1,435 @@
+﻿@*@{
+    ViewBag.Title = "add_sale";
+    Layout = "~/Areas/adminPanel/Views/Shared/_adminLayout.cshtml";
+}*@
+
+<html  xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title></title>
+    @*<script src="~/assets/general/js/angular.js"></script>
+    <script src="~/assets/admin/js/ang/client_sale.js"></script>*@
+    
+    <style>
+
+        td{
+            border:0px
+        }
+
+        h4 {
+            color: #456e82;
+        }
+
+        h3 {
+            color: #5c4f4f;
+        }
+        input::-webkit-input-placeholder {
+            font-size: 12px;
+        }
+        .modal-backdrop {
+            background-color: transparent !important;
+        }
+        .modal.left .modal-dialog,
+        .modal.right .modal-dialog {
+            position: fixed;
+            margin: auto;
+            height: 100%;
+            width: 400px;
+            -webkit-transform: translate3d(0%, 0, 0);
+            -ms-transform: translate3d(0%, 0, 0);
+            -o-transform: translate3d(0%, 0, 0);
+            transform: translate3d(0%, 0, 0);
+        }
+
+        .modal.left .modal-content,
+        .modal.right .modal-content {
+            height: 100%;
+            overflow-y: auto;
+        }
+
+        .modal.left .modal-body,
+        .modal.right .modal-body {
+            padding: 15px 15px 80px;
+        }
+
+        /*Left*/
+        .modal.left.fade .modal-dialog {
+            left: -320px;
+            -webkit-transition: opacity 0.3s linear, left 0.3s ease-out;
+            -moz-transition: opacity 0.3s linear, left 0.3s ease-out;
+            -o-transition: opacity 0.3s linear, left 0.3s ease-out;
+            transition: opacity 0.3s linear, left 0.3s ease-out;
+        }
+
+        .modal.left.fade.in .modal-dialog {
+            left: 0;
+        }
+
+        /*Right*/
+        .modal.right.fade .modal-dialog {
+            right: -320px;
+            -webkit-transition: opacity 0.3s linear, right 0.3s ease-out;
+            -moz-transition: opacity 0.3s linear, right 0.3s ease-out;
+            -o-transition: opacity 0.3s linear, right 0.3s ease-out;
+            transition: opacity 0.3s linear, right 0.3s ease-out;
+        }
+
+        .modal.right.fade.in .modal-dialog {
+            right: 0;
+        }
+
+        /* ----- MODAL STYLE ----- */
+        .modal-content {
+            border-radius: 0;
+            border: none;
+        }
+
+        .modal-header {
+            border-bottom-color: #EEEEEE;
+            background-color: #FAFAFA;
+        }
+
+        /* ----- v CAN BE DELETED v ----- */
+
+
+      
+
+    </style>
+
+</head>
+
+<body ng-controller="ctr_sale">
+
+    <section id="main-content">
+        <section class="wrapper">
+            <div class="table-agile-info">
+                <ol class="breadcrumb breadcrumb-2">
+                    <li><a><i class="icon-home"></i> القائمه</a></li>
+                    <li class="active"><a> مبيعات</a> </li>
+                    <li class="active"><a style="color: #ec407a"> اضافه حركه مبيعات </a> </li>
+                </ol>
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <strong style="color: #5c4f4f">اضافه حركه مبيعات</strong>
+                    </div>
+                   
+                        <div class="row w3-res-tb">
+                           
+                            <div class="col-sm-8 col-sm-offset-2" style="overflow:hidden">
+                                <div class="wizard-container1" style="">
+                                    <div class="card wizard-card" data-color="azure" id="wizard" style="box-shadow:none">
+                                        <form>
+
+                                            <div class="wizard-navigation" style="">
+                                                <div class="progress-with-circle">
+                                                    <div class="progress-bar" role="progressbar" aria-valuenow="1" aria-valuemin="1" aria-valuemax="4" style="width: 15%;"></div>
+                                                </div>
+                                                <ul>
+                                                    <li>
+                                                        <a href="#client" data-toggle="tab" style="pointer-events:none">
+                                                            <div class="icon-circle">
+                                                                <i class="ti-user"></i>
+                                                            </div>
+                                                            <span style="font-size:13px; font-weight:bold">بيانات العميل</span>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#operation" data-toggle="tab" style="pointer-events:none">
+                                                            <div class="icon-circle">
+                                                                <i class="ti-shopping-cart"></i>
+                                                            </div>
+                                                            <span style="font-size:13px; font-weight:bold"> بيانات الحركه</span>
+
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#charge" data-toggle="tab" style="pointer-events:none">
+                                                            <div class="icon-circle">
+                                                                <i class="ti-mobile"></i>
+                                                            </div>
+                                                            <span style="font-size:13px; font-weight:bold"> شحن لرقم اخر</span>
+
+                                                        </a>
+                                                    </li>
+                                                   
+                                                </ul>
+                                            </div>
+                                            <div class="tab-content">
+
+                                                <div class="tab-pane" id="client" style="">
+                                                    <div class="row">
+                                                        <br /><br />
+                                                        <div class="col-sm-4" dir="rtl">
+                                                            <div class="form-group" >
+                                                                <label><h4 style="margin-bottom:3px" > الخدمه</h4></label>
+                                                                <select name="serviceId" id="services"  class="form-control" dir="rtl" ng-model="servType">
+                                                                    <option value="">- الخدمه -</option>
+                                                                    <option ng-repeat="x2 in allServices | filter:shareha" value="{{x2.id}}">{{x2.name}}</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-4" dir="rtl">
+                                                            <div class="form-group">
+                                                                <label><h4 style="margin-bottom:3px"> الشريحه</h4></label>
+                                                                <select class="form-control" dir="rtl" ng-model="shareha">
+                                                                    <option value="">- الشريحه -</option>
+                                                                    <option ng-repeat="x2 in kroot" value="{{x2.id}}">{{x2.name}}</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                      
+                                                        <div class="col-sm-4" dir="rtl">
+                                                            <div class="form-group">
+                                                                <label><h4 style="margin-bottom:3px"> العميل</h4></label>
+                                                              <table>
+                                                                  <tr>
+                                                                      <td>
+                                                                          <input style="width: 150px; border-top-left-radius: 0px; border-bottom-left-radius: 0px; margin-left: 22px" readonly ng-model="cName" placeholder="" class="form-control" type="text">
+                                                                      </td>
+                                                                      <td>
+                                                                          <button style="width: 50px; border-top-right-radius: 0px; border-bottom-right-radius: 0px; margin-right: -21px;  background: #eee; border: 1px solid #ccc; border-right-color:#ccc; border-top-left-radius:4px;border-bottom-left-radius:4px; height: 34px;" data-toggle="modal" data-target="#get_client">
+                                                                              <i class="fa fa-search"></i>
+                                                                          </button>
+                                                                      </td>
+                                                                  </tr>
+                                                              </table>
+                                                               
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-sm-4" dir="rtl">
+                                                            <div class="form-group">
+                                                                <label><h4 style="margin-bottom:3px">الرصيدالمستحق</h4></label>
+
+                                                                <input dir="rtl" readonly ng-model="desValue" placeholder="" class="form-control" type="text" ng-style="myStyle2">
+
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-4" dir="rtl">
+                                                            <div class="form-group">
+                                                                <label><h4 style="margin-bottom:3px">الرصيدالحالي</h4></label>
+                                                              
+                                                                            <input dir="rtl" readonly ng-model="currentValue" placeholder="" class="form-control" type="text" ng-style="myStyle" >
+                                                                 
+                                                            </div>
+                                                            </div>
+                                                        
+                                                        <div class="col-sm-4 " dir="rtl">
+                                                            <div class="form-group">
+                                                                <label><h4 style="margin-bottom:3px">التليفون</h4></label>
+                                                                <select id="phoneId" name="phoneId"  ng-model="phone" class="form-control" dir="rtl" style="">
+                                                                    <option value="">رقم التليفون</option>
+                                                                    <option ng-repeat="x2 in phones| filter:{sharehaId:shareha} " value="{{x2.id}}">{{x2.number}}</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+<!--00000000000000000000000000000000000000000000000000000000000000000000000000-->
+                                                <div class="tab-pane" id="operation" style="">
+                                                    <div class="row">
+                                                        <br /><br />
+                                                        <div class="col-sm-4 " dir="rtl">
+                                                            <div class="form-group">
+                                                                <label><h4 style="margin-bottom:3px">الاجمالي</h4></label>
+                                                                <input id="total" name="total" readonly step="0.00001" type="number" ng-model="total" value="{{price*charge}}" placeholder="الاجمالي" class="form-control"  />
+
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-4 " dir="rtl">
+                                                            <div class="form-group">
+                                                                <label><h4 style="margin-bottom:3px">السعر</h4></label>
+                                                                <input  step="0.00001" type="number" readonly ng-model="price" placeholder="السعر" class="form-control" />
+
+                                                              </div>
+                                                        </div>
+                                                        <div class="col-sm-4 " dir="rtl">
+                                                            <div class="form-group">
+                                                                <label><h4 style="margin-bottom:3px">كميه الشحن</h4></label>
+                                                                <input name="chargeValue" step="0.00001" type="number" ng-model="charge" class="form-control"  />
+                     </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        
+                                                        <div class="col-sm-4 col-lg-offset-4" dir="rtl">
+                                                            <div class="form-group">
+                                                                <label><h4 style="margin-bottom:3px">الرصيد الجديد</h4></label>
+                                                                <input readonly step="0.00001" type="number" ng-model="storeNew" class="form-control"  value="{{storeOld-charge}}" />
+
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-4" dir="rtl">
+                                                            <div class="form-group">
+                                                                <label><h4 style="margin-bottom:3px">رصيد الشريحه</h4></label>
+                                                                <input step="0.00001" type="number" class="form-control"  ng-model="storeOld" readonly />
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+ <!--00000000000000000000000000000000000000000000000000000000000000000000000000-->  
+                                                  <div class="tab-pane" id="charge" style="">
+                                                      <div class="row">
+                                                          <br /><br />
+                                                          <div class="col-sm-4 " dir="rtl">
+                                                              <div class="form-group">
+                                                                  <label><h4 style="margin-bottom:3px">الوقت</h4></label>
+                                                                  <input name="time" ng-model="time"   class="form-control" type="time" >
+
+                                                              </div>
+                                                          </div>
+                                                          <div class="col-sm-4 " dir="rtl">
+                                                              <div class="form-group">
+                                                                  <label><h4 style="margin-bottom:3px">التاريخ</h4></label>
+                                                                  <input name="date" ng-model="date"  class="form-control" type="date">
+
+                                                              </div>
+                                                          </div>
+                                                          <div class="col-sm-4 " dir="rtl">
+                                                              <div class="form-group">
+                                                                  <label><h4 style="margin-bottom:3px">التليفون</h4></label>
+                                                                  <input type="text" ng-model="phoneNum" class="form-control"  />
+                                                              </div>
+                                                          </div>
+                                                      </div>
+                                                      <div class="row">
+
+                                                          <div class="col-sm-9 col-lg-offset-3" dir="rtl">
+                                                              <div class="form-group">
+                                                                  <label><h4 style="margin-bottom:3px">ملاحظات</h4></label>
+                                                                  <input name="notes" ng-model="notes"  type="text" class="form-control" style="margin-right: -7px"/>
+                                                              </div>
+                                                          </div>
+                                                          
+                                                      </div>
+                                                </div>
+
+ <!--00000000000000000000000000000000000000000000000000000000000000000000000000-->
+
+
+                                                <div class="wizard-footer1">
+
+                                                    <div class="pull-right">
+                                                        <br />
+                                                        <input type='button' class='btn btn-next btn-fill btn-wd' name='next' value='التالي'  style="background: #7A9E9F; border-color: #7A9E9F; "/>
+                                                        <input type='button' id="addBtn" class='btn btn-finish btn-fill btn-wd' name='finish' value='اضافه' ng-click="addSaleOperation()" style="background: #7A9E9F; border-color: #7A9E9F; " />
+                                                    </div>
+                                                    <div class="pull-left">
+                                                        <input type='button' ng-click="makeAddPossible()" class='btn btn-previous btn-fill btn-demo btn-wd' name='previous' value='السابق' />
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                            <br /><br />
+                        </div>
+</div>
+                    </div>
+            </section>
+        </section>
+
+
+    <div id="get_client" class="modal fade left" role="dialog" style="top:10%; right:8%;width:40%">
+        <div class=" modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="text-center" style="color: #5c4f4f">اختيار العميل</h4>
+                </div>
+                <div class="modal-body text-left">
+                    <center>
+                        <br />
+                        <table>
+                            <tr>
+
+                                <td>
+
+                                    <select style="border-radius:0px; margin-top:5px; width:200px" ng-model="govern" class="form-control" dir="rtl" ng-options="x2.name as x2.name for x2  in allGovern "></select>
+
+                                </td>
+                                <td>
+                                    <h4 style="margin-left: 20px; color: #5c4f4f"> المحافظه</h4>
+                                </td>
+
+                            </tr>
+                            <tr>
+
+                                <td>
+                                    <select ng-model="area" class="form-control" dir="rtl" ng-options="x1.name as x1.name for x1  in allArea | filter:govern " style="border-radius: 0px; margin-top: 5px; width: 200px"></select>
+
+                                </td>
+                                <td>
+                                    <h4 style="margin-left: 20px; color: #5c4f4f"> المنطقه</h4>
+                                </td>
+
+                            </tr>
+
+                        </table>
+
+                        <br />
+                        <div class="table-responsive" style="height:300px; overflow:auto">
+
+                            <table class="table table-striped b-t b-light" dir="rtl">
+                                <thead>
+                                    <tr style="background:#FAFAFA; ">
+                                        <th><h3 style="padding:2px;"> اختر  </h3></th>
+                                        <th><h3 style="padding:2px;"> الرقم  </h3></th>
+                                        <th><h3 style="padding:2px;"> الاسم </h3></th>
+                                        <th><h3 style="padding:2px">المنطقه </h3></th>
+
+                                    </tr>
+                                </thead>
+                                <tbody ng-repeat="c in allClients | filter:{areaName:area}">
+
+                                    <tr style="background:white">
+                                        <td style="border: 2px solid #D9E4E6;">
+                                            <button class="btn btn-sm" ng-click="get_sale_info(c.id,c.name)" type="button" data-dismiss="modal">
+                                                <i class="fa fa-check " style="color: #5c4f4f"></i>
+                                            </button>
+                                        </td>
+                                        <td style="border: 2px solid #D9E4E6;"><h4 style="font-size:11px">{{c.id}}</h4></td>
+                                        <td style="border: 2px solid #D9E4E6;"><h4 style="font-size:11px;">{{c.name}}</h4></td>
+                                        <td style="border: 2px solid #D9E4E6;"><h4 style="font-size:11px"> {{c.areaName}}</h4></td>
+                                    </tr>
+                                </tbody>
+
+
+                                <tbody></tbody>
+                            </table>
+
+                        </div>
+                        <br />
+                        <center>
+                            <button type="button" class="btn btn-default" data-dismiss="modal" style="width:100px"><h4>الغاء</h4></button>
+                        </center>
+
+                    </center>
+
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+    @*@{Html.RenderPartial("../management/_scriptPartial");}*@
+
+    <script src="~/assets/general/js/jquery.bootstrap.wizard.js"></script>
+    <script src="~/assets/general/js/paper-bootstrap-wizard.js"></script>
+    <script src="~/assets/general/js/jquery.validate.min.js"></script>
+
+
+    </body>
+</html>

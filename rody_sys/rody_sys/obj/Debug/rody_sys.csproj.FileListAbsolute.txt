@@ -1,0 +1,144 @@
+D:\Study\Current_PROG\1-ASP.net\3-smart_app_sol\Rody\rody_sys\rody_sys\bin\rody_sys.dll.config
+D:\Study\Current_PROG\1-ASP.net\3-smart_app_sol\Rody\rody_sys\rody_sys\bin\rody_sys.dll
+D:\Study\Current_PROG\1-ASP.net\3-smart_app_sol\Rody\rody_sys\rody_sys\bin\rody_sys.pdb
+D:\Study\Current_PROG\1-ASP.net\3-smart_app_sol\Rody\rody_sys\rody_sys\bin\System.Web.Helpers.dll
+D:\Study\Current_PROG\1-ASP.net\3-smart_app_sol\Rody\rody_sys\rody_sys\bin\System.Web.Mvc.dll
+D:\Study\Current_PROG\1-ASP.net\3-smart_app_sol\Rody\rody_sys\rody_sys\bin\System.Web.Razor.dll
+D:\Study\Current_PROG\1-ASP.net\3-smart_app_sol\Rody\rody_sys\rody_sys\bin\System.Web.Webpages.Deployment.dll
+D:\Study\Current_PROG\1-ASP.net\3-smart_app_sol\Rody\rody_sys\rody_sys\bin\System.Web.Webpages.dll
+D:\Study\Current_PROG\1-ASP.net\3-smart_app_sol\Rody\rody_sys\rody_sys\bin\System.Web.Webpages.Razor.dll
+D:\Study\Current_PROG\1-ASP.net\3-smart_app_sol\Rody\rody_sys\rody_sys\bin\System.Web.Razor.xml
+D:\Study\Current_PROG\1-ASP.net\3-smart_app_sol\Rody\rody_sys\rody_sys\bin\System.Web.Webpages.xml
+D:\Study\Current_PROG\1-ASP.net\3-smart_app_sol\Rody\rody_sys\rody_sys\bin\System.Web.Webpages.Deployment.xml
+D:\Study\Current_PROG\1-ASP.net\3-smart_app_sol\Rody\rody_sys\rody_sys\bin\System.Web.Webpages.Razor.xml
+D:\Study\Current_PROG\1-ASP.net\3-smart_app_sol\Rody\rody_sys\rody_sys\bin\System.Web.Helpers.xml
+D:\Study\Current_PROG\1-ASP.net\3-smart_app_sol\Rody\rody_sys\rody_sys\bin\System.Web.Mvc.xml
+D:\Study\Current_PROG\1-ASP.net\3-smart_app_sol\Rody\rody_sys\rody_sys\obj\Debug\rody_sys.csprojResolveAssemblyReference.cache
+D:\Study\Current_PROG\1-ASP.net\3-smart_app_sol\Rody\rody_sys\rody_sys\obj\Debug\rody_sys.dll
+D:\Study\Current_PROG\1-ASP.net\3-smart_app_sol\Rody\rody_sys\rody_sys\obj\Debug\rody_sys.pdb
+D:\Study\Current_PROG\1-ASP.net\3-smart_app_sol\Rody\rody_sys\rody_sys\bin\EntityFramework.dll
+D:\Study\Current_PROG\1-ASP.net\3-smart_app_sol\Rody\rody_sys\rody_sys\bin\EntityFramework.SqlServer.dll
+D:\Study\Current_PROG\1-ASP.net\3-smart_app_sol\Rody\rody_sys\rody_sys\bin\EntityFramework.xml
+D:\Study\Current_PROG\1-ASP.net\3-smart_app_sol\Rody\rody_sys\rody_sys\bin\EntityFramework.SqlServer.xml
+D:\Study\Current_PROG\1-ASP.net\3-smart_app_sol\#Rody\rody_sys\rody_sys\bin\rody_sys.dll.config
+D:\Study\Current_PROG\1-ASP.net\3-smart_app_sol\#Rody\rody_sys\rody_sys\bin\rody_sys.dll
+D:\Study\Current_PROG\1-ASP.net\3-smart_app_sol\#Rody\rody_sys\rody_sys\bin\rody_sys.pdb
+D:\Study\Current_PROG\1-ASP.net\3-smart_app_sol\#Rody\rody_sys\rody_sys\bin\EntityFramework.dll
+D:\Study\Current_PROG\1-ASP.net\3-smart_app_sol\#Rody\rody_sys\rody_sys\bin\EntityFramework.SqlServer.dll
+D:\Study\Current_PROG\1-ASP.net\3-smart_app_sol\#Rody\rody_sys\rody_sys\bin\System.Web.Helpers.dll
+D:\Study\Current_PROG\1-ASP.net\3-smart_app_sol\#Rody\rody_sys\rody_sys\bin\System.Web.Mvc.dll
+D:\Study\Current_PROG\1-ASP.net\3-smart_app_sol\#Rody\rody_sys\rody_sys\bin\System.Web.Razor.dll
+D:\Study\Current_PROG\1-ASP.net\3-smart_app_sol\#Rody\rody_sys\rody_sys\bin\System.Web.Webpages.Deployment.dll
+D:\Study\Current_PROG\1-ASP.net\3-smart_app_sol\#Rody\rody_sys\rody_sys\bin\System.Web.Webpages.dll
+D:\Study\Current_PROG\1-ASP.net\3-smart_app_sol\#Rody\rody_sys\rody_sys\bin\System.Web.Webpages.Razor.dll
+D:\Study\Current_PROG\1-ASP.net\3-smart_app_sol\#Rody\rody_sys\rody_sys\bin\EntityFramework.xml
+D:\Study\Current_PROG\1-ASP.net\3-smart_app_sol\#Rody\rody_sys\rody_sys\bin\EntityFramework.SqlServer.xml
+D:\Study\Current_PROG\1-ASP.net\3-smart_app_sol\#Rody\rody_sys\rody_sys\bin\System.Web.Razor.xml
+D:\Study\Current_PROG\1-ASP.net\3-smart_app_sol\#Rody\rody_sys\rody_sys\bin\System.Web.Webpages.xml
+D:\Study\Current_PROG\1-ASP.net\3-smart_app_sol\#Rody\rody_sys\rody_sys\bin\System.Web.Webpages.Deployment.xml
+D:\Study\Current_PROG\1-ASP.net\3-smart_app_sol\#Rody\rody_sys\rody_sys\bin\System.Web.Webpages.Razor.xml
+D:\Study\Current_PROG\1-ASP.net\3-smart_app_sol\#Rody\rody_sys\rody_sys\bin\System.Web.Helpers.xml
+D:\Study\Current_PROG\1-ASP.net\3-smart_app_sol\#Rody\rody_sys\rody_sys\bin\System.Web.Mvc.xml
+D:\Study\Current_PROG\1-ASP.net\3-smart_app_sol\#Rody\rody_sys\rody_sys\obj\Debug\rody_sys.csprojResolveAssemblyReference.cache
+D:\Study\Current_PROG\1-ASP.net\3-smart_app_sol\#Rody\rody_sys\rody_sys\obj\Debug\rody_sys.dll
+D:\Study\Current_PROG\1-ASP.net\3-smart_app_sol\#Rody\rody_sys\rody_sys\obj\Debug\rody_sys.pdb
+D:\Study\2-Current_PROG\#ASP.Net-Work\3-smart_app_sol\#Rody\rody_sys\rody_sys\bin\rody_sys.dll.config
+D:\Study\2-Current_PROG\#ASP.Net-Work\3-smart_app_sol\#Rody\rody_sys\rody_sys\bin\rody_sys.dll
+D:\Study\2-Current_PROG\#ASP.Net-Work\3-smart_app_sol\#Rody\rody_sys\rody_sys\bin\rody_sys.pdb
+D:\Study\2-Current_PROG\#ASP.Net-Work\3-smart_app_sol\#Rody\rody_sys\rody_sys\bin\EntityFramework.dll
+D:\Study\2-Current_PROG\#ASP.Net-Work\3-smart_app_sol\#Rody\rody_sys\rody_sys\bin\EntityFramework.SqlServer.dll
+D:\Study\2-Current_PROG\#ASP.Net-Work\3-smart_app_sol\#Rody\rody_sys\rody_sys\bin\LinqToExcel.dll
+D:\Study\2-Current_PROG\#ASP.Net-Work\3-smart_app_sol\#Rody\rody_sys\rody_sys\bin\Microsoft.ReportViewer.Common.dll
+D:\Study\2-Current_PROG\#ASP.Net-Work\3-smart_app_sol\#Rody\rody_sys\rody_sys\bin\Microsoft.ReportViewer.ProcessingObjectModel.dll
+D:\Study\2-Current_PROG\#ASP.Net-Work\3-smart_app_sol\#Rody\rody_sys\rody_sys\bin\Microsoft.ReportViewer.WebForms.dll
+D:\Study\2-Current_PROG\#ASP.Net-Work\3-smart_app_sol\#Rody\rody_sys\rody_sys\bin\Newtonsoft.Json.dll
+D:\Study\2-Current_PROG\#ASP.Net-Work\3-smart_app_sol\#Rody\rody_sys\rody_sys\bin\Remotion.Data.Linq.dll
+D:\Study\2-Current_PROG\#ASP.Net-Work\3-smart_app_sol\#Rody\rody_sys\rody_sys\bin\Remotion.dll
+D:\Study\2-Current_PROG\#ASP.Net-Work\3-smart_app_sol\#Rody\rody_sys\rody_sys\bin\Remotion.Interfaces.dll
+D:\Study\2-Current_PROG\#ASP.Net-Work\3-smart_app_sol\#Rody\rody_sys\rody_sys\bin\System.Web.Helpers.dll
+D:\Study\2-Current_PROG\#ASP.Net-Work\3-smart_app_sol\#Rody\rody_sys\rody_sys\bin\System.Web.Mvc.dll
+D:\Study\2-Current_PROG\#ASP.Net-Work\3-smart_app_sol\#Rody\rody_sys\rody_sys\bin\System.Web.Razor.dll
+D:\Study\2-Current_PROG\#ASP.Net-Work\3-smart_app_sol\#Rody\rody_sys\rody_sys\bin\System.Web.Webpages.Deployment.dll
+D:\Study\2-Current_PROG\#ASP.Net-Work\3-smart_app_sol\#Rody\rody_sys\rody_sys\bin\System.Web.Webpages.dll
+D:\Study\2-Current_PROG\#ASP.Net-Work\3-smart_app_sol\#Rody\rody_sys\rody_sys\bin\System.Web.Webpages.Razor.dll
+D:\Study\2-Current_PROG\#ASP.Net-Work\3-smart_app_sol\#Rody\rody_sys\rody_sys\bin\EntityFramework.xml
+D:\Study\2-Current_PROG\#ASP.Net-Work\3-smart_app_sol\#Rody\rody_sys\rody_sys\bin\EntityFramework.SqlServer.xml
+D:\Study\2-Current_PROG\#ASP.Net-Work\3-smart_app_sol\#Rody\rody_sys\rody_sys\bin\LinqToExcel.xml
+D:\Study\2-Current_PROG\#ASP.Net-Work\3-smart_app_sol\#Rody\rody_sys\rody_sys\bin\Newtonsoft.Json.xml
+D:\Study\2-Current_PROG\#ASP.Net-Work\3-smart_app_sol\#Rody\rody_sys\rody_sys\bin\System.Web.Razor.xml
+D:\Study\2-Current_PROG\#ASP.Net-Work\3-smart_app_sol\#Rody\rody_sys\rody_sys\bin\System.Web.Webpages.xml
+D:\Study\2-Current_PROG\#ASP.Net-Work\3-smart_app_sol\#Rody\rody_sys\rody_sys\bin\System.Web.Webpages.Deployment.xml
+D:\Study\2-Current_PROG\#ASP.Net-Work\3-smart_app_sol\#Rody\rody_sys\rody_sys\bin\System.Web.Webpages.Razor.xml
+D:\Study\2-Current_PROG\#ASP.Net-Work\3-smart_app_sol\#Rody\rody_sys\rody_sys\bin\System.Web.Helpers.xml
+D:\Study\2-Current_PROG\#ASP.Net-Work\3-smart_app_sol\#Rody\rody_sys\rody_sys\bin\System.Web.Mvc.xml
+D:\Study\2-Current_PROG\#ASP.Net-Work\3-smart_app_sol\#Rody\rody_sys\rody_sys\obj\Debug\RdlCompile.cache
+D:\Study\2-Current_PROG\#ASP.Net-Work\3-smart_app_sol\#Rody\rody_sys\rody_sys\obj\Debug\RdlCompile.compiled
+D:\Study\2-Current_PROG\#ASP.Net-Work\3-smart_app_sol\#Rody\rody_sys\rody_sys\obj\Debug\rody_sys.dll
+D:\Study\2-Current_PROG\#ASP.Net-Work\3-smart_app_sol\#Rody\rody_sys\rody_sys\obj\Debug\rody_sys.pdb
+D:\Study\2-Current_PROG\#ASP.Net-Work\3-smart_app_sol\#Rody\rody_sys\rody_sys\obj\Debug\rody_sys.csprojResolveAssemblyReference.cache
+D:\Work\Old LapTop\inetpub\wwwroot\rody_sys\rody_sys\bin\rody_sys.dll
+D:\Work\Old LapTop\inetpub\wwwroot\rody_sys\rody_sys\bin\rody_sys.pdb
+D:\Work\Old LapTop\inetpub\wwwroot\rody_sys\rody_sys\bin\EntityFramework.dll
+D:\Work\Old LapTop\inetpub\wwwroot\rody_sys\rody_sys\bin\EntityFramework.SqlServer.dll
+D:\Work\Old LapTop\inetpub\wwwroot\rody_sys\rody_sys\bin\LinqToExcel.dll
+D:\Work\Old LapTop\inetpub\wwwroot\rody_sys\rody_sys\bin\Microsoft.ReportViewer.Common.dll
+D:\Work\Old LapTop\inetpub\wwwroot\rody_sys\rody_sys\bin\Microsoft.ReportViewer.ProcessingObjectModel.dll
+D:\Work\Old LapTop\inetpub\wwwroot\rody_sys\rody_sys\bin\Microsoft.ReportViewer.WebForms.dll
+D:\Work\Old LapTop\inetpub\wwwroot\rody_sys\rody_sys\bin\Newtonsoft.Json.dll
+D:\Work\Old LapTop\inetpub\wwwroot\rody_sys\rody_sys\bin\Remotion.Data.Linq.dll
+D:\Work\Old LapTop\inetpub\wwwroot\rody_sys\rody_sys\bin\Remotion.dll
+D:\Work\Old LapTop\inetpub\wwwroot\rody_sys\rody_sys\bin\Remotion.Interfaces.dll
+D:\Work\Old LapTop\inetpub\wwwroot\rody_sys\rody_sys\bin\System.Web.Helpers.dll
+D:\Work\Old LapTop\inetpub\wwwroot\rody_sys\rody_sys\bin\System.Web.Mvc.dll
+D:\Work\Old LapTop\inetpub\wwwroot\rody_sys\rody_sys\bin\System.Web.Razor.dll
+D:\Work\Old LapTop\inetpub\wwwroot\rody_sys\rody_sys\bin\System.Web.Webpages.Deployment.dll
+D:\Work\Old LapTop\inetpub\wwwroot\rody_sys\rody_sys\bin\System.Web.Webpages.dll
+D:\Work\Old LapTop\inetpub\wwwroot\rody_sys\rody_sys\bin\System.Web.Webpages.Razor.dll
+D:\Work\Old LapTop\inetpub\wwwroot\rody_sys\rody_sys\bin\EntityFramework.xml
+D:\Work\Old LapTop\inetpub\wwwroot\rody_sys\rody_sys\bin\EntityFramework.SqlServer.xml
+D:\Work\Old LapTop\inetpub\wwwroot\rody_sys\rody_sys\bin\LinqToExcel.xml
+D:\Work\Old LapTop\inetpub\wwwroot\rody_sys\rody_sys\bin\Newtonsoft.Json.xml
+D:\Work\Old LapTop\inetpub\wwwroot\rody_sys\rody_sys\bin\System.Web.Razor.xml
+D:\Work\Old LapTop\inetpub\wwwroot\rody_sys\rody_sys\bin\System.Web.Webpages.xml
+D:\Work\Old LapTop\inetpub\wwwroot\rody_sys\rody_sys\bin\System.Web.Webpages.Deployment.xml
+D:\Work\Old LapTop\inetpub\wwwroot\rody_sys\rody_sys\bin\System.Web.Webpages.Razor.xml
+D:\Work\Old LapTop\inetpub\wwwroot\rody_sys\rody_sys\bin\System.Web.Helpers.xml
+D:\Work\Old LapTop\inetpub\wwwroot\rody_sys\rody_sys\bin\System.Web.Mvc.xml
+D:\Work\Old LapTop\inetpub\wwwroot\rody_sys\rody_sys\obj\Debug\rody_sys.csprojResolveAssemblyReference.cache
+D:\Work\Old LapTop\inetpub\wwwroot\rody_sys\rody_sys\obj\Debug\RdlCompile.cache
+D:\Work\Old LapTop\inetpub\wwwroot\rody_sys\rody_sys\obj\Debug\RdlCompile.compiled
+D:\Work\Old LapTop\inetpub\wwwroot\rody_sys\rody_sys\obj\Debug\rody_sys.dll
+D:\Work\Old LapTop\inetpub\wwwroot\rody_sys\rody_sys\obj\Debug\rody_sys.pdb
+E:\Plan B\Ahmed hafez\EL Rody v2\El Rody\rody_sys\rody_sys\obj\Debug\rody_sys.csproj.CoreCompileInputs.cache
+E:\Plan B\Ahmed hafez\EL Rody v2\El Rody\rody_sys\rody_sys\obj\Debug\rody_sys.dll
+E:\Plan B\Ahmed hafez\EL Rody v2\El Rody\rody_sys\rody_sys\obj\Debug\rody_sys.pdb
+E:\Plan B\Ahmed hafez\EL Rody v2\El Rody\rody_sys\rody_sys\bin\rody_sys.dll.config
+E:\Plan B\Ahmed hafez\EL Rody v2\El Rody\rody_sys\rody_sys\bin\rody_sys.dll
+E:\Plan B\Ahmed hafez\EL Rody v2\El Rody\rody_sys\rody_sys\bin\rody_sys.pdb
+E:\Plan B\Ahmed hafez\EL Rody v2\El Rody\rody_sys\rody_sys\bin\EntityFramework.dll
+E:\Plan B\Ahmed hafez\EL Rody v2\El Rody\rody_sys\rody_sys\bin\LinqToExcel.dll
+E:\Plan B\Ahmed hafez\EL Rody v2\El Rody\rody_sys\rody_sys\bin\Microsoft.ReportViewer.Common.dll
+E:\Plan B\Ahmed hafez\EL Rody v2\El Rody\rody_sys\rody_sys\bin\Microsoft.ReportViewer.ProcessingObjectModel.DLL
+E:\Plan B\Ahmed hafez\EL Rody v2\El Rody\rody_sys\rody_sys\bin\Microsoft.ReportViewer.WebForms.DLL
+E:\Plan B\Ahmed hafez\EL Rody v2\El Rody\rody_sys\rody_sys\bin\Microsoft.Web.Infrastructure.dll
+E:\Plan B\Ahmed hafez\EL Rody v2\El Rody\rody_sys\rody_sys\bin\Newtonsoft.Json.dll
+E:\Plan B\Ahmed hafez\EL Rody v2\El Rody\rody_sys\rody_sys\bin\Remotion.Data.Linq.dll
+E:\Plan B\Ahmed hafez\EL Rody v2\El Rody\rody_sys\rody_sys\bin\Remotion.dll
+E:\Plan B\Ahmed hafez\EL Rody v2\El Rody\rody_sys\rody_sys\bin\Remotion.Interfaces.dll
+E:\Plan B\Ahmed hafez\EL Rody v2\El Rody\rody_sys\rody_sys\bin\System.Web.Helpers.dll
+E:\Plan B\Ahmed hafez\EL Rody v2\El Rody\rody_sys\rody_sys\bin\System.Web.Mvc.dll
+E:\Plan B\Ahmed hafez\EL Rody v2\El Rody\rody_sys\rody_sys\bin\System.Web.Razor.dll
+E:\Plan B\Ahmed hafez\EL Rody v2\El Rody\rody_sys\rody_sys\bin\System.Web.WebPages.Deployment.dll
+E:\Plan B\Ahmed hafez\EL Rody v2\El Rody\rody_sys\rody_sys\bin\System.Web.WebPages.dll
+E:\Plan B\Ahmed hafez\EL Rody v2\El Rody\rody_sys\rody_sys\bin\System.Web.WebPages.Razor.dll
+E:\Plan B\Ahmed hafez\EL Rody v2\El Rody\rody_sys\rody_sys\bin\EntityFramework.xml
+E:\Plan B\Ahmed hafez\EL Rody v2\El Rody\rody_sys\rody_sys\bin\LinqToExcel.xml
+E:\Plan B\Ahmed hafez\EL Rody v2\El Rody\rody_sys\rody_sys\bin\Newtonsoft.Json.xml
+E:\Plan B\Ahmed hafez\EL Rody v2\El Rody\rody_sys\rody_sys\bin\System.Web.Helpers.xml
+E:\Plan B\Ahmed hafez\EL Rody v2\El Rody\rody_sys\rody_sys\bin\System.Web.Mvc.xml
+E:\Plan B\Ahmed hafez\EL Rody v2\El Rody\rody_sys\rody_sys\bin\System.Web.Razor.xml
+E:\Plan B\Ahmed hafez\EL Rody v2\El Rody\rody_sys\rody_sys\bin\System.Web.WebPages.xml
+E:\Plan B\Ahmed hafez\EL Rody v2\El Rody\rody_sys\rody_sys\bin\System.Web.WebPages.Deployment.xml
+E:\Plan B\Ahmed hafez\EL Rody v2\El Rody\rody_sys\rody_sys\bin\System.Web.WebPages.Razor.xml
+E:\Plan B\Ahmed hafez\EL Rody v2\El Rody\rody_sys\rody_sys\obj\Debug\rody_sys.csproj.CopyComplete
+E:\Plan B\Ahmed hafez\EL Rody v2\El Rody\rody_sys\rody_sys\obj\Debug\rody_sys.csprojAssemblyReference.cache

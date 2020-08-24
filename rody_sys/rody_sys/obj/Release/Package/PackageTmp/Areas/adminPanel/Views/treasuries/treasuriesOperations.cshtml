@@ -1,0 +1,308 @@
+﻿
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title></title>
+
+    <style>
+        h4 {
+            color: #456e82;
+        }
+
+        h3 {
+            color: #5c4f4f;
+        }
+    </style>
+
+</head>
+
+<body ng-controller="treasuries">
+
+    <section id="main-content">
+        <section class="wrapper">
+            <div class="table-agile-info">
+                <ol class="breadcrumb breadcrumb-2">
+                    <li><a><i class="icon-home"></i> القائمه</a></li>
+                    <li><a> الخزائن</a></li>
+                    <li class="active"><a style="color: #ec407a"> حركات الخزائن</a> </li>
+                </ol>
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <strong style="color: #5c4f4f"> حركات الخزائن</strong>
+                    </div>
+                    <div class="row w3-res-tb">
+
+                        <div class="col-lg-3 col-lg-offset-3">
+
+                            <input ng-model="to" placeholder="الي تاريخ " style="border-radius: 0px;" class="form-control" type="text" onfocus="(this.type='date')">
+
+                        </div>
+
+                        <div class="col-lg-3">
+
+                            <input ng-model="from" placeholder="من تاريخ " style="border-radius: 0px;" class="form-control" type="text" onfocus="(this.type='date')">
+
+                        </div>
+
+                        <div class="col-lg-3">
+
+                            <select name="storeId" ng-change="get_store_value(store)" ng-model="store" class="form-control" dir="rtl" id="storeId" style="border-radius:0px">
+                                <option value="">- الخزنه -</option>
+                                <option ng-repeat="x2 in allStores" value="{{x2.id}}">{{x2.name}}</option>
+                            </select>
+                        </div>
+
+                        <br /><br /><br />
+                        <div class="col-lg-3 col-lg-offset-3">
+                            <h5 class="text-center" style="background: #f2f5f2; padding: 6px;
+                               height: 34px; color: gray;  ">
+                              العدد :
+                                <span>{{(allOperations | filter:{storeId:store} | myGenericDateFilter:from:to).length}} حركات</span>
+                            </h5>
+                        </div>
+
+                        <div class="col-lg-3">
+                            <h5 class="text-center" style="background: #ffdddc; padding: 6px; height: 34px; color: gray; ">
+                                مج . منصرف :
+                                <span>{{allOperations | filter:{storeId:store} | myGenericDateFilter:from:to |monsarefSum}} ج </span>
+                            </h5>
+                        </div>
+                        <div class="col-lg-3">
+                            <h5 class="text-center" style="background: #ffdddc; padding: 6px; height: 34px; color: gray; ">
+                                مج . وارد :
+                                <span>{{allOperations | filter:{storeId:store} | myGenericDateFilter:from:to | waredSum}} ج </span>
+                            </h5>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="table-responsive">
+                        <table class="table table-striped b-t b-light" dir="rtl">
+                            <thead>
+                                <tr style="background: #ddede0; padding:5px ">
+                                    <th><h5 style="padding:5px;" ng-click="sort('id')">الكود <i class="fa {{icon_id}}"></i></h5></th>
+                                    <th><h5 style="padding: 5px" ng-click="sort('name')"> التاريخ <i class="fa {{icon_name}}"></i></h5></th>
+                                    <th><h5 style="padding: 5px" ng-click="sort('name')"> الخزنه <i class="fa {{icon_name}}"></i></h5></th>
+                                    <th><h5 style="padding: 5px" ng-click="sort('name')"> البيان <i class="fa {{icon_name}}"></i></h5></th>
+                                     <th><h5 style="padding: 5px" ng-click="sort('name')"> نوع البيان <i class="fa {{icon_name}}"></i></h5></th>
+                                    <th><h5 style="padding: 5px" ng-click="sort('name')">  وارد <i class="fa {{icon_name}}"></i></h5></th>
+                                    <th><h5 style="padding: 5px" ng-click="sort('name')"> منصرف <i class="fa {{icon_name}}"></i></h5></th>
+                                    <th><h5 style="padding: 5px" ng-click="sort('name')"> الرصيد <i class="fa {{icon_name}}"></i></h5></th>
+
+                                  </tr>
+                            </thead>
+                            <tbody ng-repeat="t in allOperations | filter:{storeId:store} | myGenericDateFilter:from:to ">
+
+                                <tr class="tr" id="tbr">
+                                    <td>
+                                        <h4>
+                                            {{t.id}}
+                                        </h4>
+                                    </td>
+                                    <td>
+                                        <h4>
+                                            {{t.date}}
+                                        </h4>
+                                    </td>
+                                    <td>
+                                        <h4>
+                                            {{t.sName}}
+                                        </h4>
+                                    </td>
+                                    <td ng-if="t.clientId!=null">
+                                        <h4>
+                                            {{t.cName}}
+                                        </h4>
+                                    </td>
+                                    <td ng-if="t.clientId!=null">
+                                        <h4>
+                                            عميل
+                                        </h4>
+                                    </td>
+
+                                    <td ng-if="t.supplierId!=null">
+                                        <h4>
+                                            {{t.supName}}
+                                        </h4>
+                                    </td>
+                                    <td ng-if="t.supplierId!=null">
+                                        <h4>
+                                            مورد
+                                        </h4>
+                                    </td>
+
+                                    <td ng-if="t.fromToStoreId!=null">
+                                        <h4>
+                                            {{t.fromToStore}}
+                                        </h4>
+                                    </td>
+                                    <td ng-if="t.fromToStoreId!=null">
+                                        <h4>
+                                            خزنه
+                                        </h4>
+                                    </td>
+
+                                    <td ng-if="t.fromToStoreId==null && t.supplierId==null && t.clientId==null">
+                                        <h4 style="color:crimson">
+                                            -- ادمن --
+                                        </h4>
+                                    </td>
+                                    <td ng-if="t.fromToStoreId==null && t.supplierId==null && t.clientId==null">
+                                        <h4 style="color:crimson">
+                                            -- تعديل --
+                                        </h4>
+                                    </td>
+
+                                    <td style="background: #7ee095">
+                                        <h4>
+                                            {{t.get_value}}
+                                        </h4>
+                                    </td>
+                                    <td style="background:pink">
+                                        <h4>
+                                            {{t.give_value}}
+                                        </h4>
+                                    </td>
+                                    <td>
+                                        <h4>
+                                            {{t.charge}}
+                                        </h4>
+                                    </td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!--main content end-->
+    </section>
+
+
+    <div id="delete" class="modal fade" role="dialog" style="background-color: rgba(25, 23, 23, 0.49); ">
+        <div class="modal-dialog modal-sm" style="top:25%">
+            <div class="modal-content">
+
+                <div class="modal-body text-left">
+                    <center>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <br />
+                        <h4 style="color:crimson"> هل تريد حذف هذه الخزنه؟</h4>
+                    </center>
+
+                </div>
+                <div class="modal-footer">
+                    <center>
+                        <button type="button" class="btn btn-success btn-sm" data-dismiss="modal">الغاء</button>
+                        <button type="submit" class="btn btn-danger btn-sm" ng-click="delete()" data-dismiss="modal">حذف</button>
+                    </center>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div id="add" class="modal fade left" role="dialog" style="top: 15%; background-color: transparent !important">
+        <div class=" modal-dialog" style="width: 400px; background-color: transparent !important">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="text-center" style="color: #5c4f4f">اضافه خزنه</h4>
+                </div>
+                <div class="modal-body text-left">
+                    <center>
+                        <br />
+                        <table>
+                            <tr>
+
+                                <td style=" border: 0px">
+
+                                    <input ng-model="name" type="text" class="form-control" style="border-radius:0px" dir="rtl" />
+
+                                </td>
+                                <td style=" border: 0px">
+                                    <h4 style="margin-left:20px">اسم الخزنه</h4>
+                                </td>
+
+                            </tr>
+                            <tr>
+
+                                <td style=" border: 0px">
+
+                                    <input ng-model="value" type="number" class="form-control" style="border-radius:0px" dir="rtl" />
+
+                                </td>
+                                <td style=" border: 0px">
+                                    <h4 style="margin-left:20px">المبلغ</h4>
+                                </td>
+
+                            </tr>
+
+                        </table>
+                        <br /><hr />
+                        <button type="button" class="btn btn-success btn-sm" data-dismiss="modal">الغاء</button>
+                        <button type="submit" class="btn btn-primary btn-sm" ng-click="add()" data-dismiss="modal">اضافه</button>
+                    </center>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+
+    <div id="update" class="modal fade left" role="dialog" style="top: 15%; background-color: transparent !important">
+        <div class=" modal-dialog" style="width: 400px; background-color: transparent !important">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="text-center" style="color: #5c4f4f">تعديل بيانات الخزنه</h4>
+                </div>
+                <div class="modal-body text-left">
+                    <center>
+                        <br />
+                        <table>
+                            <tr>
+
+                                <td style=" border: 0px">
+
+                                    <input ng-model="name2" type="text" class="form-control" style="border-radius:0px" dir="rtl" />
+
+                                </td>
+                                <td style=" border: 0px">
+                                    <h4 style="margin-left:20px">اسم الخزنه</h4>
+                                </td>
+
+                            </tr>
+                            <tr>
+
+                                <td style=" border: 0px">
+
+                                    <input ng-model="value2" type="number" class="form-control" style="border-radius:0px" dir="rtl" />
+
+                                </td>
+                                <td style=" border: 0px">
+                                    <h4 style="margin-left:20px">المبلغ</h4>
+                                </td>
+
+                            </tr>
+
+                        </table>
+                        <br /><hr />
+                        <button type="button" class="btn btn-success btn-sm" data-dismiss="modal">الغاء</button>
+                        <button type="submit" class="btn btn-danger btn-sm" ng-click="updateDB()" data-dismiss="modal">تعديل</button>
+                    </center>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>
+

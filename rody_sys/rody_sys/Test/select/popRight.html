@@ -1,0 +1,40 @@
+﻿<div id="update" class="modal fade left" role="dialog" style="top: 15%; background-color: transparent !important">
+    <div class=" modal-dialog" style="width: 400px; background-color: transparent !important">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="text-center" style="color: #5c4f4f">تعديل محافظه</h4>
+            </div>
+            <div class="modal-body text-left">
+                <center>
+                    <div class="modal-body text-left">
+                        <br />
+                        <center>
+                            <table>
+                                <tr>
+
+                                    <td>
+
+                                        <input ng-model="gName" type="text" class="form-control" style="border-radius:0px" dir="rtl" />
+
+                                    </td>
+                                    <td>
+                                        <h4 style="margin-left:20px">اسم المحافظه</h4>
+                                    </td>
+
+                                </tr>
+                            </table>
+                        </center>
+
+                    </div>
+                    <div class="modal-footer">
+                        <center>
+                            <button type="button" class="btn btn-success btn-sm" data-dismiss="modal">الغاء</button>
+                            <button type="submit" class="btn btn-danger btn-sm" ng-click="updateDB()" data-dismiss="modal">تعديل</button>
+                        </center>
+                    </div>
+                </center>
+            </div>
+        </div>
+    </div>
+</div>

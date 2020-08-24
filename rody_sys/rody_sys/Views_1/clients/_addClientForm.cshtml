@@ -1,0 +1,330 @@
+﻿
+   <!--===============0000000000000000000000000000000000===============-->
+<div id="addClient" class="modal fade left" role="dialog" style="top: 15%; z-index: 9997">
+    <div class=" modal-dialog" style="width:1050px;min-height:100%; z-index:9997">
+        <div class="modal-content" style="overflow: hidden">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="text-center" style="color: #5c4f4f"> اضافه عميل</h4>
+            </div>
+            <div class="modal-body text-right" dir="rtl">
+                <div>
+                    <div class="row" style="overflow: hidden">
+                        <div class="col-sm-8 col-sm-offset-2" style="overflow:hidden">
+                            <div class="wizard-container1" style="">
+                                <div class="card wizard-card" data-color="blue" id="wizard" style="box-shadow:none">
+                                    <form>
+
+                                        <div class="wizard-navigation" style="">
+                                            <div class="progress-with-circle">
+                                                <div class="progress-bar" role="progressbar" aria-valuenow="1" aria-valuemin="1" aria-valuemax="4" style="width: 15%;"></div>
+                                            </div>
+                                            <ul>
+                                                <li>
+                                                    <a href="#location1" data-toggle="tab" style="pointer-events:none">
+                                                        <div class="icon-circle">
+                                                            <i class="ti-user"></i>
+                                                        </div>
+                                                        <span style="font-size:13px; font-weight:bold">بيانات شخصيه</span>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#type" data-toggle="tab" style="pointer-events:none">
+                                                        <div class="icon-circle">
+                                                            <i class="ti-mobile"></i>
+                                                        </div>
+                                                        <span style="font-size:13px; font-weight:bold"> تليفونات</span>
+
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#facilities" data-toggle="tab" style="pointer-events:none">
+                                                        <div class="icon-circle">
+                                                            <i class="ti-map"></i>
+                                                        </div>
+                                                        <span style="font-size:13px; font-weight:bold"> عنواين</span>
+
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#description" data-toggle="tab" style="pointer-events:none">
+                                                        <div class="icon-circle">
+                                                            <i class="ti-book"></i>
+                                                        </div>
+                                                        بيانات العقد
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="tab-content">
+                                            <div class="tab-pane" id="location1" style="">
+                                                <div class="row">
+                                                    <br /><br />
+                                                    <div class="col-sm-4 ">
+                                                        <div class="form-group">
+                                                            <label><h4 style="margin-bottom:3px">تصنيف العميل</h4></label>
+                                                            <select ng-model="cType" class="selectpicker form-control" dir="rtl">
+                                                                <option ng-repeat="x2 in allTypes" ng-value="{{x2.id}}">{{x2.type}}</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-4">
+                                                        <div class="form-group">
+                                                            <label><h4 style="margin-bottom:3px">نوع العميل</h4></label><br>
+                                                            <select class="form-control" id="gender">
+                                                                <option value="1">ذكر</option>
+                                                                <option value="2">انثي</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-4">
+                                                        <div class="form-group">
+                                                            <label><h4 style="margin-bottom:3px">اسم العميل</h4></label><br>
+                                                            <input type="text" class="form-control" ng-model="name">
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div class="col-sm-4 ">
+                                                        <div class="form-group">
+                                                            <label><h4 style="margin-bottom:3px">الوظيفه</h4></label>
+                                                            <input type="text" class="form-control" placeholder="" ng-model="jop">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-4">
+                                                        <div class="form-group">
+                                                            <label><h4 style="margin-bottom:3px">تاريخ الميلاد</h4></label><br>
+                                                            <input type="date" class="form-control" ng-model="DOB">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-4">
+                                                        <div class="form-group">
+                                                            <label><h4 style="margin-bottom:3px">الرقم القومي</h4></label><br>
+                                                            <input type="number" class="form-control" ng-model="idNum">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-4 col-lg-offset-4 ">
+                                                        <div class="form-group">
+                                                            <br />
+                                                            <input data-toggle="modal" data-target="#search" type="submit" class="form-control" value="بحث">
+                                                        </div>
+                                                    </div>
+                                                    @*<div class="col-sm-4">
+                                                            <div class="form-group">
+                                                                <br />
+                                                                <input type="number" class="form-control" placeholder="رقم العميل الرئيسي">
+                                                            </div>
+                                                        </div>*@
+                                                    <div class="col-sm-4">
+                                                        <div class="form-group">
+                                                            <label><h4 style="margin-bottom:3px">العميل الرئيسي</h4></label><br>
+                                                            <input type="text" class="form-control" readonly ng-model="pName">
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                            <!--=====================================================================-->
+                                            <div class="tab-pane" id="type">
+                                                <div class="row">
+                                                    <br /><br />
+
+                                                    <div class="col-sm-5 col-sm-offset-1">
+                                                        <div class="form-group">
+                                                            <label><h4 style="margin-bottom:3px">نوع الشريحه</h4></label><br>
+                                                            <select ng-model="sh1" class="selectpicker form-control" dir="rtl" style="border-radius:0px">
+                                                                <option ng-repeat="x2 in kroot" ng-value="{{x2.id}}">{{x2.name}}</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-5">
+                                                        <div class="form-group">
+                                                            <label><h4 style="margin-bottom:3px"> رقم تليفون 1</h4></label>
+                                                            <input type="text" class="form-control" ng-model="ph1">
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-sm-5 col-sm-offset-1">
+                                                        <div class="form-group">
+                                                            <label><h4 style="margin-bottom:3px">نوع الشريحه</h4></label><br>
+                                                            <select ng-model="sh2" class="selectpicker form-control" dir="rtl" style="border-radius:0px">
+                                                                <option ng-repeat="x2 in kroot" ng-value="{{x2.id}}">{{x2.name}}</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-5">
+                                                        <div class="form-group">
+                                                            <label><h4 style="margin-bottom:3px"> رقم تليفون 2</h4></label>
+                                                            <input type="text" class="form-control" ng-model="ph2">
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div class="col-sm-5 col-sm-offset-1">
+                                                        <div class="form-group">
+                                                            <label><h4 style="margin-bottom:3px">نوع الشريحه</h4></label><br>
+                                                            <select ng-model="sh3" class="selectpicker form-control" dir="rtl" style="border-radius:0px">
+                                                                <option ng-repeat="x2 in kroot" ng-value="{{x2.id}}">{{x2.name}}</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-5">
+                                                        <div class="form-group">
+                                                            <label><h4 style="margin-bottom:3px"> رقم تليفون 3</h4></label>
+                                                            <input type="text" class="form-control" ng-model="ph3">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="tab-pane" id="facilities">
+                                                <div class="row">
+                                                    <br /><br />
+
+                                                    <div class="col-sm-4">
+                                                        <div class="form-group">
+                                                            <label><h4 style="margin-bottom:3px">عنوان البطاقه</h4></label><br>
+                                                            <input type="text" class="form-control" ng-model="idPlace">
+                                                        </div>
+
+
+                                                    </div>
+                                                    <div class="col-sm-4">
+                                                        <div class="form-group">
+                                                            <label><h4 style="margin-bottom:3px">المنطقه</h4></label><br>
+                                                            <select ng-model="areaS" class="selectpicker form-control" dir="rtl" style="border-radius:0px">
+                                                                <option ng-repeat="x2 in allArea | filter:governS" ng-value="{{x2.id}}">{{x2.name}}</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-4">
+                                                        <div class="form-group">
+                                                            <label><h4 style="margin-bottom:3px">المحافظه</h4></label><br>
+                                                            <select ng-model="governS" class="selectpicker form-control" dir="rtl" style="border-radius:0px">
+                                                                <option value="">- المحافظه -</option>
+                                                                <option ng-repeat="x2 in allGovern">{{x2.name}}</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-4">
+                                                        <div class="form-group">
+                                                            <label><h4 style="margin-bottom:3px">عنوان التحصيل</h4></label><br>
+                                                            <input type="text" class="form-control" ng-model="getPlace">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-4">
+                                                        <div class="form-group">
+                                                            <label><h4 style="margin-bottom:3px">عنوان العمل</h4></label><br>
+                                                            <input type="text" class="form-control" ng-model="workPlace">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-4">
+                                                        <div class="form-group">
+                                                            <label><h4 style="margin-bottom:3px">اسم العمل</h4></label>
+                                                            <input type="text" class="form-control" ng-model="workName">
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-sm-4">
+                                                        <div class="form-group">
+                                                            <br />
+                                                            <input type="number" class="form-control" placeholder="رقم الشقه" ng-model="flat">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-4">
+                                                        <div class="form-group">
+                                                            <br />
+                                                            <input type="number" class="form-control" placeholder="رقم الدور" ng-model="floor">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-4">
+                                                        <div class="form-group">
+                                                            <label><h4 style="margin-bottom:3px"> عنوان الاقامه</h4></label>
+                                                            <input type="text" class="form-control" ng-model="stayPlace">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="tab-pane" id="description">
+                                                <div class="row">
+                                                    <br /><br />
+
+                                                    <div class="col-sm-5 col-sm-offset-1">
+                                                        <div class="form-group">
+                                                            <label><h4 style="margin-bottom:3px">مندوب المبيعات</h4></label><br>
+                                                            <select ng-model="deleS" class="selectpicker form-control" dir="rtl" style="border-radius:0px">
+                                                                <option ng-repeat="x2 in allDelegators | filter:agentsS" ng-value="{{x2.id}}">{{x2.name}}</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-5">
+                                                        <div class="form-group">
+                                                            <label><h4 style="margin-bottom:3px">الوكيل</h4></label>
+                                                            <select ng-model="agentsS" class="selectpicker form-control" dir="rtl" style="border-radius:0px">
+                                                                <option value=""> - الوكيل -</option>
+                                                                <option ng-repeat="x2 in allAgents">{{x2.name}}</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-sm-5 col-sm-offset-1">
+                                                        <div class="form-group">
+                                                            <label><h4 style="margin-bottom:3px">حاله العميل</h4></label><br>
+                                                            <select class="form-control" disabled>
+                                                                <option value="1">متاح</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-5">
+                                                        <div class="form-group">
+                                                            <label><h4 style="margin-bottom:3px"> تاريخ التعاقد</h4></label>
+                                                            <input type="date" class="form-control" ng-model="contractDate">
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div class="col-sm-5 col-sm-offset-1">
+                                                        <div class="form-group">
+                                                            <label><h4 style="margin-bottom:3px">ملاحظات</h4></label><br>
+                                                            <input type="text" class="form-control" ng-model="notes">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-5">
+                                                        <div class="form-group">
+                                                            <label><h4 style="margin-bottom:3px"> الرصيد المطلوب</h4></label>
+                                                            <input type="number" class="form-control" ng-model="chargeMsg">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <hr />
+                                            <div class="wizard-footer1">
+
+                                                <div class="pull-right">
+                                                    <br />
+                                                    <input type='button' class='btn btn-next btn-fill btn-info btn-wd' name='next' value='التالي' />
+                                                    <input type='button' id="addBtn" class='btn btn-finish btn-fill btn-info btn-wd' name='finish' value='اضافه' ng-click="add_client()" />
+                                                </div>
+                                                <div class="pull-left">
+                                                    <input type='button' class='btn btn-previous btn-fill btn-demo btn-wd' name='previous' value='السابق' ng-click="makeAddPossible()" />
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+<!--===============0000000000000000000000000000000000===============-->

@@ -1,0 +1,515 @@
+﻿
+@*@{
+    ViewBag.Title = "getAllSuppliers";
+    Layout = "~/Areas/adminPanel/Views/Shared/_adminLayout.cshtml";
+}*@
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title></title>
+    @*<script src="~/assets/general/js/angular.js"></script>
+        <script src="~/assets/admin/js/ang/ctr2.js"></script>*@
+
+    <style>
+        h4 {
+            color: #456e82;
+        }
+
+        h3 {
+            color: #5c4f4f;
+        }
+    </style>
+
+</head>
+
+<body ng-controller="ctr_agent">
+
+    <section id="main-content">
+        <section class="wrapper">
+            <div class="table-agile-info">
+                <ol class="breadcrumb breadcrumb-2">
+                    <li><a><i class="icon-home"></i> القائمه</a></li>
+                    <li><a> الموردين</a></li>
+                    <li class="active"><a style="color: #ec407a">بيانات الموردين</a> </li>
+                </ol>
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <strong style="color: #5c4f4f">بيانات الموردين</strong>
+
+                    </div>
+                    <div class="row w3-res-tb">
+
+                    
+
+                        <div class="col-lg-8" dir="rtl">
+
+                            <table>
+                                <tr>
+
+                                    <td style="border:0px; ">
+
+                                        <select ng-model="t.mainId" class="form-control" dir="rtl" style="margin-right:33px; border-radius:0px">
+                                            <option value=""> التصنيف الرئيسي</option>
+                                            <option ng-repeat="x2 in all_main_category " value="{{x2.id}}">{{x2.tasneef_name}}</option>
+                                        </select>
+                                    </td>
+                                    <td style="border:0px; ">&nbsp; &nbsp;</td>
+                                    <td style="border:0px">
+
+                                        <select ng-model="token.subc" class="form-control" dir="rtl" style="margin-right:33px; border-radius:0px">
+                                            <option value=""> التصنيف الفرعي</option>
+                                            <option ng-repeat="x2 in all_sub_category | filter:t" value="{{x2.id}}">{{x2.tasneef_name}}</option>
+                                       
+                                         </select>
+                                    </td>
+                                    <td style="border:0px; ">&nbsp; &nbsp; </td>
+                                    <td style="border:0px">
+                                        <input  dir="rtl" style="border-radius: 0px; margin-right: 33px;" type="text" placeholder="اسم المورد" class="form-control" ng-model="token.name" />
+                                    </td>
+                                    
+                                </tr>
+
+                            </table>
+
+
+                            <br />
+                        </div>
+
+                        <div class="col-lg-2 col-lg-offset-2" dir="ltr">
+
+                      <button class="btn btn-info" data-target="#add" data-toggle="modal">اضافه</button>
+
+                            <br />
+                        </div>
+
+
+                    </div>
+                    <br />
+                    <div class="table-responsive">
+
+                        <table class="table table-striped b-t b-light" dir="rtl">
+                            <thead>
+                                <tr style="background: #ddede0; padding:5px ">
+                                    <th><h5 style="padding:5px;" ng-click="sort('id')">الكود <i class="fa {{icon_id}}"></i></h5></th>
+                                    <th><h5 style="padding: 5px" ng-click="sort('name')">الاسم <i class="fa {{icon_name}}"></i></h5></th>
+                                    <th><h5 style="padding: 5px" ng-click="sort('name')">المسئول <i class="fa {{icon_name}}"></i></h5></th>
+                                   
+                                    <th><h5 style="padding: 5px">عرض/تعديل</h5></th>
+                                    <th><h5 style="padding: 5px">حذف</h5></th>
+                                </tr>
+                            </thead>
+                            <tbody ng-repeat="s in allSuppliers | filter: token | limitTo:limit | orderBy:sortedCol">
+
+                                <tr class="tr" id="tbr">
+                                    <td>
+                                        <h4>
+                                            {{s.id}}
+                                        </h4>
+                                    </td>
+                                    <td>
+                                        <h4>
+                                            {{s.name}}
+                                        </h4>
+                                    </td>
+                                    <td>
+                                        <h4>
+                                            {{s.responsible}}
+                                        </h4>
+                                    </td>
+                                    <td>
+                                        <button ng-click="update(s.id,s.name,s.address,s.responsible,s.phone1,s.phone2,s.phone3,s.fax,s.subc,s.type,s.notes,s.charge)" class="btn btn-sm btn-success" data-toggle="modal" data-target="#update">
+                                            <i class="fa fa-edit fa-lg"></i>
+                                        </button>
+
+                                    </td>
+                                    <td>
+                                        <button ng-click="get_supplier(s.id)" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#delete">
+                                            <i class="fa fa-remove fa-lg"></i>
+                                        </button>
+
+                                    </td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!--main content end-->
+    </section>
+
+
+    <div id="delete" class="modal fade" role="dialog" style="background-color: rgba(25, 23, 23, 0.49); ">
+        <div class="modal-dialog modal-sm" style="top:25%">
+            <div class="modal-content">
+
+                <div class="modal-body text-left">
+                    <center>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <br />
+                        <h4 style="color:crimson"> هل تريد حذف هذا المورد؟</h4>
+                    </center>
+
+                </div>
+                <div class="modal-footer">
+                    <center>
+                        <button type="button" class="btn btn-success btn-sm" data-dismiss="modal">الغاء</button>
+                        <button type="submit" class="btn btn-danger btn-sm" ng-click="delete()" data-dismiss="modal">حذف</button>
+                    </center>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div id="add" class="modal fade left" role="dialog" style="top: 15%; background-color: transparent !important">
+        <div class=" modal-dialog" style="width: 500px; background-color: transparent !important">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="text-center" style="color: #5c4f4f">اضافه مورد</h4>
+                </div>
+                <div class="modal-body text-left">
+                    <center>
+                        <br />
+                        <table class="">
+                            <tr style="">
+
+                                <td style=" border: 0px; width:250px">
+
+                                    <input ng-model="name" type="text" class="form-control" style="border-radius:0px" dir="rtl" />
+
+                                </td>
+                                <td style=" border: 0px">
+                                    <h4 style="margin-left: 20px">اسم المورد</h4>
+                                </td>
+
+                            </tr>
+                            <tr>
+
+                                <td style=" border: 0px">
+
+                                    <input ng-model="address" type="text" class="form-control" style="border-radius:0px" dir="rtl" />
+
+                                </td>
+                                <td style=" border: 0px">
+                                    <h4 style="margin-left: 20px">العنوان</h4>
+                                </td>
+
+                            </tr>
+                            <tr>
+
+                                <td style=" border: 0px">
+
+                                    <input ng-model="responsible" type="text" class="form-control" style="border-radius:0px" dir="rtl" />
+
+                                </td>
+                                <td style=" border: 0px">
+                                    <h4 style="margin-left: 20px">المسئول</h4>
+                                </td>
+
+                            </tr>
+
+                            <tr>
+
+                                <td style=" border: 0px">
+
+                                    <input ng-model="phone1" type="text" class="form-control" style="border-radius:0px" dir="rtl" />
+
+                                </td>
+                                <td style=" border: 0px">
+                                    <h4 style="margin-left: 20px">تليفون</h4>
+                                </td>
+
+                            </tr>
+
+                            <tr>
+
+                                <td style=" border: 0px">
+
+                                    <input ng-model="phone2" type="text" class="form-control" style="border-radius:0px" dir="rtl" />
+
+                                </td>
+                                <td style=" border: 0px">
+                                    <h4 style="margin-left: 20px">تليفون</h4>
+                                </td>
+
+                            </tr>
+
+                            <tr>
+
+                                <td style=" border: 0px">
+
+                                    <input ng-model="phone3" type="text" class="form-control" style="border-radius:0px" dir="rtl" />
+
+                                </td>
+                                <td style=" border: 0px">
+                                    <h4 style="margin-left: 20px">تليفون</h4>
+                                </td>
+
+                            </tr>
+
+                            <tr>
+
+                                <td style=" border: 0px">
+
+                                    <input ng-model="fax" type="text" class="form-control" style="border-radius:0px" dir="rtl" />
+
+                                </td>
+                                <td style=" border: 0px">
+                                    <h4 style="margin-left: 20px">فاكس</h4>
+                                </td>
+
+                            </tr>
+
+                            <tr>
+
+                                <td style=" border: 0px">
+                                    <select class="form-control" dir="rtl" ng-model="tasneefId" style="border-radius:0px" id="tasneefId">
+                                        <option value=""> التصنيف الفرعي</option>
+                                        <option ng-repeat="x2 in all_sub_category" value="{{x2.id}}">{{x2.tasneef_name}}</option>
+
+                                    </select>
+                                </td>
+                                <td style=" border: 0px">
+                                    <h4 style="margin-left: 20px">التصنيف</h4>
+                                </td>
+
+                            </tr>
+
+                            <tr>
+
+                                <td style=" border: 0px">
+
+                                    <select class="form-control" dir="rtl" ng-model="type" style="border-radius:0px" id="type">
+                                        <option value="">محلي / خارجي</option>
+                                         <option value="0">محلي</option>
+                                        <option value="1">خارجي</option>
+                                    </select>
+
+                                </td>
+                                <td style=" border: 0px">
+                                    <h4 style="margin-left: 20px">النوع</h4>
+                                </td>
+
+                            </tr>
+
+                            <tr>
+
+                                <td style=" border: 0px">
+
+                                    <input ng-model="notes" type="text" class="form-control" style="border-radius:0px" dir="rtl" />
+
+                                </td>
+                                <td style=" border: 0px">
+                                    <h4 style="margin-left: 20px">ملاحظات</h4>
+                                </td>
+
+                            </tr>
+
+                          
+
+                        </table>
+                        <br /><hr />
+                        <button type="button" class="btn btn-success btn-sm" data-dismiss="modal">الغاء</button>
+                        <button type="submit" class="btn btn-primary btn-sm" ng-click="add()" data-dismiss="modal">اضافه</button>
+                    </center>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+
+    <div id="update" class="modal fade left" role="dialog" style="top: 15%; background-color: transparent !important">
+        <div class=" modal-dialog" style="width: 500px; background-color: transparent !important">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="text-center" style="color: #5c4f4f"> تعديل بيانات المورد</h4>
+                </div>
+                <div class="modal-body text-left">
+                    <center>
+                        <br />
+                        <table class="">
+                            <tr style="">
+
+                                <td style=" border: 0px; width:250px">
+
+                                    <input ng-model="name2" type="text" class="form-control" style="border-radius:0px" dir="rtl" />
+
+                                </td>
+                                <td style=" border: 0px">
+                                    <h4 style="margin-left: 20px">اسم المورد</h4>
+                                </td>
+
+                            </tr>
+                            <tr>
+
+                                <td style=" border: 0px">
+
+                                    <input ng-model="address2" type="text" class="form-control" style="border-radius:0px" dir="rtl" />
+
+                                </td>
+                                <td style=" border: 0px">
+                                    <h4 style="margin-left: 20px">العنوان</h4>
+                                </td>
+
+                            </tr>
+                            <tr>
+
+                                <td style=" border: 0px">
+
+                                    <input ng-model="responsible2" type="text" class="form-control" style="border-radius:0px" dir="rtl" />
+
+                                </td>
+                                <td style=" border: 0px">
+                                    <h4 style="margin-left: 20px">المسئول</h4>
+                                </td>
+
+                            </tr>
+
+                            <tr>
+
+                                <td style=" border: 0px">
+
+                                    <input ng-model="phone12" type="text" class="form-control" style="border-radius:0px" dir="rtl" />
+
+                                </td>
+                                <td style=" border: 0px">
+                                    <h4 style="margin-left: 20px">تليفون</h4>
+                                </td>
+
+                            </tr>
+
+                            <tr>
+
+                                <td style=" border: 0px">
+
+                                    <input ng-model="phone22" type="text" class="form-control" style="border-radius:0px" dir="rtl" />
+
+                                </td>
+                                <td style=" border: 0px">
+                                    <h4 style="margin-left: 20px">تليفون</h4>
+                                </td>
+
+                            </tr>
+
+                            <tr>
+
+                                <td style=" border: 0px">
+
+                                    <input ng-model="phone32" type="text" class="form-control" style="border-radius:0px" dir="rtl" />
+
+                                </td>
+                                <td style=" border: 0px">
+                                    <h4 style="margin-left: 20px">تليفون</h4>
+                                </td>
+
+                            </tr>
+
+                            <tr>
+
+                                <td style=" border: 0px">
+
+                                    <input ng-model="fax2" type="text" class="form-control" style="border-radius:0px" dir="rtl" />
+
+                                </td>
+                                <td style=" border: 0px">
+                                    <h4 style="margin-left: 20px">فاكس</h4>
+                                </td>
+
+                            </tr>
+
+                            <tr>
+
+                                <td style=" border: 0px">
+                                    <select class="form-control" dir="rtl" ng-model="tasneefId2" style="border-radius:0px" id="tasneefId2">
+                                        <option value=""> التصنيف الفرعي</option>
+                                        <option ng-repeat="x2 in all_sub_category" value="{{x2.id}}">{{x2.tasneef_name}}</option>
+
+                                    </select>
+                                </td>
+                                <td style=" border: 0px">
+                                    <h4 style="margin-left: 20px">التصنيف</h4>
+                                </td>
+
+                            </tr>
+
+                            <tr>
+
+                                <td style=" border: 0px">
+
+                                    <select class="form-control" dir="rtl" ng-model="type" style="border-radius:0px" id="type2">
+                                        <option value="">محلي / خارجي</option>
+                                        <option value="0">محلي</option>
+                                        <option value="1">خارجي</option>
+                                    </select>
+
+                                </td>
+                                <td style=" border: 0px">
+                                    <h4 style="margin-left: 20px">النوع</h4>
+                                </td>
+
+                            </tr>
+
+                            <tr>
+
+                                <td style=" border: 0px">
+
+                                    <input ng-model="charge" type="text" class="form-control" style="border-radius:0px" dir="rtl" readonly/>
+
+                                </td>
+                                <td style=" border: 0px">
+                                    <h4 style="margin-left: 20px">الرصيد</h4>
+                                </td>
+
+                            </tr>
+
+                            <tr>
+
+                                <td style=" border: 0px">
+
+                                    <input ng-model="notes2" type="text" class="form-control" style="border-radius:0px" dir="rtl" />
+
+                                </td>
+                                <td style=" border: 0px">
+                                    <h4 style="margin-left: 20px">ملاحظات</h4>
+                                </td>
+
+                            </tr>
+
+
+
+                        </table>
+                        <hr />
+                        <button type="button" class="btn btn-success btn-sm" data-dismiss="modal">الغاء</button>
+                        <button type="submit" class="btn btn-danger btn-sm" ng-click="updateDB()" data-dismiss="modal">تعديل</button>
+                    </center>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+
+  
+
+
+    @*@{Html.RenderPartial("../management/_scriptPartial");}*@
+
+
+</body>
+</html>
+
+
+

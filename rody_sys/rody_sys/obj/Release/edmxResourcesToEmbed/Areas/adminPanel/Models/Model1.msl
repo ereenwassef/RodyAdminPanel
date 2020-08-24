@@ -1,0 +1,302 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Rody_DBModelStoreContainer" CdmEntityContainer="Rody_DBEntities3">
+    <EntitySetMapping Name="agent">
+      <EntityTypeMapping TypeName="Rody_DBModel.agent">
+        <MappingFragment StoreEntitySet="agent">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="areaId" ColumnName="areaId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="area">
+      <EntityTypeMapping TypeName="Rody_DBModel.area">
+        <MappingFragment StoreEntitySet="area">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="govId" ColumnName="govId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="banks">
+      <EntityTypeMapping TypeName="Rody_DBModel.banks">
+        <MappingFragment StoreEntitySet="banks">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="phone1" ColumnName="phone1" />
+          <ScalarProperty Name="phone2" ColumnName="phone2" />
+          <ScalarProperty Name="phone3" ColumnName="phone3" />
+          <ScalarProperty Name="fax" ColumnName="fax" />
+          <ScalarProperty Name="responsible" ColumnName="responsible" />
+          <ScalarProperty Name="notes" ColumnName="notes" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="client">
+      <EntityTypeMapping TypeName="Rody_DBModel.client">
+        <MappingFragment StoreEntitySet="client">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="my_childs" ColumnName="my_childs" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="gender" ColumnName="gender" />
+          <ScalarProperty Name="num_followers" ColumnName="num_followers" />
+          <ScalarProperty Name="id_num" ColumnName="id_num" />
+          <ScalarProperty Name="date_of_birth" ColumnName="date_of_birth" />
+          <ScalarProperty Name="client_type" ColumnName="client_type" />
+          <ScalarProperty Name="jop" ColumnName="jop" />
+          <ScalarProperty Name="work_name" ColumnName="work_name" />
+          <ScalarProperty Name="work_place" ColumnName="work_place" />
+          <ScalarProperty Name="id_place" ColumnName="id_place" />
+          <ScalarProperty Name="stay_place" ColumnName="stay_place" />
+          <ScalarProperty Name="stay_place_flat" ColumnName="stay_place_flat" />
+          <ScalarProperty Name="stay_place_floor" ColumnName="stay_place_floor" />
+          <ScalarProperty Name="stay_place_get" ColumnName="stay_place_get" />
+          <ScalarProperty Name="areaId" ColumnName="areaId" />
+          <ScalarProperty Name="delegatorId" ColumnName="delegatorId" />
+          <ScalarProperty Name="available" ColumnName="available" />
+          <ScalarProperty Name="contract_state" ColumnName="contract_state" />
+          <ScalarProperty Name="activation_date" ColumnName="activation_date" />
+          <ScalarProperty Name="notes" ColumnName="notes" />
+          <ScalarProperty Name="charge" ColumnName="charge" />
+          <ScalarProperty Name="my_parents" ColumnName="my_parents" />
+          <ScalarProperty Name="parentId" ColumnName="parentId" />
+          <ScalarProperty Name="contract_date" ColumnName="contract_date" />
+          <ScalarProperty Name="MsgCharge" ColumnName="MsgCharge" />
+          <ScalarProperty Name="done" ColumnName="done" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="client_type">
+      <EntityTypeMapping TypeName="Rody_DBModel.client_type">
+        <MappingFragment StoreEntitySet="client_type">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="type" ColumnName="type" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="delegator">
+      <EntityTypeMapping TypeName="Rody_DBModel.delegator">
+        <MappingFragment StoreEntitySet="delegator">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="agentId" ColumnName="agentId" />
+          <ScalarProperty Name="active" ColumnName="active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="govern">
+      <EntityTypeMapping TypeName="Rody_DBModel.govern">
+        <MappingFragment StoreEntitySet="govern">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="main_category_supplier">
+      <EntityTypeMapping TypeName="Rody_DBModel.main_category_supplier">
+        <MappingFragment StoreEntitySet="main_category_supplier">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="tasneef_name" ColumnName="tasneef_name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="notes">
+      <EntityTypeMapping TypeName="Rody_DBModel.notes">
+        <MappingFragment StoreEntitySet="notes">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="date" ColumnName="date" />
+          <ScalarProperty Name="note" ColumnName="note" />
+          <ScalarProperty Name="clientId" ColumnName="clientId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="operations_client">
+      <EntityTypeMapping TypeName="Rody_DBModel.operations_client">
+        <MappingFragment StoreEntitySet="operations_client">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="debtor" ColumnName="debtor" />
+          <ScalarProperty Name="creditor" ColumnName="creditor" />
+          <ScalarProperty Name="actual_date" ColumnName="actual_date" />
+          <ScalarProperty Name="get_date" ColumnName="get_date" />
+          <ScalarProperty Name="clientId" ColumnName="clientId" />
+          <ScalarProperty Name="phone_id" ColumnName="phone_id" />
+          <ScalarProperty Name="charge" ColumnName="charge" />
+          <ScalarProperty Name="notes" ColumnName="notes" />
+          <ScalarProperty Name="serviceId" ColumnName="serviceId" />
+          <ScalarProperty Name="declaration" ColumnName="declaration" />
+          <ScalarProperty Name="time" ColumnName="time" />
+          <ScalarProperty Name="otherPhoneNum" ColumnName="otherPhoneNum" />
+          <ScalarProperty Name="saleOpId" ColumnName="saleOpId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="operations_store">
+      <EntityTypeMapping TypeName="Rody_DBModel.operations_store">
+        <MappingFragment StoreEntitySet="operations_store">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="storeId" ColumnName="storeId" />
+          <ScalarProperty Name="get_value" ColumnName="get_value" />
+          <ScalarProperty Name="clientId" ColumnName="clientId" />
+          <ScalarProperty Name="date" ColumnName="date" />
+          <ScalarProperty Name="supplierId" ColumnName="supplierId" />
+          <ScalarProperty Name="give_value" ColumnName="give_value" />
+          <ScalarProperty Name="charge" ColumnName="charge" />
+          <ScalarProperty Name="fromToStoreId" ColumnName="fromToStoreId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="operations_supplier">
+      <EntityTypeMapping TypeName="Rody_DBModel.operations_supplier">
+        <MappingFragment StoreEntitySet="operations_supplier">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="debtor" ColumnName="debtor" />
+          <ScalarProperty Name="creditor" ColumnName="creditor" />
+          <ScalarProperty Name="charg" ColumnName="charg" />
+          <ScalarProperty Name="opType" ColumnName="opType" />
+          <ScalarProperty Name="date" ColumnName="date" />
+          <ScalarProperty Name="supId" ColumnName="supId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="partner">
+      <EntityTypeMapping TypeName="Rody_DBModel.partner">
+        <MappingFragment StoreEntitySet="partner">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="mobile" ColumnName="mobile" />
+          <ScalarProperty Name="money" ColumnName="money" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="phones">
+      <EntityTypeMapping TypeName="Rody_DBModel.phones">
+        <MappingFragment StoreEntitySet="phones">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="number" ColumnName="number" />
+          <ScalarProperty Name="clientId" ColumnName="clientId" />
+          <ScalarProperty Name="sharehaId" ColumnName="sharehaId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="purchases">
+      <EntityTypeMapping TypeName="Rody_DBModel.purchases">
+        <MappingFragment StoreEntitySet="purchases">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="date" ColumnName="date" />
+          <ScalarProperty Name="supplierId" ColumnName="supplierId" />
+          <ScalarProperty Name="shareehaId" ColumnName="shareehaId" />
+          <ScalarProperty Name="quantity" ColumnName="quantity" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="total" ColumnName="total" />
+          <ScalarProperty Name="discount" ColumnName="discount" />
+          <ScalarProperty Name="total_after" ColumnName="total_after" />
+          <ScalarProperty Name="clientId" ColumnName="clientId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="reportClientTahseel">
+      <EntityTypeMapping TypeName="Rody_DBModel.reportClientTahseel">
+        <MappingFragment StoreEntitySet="reportClientTahseel">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="cltId" ColumnName="cltId" />
+          <ScalarProperty Name="treasuryId" ColumnName="treasuryId" />
+          <ScalarProperty Name="charge" ColumnName="charge" />
+          <ScalarProperty Name="diserved" ColumnName="diserved" />
+          <ScalarProperty Name="cltName" ColumnName="cltName" />
+          <ScalarProperty Name="cltAddress" ColumnName="cltAddress" />
+          <ScalarProperty Name="cltAreaName" ColumnName="cltAreaName" />
+          <ScalarProperty Name="phone1" ColumnName="phone1" />
+          <ScalarProperty Name="phone2" ColumnName="phone2" />
+          <ScalarProperty Name="phone3" ColumnName="phone3" />
+          <ScalarProperty Name="count" ColumnName="count" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sales">
+      <EntityTypeMapping TypeName="Rody_DBModel.sales">
+        <MappingFragment StoreEntitySet="sales">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="date" ColumnName="date" />
+          <ScalarProperty Name="serviceId" ColumnName="serviceId" />
+          <ScalarProperty Name="clientId" ColumnName="clientId" />
+          <ScalarProperty Name="phoneId" ColumnName="phoneId" />
+          <ScalarProperty Name="total" ColumnName="total" />
+          <ScalarProperty Name="notes" ColumnName="notes" />
+          <ScalarProperty Name="time" ColumnName="time" />
+          <ScalarProperty Name="otherPhoneNum" ColumnName="otherPhoneNum" />
+          <ScalarProperty Name="quantity" ColumnName="quantity" />
+          <ScalarProperty Name="price" ColumnName="price" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="services">
+      <EntityTypeMapping TypeName="Rody_DBModel.services">
+        <MappingFragment StoreEntitySet="services">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="sharehaId" ColumnName="sharehaId" />
+          <ScalarProperty Name="sellPrice" ColumnName="sellPrice" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="shareha">
+      <EntityTypeMapping TypeName="Rody_DBModel.shareha">
+        <MappingFragment StoreEntitySet="shareha">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="value" ColumnName="value" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="stores">
+      <EntityTypeMapping TypeName="Rody_DBModel.stores">
+        <MappingFragment StoreEntitySet="stores">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="value" ColumnName="value" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sub_category_supplier">
+      <EntityTypeMapping TypeName="Rody_DBModel.sub_category_supplier">
+        <MappingFragment StoreEntitySet="sub_category_supplier">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="tasneef_name" ColumnName="tasneef_name" />
+          <ScalarProperty Name="mainId" ColumnName="mainId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="supplier">
+      <EntityTypeMapping TypeName="Rody_DBModel.supplier">
+        <MappingFragment StoreEntitySet="supplier">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="tasneefId" ColumnName="tasneefId" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="responsible" ColumnName="responsible" />
+          <ScalarProperty Name="phone1" ColumnName="phone1" />
+          <ScalarProperty Name="phone2" ColumnName="phone2" />
+          <ScalarProperty Name="phone3" ColumnName="phone3" />
+          <ScalarProperty Name="fax" ColumnName="fax" />
+          <ScalarProperty Name="notes" ColumnName="notes" />
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="business_type" ColumnName="business_type" />
+          <ScalarProperty Name="charge" ColumnName="charge" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="add_operation_supplier_give" FunctionName="Rody_DBModel.Store.add_operation_supplier_give" />
+    <FunctionImportMapping FunctionImportName="add_store_operation_sup" FunctionName="Rody_DBModel.Store.add_store_operation_sup" />
+    <FunctionImportMapping FunctionImportName="call_add_new_give_supplier" FunctionName="Rody_DBModel.Store.call_add_new_give_supplier" />
+    <FunctionImportMapping FunctionImportName="decrease_charge_of_store" FunctionName="Rody_DBModel.Store.decrease_charge_of_store" />
+    <FunctionImportMapping FunctionImportName="decrease_charge_of_supplier" FunctionName="Rody_DBModel.Store.decrease_charge_of_supplier" />
+  </EntityContainerMapping>
+</Mapping>

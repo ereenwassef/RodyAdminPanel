@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="88f1004490f0490982dbe283b13a3eb2" Name="Diagram1">
+        <EntityTypeShape EntityType="Rody_DBModel.agent" Width="1.5" PointX="5.25" PointY="13.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Rody_DBModel.area" Width="1.5" PointX="3" PointY="13.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Rody_DBModel.banks" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Rody_DBModel.client" Width="1.5" PointX="9.75" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Rody_DBModel.client_type" Width="1.5" PointX="7.5" PointY="10.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Rody_DBModel.delegator" Width="1.5" PointX="7.5" PointY="13.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Rody_DBModel.govern" Width="1.5" PointX="0.75" PointY="13.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Rody_DBModel.main_category_supplier" Width="1.5" PointX="8.25" PointY="22.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Rody_DBModel.notes" Width="1.5" PointX="12" PointY="13.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Rody_DBModel.operations_client" Width="1.5" PointX="17.25" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Rody_DBModel.operations_store" Width="1.5" PointX="15" PointY="12.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Rody_DBModel.operations_supplier" Width="1.5" PointX="15" PointY="22.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Rody_DBModel.partner" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Rody_DBModel.phones" Width="1.5" PointX="12" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Rody_DBModel.purchases" Width="1.5" PointX="12" PointY="16.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Rody_DBModel.reportClientTahseel" Width="1.5" PointX="15" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Rody_DBModel.sales" Width="1.5" PointX="17.25" PointY="14.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Rody_DBModel.services" Width="1.5" PointX="15" PointY="17.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Rody_DBModel.shareha" Width="1.5" PointX="9.75" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Rody_DBModel.stores" Width="1.5" PointX="12.75" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Rody_DBModel.sub_category_supplier" Width="1.5" PointX="10.5" PointY="22.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Rody_DBModel.supplier" Width="1.5" PointX="12.75" PointY="21.25" IsExpanded="true" />
+        <AssociationConnector Association="Rody_DBModel.FK_agent_area" ManuallyRouted="false" />
+        <AssociationConnector Association="Rody_DBModel.FK_delegator_agent" ManuallyRouted="false" />
+        <AssociationConnector Association="Rody_DBModel.FK_area_govern" ManuallyRouted="false" />
+        <AssociationConnector Association="Rody_DBModel.FK_client_area" ManuallyRouted="false" />
+        <AssociationConnector Association="Rody_DBModel.FK_client_client_type" ManuallyRouted="false" />
+        <AssociationConnector Association="Rody_DBModel.FK_client_client1" ManuallyRouted="false" />
+        <AssociationConnector Association="Rody_DBModel.FK_client_delegator" ManuallyRouted="false" />
+        <AssociationConnector Association="Rody_DBModel.FK_notes_client" ManuallyRouted="false" />
+        <AssociationConnector Association="Rody_DBModel.FK_operations_store_client" ManuallyRouted="false" />
+        <AssociationConnector Association="Rody_DBModel.FK_phones_client" ManuallyRouted="false" />
+        <AssociationConnector Association="Rody_DBModel.FK_purchases_client" ManuallyRouted="false" />
+        <AssociationConnector Association="Rody_DBModel.FK_reportClientTahseel_client" ManuallyRouted="false" />
+        <AssociationConnector Association="Rody_DBModel.FK_sales_client" ManuallyRouted="false" />
+        <AssociationConnector Association="Rody_DBModel.FK_sub_category_supplier_main_category_supplier" ManuallyRouted="false" />
+        <AssociationConnector Association="Rody_DBModel.FK_operations_client_sales" ManuallyRouted="false" />
+        <AssociationConnector Association="Rody_DBModel.FK_operations_client_services" ManuallyRouted="false" />
+        <AssociationConnector Association="Rody_DBModel.FK_operations_phones" ManuallyRouted="false" />
+        <AssociationConnector Association="Rody_DBModel.FK_operations_store_stores" ManuallyRouted="false" />
+        <AssociationConnector Association="Rody_DBModel.FK_operations_store_stores1" ManuallyRouted="false" />
+        <AssociationConnector Association="Rody_DBModel.FK_operations_store_supplier" ManuallyRouted="false" />
+        <AssociationConnector Association="Rody_DBModel.FK_operations_supplier_supplier" ManuallyRouted="false" />
+        <AssociationConnector Association="Rody_DBModel.FK_phones_shareha" ManuallyRouted="false" />
+        <AssociationConnector Association="Rody_DBModel.FK_sales_phones" ManuallyRouted="false" />
+        <AssociationConnector Association="Rody_DBModel.FK_purchases_shareha" ManuallyRouted="false" />
+        <AssociationConnector Association="Rody_DBModel.FK_purchases_supplier" ManuallyRouted="false" />
+        <AssociationConnector Association="Rody_DBModel.FK_reportClientTahseel_stores" ManuallyRouted="false" />
+        <AssociationConnector Association="Rody_DBModel.FK_sales_services" ManuallyRouted="false" />
+        <AssociationConnector Association="Rody_DBModel.FK_services_shareha" ManuallyRouted="false" />
+        <AssociationConnector Association="Rody_DBModel.FK_supplier_sub_category_supplier" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

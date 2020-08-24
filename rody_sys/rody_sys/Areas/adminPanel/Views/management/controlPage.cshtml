@@ -1,0 +1,66 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/adminPanel/Views/Shared/_adminLayout.cshtml";
+}
+
+<html ng-app="myApp" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title></title>
+
+    @{Html.RenderPartial("../management/_scriptPartial");}
+    <script src="~/assets/general/js/jquery-explr-1.4.js"></script>
+    <script src="~/assets/general/js/jquery.bootstrap.wizard.js"></script>
+    <script src="~/assets/general/js/paper-bootstrap-wizard.js"></script>
+    <script src="~/assets/general/js/jquery.validate.min.js"></script>
+
+<!--===============================================================-->
+    <script src="~/assets/general/js/angular.js"></script>
+    <script src="~/assets/general/js/angular-route.min.js"></script>
+    <script src="~/assets/general/js/ui-bootstrap-tpls.js"></script>
+    <script src="~/assets/admin/js/ang/app.js"></script>
+    <script src="~/assets/admin/js/ang/agents.js"></script>
+    <script src="~/assets/admin/js/ang/areas.js"></script>
+    <script src="~/assets/admin/js/ang/client_history.js"></script>
+    <script src="~/assets/admin/js/ang/sales.js"></script>
+    <script src="~/assets/admin/js/ang/client_sale.js"></script>
+    <script src="~/assets/admin/js/ang/governs.js"></script>
+    <script src="~/assets/admin/js/ang/delegators.js"></script>
+    <script src="~/assets/admin/js/ang/clients_charge.js"></script>
+    <script src="~/assets/admin/js/ang/client_tahseel.js"></script>
+    <script src="~/assets/admin/js/ang/clients.js"></script>
+    <script src="~/assets/admin/js/ang/cTypes.js"></script>  
+    <script src="~/assets/admin/js/ang/suppliers_main.js"></script>
+    <script src="~/assets/admin/js/ang/suppliers_sub.js"></script>
+    <script src="~/assets/admin/js/ang/suppliers.js"></script>
+    <script src="~/assets/admin/js/ang/banks.js"></script>
+    <script src="~/assets/admin/js/ang/partners.js"></script>
+    <script src="~/assets/admin/js/ang/treasuries.js"></script>
+    <script src="~/assets/admin/js/ang/stores.js"></script>
+    <script src="~/assets/admin/js/ang/purchases.js"></script>
+    <script src="~/assets/admin/js/ang/services.js"></script>
+
+    <style>
+        h4 {
+            color: #456e82;
+        }
+
+        h3 {
+            color: #5c4f4f;
+        }
+    </style>
+
+</head>
+
+<body>
+
+  <!--load the partial view here (SPA) -->
+    <div ng-view>        
+
+    </div>
+
+</body>
+</html>
+
+
+

@@ -1,0 +1,767 @@
+﻿
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ar">
+
+<head>
+    <title></title>
+    @*<script src="~/assets/general/js/angular.js"></script>
+    <script src="~/assets/admin/js/ang/clients.js"></script>*@
+    
+    <style>
+
+        .divc {
+            background: #176982;
+            margin-left: 10px;
+        }
+
+            .divc h3 {
+                color: white;
+            }
+
+         h4 {
+            color: #456e82;
+        }
+        h5 {
+            color: #456e82;
+            font-weight: bold;
+            font-family: Cairo;
+            font-size:15px
+        }
+
+        h3 {
+            color: #5c4f4f;
+        }
+        
+        /*input::-webkit-input-placeholder {
+            font-size: 12px;            
+        }
+        #table-body {
+            direction: rtl;
+        }*/
+        /*td, th {
+            border: 1px solid #dae1e2;
+            white-space: nowrap;
+        }*/
+
+        /*th {
+            white-space: nowrap;
+        }
+
+        #tbr:hover{
+            background:white;
+        }*/
+
+     
+
+    </style>
+
+</head>
+
+<body ng-controller="ctr_client">
+
+    <section id="main-content">
+        <section class="wrapper">
+            <div class="table-agile-info">
+                <ol class="breadcrumb breadcrumb-2">
+                    <li><a><i class="icon-home"></i> القائمه</a></li>
+                    <li class="active"><a style="color: #ec407a">بيانات العملاء</a> </li>
+                </ol>
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <strong style="color: #5c4f4f">بيانات العملاء</strong>
+
+                        <i class="fa fa-plus-circle text-info btn-lg" data-toggle="modal" data-target="#addClient" style="font-size: 25px; color: #5c4f4f; cursor:pointer">
+                        </i>
+                    </div>
+                    <div class="row w3-res-tb">
+                        <div class="col-lg-12" style="margin-left:8%">
+
+                            <div class="row" dir="rtl">
+                                <div class="col-lg-2">
+                                    <button class="btn" style="border-radius: 0px; width:138px" data-toggle="modal" data-target="#get_client">العميل الرئيسي</button>
+
+                                </div>
+                                <div class="col-lg-2">
+                                    <input id="clientName" ng-model="pName2" ng-value=" " type="text" class="form-control" style="border-radius:0px ; background:white" placeholder=" اسم العميل الرئيسي" />
+
+                                </div>
+                                <div class="col-lg-2">
+                                    <select  ng-model="token.areaName" class="form-control" style="  border-radius: 0px;">
+                                        <option value="">جميع المناطق</option>
+                                        <option ng-repeat="x1 in allArea | filter: token.govern">{{x1.name}}</option>
+                                    </select>
+                                </div>
+                                <div class="col-lg-2">
+                                    <select  ng-model="token.govern" class="form-control" style="  border-radius: 0px;">
+                                        <option value=""> المحافظه</option>
+                                        <option ng-repeat="x2 in allGovern">{{x2.name}}</option>
+                                    </select>
+                                </div>
+                                <div class="col-lg-2">
+                                    <select ng-model="token.type" class="form-control" style="  border-radius: 0px;">
+                                        <option value="">نوع العميل</option>                                      
+                                        <option ng-repeat="x2 in allTypes">{{x2.type}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <br />
+                            <div class="row" dir="rtl">
+                                <div class="col-lg-2">
+                                    <input type="text" ng-model="token.id_num" placeholder="الرقم القومي" class="form-control" style="font-size: 12px; border-radius: 0px;" />
+
+                                </div>
+                                <div class="col-lg-2">
+                                    <input type="text" ng-model="token.phones.number" placeholder="رقم التليفون" class="form-control" style="font-size: 12px; border-radius: 0px;" />
+                                </div>
+                                <div class="col-lg-2">
+                                    <input  type="text" placeholder="اسم العميل" class="form-control" style="font-size: 12px; border-radius: 0px;" ng-model="token.name" />
+                                </div>
+                                <div class="col-lg-2">
+                                    <select ng-model="token.delegatorId" class="selectpicker form-control" dir="rtl" style="border-radius:0px">
+                                        <option value="">  مندوب المبيعات </option>
+                                        <option ng-repeat="x2 in allDelegators | filter:agentsS" ng-value="{{x2.id}}">{{x2.name}}</option>
+                                    </select>
+                                   </div>
+                                <div class="col-lg-2">
+                                    <select ng-model="agentsS" class="selectpicker form-control" dir="rtl" style="border-radius:0px">
+                                        <option value="">  الوكيل </option>
+                                        <option ng-repeat="x2 in allAgents">{{x2.name}}</option>
+                                    </select>
+                                </div>
+                            </div>
+
+
+                            <br />
+                            <div class="row" dir="rtl">
+                                <div class="col-lg-2">
+                                    <select ng-model="token.phones.name" class="form-control" style="  border-radius: 0px;">
+                                        <option value="">الشبكه</option>
+                                        <option ng-repeat="x2 in kroot">{{x2.name}}</option>
+                                    </select>
+                                </div>
+                                <div class="col-lg-2">
+                                    <select ng-model="token.available" class="form-control" style="  border-radius: 0px;">
+                                        <option value="">حاله العميل</option>
+                                        <option value="1">متاح</option>
+                                        <option value="0">غير متاح</option>
+                                    </select>
+                                </div>
+                                <div class="col-lg-2">
+                                    <select ng-model="token.activation_date" class="form-control" style="  border-radius: 0px;">
+                                        <option value="">حاله العقد</option>
+                                        <option value="/">مفعل</option>
+                                        <option value="لم">غير مفعل</option>
+                                    </select>
+                                </div>
+                                <div class="col-lg-2 ">
+
+                                    <input ng-model="end"  type="number" class="form-control" style="border-radius: 0px;" placeholder="الي العميل رقم" />
+
+                                </div>
+
+                                <div class="col-lg-2 ">
+
+                                    <input ng-model="start" type="number" class="form-control" style="border-radius: 0px;" placeholder="من العميل رقم" />
+
+                                </div>
+                            </div>
+
+
+                            <br />
+                            <div class="row" dir="rtl">
+
+                                <div class="col-lg-2">
+                                    <select ng-model="token.done" class="form-control" style="  border-radius: 0px;">
+                                        <option value="">الكل</option>
+                                        <option value="1">تم التعاقد</option>
+                                        <option value="0">لم يتم التعاقد</option>
+                                    </select>
+                                </div>
+                          
+                                <div class="col-lg-2">
+
+                                    <input ng-model="to1" placeholder="الي تاريخ تفعيل" style="border-radius: 0px;" class="form-control" type="text" onfocus="(this.type='date')">
+
+                                </div>
+
+                                <div class="col-lg-2 ">
+
+                                    <input ng-model="from1" placeholder="من تاريخ تفعيل" style="border-radius: 0px;" class="form-control" type="text" onfocus="(this.type='date')">
+
+                                </div>
+                                <div class="col-lg-2 ">
+
+                                  
+                                    <input ng-model="to" placeholder="الي تاريخ تعاقد" 
+                                           style="border-radius: 0px;" class="form-control" type="text" onfocus="(this.type='date')">
+
+
+                                </div>
+
+                                <div class="col-lg-2 ">
+
+                                    <input id="datepicker" ng-model="from" placeholder="من تاريخ تعاقد"
+                                           style="border-radius: 0px;" class="form-control" type="text" onfocus="(this.type='date')">
+
+                                </div>
+                            </div>
+
+                            <div class="row" dir="rtl">
+                                <div class="col-lg-2 col-lg-offset-5">
+                                    <br/>
+                                    <button class="btn" style="border-radius: 0px; width: 310px;">
+                                    بحث</button>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <br />
+                    <div class="table-responsive">
+
+                        <table class="table table-striped b-t b-ligh" dir="rtl" summary="scrolling table">
+                            <thead style=" position:relative">
+                                <tr style="background: #ddede0; padding:5px ;">
+                                    <th><h5 style="padding:5px;">الكود</h5></th>
+                                    @*<th><h5 style="padding: 5px"> تاريخ التعاقد</h5></th>*@
+                                    <th><h5 style="padding: 5px"> تاريخ التفعيل</h5></th>
+                                    <th><h5 style="padding: 5px"> اسم العميل</h5></th>
+                                    <th><h5 style="padding: 5px">المنطقه</h5></th>
+                                    @*<th><h5 style="padding: 5px">عنوان التحصيل</h5></th>*@
+                                    <th><h5 style="padding: 5px"> التابعين</h5></th>
+                                    <th><h5 style="padding: 5px">الشجره </h5></th>
+                                    <th><h5 style="padding: 5px">عرض / تعديل</h5></th>
+                                    <th><h5 style="padding: 5px">حذف</h5></th>
+                                    <th><h5 style="padding: 5px">ملاحظات</h5></th>
+                                </tr>
+                            </thead>
+
+                            <tbody ng-repeat="c in allClients | myRangeFilter:start:end | filter:token | filter:{pName:pName2} | myContractDateFilter:from:to | myActivationDateFilter : from1 :to1" dir="rtl">
+
+                                <tr class="tr" id="tbr" ng-if="c.done==1">
+                                    <td>
+                                        <h4>
+                                            {{c.id}}
+                                        </h4>
+                                    </td>
+
+                                    @*<td>
+                                        <h4>
+                                            {{c.contract_date | myDateFilter |date:"dd/MM/yyyy"}}
+                                        </h4>
+                                    </td>*@
+                                    <td>
+                                        <h4>
+                                            {{c.activation_date}}
+                                        </h4>
+                                    </td>
+                                    <td>
+                                        <h4>
+                                            {{c.name}}
+                                        </h4>
+                                    </td>
+                                    <td>
+                                        <h4>
+                                            {{c.areaName}}
+                                        </h4>
+                                    </td>
+                                    @*<td>
+                                        <h4>
+                                            {{c.stay_place_get}}
+                                        </h4>
+                                    </td>*@
+                                    <td>
+                                        <h4>
+                                            {{c.num_followers}}
+                                        </h4>
+                                    </td>
+                                    <td>
+                                        <a href="#!clients/clientTree/cId={{c.id}}">
+                                            <button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#">
+                                                <i class="fa fa-tree fa-lg"></i>
+                                            </button>
+                                        </a>
+
+                                    </td>
+                                    <td>
+                                        <button class="btn btn-sm btn-success" data-toggle="modal" data-target="#updateClient" ng-click="update(c)">
+                                            <i class="fa fa-edit fa-lg"></i>
+                                        </button>
+
+                                    </td>
+                                    <td>
+                                        <button class="btn btn-sm btn-danger" data-toggle="modal" data-target="#delete" ng-click="getClient(c.id)">
+                                            <i class="fa fa-remove fa-lg"></i>
+                                        </button>
+                                    </td>
+
+                                    <td>
+                                        <button class="btn btn-sm btn-info" data-toggle="modal" data-target="#notes" ng-click="get_client_notes(c.id,c.name)">
+                                            <i class="fa fa-pencil fa-lg"></i>
+                                        </button>
+                                    </td>
+
+                                </tr>
+
+
+                                <tr class="tr" id="tbr" ng-if="c.done==0" style="background: #f4f799">
+                                    <td>
+                                        <h4>
+                                            {{c.id}}
+                                        </h4>
+                                    </td>
+
+                                    @*<td>
+                                        <h4>
+                                            {{c.contract_date | myDateFilter |date:"dd/MM/yyyy"}}
+                                        </h4>
+                                    </td>*@
+                                    <td>
+                                        <h4>
+                                            {{c.activation_date}}
+                                        </h4>
+                                    </td>
+                                    <td>
+                                        <h4>
+                                            {{c.name}}
+                                        </h4>
+                                    </td>
+                                    <td>
+                                        <h4>
+                                            {{c.areaName}}
+                                        </h4>
+                                    </td>
+                                    @*<td>
+                                        <h4>
+                                            {{c.stay_place_get}}
+                                        </h4>
+                                    </td>*@
+                                    <td>
+                                        <h4>
+                                            {{c.num_followers}}
+                                        </h4>
+                                    </td>
+                                    <td>
+                                        <a href="#!clients/clientTree/cId={{c.id}}">
+                                            <button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#">
+                                                <i class="fa fa-tree fa-lg"></i>
+                                            </button>
+                                        </a>
+
+                                    </td>
+                                    <td>
+                                        <button class="btn btn-sm btn-success" data-toggle="modal" data-target="#updateClient" ng-click="update(c)">
+                                            <i class="fa fa-edit fa-lg"></i>
+                                        </button>
+
+                                    </td>
+                                    <td>
+                                        <button class="btn btn-sm btn-danger" data-toggle="modal" data-target="#delete" ng-click="getClient(c.id)">
+                                            <i class="fa fa-remove fa-lg"></i>
+                                        </button>
+                                    </td>
+
+                                    <td>
+                                        <button class="btn btn-sm btn-info" data-toggle="modal" data-target="#notes" ng-click="get_client_notes(c.id,c.name)">
+                                            <i class="fa fa-pencil fa-lg"></i>
+                                        </button>
+                                    </td>
+
+                                </tr>
+
+                            </tbody>
+                        </table>
+
+
+                        <center>
+                            <br/>
+                            <button id="btn_pre"  ng-click="get_previous()" class=" btn btn-primary btn-sm" style="border-radius: 0%"> <span style="font-weight:bold; font-size:15px"  class="fa fa-angle-left"></span> السابق </button>
+                            <span class="text-info" style="font-weight:bold">
+                                {{pageNum}} / {{pageCount}}
+                            </span>
+                            <button  id="btn_next"  ng-click="get_next()" style="border-radius:0%" class="btn btn-sm btn-primary"> التالي <span class="fa fa-angle-right" style="font-weight:bold; font-size:15px"></span>  </button>
+                            <br />
+                         </center>
+                        <br/>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!--main content end-->
+    </section>
+
+    <div id="search" class="modal fade left" role="dialog" style="top: 15%; z-index: 9998">
+        <div class=" modal-dialog" style="width:400px;min-height:100%;z-index:9998">
+
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="text-center" style="color: #5c4f4f">اختيار العميل  </h4>
+                </div>
+                <div class="modal-body text-left" style="top:-20px">
+                    <center>
+                        <br />
+                        <table>
+                            <tr>
+
+                                <td style="border:0px">
+
+                                    <select style="border-radius:0px; margin-top:5px; width:200px" ng-model="govern" class="form-control" dir="rtl" ng-options="x2.name as x2.name for x2  in allGovern "></select>
+
+                                </td>
+                                <td style="border:0px">
+                                    <h4 style="margin-left: 20px; color: #5c4f4f"> المحافظه</h4>
+                                </td>
+
+                            </tr>
+                            <tr>
+
+                                <td style="border:0px">
+                                    <select ng-model="token2.areaName" class="form-control" dir="rtl" ng-options="x1.name as x1.name for x1  in allArea | filter:govern " style="border-radius: 0px; margin-top: 5px; width: 200px"></select>
+
+                                </td>
+                                <td style="border:0px">
+                                    <h4 style="margin-left: 20px; color: #5c4f4f"> المنطقه</h4>
+                                </td>
+
+                            </tr>
+
+                            <tr>
+
+                                <td style="border:0px">
+                                    <input dir="rtl" type="text" ng-model="token2.id" class="form-control" placeholder="الكود" style="border-radius: 0px; margin-top: 5px;" />
+
+                                </td>
+                                <td style="border:0px">
+                                    <h4 style="margin-left: 20px; color: #5c4f4f"> الكود</h4>
+                                </td>
+                            </tr>
+                            <tr />
+                            <tr>
+                                <td style="border:0px">
+                                    <input dir="rtl" type="text" ng-model="token2.name" class="form-control" placeholder="الاسم" style="border-radius: 0px; margin-top: 5px;" />
+                                </td>
+                                <td style="border:0px">
+                                    <h4 style="margin-left: 20px; color: #5c4f4f"> الاسم</h4>
+                                </td>
+                            </tr>
+
+                        </table>
+
+                        <br />
+                        <div class="table-responsive" style="height:300px; overflow:auto">
+
+                            <table class="table table-striped b-t b-light" dir="rtl" style="overflow:auto">
+                                <thead>
+                                    <tr style="background:#FAFAFA; border:0px;">
+                                        <th style=" border: 0px solid #D9E4E6;"><h3 style="padding: 2px "> اختر  </h3></th>
+                                        <th style=" border: 0px solid #D9E4E6;"><h3 style="padding: 2px;"> الرقم  </h3></th>
+                                        <th style=" border: 0px solid #D9E4E6;"><h3 style="padding: 2px;  "> الاسم </h3></th>
+                                        <th style=" border: 0px solid #D9E4E6;"><h3 style="padding: 2px; ">المنطقه </h3></th>
+
+                                    </tr>
+                                </thead>
+                                <tbody ng-repeat="c in allClients2 | filter:token2">
+
+                                    <tr style="background:white">
+                                        @*<td><input type="radio" style="margin-top:2px" value="{{c.id}}" ng-model="$parent.aya" id="aa_{{c.id}}" /></td>*@
+                                        <td>
+                                            <button class="btn btn-default btn-sm" ng-click="choose(c.id,c.name)" type="button" data-dismiss="modal">
+                                                <i class="fa fa-check "></i>
+                                            </button>
+                                        </td>
+                                        <td><h4 style="font-size:11px">{{c.id}}</h4></td>
+                                        <td><h4 style="font-size:11px;">{{c.name}}</h4></td>
+                                        <td><h4 style="font-size:11px"> {{c.areaName}}</h4></td>
+                                    </tr>
+                                </tbody>
+
+
+                                <tbody></tbody>
+                            </table>
+
+                        </div>
+                        @*<br />
+                <center>
+                    <button type="button" class="btn btn-default " data-dismiss="modal" style="width:100px"><h4>الغاء</h4></button>
+                </center>*@
+
+                    </center>
+
+                </div>
+              
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+    <div id="delete" class="modal fade" role="dialog" style="background-color: rgba(25, 23, 23, 0.49);">
+        <div class="modal-dialog  modal-sm" style="top:25%">
+            <div class="modal-content">
+
+                <div class="modal-body text-left">
+                    <center>
+                        <hr />
+                        <h4 style="color:crimson"> هل تريد حذف هذاالعميل؟</h4>
+                    </center>
+
+                </div>
+                <div class="modal-footer">
+                    <center>
+                        <button type="button" class="btn btn-success btn-sm" data-dismiss="modal">الغاء</button>
+                        <button type="submit" class="btn btn-danger btn-sm" ng-click="delete()" data-dismiss="modal">حذف</button>
+                    </center>
+                </div>
+            </div>
+
+        </div>
+    </div>
+<!--===========================================================================-->
+    <div id="get_client" class="modal fade left" role="dialog" style="top:10%">
+        <div class=" modal-dialog" style="width:400px">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="text-center" style="color: #5c4f4f">اختيار العميل </h4>
+                </div>
+                <div class="modal-body text-left" style="top:-20px">
+                    <center>
+                        <br />
+                        <table>
+                            <tr>
+
+                                <td style="border:0px">
+
+                                    <select style="border-radius:0px; margin-top:5px; width:200px" ng-model="govern" class="form-control" dir="rtl" ng-options="x2.name as x2.name for x2  in allGovern "></select>
+
+                                </td>
+                                <td style="border:0px">
+                                    <h4 style="margin-left: 20px; color: #5c4f4f"> المحافظه</h4>
+                                </td>
+
+                            </tr>
+                            <tr>
+
+                                <td style="border:0px">
+                                    <select ng-model="token.areaName" class="form-control" dir="rtl" ng-options="x1.name as x1.name for x1  in allArea | filter:govern " style="border-radius: 0px; margin-top: 5px; width: 200px"></select>
+
+                                </td>
+                                <td style="border:0px">
+                                    <h4 style="margin-left: 20px; color: #5c4f4f"> المنطقه</h4>
+                                </td>
+
+                            </tr>
+
+                            <tr>
+
+                                <td style="border:0px">
+                                    <input dir="rtl" type="text" ng-model="token.id" class="form-control" placeholder="الكود" style="border-radius: 0px; margin-top: 5px;" />
+
+                                </td>
+                                <td style="border:0px">
+                                    <h4 style="margin-left: 20px; color: #5c4f4f"> الكود</h4>
+                                </td>
+                                </tr>
+                            <tr/>
+                            <tr>
+                                <td style="border:0px">
+                                    <input dir="rtl" type="text" ng-model="token.name" class="form-control" placeholder="الاسم" style="border-radius: 0px; margin-top: 5px;" />
+                                </td>
+                                <td style="border:0px">
+                                    <h4 style="margin-left: 20px; color: #5c4f4f"> الاسم</h4>
+                                </td>
+                            </tr>
+
+                        </table>
+
+                        <br />
+                        <div class="table-responsive" style="height:300px; overflow:auto">
+
+                            <table class="table table-striped b-t b-light" dir="rtl">
+                                <thead>
+                                    <tr style="background:#FAFAFA; ">
+                                        <th><h3 style="padding:2px;"> اختر  </h3></th>
+                                        <th><h3 style="padding:2px;"> الكود  </h3></th>
+                                        <th><h3 style="padding:2px;"> الاسم </h3></th>
+                                        <th><h3 style="padding:2px">المنطقه </h3></th>
+
+                                    </tr>
+                                </thead>
+                                <tbody ng-repeat="c in allClients2 | filter:token">
+
+                                    <tr style="background:white">
+                                        @*<td><input type="radio" style="margin-top:2px" value="{{c.id}}" ng-model="$parent.aya" id="aa_{{c.id}}" /></td>*@
+                                        <td>
+                                            <button class="btn btn-default btn-sm" ng-click="choose2(c.name)" type="button" data-dismiss="modal">
+                                                <i class="fa fa-check "></i>
+                                            </button>
+                                        </td>
+                                        <td><h4 style="font-size:11px">{{c.id}}</h4></td>
+                                        <td><h4 style="font-size:11px;">{{c.name}}</h4></td>
+                                        <td><h4 style="font-size:11px"> {{c.areaName}}</h4></td>
+                                    </tr>
+                                </tbody>
+
+
+                                <tbody></tbody>
+                            </table>
+
+                        </div>
+                        @*<br />
+                        <center>
+                            <button type="button" class="btn btn-default" data-dismiss="modal" style="width:100px"><h4>الغاء</h4></button>
+                        </center>*@
+
+                    </center>
+
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+<!--===========================================================================-->
+    <div id="get_client_phones" class="modal fade left" role="dialog" style="top:10% ;z-index:9998">
+        <div class=" modal-dialog" style="width:600px">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="text-center" style="color: #5c4f4f">ارقام التليفونات</h4>
+                </div>
+                <div class="modal-body text-left">
+                    <center>
+                        <br />
+                       
+                        <input type="text" ng-model="phNum" class="form-control" placeholder="رقم التليفون" style="width:300px"/>
+
+                        <br />
+                        <div class="table-responsive" style="height:300px; overflow:auto">
+
+                            <table class="table table-striped b-t b-light" dir="rtl">
+                                <thead>
+                                    <tr style="background:#FAFAFA; ">
+                                        <th><h3 style="padding:2px;"> الكود </h3></th>
+                                        <th><h3 style="padding:2px;"> رقم التليفون  </h3></th>
+                                        <th><h3 style="padding:2px;"> الشريحه </h3></th>
+                                        <th><h3 style="padding:2px;"> تعديل </h3></th>
+                                        <th><h3 style="padding:2px;"> حذف </h3></th>
+                                    </tr>
+                                </thead>
+                                <tbody ng-repeat="c in allClientPhones | filter:{number:phNum}">
+
+                                    <tr style="background:white">
+
+                                        <td><h4 style="font-size:11px">{{$index + 1}}</h4></td>
+                                        <td><input id="ph{{$index}}" dir="ltr" type="text" value="{{c.number}}" class="form-control" /></td>
+                                        <td>
+                                            <select id="cart{{$index}}" class="selectpicker form-control" dir="rtl" style="border-radius:0px">
+                                                <option value="">الشريحه</option>
+                                                <option ng-repeat="x2 in kroot" ng-value="{{x2.id}}" ng-selected="{{x2.id==c.sharehaId}}">{{x2.name}}</option>
+                                            </select>
+                                        </td>
+                                        <td>
+                                            <button class="btn btn-success btn-sm" ng-click="updatePhone(c.id , $index )" type="button" data-dismiss="modal">
+                                                <i class="fa fa-edit "></i>
+                                            </button>
+                                        </td>
+                                        <td>
+                                            <button class="btn btn-danger btn-sm" ng-click="deletePhone(c.id)" type="button" data-dismiss="modal">
+                                                <i class="fa fa-remove "></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+
+
+                                <tbody></tbody>
+                            </table>
+
+                        </div>
+                        <br />
+                        <center>
+                            <button type="button" class="btn btn-default" data-dismiss="modal" style="width:100px"><h4>الغاء</h4></button>
+                        </center>
+
+                    </center>
+
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+<!--====================================================================================-->
+
+    <div id="add_new_phone" class="modal fade left" role="dialog" style="top:10% ;z-index:9998">
+        <div class=" modal-dialog" style="width:400px">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="text-center" style="color: #5c4f4f">اضافه رقم جديد</h4>
+                </div>
+                <div class="modal-body text-left">
+                    <center>
+                        <br /><br/>
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <input ng-model="adPhone" type="text" class="form-control"  placeholder="رقم التليفون">
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <select ng-model="adShareha" class="selectpicker form-control" dir="rtl" style="border-radius:0px">
+                                     <option value="">الشريحه</option>
+                                     <option ng-repeat="x2 in kroot" ng-value="{{x2.id}}">{{x2.name}}</option>
+                                </select>
+                            </div>
+                        </div>
+                                             
+                       
+                        <center>
+                            <br /><br />
+                            <button type="button" class="btn btn-info" data-dismiss="modal" style="width:100px; margin-top:20px">الغاء</button>
+                            <button type="button" class="btn btn-danger" data-dismiss="modal" style="width:100px; margin-top:20px" ng-click="addPhone()">اضافه</button>
+                          </center>
+
+                    </center>
+
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+<!--====================================================================================-->
+
+
+
+
+
+
+
+    @Html.Partial("_addClientForm")
+    @Html.Partial("_updateClientForm")
+    @Html.Partial("_notes")
+    @*@Html.Partial("_getClient")*@
+
+<!--==============================================================================-->
+
+    <script src="~/assets/general/js/jquery.bootstrap.wizard.js"></script>
+    <script src="~/assets/general/js/paper-bootstrap-wizard.js"></script>
+    <script src="~/assets/general/js/jquery.validate.min.js"></script>
+
+    @*@{Html.RenderPartial("../management/_scriptPartial");}*@
+
+</body>
+</html>
+

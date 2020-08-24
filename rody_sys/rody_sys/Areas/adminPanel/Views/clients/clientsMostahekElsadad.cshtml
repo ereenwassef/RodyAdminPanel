@@ -1,0 +1,416 @@
+﻿
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title></title>
+    <script src="~/assets/general/js/angular.js"></script>
+
+    <style>
+        .divc {
+            background: #176982;
+            margin-left: 10px;
+        }
+            .divc h3 {
+                color: white;
+            }
+
+        h4 {
+            color: #456e82;
+        }
+
+        h3 {
+            color: #5c4f4f;
+        }
+
+        h3, h4 {
+            font-size: 13px;
+        }
+    </style>
+
+</head>
+
+<body ng-controller="ctr_clientH">
+
+    <section id="main-content">
+        <section class="wrapper">
+            <div class="table-agile-info">
+                <ol class="breadcrumb breadcrumb-2">
+                    <li><a><i class="icon-home"></i> القائمه</a></li>
+                    <li class="active"><a style="color: #ec407a">قائمه مستحقي السداد</a> </li>
+                </ol>
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <strong style="color: #5c4f4f">قائمه مستحقي السداد</strong>
+                    </div>
+
+
+
+                    <div class="row w3-res-tb" dir="rtl">
+                        <div class="col-lg-12">
+                            <input type="hidden" value="@ViewBag.id" id="cltId" />
+                            <table>
+                                <tr>
+                                    <td style="border:0px">
+                                        <select ng-model="area_s" class="form-control" style="  border-radius: 0px;">
+                                            <option value=""> المنطقه</option>
+                                            <option ng-repeat="x1 in allArea | filter: token.govern" value="{{x1.id}}">{{x1.name}}</option>
+                                        </select>
+                                    </td>
+                                    <td style="border:0px">
+
+                                        <select ng-model="area_s" class="form-control" style="  border-radius: 0px; margin-right:20px">
+                                            <option value=""> المحصل</option>
+                                            <option ng-repeat="x1 in allArea | filter: token.govern" value="{{x1.id}}">{{x1.name}}</option>
+                                        </select>
+                                    </td>   
+                                    <td style="border:0px;">
+                                        <button class="btn btn-info" style=" margin-right:40px">طباعه-PDF</button>
+                                    </td>
+
+                                    <td style="border:0px;">
+                                        <button class="btn btn-success" style=" margin-right:10px">طباعه-Excel</button>
+                                    </td>
+
+                                    <td style="border:0px;">
+                                        <input type="checkbox" style="width:14px;height:14px; margin-right:20px" />
+                                        <span>تحديد الكل</span>
+                                    </td>
+</tr>
+                              
+                            </table>
+
+                            <br />
+                        </div>
+
+                    </div>
+
+                    <div class="table-responsive" style="height:300px;">
+
+                        <table class="table table-striped b-t b-light" dir="rtl">
+                            <thead>
+                                <tr style="background: #ddede0; padding:5px ">
+                                    <th><h3 style="padding:5px;"> الكود </h3></th>
+                                    <th><h3 style="padding:5px;"> رقم الايصال </h3></th>
+                                    <th><h3 style="padding:5px;"> اسم العميل </h3></th>
+                                    <th><h3 style="padding:5px;"> الرصيد </h3></th>
+                                    <th><h3 style="padding: 5px">المستحق </h3></th>
+                                    <th><h3 style="padding: 5px">طباعه-PDF</h3></th>
+                                    <th><h3 style="padding: 5px"> طباعه-Excel</h3></th>  
+                                    <th><h3 style="padding: 5px">اختر</h3></th>                                
+                                    <th><h3 style="padding: 5px">حذف</h3></th>
+                                </tr>
+                            </thead>
+                            <tbody ng-if="allPermissions==null||allPermissions.length==0">
+                                <tr class="tr">
+
+                                    <td>
+                                        <h4>
+                                            -
+                                        </h4>
+                                    </td>
+
+                                    <td>
+                                        <h4>
+                                            -
+                                        </h4>
+                                    </td>
+
+                                    <td>
+                                        <h4>
+                                            -
+                                        </h4>
+                                    </td>
+
+
+                                    <td>
+                                        <h4>
+                                            -
+                                        </h4>
+                                    </td>
+
+                                    <td>
+                                        <h4>
+                                            -
+                                        </h4>
+                                    </td>
+                                    <td>
+                                        <h4>
+                                            -
+                                        </h4>
+                                    </td>
+                                    <td>
+                                        <h4>
+                                            -
+                                        </h4>
+                                    </td>
+                                    <td>
+                                        <h4>
+                                            -
+                                        </h4>
+                                    </td>
+                                    <td>
+                                        <h4>
+                                            -
+                                        </h4>
+                                    </td>
+
+                                </tr>
+                                <tr class="tr">
+
+                                    <td>
+                                        <h4>
+                                            -
+                                        </h4>
+                                    </td>
+
+                                    <td>
+                                        <h4>
+                                            -
+                                        </h4>
+                                    </td>
+
+                                    <td>
+                                        <h4>
+                                            -
+                                        </h4>
+                                    </td>
+
+                                    <td>
+                                        <h4>
+                                            -
+                                        </h4>
+                                    </td>
+
+                                    <td>
+                                        <h4>
+                                            -
+                                        </h4>
+                                    </td>
+                                    <td>
+                                        <h4>
+                                            -
+                                        </h4>
+                                    </td>
+                                    <td>
+                                        <h4>
+                                            -
+                                        </h4>
+                                    </td>
+                                    <td>
+                                        <h4>
+                                            -
+                                        </h4>
+                                    </td>
+                                    <td>
+                                        <h4>
+                                            -
+                                        </h4>
+                                    </td>
+
+                                </tr>
+                                <tr class="tr">
+
+                                    <td>
+                                        <h4>
+                                            -
+                                        </h4>
+                                    </td>
+
+                                    <td>
+                                        <h4>
+                                            -
+                                        </h4>
+                                    </td>
+
+                                    <td>
+                                        <h4>
+                                            -
+                                        </h4>
+                                    </td>
+
+                                    <td>
+                                        <h4>
+                                            -
+                                        </h4>
+                                    </td>
+
+                                    <td>
+                                        <h4>
+                                            -
+                                        </h4>
+                                    </td>
+                                    <td>
+                                        <h4>
+                                            -
+                                        </h4>
+                                    </td>
+                                    <td>
+                                        <h4>
+                                            -
+                                        </h4>
+                                    </td>
+                                    <td>
+                                        <h4>
+                                            -
+                                        </h4>
+                                    </td>
+                                    <td>
+                                        <h4>
+                                            -
+                                        </h4>
+                                    </td>
+
+                                </tr>
+                                <tr class="tr">
+                                    <td>
+                                        <h4>
+                                            -
+                                        </h4>
+                                    </td>
+
+                                    <td>
+                                        <h4>
+                                            -
+                                        </h4>
+                                    </td>
+
+                                    <td>
+                                        <h4>
+                                            -
+                                        </h4>
+                                    </td>
+
+                                    <td>
+                                        <h4>
+                                            -
+                                        </h4>
+                                    </td>
+
+                                    <td>
+                                        <h4>
+                                            -
+                                        </h4>
+                                    </td>
+                                    <td>
+                                        <h4>
+                                            -
+                                        </h4>
+                                    </td>
+                                    <td>
+                                        <h4>
+                                            -
+                                        </h4>
+                                    </td>
+                                    <td>
+                                        <h4>
+                                            -
+                                        </h4>
+                                    </td>
+                                    <td>
+                                        <h4>
+                                            -
+                                        </h4>
+                                    </td>
+
+                                </tr>
+                            </tbody>
+
+                            <tbody ng-repeat="op in allPermissions" style="height:100px;">
+
+                                <tr class="tr">
+                                    <td>
+                                        <h4>
+                                            {{op.cltId}}
+                                        </h4>
+                                    </td>
+                                    <td>
+                                        <h4>
+                                            {{op.count}}
+                                        </h4>
+                                    </td>
+                                    <td>
+                                        <h4>
+                                            {{op.cltName}}
+                                        </h4>
+                                    </td>
+                                    <td>
+                                        <h4>
+                                            {{op.charge}}
+                                        </h4>
+                                    </td>
+                                    <td>
+                                        <h4>
+                                            {{op.diserved}}
+                                        </h4>
+                                    </td>
+
+                                    <td>
+                                        <form action="../reports/اذن استلام-pdf" target="_blank">
+                                            <input type="hidden" value="{{op.id}}" name="rptId">
+                                            <button  class="fa fa-file-pdf-o btn btn-info"></button> 
+                                        </form>
+                                    </td>
+                                    <td >
+                                        <form action="../reports/اذن استلام-excel" >
+                                            <input type="hidden" value="{{op.id}}" name="rptId2">
+                                            <button  class="fa fa-file-excel-o btn btn-success"></button>
+                                        </form>
+                                    </td>
+
+                                    <td>
+                                    <input type="checkbox" style="width:16px;height:16px" />
+                                    </td>
+                                    <td>
+                                        <i class="fa fa-remove btn btn-danger" ng-click="get_report(op.id)" data-toggle="modal" data-target="#delete_rpt"></i> 
+                                    </td>
+
+                                </tr>
+
+                               
+                            </tbody>
+                        </table>
+
+                    </div>
+                    <br />
+                 
+                    <br /><br />
+
+                </div>
+                <br /><br />
+            </div>
+        </section>
+    </section>
+
+    <div id="delete_rpt" class="modal fade" role="dialog" style="background-color: rgba(25, 23, 23, 0.49); ">
+        <div class="modal-dialog modal-sm" style="top:25%">
+            <div class="modal-content">
+
+                <div class="modal-body text-left">
+                    <center>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <br />
+                        <h4 style="color:crimson"> هل تريد حذف هذا الايصال؟</h4>
+                    </center>
+
+                </div>
+                <div class="modal-footer">
+                    <center>
+                        <button type="button" class="btn btn-success btn-sm" data-dismiss="modal">الغاء</button>
+                        <button type="submit" class="btn btn-danger btn-sm" ng-click="delete_report()" data-dismiss="modal">حذف</button>
+                    </center>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!--===================================-->
+    @Html.Partial("_updateClientForm");
+
+    <script src="~/assets/general/js/jquery.bootstrap.wizard.js"></script>
+    <script src="~/assets/general/js/paper-bootstrap-wizard.js"></script>
+    <script src="~/assets/general/js/jquery.validate.min.js"></script>
+
+</body>
+</html>
+

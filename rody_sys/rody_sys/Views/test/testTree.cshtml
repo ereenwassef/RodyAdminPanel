@@ -1,0 +1,227 @@
+﻿
+@{
+    ViewBag.Title = "testTree";
+    Layout = "~/Areas/adminPanel/Views/Shared/_adminLayout.cshtml";
+}
+
+<html>
+<head>
+    <title></title>
+
+    <link href="~/assets/admin/css/tree_css/jquery-explr-1.4.css" rel="stylesheet" />
+
+
+    <style>
+        /*body {
+            background-color: #fafafa;
+            font-family: 'Open Sans';
+        }*/
+
+        .container {
+            /*margin: 150px auto;*/
+            max-width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+    <section id="main-content" dir="rtl">
+        <section class="wrapper">
+            <div class="table-agile-info" style="min-height:500px;">
+                <ol class="breadcrumb breadcrumb-2" dir="ltr">
+                    <li><a href="#"><i class="icon-home"></i> القائمه</a></li>
+                    <li><a href="#">العملاء</a></li>
+                    <li class="active" style="color: #ec407a"><strong> شجره العميل</strong></li>
+                </ol>
+
+                <div class="panel panel-default" style="background: white;">
+                    <div class="panel-heading">
+                        <strong style="color: #5c4f4f">
+                            شجره العميل
+                            </strong>
+</div>
+                    <!--===============================================-->
+                    <br /><br />
+
+
+
+                    @{Html.RenderPartial("testPartial");}
+
+
+                    <div class="container">
+                        <ul id="tree">
+
+                            <li class="icon-chain">
+                                <a href="#" style="margin-right:35px;">مصطفي محمد عبد الونيس</a>
+                                <ul>
+                                    <li class="icon-text"> <a href="#">احمد حافظ</a> </li>
+                                    <li class="icon-text"> <a href="#">باسم اشرف</a> </li>
+                                    <li class="icon-text"> <a href="#">وليد مدحت</a> </li>
+                                    <li class="icon-text">
+                                        <a href="#" style="margin-right:35px;">Link 4</a>
+                                        <ul>
+                                            <li class="icon-text"> <a href="#">Link 1</a> </li>
+                                            <li class="icon-text"> <a href="#">Link 2</a> </li>
+                                            <li class="icon-text"> <a href="#">Link 3</a> </li>
+                                            <li class="icon-text">
+                                                <a href="#" style="margin-right:35px;">Link 4</a>
+
+                                                <ul>
+                                                    <li class="icon-text"> <a href="#">Link 1</a> </li>
+                                                    <li class="icon-text"> <a href="#">Link 2</a> </li>
+                                                    <li class="icon-text"> <a href="#">Link 3</a> </li>
+                                                    <li class="icon-text">
+                                                        <a href="#" style="margin-right:35px;">Link 4</a>
+
+                                                        <ul>
+                                                            <li class="icon-text"> <a href="#">Link 1</a> </li>
+                                                            <li class="icon-text"> <a href="#">Link 2</a> </li>
+                                                            <li class="icon-text"> <a href="#">Link 3</a> </li>
+                                                            <li class="icon-text">
+                                                                <a href="#" style="margin-right:35px;">Link 4</a>
+                                                                <ul>
+                                                                    <li class="icon-text"> <a href="#">Link 1</a> </li>
+                                                                    <li class="icon-text"> <a href="#">Link 2</a> </li>
+                                                                    <li class="icon-text"> <a href="#">Link 3</a> </li>
+                                                                    <li class="icon-text">
+                                                                        <a href="#">Link 4</a>
+
+                                                                        <ul>
+                                                                            <li class="icon-text"> <a href="#">Link 1</a> </li>
+                                                                            <li class="icon-text"> <a href="#">Link 2</a> </li>
+                                                                            <li class="icon-text"> <a href="#">Link 3</a> </li>
+                                                                            <li class="icon-text">
+                                                                                <a href="#">Link 4</a>
+                                                                                <ul>
+                                                                                    <li class="icon-text"> <a href="#">Link 1</a> </li>
+                                                                                    <li class="icon-text"> <a href="#">Link 2</a> </li>
+                                                                                    <li class="icon-text"> <a href="#">Link 3</a> </li>
+                                                                                    <li class="icon-text">
+                                                                                        <a href="#">Link 4</a>
+                                                                                        <ul>
+                                                                                            <li class="icon-text"> <a href="#">Link 1</a> </li>
+                                                                                            <li class="icon-text"> <a href="#">Link 2</a> </li>
+                                                                                            <li class="icon-text"> <a href="#">Link 3</a> </li>
+                                                                                            <li class="icon-text">
+                                                                                                <a href="#">Link 4</a>
+                                                                                                <ul>
+                                                                                                    <li class="icon-text">
+                                                                                                        <a href="#">Link 1</a>
+                                                                                                        <ul>
+                                                                                                            <li class="icon-text"> <a href="#">Link 1</a> </li>
+                                                                                                            <li class="icon-text"> <a href="#">Link 2</a> </li>
+                                                                                                            <li class="icon-text"> <a href="#">Link 3</a> </li>
+                                                                                                            <li class="icon-text">
+                                                                                                                <a href="#">Link 4</a>
+                                                                                                                <ul>
+                                                                                                            </li>
+                                                                                                            <li class="icon-text"> <a href="#">Link 2</a> </li>
+                                                                                                            <li class="icon-text"> <a href="#">Link 3</a> </li>
+                                                                                                            <li class="icon-text">
+                                                                                                                <a href="#">Link 4</a>
+                                                                                                                <ul>
+                                                                                                                    <li class="icon-text"> <a href="#">Link 1</a> </li>
+                                                                                                                    <li class="icon-text"> <a href="#">Link 2</a> </li>
+                                                                                                                    <li class="icon-text"> <a href="#">Link 3</a> </li>
+                                                                                                                    <li class="icon-text">
+                                                                                                                        <a href="#">Link 4</a>
+                                                                                                                        <ul>
+                                                                                                                            <li class="icon-text"> <a href="#">Link 1</a> </li>
+                                                                                                                            <li class="icon-text"> <a href="#">Link 2</a> </li>
+                                                                                                                            <li class="icon-text"> <a href="#">Link 3</a> </li>
+                                                                                                                            <li class="icon-text">
+                                                                                                                                <a href="#">Link 4</a>
+
+                                                                                                                                <ul>
+                                                                                                                                    <li class="icon-text"> <a href="#">Link 1</a> </li>
+                                                                                                                                    <li class="icon-text"> <a href="#">Link 2</a> </li>
+                                                                                                                                    <li class="icon-text"> <a href="#">Link 3</a> </li>
+                                                                                                                                    <li class="icon-text"> <a href="#"> ايه محمد ابو المكارم عبد الغني </a> </li>
+
+                                                                                                                                </ul>
+
+                                                                                                                            </li>
+
+                                                                                                                        </ul>
+
+
+                                                                                                                    </li>
+
+                                                                                                                </ul>
+
+
+                                                                                                            </li>
+
+                                                                                                        </ul>
+
+
+                                                                                                    </li>
+
+                                                                                                </ul>
+
+
+                                                                                            </li>
+
+                                                                                        </ul>
+
+                                                                                    </li>
+
+                                                                                </ul>
+
+                                                                            </li>
+
+                                                                        </ul>
+
+
+                                                                    </li>
+
+                                                                </ul>
+
+                                                            </li>
+
+                                                        </ul>
+                                                    </li>
+
+                                                </ul>
+
+                                            </li>
+
+                                        </ul>
+                                    </li>
+
+                                </ul>
+                        </ul>
+                    </div>
+
+                    <br /><br />
+                    <!--===============================================-->
+                </div>
+            </div>
+        </section>
+
+        <!--main content end-->
+    </section>
+
+    <script src="~/assets/general/js/jquery.min.js"></script>
+    <script src="~/assets/general/js/jquery2.0.3.min.js"></script>
+    <script src="~/assets/general/js/jquery.dcjqaccordion.2.7.js"></script>
+    <script src="~/assets/general/js/scripts.js"></script>
+    <script src="~/assets/general/js/jquery.slimscroll.js"></script>
+    <script src="~/assets/general/js/jquery.nicescroll.js"></script>
+    <script src="~/assets/general/js/jquery.scrollTo.js"></script>
+    <script src="~/assets/general/js/bootstrap.js"></script>
+
+
+    <script src="~/assets/general/js/jquery-explr-1.4.js"></script>
+
+
+    <script>
+        $(document).ready(function () {
+            $("#tree").explr();
+        });
+    </script>
+
+
+</body>
+</html>
+

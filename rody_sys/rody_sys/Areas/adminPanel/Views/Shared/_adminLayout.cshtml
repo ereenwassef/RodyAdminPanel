@@ -1,0 +1,689 @@
+﻿<!DOCTYPE html>
+<head>
+   
+    <title>Admin Panel</title>
+   <!-- created By=> Eng. Aya Mohammed Abu El-Makarem (.Net Developer FCIH Level 4 ^_^ )-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="Visitors Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
+    Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+   
+    <link rel="shortcut icon" href="~/assets/admin/img/adminLogo.png">
+
+    <link rel="stylesheet" href="~/assets/admin/css/bootstrap.min.css">
+
+    <link href="~/assets/admin/css/style.css" rel='stylesheet' type='text/css' />
+    <link href="~/assets/admin/css/style-responsive.css" rel="stylesheet" />
+    <link href="~/assets/admin/css/AppFonts.css" rel="stylesheet" />
+    <link href="~/assets/admin/css/popup.css" rel="stylesheet" />
+    <link href="~/assets/admin/css/font-awesome.css" rel="stylesheet" />
+    <link href="~/assets/admin/css/paper-bootstrap-wizard.css" rel="stylesheet" />
+    <link href="~/assets/admin/css/themify-icons.css" rel="stylesheet" />
+
+    <style>
+
+        input::-webkit-input-placeholder {
+            font-size: 12px;
+        }
+
+    li {
+        list-style: none;
+    }
+
+    .tr:hover {
+        background: white;
+    }
+
+    td {
+        text-align: center;
+    }
+
+
+        h5 {
+            color: #456e82;
+            font-weight: bold;
+            font-family: Cairo;
+            font-size: 15px;
+            cursor:pointer;
+        }
+
+    th {
+        text-align: center;
+        font-family: 'Adobe نسخ';
+        font-weight: bold;
+    }
+
+        .subc {
+            border-left:6px solid #1e5e7d;
+        }
+
+
+        th, td {
+            white-space: nowrap;
+            border: 2px solid #D9E4E6;
+        }
+
+
+
+        #tbr:hover {
+            background: white;
+        }
+
+       
+
+
+</style>
+</head>
+<body>
+    <section id="container">
+        <!--header start-->
+        <header class="header fixed-top clearfix" style="background: #1e5e7d">
+            <!--logo start-->
+            <div class="brand" style="background: #222d32">
+                <a href="" class="logo" style="color:white;">
+                    <h5 style="margin-top: 7px; color: #ddd; font-weight:bold">لوحه تحكم شركه الرودي
+                        <img src="~/assets/admin/img/logo.jpg" width="40" height="40" class="img-circle"/>
+                    
+                    </h5>
+                </a>
+                <div class="sidebar-toggle-box" style="background: #222d32; color: #68B3C8;">
+                    <div class="fa fa-bars" style="color: #ddd"></div>
+                </div>
+            </div>
+            <!--logo end-->
+            <div class="nav notify-row " id="top_menu">
+                <!--  notification start -->
+                <ul class="nav top-menu">
+                    <!-- settings start -->
+                    <li class="dropdown">
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="" style="background: #ddd">
+                            <i class="fa fa-tasks" style="color:black"></i>
+                            <span class="badge bg-success">8</span>
+                        </a>
+                        @*<ul class="dropdown-menu extended tasks-bar">
+                            <li>
+                                <p class="">You have 8 pending tasks</p>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <div class="task-info clearfix">
+                                        <div class="desc pull-left">
+                                            <h5>Target Sell</h5>
+                                            <p>25% , Deadline  12 June’13</p>
+                                        </div>
+                                        <span class="notification-pie-chart pull-right" data-percent="45">
+                                            <span class="percent"></span>
+                                        </span>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <div class="task-info clearfix">
+                                        <div class="desc pull-left">
+                                            <h5>Product Delivery</h5>
+                                            <p>45% , Deadline  12 June’13</p>
+                                        </div>
+                                        <span class="notification-pie-chart pull-right" data-percent="78">
+                                            <span class="percent"></span>
+                                        </span>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <div class="task-info clearfix">
+                                        <div class="desc pull-left">
+                                            <h5>Payment collection</h5>
+                                            <p>87% , Deadline  12 June’13</p>
+                                        </div>
+                                        <span class="notification-pie-chart pull-right" data-percent="60">
+                                            <span class="percent"></span>
+                                        </span>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <div class="task-info clearfix">
+                                        <div class="desc pull-left">
+                                            <h5>Target Sell</h5>
+                                            <p>33% , Deadline  12 June’13</p>
+                                        </div>
+                                        <span class="notification-pie-chart pull-right" data-percent="90">
+                                            <span class="percent"></span>
+                                        </span>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="external">
+                                <a href="#">See All Tasks</a>
+                            </li>
+                        </ul>*@
+                    </li>
+                    <!-- settings end -->
+                    <!-- inbox dropdown start-->
+                    <li id="header_inbox_bar" class="dropdown">
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="" style="background: #ddd">
+                            <i class="fa fa-envelope-o" style="color:black"></i>
+                            <span class="badge bg-important">4</span>
+                        </a>
+                        @*<ul class="dropdown-menu extended inbox">
+                            <li>
+                                <p class="red">You have 4 Mails</p>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <span class="photo">
+                                    </span>
+                                    <span class="subject">
+                                        <span class="from">Jonathan Smith</span>
+                                        <span class="time">Just now</span>
+                                    </span>
+                                    <span class="message">
+                                        Hello, this is an example msg.
+                                    </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <span class="photo"></span>
+                                    <span class="subject">
+                                        <span class="from">Jane Doe</span>
+                                        <span class="time">2 min ago</span>
+                                    </span>
+                                    <span class="message">
+                                        Nice admin template
+                                    </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <span class="photo"></span>
+                                    <span class="subject">
+                                        <span class="from">Tasi sam</span>
+                                        <span class="time">2 days ago</span>
+                                    </span>
+                                    <span class="message">
+                                        This is an example msg.
+                                    </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <span class="photo"></span>
+                                    <span class="subject">
+                                        <span class="from">Mr. Perfect</span>
+                                        <span class="time">2 hour ago</span>
+                                    </span>
+                                    <span class="message">
+                                        Hi there, its a test
+                                    </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">See all messages</a>
+                            </li>
+                        </ul>*@
+                    </li>
+                    <!-- inbox dropdown end -->
+                    <!-- notification dropdown start-->
+                    <li id="header_notification_bar" class="dropdown">
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="" style="background: #ddd">
+                            <i class="fa fa-bell-o" style="color:black"></i>
+                            <span class="badge bg-warning">3</span>
+                        </a>
+                        @*<ul class="dropdown-menu extended notification">
+                            <li>
+                                <p>Notifications</p>
+                            </li>
+                            <li>
+                                <div class="alert alert-info clearfix">
+                                    <span class="alert-icon"><i class="fa fa-bolt"></i></span>
+                                    <div class="noti-info">
+                                        <a href="#"> Server #1 overloaded.</a>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="alert alert-danger clearfix">
+                                    <span class="alert-icon"><i class="fa fa-bolt"></i></span>
+                                    <div class="noti-info">
+                                        <a href="#"> Server #2 overloaded.</a>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="alert alert-success clearfix">
+                                    <span class="alert-icon"><i class="fa fa-bolt"></i></span>
+                                    <div class="noti-info">
+                                        <a href="#"> Server #3 overloaded.</a>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>*@
+                    </li>
+                    <!-- notification dropdown end -->
+                </ul>
+                <!--  notification end -->
+            </div>
+            <!--  notification end -->
+            <div class="top-nav clearfix " >
+                <!--search & user info start-->
+                <ul class="nav  top-menu" style="float:left;margin-left:5%; cursor:pointer">
+
+                    <!-- user login dropdown start-->
+                    <li class="dropdown">
+                        <a data-toggle="dropdown" class="dropdown-toggle"  style="background: #ddd; ">
+                            <img alt="" src="~/assets/admin/img/2.png">
+                            <span class="username" style="color:black">سوبر ادمن </span>
+                            <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu extended logout">
+                            <li style="float:right">
+                                <a href="">
+                                    <i class=" fa fa-suitcase"></i>حسابي
+                                </a>
+                            </li>
+                            <li><a href="../visitor/logout"><i class="fa fa-key"></i>تسجيل الخروج</a></li>
+                        </ul>
+                    </li>
+                    <!-- user login dropdown end -->
+                </ul>
+                <!--search & user info end-->
+            </div>
+        </header>
+        <!--header end-->
+        <!--sidebar start-->
+        <aside>
+            <div id="sidebar" class="nav-collapse" style="background: #222d32; ">
+                <!-- sidebar menu start-->
+                <div class="leftside-navigation">
+                    <ul class="sidebar-menu" id="nav-accordion">
+
+                        
+                      
+                        @*<li>
+                            <a href="#">
+                                <span style=" font-size:17px">
+                                    خدماتنا                  
+                                              </span>
+                                
+                            </a>
+                        </li>*@
+
+                        <li class="sub-menu">
+                            @*<hr style="border: 1px dotted #ddede0;"/>*@
+                            <a href="javascript:;">
+                                <span class="fa fa-chevron-down fa-sm" style="font-size:13px" />
+                                <span style=" font-size:17px">
+                                    العملاء
+                                </span>
+                               
+                            </a>
+                            <ul class="sub subc">
+                                <li>
+                                    <a href="#!client/clientTypes">
+                                        <span style=" font-size:15px">
+                                            تصنيف العملاء
+                                        </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#!clients/getAllClients">
+
+                                        <span style=" font-size:15px">
+                                            بيانات العملاء
+                                        </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#!clients/clientHistory">
+
+                                        <span style=" font-size:15px">
+                                            كشف حساب
+                                        </span>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="#!clients/getAllClientsCharge">
+
+                                        <span style=" font-size:15px">
+                                            قائمه بأرصده العملاء
+                                        </span>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="#!clients/clientsSummarization">
+
+                                        <span style=" font-size:15px">
+                                            كشف معاملات العملاء
+                                        </span>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="#!clients/clientsMostahekElsadad">
+
+                                        <span style=" font-size:15px">
+                                            قائمه مستحقي السداد
+                                        </span>
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </li>
+
+                        <li class="sub-menu">
+
+                            <a href="javascript:;">
+                                <span class="fa fa-chevron-down fa-sm" style="font-size:13px" />
+                                <span style=" font-size:17px">
+                                    الموردين
+                                </span>
+                            </a>
+                            <ul class="sub subc">
+                                <li>
+                                    <a href="#!suppliers/mainCategories">
+
+                                        <span style=" font-size:15px">
+                                            التصنيفات الرئيسيه
+                                        </span>
+                                    </a>
+
+                                </li>
+                                <li>
+                                    <a href="#!suppliers/subCategories">
+
+                                        <span style=" font-size:15px">
+                                            التصنيفات الفرعيه
+                                        </span>
+                                    </a>
+
+                                </li>
+
+                                <li>
+                                    <a href="#!suppliers/getAllSuppliers">
+
+                                        <span style=" font-size:15px">
+                                            بيانات الموردين
+                                        </span>
+                                    </a>
+
+                                </li>
+
+                                <li>
+                                    <a href="#!suppliers/supplierHistory">
+
+                                        <span style=" font-size:15px">
+                                           كشف حساب مورد
+                                        </span>
+                                    </a>
+
+                                </li>
+
+                            </ul>
+                        </li>
+
+                        <li class="sub-menu">
+                            <a href="javascript:;">
+                                <span class="fa fa-chevron-down fa-sm" style="font-size:13px" />
+                                <span style=" font-size:17px">
+                                    المشتريات
+                                </span>
+                            </a>
+                            <ul class="sub subc">
+                                <li>
+                                    <a href="#!purchases/getAllPurchases">
+
+                                        <span style=" font-size:15px">
+                                            حركات المشتريات
+                                        </span>
+                                    </a>
+
+                                </li>
+
+                                <li>
+                                    <a href="#!purchases/addPurchaseOperation">
+
+                                        <span style=" font-size:15px">
+                                            اضافه حركه مشتريات
+                                        </span>
+                                    </a>
+
+                                </li>
+
+                            </ul>
+                        </li>
+                        
+                        <li class="sub-menu">
+                            <a href="javascript:;">
+                                <span class="fa fa-chevron-down fa-sm" style="font-size:13px" />
+                                <span style=" font-size:17px">
+                                    المبيعات
+                                </span>
+                            </a>
+                            <ul class="sub subc">
+                                <li>
+                                    <a href="#!sales/getAllSales">
+
+                                        <span style=" font-size:15px">
+                                            حركات المبيعات
+                                        </span>
+                                    </a>
+
+                                </li>
+
+                                <li>
+                                    <a href="#!sales/addSale">
+
+                                        <span style=" font-size:15px">
+                                            اضافه حركه مبيعات
+                                        </span>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="#!sales/phoneNumHistory">
+                                        <span style=" font-size:15px">
+                                            متابعه شحن رقم معين
+                                        </span>
+                                    </a>
+                                </li>
+
+
+                            </ul>
+                        </li>
+                                               
+
+                        <li class="sub-menu">
+                            <a href="javascript:;">
+                                <span class="fa fa-chevron-down fa-sm" style="font-size:13px" />
+                                <span style=" font-size:17px">
+                                    الخزائن  </span>
+                            </a>
+                            <ul class="sub subc">
+                                <li>
+                                    <a href="#!treasuries/getAllTreasuries">
+
+                                        <span style="font-size:15px">
+                                            بيانات الخزائن
+                                        </span>
+                                    </a>
+
+                                </li>
+                                <li>
+                                    <a href="#!treasuries/addTahseel">
+                                        <span style=" font-size:15px">
+                                            اضافه حركه خزنه
+                                        </span>
+
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#!treasuries/treasuriesOperations">
+                                        <span style=" font-size:15px">
+                                            حركات الخزائن
+                                        </span>
+
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+
+
+                        <li class="sub-menu">
+                            <a href="javascript:;">
+                                <span class="fa fa-chevron-down fa-sm" style="font-size:13px" />
+                                <span style=" font-size:17px">
+                                    الخدمات والشرائح
+                                </span>
+                            </a>
+                            <ul class="sub subc">
+                                <li>
+                                    <a href="#!services/getAllServices">
+
+                                        <span style="font-size:15px">
+                                            الخدمات
+                                        </span>
+                                    </a>
+
+                                </li>
+
+                                <li>
+                                    <a href="#!services/servicesChart">
+
+                                        <span style="font-size:15px">
+                                            الخدمات الاكثر استخداما
+                                        </span>
+                                    </a>
+
+                                </li>
+
+                                <li>
+                                    <a href="#!stores/getAllStores">
+
+                                        <span style="font-size:15px">
+                                            بيانات الشرائح
+                                        </span>
+                                    </a>
+
+                                </li>
+
+                               
+
+                              
+                                
+                            </ul>
+                        </li>
+
+
+
+                        <li class="sub-menu">
+                            <a href="javascript:;">
+                                <span class="fa fa-chevron-down fa-sm" style="font-size:13px" />
+
+                                <span style=" font-size:17px;">
+                                    الاماكن
+                                </span>
+                            </a>
+                            <ul class="sub subc">
+                                <li>
+
+                                    <a href="#!governs/getAllGoverns">
+                                        <span style=" font-size:15px">المحافظات</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#!areas/getAllAreas">
+                                        <span style=" font-size:15px">
+                                            المناطق
+                                        </span>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="#!clients/areasSummarization">
+
+                                        <span style=" font-size:15px">
+                                            كشف معاملات المناطق
+                                        </span>
+                                    </a>
+                                </li>
+
+                                @*<li>
+                    <a href="#!clients/areasSummarization">
+
+                        <span style=" font-size:15px">
+                                المناطق الاكثر مبيعا
+                        </span>
+                    </a>
+                </li>*@
+
+                            </ul>
+                        </li>
+
+                        <li class="sub-menu">
+                            <a href="javascript:;">
+                                <span class="fa fa-chevron-down fa-sm" style="font-size:13px" />
+                                <span style=" font-size:17px">الموظفين</span>
+                            </a>
+                            <ul class="sub subc">
+                                <li>
+                                    <a href="#!agents/getAllAgents">
+                                        <span style=" font-size:15px">
+                                            الوكلاء
+                                        </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#!delegators/getAllDelegators" style="font-family: 'Myriad عربي'; font-size: 20px;">
+
+                                        <span style=" font-size:15px">
+                                            مندوبين المبيعات
+                                        </span>
+                                    </a>
+                                </li>
+
+                                @*<li>
+                    <a href="#" style="font-family: 'Myriad عربي'; font-size: 20px;">
+                        الشركاء
+                    </a>
+                </li>*@
+                            </ul>
+                        </li>
+
+                        
+                        <li>
+                            <a href="#!banks/getAllBanks">
+                                <span style=" font-size:17px">البنوك</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#!partners/getAllPartners">
+                                <span style=" font-size:17px">الشركاء</span>
+                            </a>
+                        </li>
+
+
+                    </ul>
+                </div>
+                <!-- sidebar menu end-->
+            </div>
+        </aside>
+        
+       
+            @RenderBody()
+
+        </section>
+             
+       
+
+</body>
+
+
+
+

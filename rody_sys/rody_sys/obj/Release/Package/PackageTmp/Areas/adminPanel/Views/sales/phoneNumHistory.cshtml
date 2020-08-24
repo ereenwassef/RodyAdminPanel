@@ -1,0 +1,149 @@
+﻿
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title></title>
+    <style>
+        h4 {
+            color: #456e82;
+        }
+
+        h3 {
+            color: #5c4f4f;
+        }
+    </style>
+
+</head>
+
+<body ng-controller="ctr_sale2">
+
+    <section id="main-content">
+        <section class="wrapper">
+            <div class="table-agile-info">
+                <ol class="breadcrumb breadcrumb-2">
+                    <li><a><i class="icon-home"></i> القائمه</a></li>
+                    <li class="active"><a>المبيعات</a> </li>
+                    <li class="active"><a style="color: #ec407a">متابعه شحن رقم معين</a> </li>
+                </ol>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <strong style="color: #5c4f4f">متابعه شحن رقم معين</strong>
+
+                    </div>
+                    <div class="row w3-res-tb">
+
+
+                        <div class="col-lg-3 col-lg-offset-3">
+
+                            <input ng-model="to" placeholder="الي تاريخ " style="border-radius: 0px;" class="form-control" type="text" onfocus="(this.type='date')">
+
+                        </div>
+
+                        <div class="col-lg-3">
+
+                            <input ng-model="from" placeholder="من تاريخ " style="border-radius: 0px;" class="form-control" type="text" onfocus="(this.type='date')">
+
+                        </div>
+
+                        <div class="col-lg-3">
+
+                            <input type="text" ng-model="phNum" class="form-control" style="border-radius: 0px;" placeholder="رقم التيفون" />
+
+                        </div>
+
+                       <br/><br/><br/>
+                        <div class="col-lg-3 col-lg-offset-6">
+                            <h5 class="text-center" style="background: #f2f5f2; padding: 6px;
+                               height: 34px; color: gray;  ">
+                                العدد :
+                                <span>{{(phoneHistory | myFilter2:from:to |filter:phNum).length}}</span>
+                            </h5>
+                        </div>
+
+                            <div class="col-lg-3 " dir="ltr">
+                                <h5 class="text-center" style="background: #ffdddc; padding: 6px; height: 34px; color: gray; ">
+                                    الاجمالي   :  {{ phoneHistory | myFilter2:from:to |filter:phNum | sumFilterDeptor }} جنيه
+                                </h5>
+                            </div>
+                        
+
+                    </div>
+
+                 
+
+
+
+                    <br />
+
+                    <div class="table-responsive">
+
+                        <table class="table table-striped b-t b-light" dir="rtl" id="example">
+                            <thead>
+                                <tr style="background: #ddede0; padding:5px ">
+                                    <th><h5 style="padding:5px;">رقم الحركه</h5></th>
+                                    <th><h5 style="padding: 5px">التاريخ</h5></th>
+                                    <th><h5 style="padding: 5px">الوقت</h5></th>
+                                    <th><h5 style="padding: 5px">العميل</h5></th>
+                                    <th><h5 style="padding: 5px">رقم التليفون</h5></th>
+                                    <th><h5 style="padding: 5px">القيمه</h5></th>
+                                    <th><h5 style="padding: 5px">ملاحظات</h5></th>
+                                </tr>
+                            </thead>
+                            <tbody ng-repeat="ph in phoneHistory | myFilter2:from:to |filter:phNum ">
+
+                                <tr class="tr" id="tbr">
+                                    <td style="border: 1px solid #D9E4E6; ">
+                                        <h4>
+                                            {{ph.id}}
+                                        </h4>
+                                    </td>
+                                    <td style="border: 1px solid #D9E4E6">
+                                        <h4>
+                                            {{ph.actual_date}}
+                                        </h4>
+                                    </td>
+                                    <td style="border: 1px solid #D9E4E6; ">
+                                        <h4>
+                                            {{ph.time}}
+                                        </h4>
+                                    </td>
+                                    <td style="border: 1px solid #D9E4E6">
+                                        <h4>
+                                            {{ph.name}}
+                                        </h4>
+                                    </td>
+                                    <td style="border: 1px solid #D9E4E6; " ng-if="ph.number!=null">
+                                        <h4>
+                                            {{ph.number}}
+                                        </h4>
+                                    </td>
+                                    <td style="border: 1px solid #D9E4E6; " ng-if="ph.otherPhoneNum!=null">
+                                        <h4>
+                                            {{ph.otherPhoneNum}}
+                                        </h4>
+                                    </td>
+                                    <td style="border: 1px solid #D9E4E6">
+                                        <h4>
+                                            {{ph.debtor}}
+                                        </h4>
+                                    </td>
+                                    <td style="border: 1px solid #D9E4E6">
+                                        <h4>
+                                            {{ph.notes}}
+                                        </h4>
+                                    </td>
+
+                                </tr>
+
+                            </tbody>
+                        </table>
+                        <br />
+                    </div>
+                </div>
+        </section>
+        <!--main content end-->
+    </section>
+
+</body>
+</html>
+

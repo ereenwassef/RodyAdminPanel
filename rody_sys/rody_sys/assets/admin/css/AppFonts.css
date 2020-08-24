@@ -1,0 +1,129 @@
+﻿@font-face {
+    font-family: 'Cairo';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Cairo'), local('Cairo-Regular'), url(https://fonts.gstatic.com/s/cairo/v1/MoGpUcTu_oZLf0bsrG2xFQ.woff2) format('woff2');
+    unicode-range: U+0600-06FF, U+200C-200E, U+2010-2011, U+FB50-FDFF, U+FE80-FEFC;
+}
+/* latin-ext */
+@font-face {
+    font-family: 'Cairo';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Cairo'), local('Cairo-Regular'), url(https://fonts.gstatic.com/s/cairo/v1/iZqLGfCYEEkWEsr6HQRnSQ.woff2) format('woff2');
+    unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+    font-family: 'Cairo';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Cairo'), local('Cairo-Regular'), url(https://fonts.gstatic.com/s/cairo/v1/gtxIPk0-ZE5IZ2RrdsRLuQ.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
+}
+/**========================================================================*/
+@font-face {
+    font-family: 'Courier';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Cairo'), local('Cairo-Regular'), url(https://fonts.gstatic.com/s/cairo/v1/gtxIPk0-ZE5IZ2RrdsRLuQ.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
+}
+
+@font-face {
+    font-family: 'Adobe نسخ';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Cairo'), local('Cairo-Regular'), url(https://fonts.gstatic.com/s/cairo/v1/gtxIPk0-ZE5IZ2RrdsRLuQ.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
+}
+
+@font-face {
+    font-family: 'Arabic Typesetting';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Cairo'), local('Cairo-Regular'), url(https://fonts.gstatic.com/s/cairo/v1/gtxIPk0-ZE5IZ2RrdsRLuQ.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
+}
+
+@font-face {
+    font-family: 'CordiaUPC';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Cairo'), local('Cairo-Regular'), url(https://fonts.gstatic.com/s/cairo/v1/gtxIPk0-ZE5IZ2RrdsRLuQ.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
+}
+
+@font-face {
+    font-family: 'Myriad عربي';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Cairo'), local('Cairo-Regular'), url(https://fonts.gstatic.com/s/cairo/v1/gtxIPk0-ZE5IZ2RrdsRLuQ.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
+}
+
+@font-face {
+    font-family: 'Microsoft Uighur';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Cairo'), local('Cairo-Regular'), url(https://fonts.gstatic.com/s/cairo/v1/gtxIPk0-ZE5IZ2RrdsRLuQ.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
+}
+
+@font-face {
+    font-family: 'Andalus';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Cairo'), local('Cairo-Regular'), url(https://fonts.gstatic.com/s/cairo/v1/gtxIPk0-ZE5IZ2RrdsRLuQ.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
+}
+
+@font-face {
+    font-family: 'Courier New';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Cairo'), local('Cairo-Regular'), url(https://fonts.gstatic.com/s/cairo/v1/gtxIPk0-ZE5IZ2RrdsRLuQ.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
+}
+/**========================================================================*/
+
+span {
+    font-family: Cairo;
+    font-size: medium;
+}
+
+h1 {
+    font-family: Cairo;
+    font-size: large;
+}
+
+h2, h3, h4, b {
+    font-family: Cairo;
+    font-size: medium;
+}
+h5,a {
+    font-family: Cairo;
+    font-size: medium;
+}
+
+::-webkit-input-placeholder {
+    color: gray !important;
+    text-align: center;
+    font-size: 17px;
+    font-family: Cairo;
+}
+
+em,kbd{
+     font-family: Cairo;
+    font-size: medium;
+
+}
+strong{
+
+    font-family: Cairo;
+    font-size: large;
+}
+input {
+     font-family: Cairo;
+    font-size: medium;
+}

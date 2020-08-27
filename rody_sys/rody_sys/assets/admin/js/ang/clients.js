@@ -190,12 +190,12 @@ app.controller("ctr_client", function ($scope, $http) {
 
     $scope.add_client = function () {
 
-        if ($scope.name == null || parentId == 0)
-        {
-            alert("لم تتم عمليه الاضافه .. لا يمكن ان تترك قيمه اسم العميل والعميل الرئيسي فارغه ");
-        }
-        else
-        {
+        //if ($scope.name == null || parentId == 0)
+        //{
+        //    alert("لم تتم عمليه الاضافه .. لا يمكن ان تترك قيمه اسم العميل والعميل الرئيسي فارغه ");
+        //}
+        //else
+        //{
                 $http({
                     url: "../clients/add_client",
                     method: "POST",
@@ -206,7 +206,7 @@ app.controller("ctr_client", function ($scope, $http) {
                         DOB: $scope.DOB,
                         idNum: $scope.idNum,
                         name: $scope.name,
-                        parentId: parentId,
+                        parentId: 56,
                         phone1: $scope.ph1,
                         shreha1: $scope.sh1,
                         phone2: $scope.ph2,
@@ -239,7 +239,7 @@ app.controller("ctr_client", function ($scope, $http) {
                     alert("an error occurs" + errorReason.data);
                 });
             
-        }
+        //}
     }
 //=======================================================
     $scope.makeAddPossible = function (c)
@@ -458,7 +458,7 @@ app.controller("ctr_client", function ($scope, $http) {
 
             $scope.currentValue = "";
             $scope.currentType = "";
-            $scope.desValue = "";
+            $scope.desValue = "sdfsdfs";
             $scope.desType = "";
             $scope.myStyle = {
                 "background-color": "none",

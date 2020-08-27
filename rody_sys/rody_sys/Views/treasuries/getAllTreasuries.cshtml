@@ -1,9 +1,15 @@
-﻿
-<html xmlns="http://www.w3.org/1999/xhtml">
+﻿   @{     ViewBag.Title = "area";
+        Layout = "~/Areas/adminPanel/Views/Shared/_adminLayout.cshtml";
+    }
+
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="myApp">
+
 
 <head>
+    <script src="~/assets/general/js/angular.js"></script>
+    <script src="~/assets/admin/js/ang/treasuries.js"></script>
     <title></title>
-   
+
     <style>
         h4 {
             color: #456e82;
@@ -163,7 +169,7 @@
                                 </td>
 
                             </tr>
-                           
+
                         </table>
                         <br /><hr />
                         <button type="button" class="btn btn-success btn-sm" data-dismiss="modal">الغاء</button>

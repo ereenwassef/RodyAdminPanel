@@ -175,3 +175,12 @@ E:\Plan B\Ahmed hafez\EL Rody v2\RodyAdminPanel\rody_sys\rody_sys\obj\Debug\rody
 E:\Plan B\Ahmed hafez\EL Rody v2\RodyAdminPanel\rody_sys\rody_sys\obj\Debug\rody_sys.csproj.CopyComplete
 E:\Plan B\Ahmed hafez\EL Rody v2\RodyAdminPanel\rody_sys\rody_sys\obj\Debug\rody_sys.dll
 E:\Plan B\Ahmed hafez\EL Rody v2\RodyAdminPanel\rody_sys\rody_sys\obj\Debug\rody_sys.pdb
+E:\Plan B\Ahmed hafez\EL Rody v2\RodyAdminPanel\rody_sys\rody_sys\bin\System.Data.Entity.Repository.dll
+E:\Plan B\Ahmed hafez\EL Rody v2\RodyAdminPanel\rody_sys\rody_sys\bin\EntityFramework.SqlServer.dll
+E:\Plan B\Ahmed hafez\EL Rody v2\RodyAdminPanel\rody_sys\rody_sys\bin\Microsoft.AspNet.Identity.Core.dll
+E:\Plan B\Ahmed hafez\EL Rody v2\RodyAdminPanel\rody_sys\rody_sys\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+E:\Plan B\Ahmed hafez\EL Rody v2\RodyAdminPanel\rody_sys\rody_sys\bin\System.Data.Common.dll
+E:\Plan B\Ahmed hafez\EL Rody v2\RodyAdminPanel\rody_sys\rody_sys\bin\System.Data.SqlClient.dll
+E:\Plan B\Ahmed hafez\EL Rody v2\RodyAdminPanel\rody_sys\rody_sys\bin\EntityFramework.SqlServer.xml
+E:\Plan B\Ahmed hafez\EL Rody v2\RodyAdminPanel\rody_sys\rody_sys\bin\Microsoft.AspNet.Identity.Core.xml
+E:\Plan B\Ahmed hafez\EL Rody v2\RodyAdminPanel\rody_sys\rody_sys\bin\Microsoft.AspNet.Identity.EntityFramework.xml

@@ -27,7 +27,7 @@ namespace rody_sys.Areas.adminPanel.Models
         public string phone3 { get; set; }
         public Nullable<int> count { get; set; }
     
-        public virtual client client { get; set; }
         public virtual stores stores { get; set; }
+        public virtual client client { get; set; }
     }
 }

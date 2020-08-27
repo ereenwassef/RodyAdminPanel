@@ -25,8 +25,8 @@ namespace rody_sys.Areas.adminPanel.Models
         public Nullable<double> total_after { get; set; }
         public Nullable<int> clientId { get; set; }
     
-        public virtual client client { get; set; }
         public virtual shareha shareha { get; set; }
         public virtual supplier supplier { get; set; }
+        public virtual client client { get; set; }
     }
 }

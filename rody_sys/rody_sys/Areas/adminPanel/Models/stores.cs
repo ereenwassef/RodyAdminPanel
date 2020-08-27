@@ -16,17 +16,15 @@ namespace rody_sys.Areas.adminPanel.Models
     {
         public stores()
         {
-            this.operations_store = new HashSet<operations_store>();
-            this.operations_store1 = new HashSet<operations_store>();
             this.reportClientTahseel = new HashSet<reportClientTahseel>();
+            this.operations_store = new HashSet<operations_store>();
         }
     
         public int id { get; set; }
         public string name { get; set; }
         public Nullable<decimal> value { get; set; }
     
-        public virtual ICollection<operations_store> operations_store { get; set; }
-        public virtual ICollection<operations_store> operations_store1 { get; set; }
         public virtual ICollection<reportClientTahseel> reportClientTahseel { get; set; }
+        public virtual ICollection<operations_store> operations_store { get; set; }
     }
 }

@@ -16,9 +16,9 @@ namespace rody_sys.Areas.adminPanel.Models
     {
         public supplier()
         {
-            this.operations_store = new HashSet<operations_store>();
             this.operations_supplier = new HashSet<operations_supplier>();
             this.purchases = new HashSet<purchases>();
+            this.operations_store = new HashSet<operations_store>();
         }
     
         public int id { get; set; }
@@ -35,9 +35,9 @@ namespace rody_sys.Areas.adminPanel.Models
         public Nullable<int> business_type { get; set; }
         public Nullable<double> charge { get; set; }
     
-        public virtual ICollection<operations_store> operations_store { get; set; }
         public virtual ICollection<operations_supplier> operations_supplier { get; set; }
         public virtual ICollection<purchases> purchases { get; set; }
         public virtual sub_category_supplier sub_category_supplier { get; set; }
+        public virtual ICollection<operations_store> operations_store { get; set; }
     }
 }

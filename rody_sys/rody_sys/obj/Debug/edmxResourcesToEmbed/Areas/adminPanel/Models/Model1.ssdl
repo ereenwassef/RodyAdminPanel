@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="Rody_DBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+<Schema Namespace="Rody_DBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityType Name="agent">
     <Key>
       <PropertyRef Name="id" />
@@ -63,7 +63,6 @@
     <Property Name="parentId" Type="int" />
     <Property Name="contract_date" Type="nchar" MaxLength="100" />
     <Property Name="MsgCharge" Type="float" />
-    <Property Name="done" Type="int" />
   </EntityType>
   <EntityType Name="client_type">
     <Key>
@@ -136,8 +135,6 @@
     <Property Name="date" Type="nchar" MaxLength="50" />
     <Property Name="supplierId" Type="int" />
     <Property Name="give_value" Type="float" />
-    <Property Name="charge" Type="float" />
-    <Property Name="fromToStoreId" Type="int" />
   </EntityType>
   <EntityType Name="operations_supplier">
     <Key>
@@ -430,18 +427,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_operations_store_stores1">
-    <End Role="stores" Type="Self.stores" Multiplicity="0..1" />
-    <End Role="operations_store" Type="Self.operations_store" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="stores">
-        <PropertyRef Name="id" />
-      </Principal>
-      <Dependent Role="operations_store">
-        <PropertyRef Name="fromToStoreId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_operations_store_supplier">
     <End Role="supplier" Type="Self.supplier" Multiplicity="0..1" />
     <End Role="operations_store" Type="Self.operations_store" Multiplicity="*" />
@@ -622,31 +607,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Function Name="add_operation_supplier_give" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="supId" Type="int" Mode="In" />
-    <Parameter Name="getval" Type="float" Mode="In" />
-    <Parameter Name="dat" Type="date" Mode="In" />
-  </Function>
-  <Function Name="add_store_operation_sup" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="supId" Type="int" Mode="In" />
-    <Parameter Name="storeId" Type="int" Mode="In" />
-    <Parameter Name="giveval" Type="float" Mode="In" />
-    <Parameter Name="dat" Type="date" Mode="In" />
-  </Function>
-  <Function Name="call_add_new_give_supplier" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="supId" Type="int" Mode="In" />
-    <Parameter Name="storeId" Type="int" Mode="In" />
-    <Parameter Name="getValue" Type="float" Mode="In" />
-    <Parameter Name="date" Type="nvarchar" Mode="In" />
-  </Function>
-  <Function Name="decrease_charge_of_store" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="storeId" Type="int" Mode="In" />
-    <Parameter Name="val" Type="float" Mode="In" />
-  </Function>
-  <Function Name="decrease_charge_of_supplier" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="sId" Type="int" Mode="In" />
-    <Parameter Name="value" Type="float" Mode="In" />
-  </Function>
   <EntityContainer Name="Rody_DBModelStoreContainer">
     <EntitySet Name="agent" EntityType="Self.agent" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="area" EntityType="Self.area" Schema="dbo" store:Type="Tables" />
@@ -719,10 +679,6 @@
       <End Role="operations_store" EntitySet="operations_store" />
     </AssociationSet>
     <AssociationSet Name="FK_operations_store_stores" Association="Self.FK_operations_store_stores">
-      <End Role="stores" EntitySet="stores" />
-      <End Role="operations_store" EntitySet="operations_store" />
-    </AssociationSet>
-    <AssociationSet Name="FK_operations_store_stores1" Association="Self.FK_operations_store_stores1">
       <End Role="stores" EntitySet="stores" />
       <End Role="operations_store" EntitySet="operations_store" />
     </AssociationSet>

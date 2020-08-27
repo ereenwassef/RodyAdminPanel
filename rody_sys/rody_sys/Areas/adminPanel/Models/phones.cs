@@ -25,9 +25,9 @@ namespace rody_sys.Areas.adminPanel.Models
         public Nullable<int> clientId { get; set; }
         public Nullable<int> sharehaId { get; set; }
     
-        public virtual client client { get; set; }
         public virtual ICollection<operations_client> operations_client { get; set; }
         public virtual shareha shareha { get; set; }
         public virtual ICollection<sales> sales { get; set; }
+        public virtual client client { get; set; }
     }
 }

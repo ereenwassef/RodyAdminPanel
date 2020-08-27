@@ -1,8 +1,9 @@
-﻿/// <reference path="../angular.js" />
+﻿/// <reference path="../../../general/js/angular.js" />
 
+var app = angular.module("myApp", []);
 //var app = angular.module("myApp", []);
 
-angular.module('myApp').controller("treasuries", function ($scope, $http) {
+app.controller("treasuries", function ($scope, $http) {
 
 
     $scope.get_all_treasuries = function () {

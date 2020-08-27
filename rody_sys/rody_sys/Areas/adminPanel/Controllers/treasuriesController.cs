@@ -109,7 +109,7 @@ namespace rody_sys.Areas.adminPanel.Controllers
             ops.clientId = cid;
             ops.storeId = storeId;
             ops.get_value = getValue;
-            ops.charge =(double)st.value;
+           // ops.charge =(double)st.value;
             if (date == "")
             {
                 ops.date = DateTime.Now.Date.ToString("dd/MM/yyyy", new CultureInfo("ar-AE"));
@@ -129,9 +129,9 @@ namespace rody_sys.Areas.adminPanel.Controllers
 
             operations_store ops = new operations_store();
             ops.storeId = storeId1;
-            ops.fromToStoreId = storeId2;
+           // ops.fromToStoreId = storeId2;
             ops.get_value = getValue;
-            ops.charge = (double)st.value;
+           // ops.charge = (double)st.value;
             if (date == "")
             {
                 ops.date = DateTime.Now.Date.ToString("dd/MM/yyyy", new CultureInfo("ar-AE"));
@@ -151,9 +151,9 @@ namespace rody_sys.Areas.adminPanel.Controllers
 
             operations_store ops = new operations_store();
             ops.storeId = storeId2;
-            ops.fromToStoreId = storeId1;
+        //    ops.fromToStoreId = storeId1;
             ops.give_value = getValue;
-            ops.charge = (double)st.value;
+         //   ops.charge = (double)st.value;
             if (date == "")
             {
                 ops.date = DateTime.Now.Date.ToString("dd/MM/yyyy", new CultureInfo("ar-AE"));
@@ -448,7 +448,7 @@ namespace rody_sys.Areas.adminPanel.Controllers
             ops.clientId = cid;
             ops.storeId = storeId;
             ops.give_value = value;
-            ops.charge = (double)st.value;
+           // ops.charge = (double)st.value;
             if (date == "")
             {
                 ops.date = DateTime.Now.Date.ToString("dd/MM/yyyy", new CultureInfo("ar-AE"));
@@ -603,7 +603,7 @@ namespace rody_sys.Areas.adminPanel.Controllers
                 ops.give_value = (float)value;
             }
             float charge = (float) DB.stores.Where(s => s.id == storeId).Single().value;
-            ops.charge = charge;
+           // ops.charge = charge;
             ops.date = DateTime.Now.ToString("dd/MM/yyyy");
             DB.operations_store.Add(ops);
             DB.SaveChanges();
@@ -658,7 +658,7 @@ namespace rody_sys.Areas.adminPanel.Controllers
         [HttpGet]
         public JsonResult treasuries_operations()
         {
-            return Json(new { allOperations = DB.operations_store.Select(s => new { s.id,s.storeId,sName=s.stores.name , s.get_value , s.clientId ,cName= s.client.name , s.date, s.supplierId ,supName= s.supplier.name ,s.give_value , s.charge ,s.fromToStoreId , fromToStore=s.stores1.name  }).ToList() }, JsonRequestBehavior.AllowGet);
+            return Json(new { allOperations = DB.operations_store.Select(s => new { s.id,s.storeId,sName=s.stores.name , s.get_value , s.clientId ,cName= s.client.name , s.date, s.supplierId ,supName= s.supplier.name ,s.give_value }).ToList() }, JsonRequestBehavior.AllowGet);
         }
 //===========================================================================
         public ActionResult treasuriesOperations()

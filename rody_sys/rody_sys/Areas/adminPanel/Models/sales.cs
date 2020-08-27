@@ -31,9 +31,9 @@ namespace rody_sys.Areas.adminPanel.Models
         public Nullable<double> quantity { get; set; }
         public Nullable<double> price { get; set; }
     
-        public virtual client client { get; set; }
         public virtual ICollection<operations_client> operations_client { get; set; }
         public virtual phones phones { get; set; }
         public virtual services services { get; set; }
+        public virtual client client { get; set; }
     }
 }

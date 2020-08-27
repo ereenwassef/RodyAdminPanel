@@ -5,12 +5,16 @@ using System.Web;
 using System.Web.Mvc;
 using rody_sys.Areas.adminPanel.Models;
 using rody_sys.Areas.adminPanel.Controllers;
-using System.Data.Entity;
 using System.Threading;
 using System.Globalization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using rody_sys.Areas.adminPanel.DTOs;
 using System.Data;
+using System.Data.Entity;
+
+
+
 
 namespace rody_sys.Areas.adminPanel.Controllers
 {
@@ -24,48 +28,80 @@ namespace rody_sys.Areas.adminPanel.Controllers
         }
 //=========================================
         [HttpGet]
-        public JsonResult get_all_clients(int page = 1)
+        public ActionResult get_all_clients(int page = 1)
         {
-            //double count=DB.client.ToList().Count / 10.00;
-            //double pCount=Math.Ceiling(count);
+            double count = DB.client.ToList().Count / 10.00;
+            double pCount = Math.Ceiling(count);
+            var clients = DB.client.ToList();
+      var ClinetsData=clients.Select(s=>new ClinetDTO {
+            activation_date=s.activation_date,
+            agentId=s.delegator.agentId,
+            areaId=s.areaId,
+            areaName=s.area.name,
+            id_place=s.id_place,
+            id_num=s.id_num,
+            id=s.id,
+            governId=s.area.govId,
+            govern=s.area.govern.name,
+            delegatorId=s.delegatorId,
+            date_of_birth=s.date_of_birth,
+            contract_date=s.contract_date,
+            charge=s.charge,
+            available=s.available,
+            jop=s.jop,
+            MsgCharge=s.MsgCharge,
+            name=s.name,
+            notes=s.notes,
+            num_followers=s.num_followers,
+            parentId=s.parentId,
+            stay_place=s.stay_place,
+            stay_place_flat=s.stay_place_flat,
+            stay_place_floor=s.stay_place_floor,
+            stay_place_get=s.stay_place_get,
+            type=s.client_type1.type,
+            work_name=s.work_name,
+            work_place=s.work_place,
+            phones=s.phones.Select(s1 => new PhoneDTO {  number=s1.number, name=s1.shareha.name }).ToList()
 
-            return Json(new
+            }).ToList();
+                //Select(d => new
+            //{
+            //    d.id,
+            //    d.charge,
+            //    d.name,
+            //    type = d.client_type1.type,
+            //    d.contract_date,
+            //    d.activation_date,
+            //    govern = d.area.govern.name,
+            //    governId = d.area.govId,
+            //    areaName = d.area.name,
+            //    areaId = d.areaId,
+            //    d.stay_place_get,
+            //    d.num_followers,
+            //    d.parentId,
+            //    pName = d.name ?? "",
+            //    d.jop,
+            //    d.date_of_birth,
+            //    d.id_num,
+            //    d.id_place,
+            //    d.work_name,
+            //    d.work_place,
+            //    d.stay_place,
+            //    d.stay_place_floor,
+            //    d.stay_place_flat,
+            //    d.delegatorId,
+            //    d.delegator.agentId,
+            //    d.available,
+            //    d.notes,
+            //    d.MsgCharge,
+
+            //   phones = d.phones.Select(p => new { p.number, p.shareha.name }).ToArray()
+            //}).ToList();
+            return  
+                Json(new
             {
-                allClients = DB.client.Select(d => new
-                {
-                    d.id,
-                    d.charge,
-                    d.name,
-                    type = d.client_type1.type,
-                    d.contract_date,
-                    d.activation_date,
-                    govern = d.area.govern.name,
-                    governId = d.area.govId,
-                    areaName = d.area.name,
-                    areaId = d.areaId,
-                    d.stay_place_get,
-                    d.num_followers,
-                    d.parentId,
-                    pName = DB.client.Where(x => x.id == d.parentId).FirstOrDefault().name ??"",
-                    d.jop,
-                    d.date_of_birth,
-                    d.id_num,
-                    d.id_place,
-                    d.work_name,
-                    d.work_place,
-                    d.stay_place,
-                    d.stay_place_floor,
-                    d.stay_place_flat,
-                    d.delegatorId,
-                    d.delegator.agentId,
-                    d.available,
-                    d.notes,
-                    d.MsgCharge,
-                    //,
-                    //d.done,
-                    //phones = d.phones.Select(p => new { p.number, p.shareha.name }).ToList()
-                }).ToList(),
-                //pageCount = pCount
+                allClients = ClinetsData,
+                pageCount = pCount
             } , JsonRequestBehavior.AllowGet);
         }
 //================================================================================
@@ -147,7 +183,7 @@ namespace rody_sys.Areas.adminPanel.Controllers
                     d.available,
                     d.notes,
                     d.MsgCharge,
-                    d.done,
+                   
                     phones = d.phones.Select(p => new { p.number, p.shareha.name }).ToList()
                 }).OrderBy(d => d.id).ToList(),
             }, JsonRequestBehavior.AllowGet);
@@ -159,7 +195,7 @@ namespace rody_sys.Areas.adminPanel.Controllers
             try
             {
                 client c = DB.client.Where(x => x.id == clientId).Single();
-                c.done = 1;
+                
                 DB.Entry(c).State = EntityState.Modified;
                 DB.SaveChanges();
 
@@ -348,7 +384,7 @@ namespace rody_sys.Areas.adminPanel.Controllers
         [HttpGet]
         public JsonResult get_clients_summarization(string sDate,string eDate)
         {
-            List<client> cList=DB.client.ToList();
+            var cList=DB.client.ToList();
             List<JsonResult> summariseList = new List<JsonResult>();
 
             foreach (client c in cList)
@@ -709,7 +745,7 @@ namespace rody_sys.Areas.adminPanel.Controllers
         [HttpGet]
         public JsonResult increase_num_of_follower(int parentId)
         {
-            string parents = DB.client.Where(p=>p.id==parentId).Single().my_parents;
+            string parents = DB.client.Where(p => p.id == parentId).Single().my_parents;
             List<string> pList = parents.Split(',').ToList();
 
             foreach (string p in pList)
@@ -719,7 +755,7 @@ namespace rody_sys.Areas.adminPanel.Controllers
                     int idc = Int32.Parse(p);
                     client clt = DB.client.Where(c => c.id == idc).Single();
                     clt.num_followers = clt.num_followers + 1;
-                    DB.Entry(clt).State = System.Data.EntityState.Modified;
+                    //DB.Entry(clt).State = System.Data.EntityState.Modified;
                     DB.SaveChanges();
                 }
             }
@@ -727,241 +763,241 @@ namespace rody_sys.Areas.adminPanel.Controllers
             return Json(new { pList = pList }, JsonRequestBehavior.AllowGet);
 
         }
-//===========================================
-        //[HttpPost]
-        //public JsonResult add_client(string name,int gender,string idNum,string DOB,int cltTypeId,string jop,string workName,
-        //string workPlace,string idPlace,string stayPlace, int? floor , int? flat, string getPlace, int? areaId,int? delegatorId,
-        //string notes,float? chargeMsg,int parentId,string contractDate,
-        //string phone1, int shreha1, string phone2, int shreha2, string phone3, int shreha3)
-        //{
+        //===========================================
+        [HttpPost]
+        public JsonResult add_client(string name, int gender, string idNum, string DOB, int cltTypeId, string jop, string workName,
+        string workPlace, string idPlace, string stayPlace, int? floor, int? flat, string getPlace, int? areaId, int? delegatorId,
+        string notes, float? chargeMsg, int parentId, string contractDate,
+        string phone1, int shreha1, string phone2, int shreha2, string phone3, int shreha3)
+        {
 
-        //    client clt_found = DB.client.Where(x => x.id_num == idNum && idNum !=null).FirstOrDefault();
-        //    if (clt_found == null)
-        //    {
-        //        using (var addClientTransaction = DB.Database.BeginTransaction())
-        //        {
-        //            try
-        //            {
-        //                client myParent = DB.client.Where(c => c.id == parentId).Single();
-        //                increase_num_of_follower(myParent.id);
+            client clt_found = DB.client.Where(x => x.id_num == idNum && idNum != null).FirstOrDefault();
+            if (clt_found == null)
+            {
+                using (var addClientTransaction = DB.Database.BeginTransaction())
+                {
+                    try
+                    {
+                        client myParent = DB.client.Where(c => c.id == parentId).Single();
+                        increase_num_of_follower(myParent.id);
 
-        //                client clt = new client();
-        //                clt.name = name;
-        //                clt.gender = gender;
-        //                clt.id_num = idNum;
-        //                clt.date_of_birth = DOB;
-        //                clt.client_type = cltTypeId;
-        //                clt.jop = jop;
-        //                clt.work_name = workName;
-        //                clt.work_place = workPlace;
-        //                clt.id_place = idPlace;
-        //                clt.stay_place = stayPlace;
-        //                clt.stay_place_floor = floor;
-        //                clt.stay_place_flat = flat;
-        //                clt.stay_place_get = getPlace;
-        //                clt.areaId = areaId;
-        //                clt.delegatorId = delegatorId;
-        //                clt.available = 1;
-        //                clt.contract_state = 0;
-        //                clt.notes = notes;
-        //                clt.charge = 0;//initial charge
-        //                clt.done = 1; //tam el t3akod
-        //                clt.MsgCharge = chargeMsg;//charge of call me msg
-        //                clt.parentId = parentId;
-        //                clt.activation_date = "لم يتم التفعيل";
-        //                if (contractDate == null)
-        //                {
-        //                    clt.contract_date = DateTime.Now.ToString("dd/MM/yyyy");
-        //                }
-        //                else
-        //                {
-        //                    clt.contract_date = contractDate;
-        //                }
-        //                clt.num_followers = 0;
-        //                DB.client.Add(clt);
-        //                DB.SaveChanges();
+                        client clt = new client();
+                        clt.name = name;
+                        clt.gender = gender;
+                        clt.id_num = idNum;
+                        clt.date_of_birth = DOB;
+                        clt.client_type = cltTypeId;
+                        clt.jop = jop;
+                        clt.work_name = workName;
+                        clt.work_place = workPlace;
+                        clt.id_place = idPlace;
+                        clt.stay_place = stayPlace;
+                        clt.stay_place_floor = floor;
+                        clt.stay_place_flat = flat;
+                        clt.stay_place_get = getPlace;
+                        clt.areaId = areaId;
+                        clt.delegatorId = delegatorId;
+                        clt.available = 1;
+                        clt.contract_state = 0;
+                        clt.notes = notes;
+                        clt.charge = 0;//initial charge
+                     
+                        clt.MsgCharge = chargeMsg;//charge of call me msg
+                        clt.parentId = parentId;
+                        clt.activation_date = "لم يتم التفعيل";
+                        if (contractDate == null)
+                        {
+                            clt.contract_date = DateTime.Now.ToString("dd/MM/yyyy");
+                        }
+                        else
+                        {
+                            clt.contract_date = contractDate;
+                        }
+                        clt.num_followers = 0;
+                        DB.client.Add(clt);
+                        DB.SaveChanges();
 
-        //                clt.my_parents = clt.id + "," + myParent.my_parents;
-        //                DB.Entry(clt).State = EntityState.Modified;
-        //                DB.SaveChanges();
+                        clt.my_parents = clt.id + "," + myParent.my_parents;
+                        DB.Entry(clt).State = EntityState.Modified;
+                        DB.SaveChanges();
 
-        //                if (myParent.my_childs == null)
-        //                {
-        //                    //first child
-        //                    myParent.my_childs = clt.id.ToString();
-        //                }
-        //                else
-        //                {
-        //                    myParent.my_childs += "," + clt.id.ToString();
-        //                }
-        //                DB.Entry(myParent).State = EntityState.Modified;
-        //                DB.SaveChanges();
+                        if (myParent.my_childs == null)
+                        {
+                            //first child
+                            myParent.my_childs = clt.id.ToString();
+                        }
+                        else
+                        {
+                            myParent.my_childs += "," + clt.id.ToString();
+                        }
+                        DB.Entry(myParent).State = EntityState.Modified;
+                        DB.SaveChanges();
 
-        //                addPhones(clt.id, phone1, shreha1, phone2, shreha2, phone3, shreha3);
+                        addPhones(clt.id, phone1, shreha1, phone2, shreha2, phone3, shreha3);
 
-        //                //commit transaction if all opertaions is ok 
-        //                addClientTransaction.Commit();
+                        //commit transaction if all opertaions is ok 
+                        addClientTransaction.Commit();
 
-        //                return Json(new { msg = "تم اضافه العميل بنجاح" });
-        //            }
-        //            catch
-        //            {
-        //                //rollback the transaction in case any exception occurs
-        //                addClientTransaction.Rollback();
-        //                return Json(new { msg = "لم تتم عمليه الاضافه..حاول مره اخري" });
-        //            }
-        //        }
-        //    }
-        //    else
-        //    {
-        //        return Json(new { msg = "لم تتم الاضافه .. العميل موجود من قبل " });
-        //    }
-        //}
-//=============================================================================================
-        //[HttpPost]
-        //public JsonResult update_client(int cId,string name, string idNum, string jop, string workName,
-        //string workPlace, string idPlace, string stayPlace, int? floor, int? flat, string getPlace, int? areaId, int? delegatorId,
-        //string notes, float? chargeMsg, int? parentId,int available,
-        //string phone1, int shreha1, string phone2, int shreha2, string phone3, int shreha3)
-        //{
-        //    using (var updateClientTransaction = DB.Database.BeginTransaction())
-        //    {
-        //        try
-        //        {
-        //           // client myParent = DB.client.Where(c => c.id == parentId).Single();
+                        return Json(new { msg = "تم اضافه العميل بنجاح" });
+                    }
+                    catch
+                    {
+                        //rollback the transaction in case any exception occurs
+                        addClientTransaction.Rollback();
+                        return Json(new { msg = "لم تتم عمليه الاضافه..حاول مره اخري" });
+                    }
+                }
+            }
+            else
+            {
+                return Json(new { msg = "لم تتم الاضافه .. العميل موجود من قبل " });
+            }
+        }
+        //=============================================================================================
+        [HttpPost]
+        public JsonResult update_client(int cId, string name, string idNum, string jop, string workName,
+        string workPlace, string idPlace, string stayPlace, int? floor, int? flat, string getPlace, int? areaId, int? delegatorId,
+        string notes, float? chargeMsg, int? parentId, int available,
+        string phone1, int shreha1, string phone2, int shreha2, string phone3, int shreha3)
+        {
+            using (var updateClientTransaction = DB.Database.BeginTransaction())
+            {
+                try
+                {
+                    // client myParent = DB.client.Where(c => c.id == parentId).Single();
 
-        //            client clt = DB.client.Where(c => c.id == cId).Single();
-        //            clt.name = name;
-        //            clt.id_num = idNum;
-        //            clt.jop = jop;
-        //            clt.work_name = workName;
-        //            clt.work_place = workPlace;
-        //            clt.id_place = idPlace;
-        //            clt.stay_place = stayPlace;
-        //            clt.stay_place_floor = floor;
-        //            clt.stay_place_flat = flat;
-        //            clt.stay_place_get = getPlace;
-        //            clt.areaId = areaId;
-        //            clt.delegatorId = delegatorId;
-        //            clt.available = available;
-        //            clt.notes = notes;
-        //            clt.MsgCharge = chargeMsg;//charge of call me msg
-        //            clt.parentId = parentId;
-                   
-        //            DB.Entry(clt).State = EntityState.Modified;
-        //            DB.SaveChanges();
+                    client clt = DB.client.Where(c => c.id == cId).Single();
+                    clt.name = name;
+                    clt.id_num = idNum;
+                    clt.jop = jop;
+                    clt.work_name = workName;
+                    clt.work_place = workPlace;
+                    clt.id_place = idPlace;
+                    clt.stay_place = stayPlace;
+                    clt.stay_place_floor = floor;
+                    clt.stay_place_flat = flat;
+                    clt.stay_place_get = getPlace;
+                    clt.areaId = areaId;
+                    clt.delegatorId = delegatorId;
+                    clt.available = available;
+                    clt.notes = notes;
+                    clt.MsgCharge = chargeMsg;//charge of call me msg
+                    clt.parentId = parentId;
 
-        //            //clt.my_parents = clt.id + "," + myParent.my_parents;
-        //            //DB.Entry(clt).State = EntityState.Modified;
-        //            //DB.SaveChanges();
+                    DB.Entry(clt).State = EntityState.Modified;
+                    DB.SaveChanges();
 
-        //            //if (myParent.my_childs == null)
-        //            //{
-        //            //    //first child
-        //            //    myParent.my_childs = clt.id.ToString();
-        //            //}
-        //            //else
-        //            //{
-        //            //    myParent.my_childs += "," + clt.id.ToString();
-        //            //}
+                    //clt.my_parents = clt.id + "," + myParent.my_parents;
+                    //DB.Entry(clt).State = EntityState.Modified;
+                    //DB.SaveChanges();
 
-        //            //DB.Entry(myParent).State = EntityState.Modified;
-        //            //DB.SaveChanges();
+                    //if (myParent.my_childs == null)
+                    //{
+                    //    //first child
+                    //    myParent.my_childs = clt.id.ToString();
+                    //}
+                    //else
+                    //{
+                    //    myParent.my_childs += "," + clt.id.ToString();
+                    //}
 
-        //            updatePhones(cId, phone1, shreha1, phone2, shreha2, phone3, shreha3);
+                    //DB.Entry(myParent).State = EntityState.Modified;
+                    //DB.SaveChanges();
 
-        //            //commit transaction if all opertaions is ok 
-        //            updateClientTransaction.Commit();
+                    updatePhones(cId, phone1, shreha1, phone2, shreha2, phone3, shreha3);
 
-        //            return Json(new { msg = "تم تعديل بيانات العميل بنجاح" });
-        //        }
-        //        catch
-        //        {
-        //            //rollback the transaction in case any exception occurs
-        //            updateClientTransaction.Rollback();
-        //            return Json(new { msg = "لم تتم عمليه التعديل .. حاول مره اخري" });
-        //        }
-        //    }
-        //}
-//=============================================================================================
-        //[HttpPost]
-        //public JsonResult delete_client(int cId)
-        //{
-        //    client ct = DB.client.Where(x => x.id == cId).Single();
-        //    string chd = ct.my_childs;
-        //    int op_count = DB.operations_client.Where(x => x.clientId == cId).ToList().Count();
+                    //commit transaction if all opertaions is ok 
+                    updateClientTransaction.Commit();
 
-        //    if (chd == null && op_count == 0)
-        //    {
-        //        try
-        //        {
-        //            client clt = DB.client.Where(c => c.id == cId).Single();
-        //            int cParentId = (int)clt.parentId;
-        //            DB.client.Remove(clt);
-        //            DB.SaveChanges();
+                    return Json(new { msg = "تم تعديل بيانات العميل بنجاح" });
+                }
+                catch
+                {
+                    //rollback the transaction in case any exception occurs
+                    updateClientTransaction.Rollback();
+                    return Json(new { msg = "لم تتم عمليه التعديل .. حاول مره اخري" });
+                }
+            }
+        }
+        //=============================================================================================
+        [HttpPost]
+        public JsonResult delete_client(int cId)
+        {
+            client ct = DB.client.Where(x => x.id == cId).Single();
+            string chd = ct.my_childs;
+            int op_count = DB.operations_client.Where(x => x.clientId == cId).ToList().Count();
 
-        //            client parent = DB.client.Where(c => c.id == cParentId).Single();
+            if (chd == null && op_count == 0)
+            {
+                try
+                {
+                    client clt = DB.client.Where(c => c.id == cId).Single();
+                    int cParentId = (int)clt.parentId;
+                    DB.client.Remove(clt);
+                    DB.SaveChanges();
 
-        //            string cParent_childs = parent.my_childs;
-        //            List<string> idList = cParent_childs.Split(',').ToList();
-        //            foreach (string id in idList.ToList())
-        //            {
-        //                if (id.Equals(cId.ToString()))
-        //                {
-        //                    idList.Remove(id);
-        //                }
-        //            }
+                    client parent = DB.client.Where(c => c.id == cParentId).Single();
 
-        //            string new_ids = "";
-        //            foreach (string id in idList.ToList())
-        //            {
-        //                if (new_ids.Equals(""))
-        //                {
-        //                    new_ids += id;
-        //                }
-        //                else
-        //                {
-        //                    new_ids += "," + id;
-        //                }
+                    string cParent_childs = parent.my_childs;
+                    List<string> idList = cParent_childs.Split(',').ToList();
+                    foreach (string id in idList.ToList())
+                    {
+                        if (id.Equals(cId.ToString()))
+                        {
+                            idList.Remove(id);
+                        }
+                    }
 
-        //            }
-        //            if (new_ids.Equals(""))
-        //            {
-        //                parent.my_childs = null;
-        //            }
-        //            else
-        //            {
-        //                parent.my_childs = new_ids;
-        //            }
+                    string new_ids = "";
+                    foreach (string id in idList.ToList())
+                    {
+                        if (new_ids.Equals(""))
+                        {
+                            new_ids += id;
+                        }
+                        else
+                        {
+                            new_ids += "," + id;
+                        }
 
-        //            DB.Entry(parent).State = EntityState.Modified;
-        //            DB.SaveChanges();
+                    }
+                    if (new_ids.Equals(""))
+                    {
+                        parent.my_childs = null;
+                    }
+                    else
+                    {
+                        parent.my_childs = new_ids;
+                    }
 
-        //            List<string> myParents = clt.my_parents.Split(',').ToList();
-        //            for (int i = 1; i < myParents.Count;i++) //skip me
-        //            {
-        //                int id=Int32.Parse(myParents[i]);
-        //                client cit = DB.client.Where(c => c.id == id).Single();
-        //                cit.num_followers -= 1; //decrease num of followers
+                    DB.Entry(parent).State = EntityState.Modified;
+                    DB.SaveChanges();
 
-        //                DB.Entry(cit).State = EntityState.Modified;
-        //                DB.SaveChanges();
-        //            }
+                    List<string> myParents = clt.my_parents.Split(',').ToList();
+                    for (int i = 1; i < myParents.Count; i++) //skip me
+                    {
+                        int id = Int32.Parse(myParents[i]);
+                        client cit = DB.client.Where(c => c.id == id).Single();
+                        cit.num_followers -= 1; //decrease num of followers
 
-        //            return Json(new { msg = "تم حذف العميل بنجاح" });
-        //        }
-        //       catch
-        //        {
-        //            return Json(new { msg = "لم تتم عمليه الحذف .. حاول مره اخري" });
-        //        }
-        //    }
-        //    else
-        //    {
-        //        return Json(new { msg = "لا يمكن حذف هذا العميل" });
-        //    }
-        //}
+                        DB.Entry(cit).State = EntityState.Modified;
+                        DB.SaveChanges();
+                    }
 
-//==================================================================
+                    return Json(new { msg = "تم حذف العميل بنجاح" });
+                }
+                catch
+                {
+                    return Json(new { msg = "لم تتم عمليه الحذف .. حاول مره اخري" });
+                }
+            }
+            else
+            {
+                return Json(new { msg = "لا يمكن حذف هذا العميل" });
+            }
+        }
+
+        //==================================================================
         [HttpGet]
         public JsonResult all_client_notes(int cId)
         {

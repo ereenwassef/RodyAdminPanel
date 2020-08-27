@@ -11,14 +11,15 @@ namespace rody_sys.Areas.adminPanel.Models
 {
     using System;
     using System.Data.Entity;
+    using System.Data.Entity.Core.Objects;
     using System.Data.Entity.Infrastructure;
-    using System.Data.Objects;
+    // using System.Data.Entity.Core.Objects;
     using System.Linq;
     
     public partial class Rody_DBEntities : DbContext
     {
         public Rody_DBEntities()
-            : base("name=Rody_DBEntities3")
+            : base("name=Rody_DBEntities")
         {
         }
     
@@ -30,14 +31,12 @@ namespace rody_sys.Areas.adminPanel.Models
         public virtual DbSet<agent> agent { get; set; }
         public virtual DbSet<area> area { get; set; }
         public virtual DbSet<banks> banks { get; set; }
-        public virtual DbSet<client> client { get; set; }
         public virtual DbSet<client_type> client_type { get; set; }
         public virtual DbSet<delegator> delegator { get; set; }
         public virtual DbSet<govern> govern { get; set; }
         public virtual DbSet<main_category_supplier> main_category_supplier { get; set; }
         public virtual DbSet<notes> notes { get; set; }
         public virtual DbSet<operations_client> operations_client { get; set; }
-        public virtual DbSet<operations_store> operations_store { get; set; }
         public virtual DbSet<operations_supplier> operations_supplier { get; set; }
         public virtual DbSet<partner> partner { get; set; }
         public virtual DbSet<phones> phones { get; set; }
@@ -49,11 +48,13 @@ namespace rody_sys.Areas.adminPanel.Models
         public virtual DbSet<stores> stores { get; set; }
         public virtual DbSet<sub_category_supplier> sub_category_supplier { get; set; }
         public virtual DbSet<supplier> supplier { get; set; }
+        public virtual DbSet<client> client { get; set; }
+        public virtual DbSet<operations_store> operations_store { get; set; }
     
         public virtual int add_operation_supplier_give(Nullable<int> supId, Nullable<double> getval, Nullable<System.DateTime> dat)
         {
             var supIdParameter = supId.HasValue ?
-                new ObjectParameter("supId", supId) :
+                new  ObjectParameter("supId", supId) :
                 new ObjectParameter("supId", typeof(int));
     
             var getvalParameter = getval.HasValue ?

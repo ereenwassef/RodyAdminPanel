@@ -18,11 +18,11 @@ namespace rody_sys.Areas.adminPanel.Models
         {
             this.client1 = new HashSet<client>();
             this.notes1 = new HashSet<notes>();
-            this.operations_store = new HashSet<operations_store>();
             this.phones = new HashSet<phones>();
             this.purchases = new HashSet<purchases>();
             this.reportClientTahseel = new HashSet<reportClientTahseel>();
             this.sales = new HashSet<sales>();
+            this.operations_store = new HashSet<operations_store>();
         }
     
         public int id { get; set; }
@@ -52,7 +52,6 @@ namespace rody_sys.Areas.adminPanel.Models
         public Nullable<int> parentId { get; set; }
         public string contract_date { get; set; }
         public Nullable<double> MsgCharge { get; set; }
-        public Nullable<int> done { get; set; }
     
         public virtual area area { get; set; }
         public virtual client_type client_type1 { get; set; }
@@ -60,10 +59,10 @@ namespace rody_sys.Areas.adminPanel.Models
         public virtual client client2 { get; set; }
         public virtual delegator delegator { get; set; }
         public virtual ICollection<notes> notes1 { get; set; }
-        public virtual ICollection<operations_store> operations_store { get; set; }
         public virtual ICollection<phones> phones { get; set; }
         public virtual ICollection<purchases> purchases { get; set; }
         public virtual ICollection<reportClientTahseel> reportClientTahseel { get; set; }
         public virtual ICollection<sales> sales { get; set; }
+        public virtual ICollection<operations_store> operations_store { get; set; }
     }
 }

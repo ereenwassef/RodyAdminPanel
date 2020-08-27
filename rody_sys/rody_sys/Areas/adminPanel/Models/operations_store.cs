@@ -21,12 +21,9 @@ namespace rody_sys.Areas.adminPanel.Models
         public string date { get; set; }
         public Nullable<int> supplierId { get; set; }
         public Nullable<double> give_value { get; set; }
-        public Nullable<double> charge { get; set; }
-        public Nullable<int> fromToStoreId { get; set; }
     
         public virtual client client { get; set; }
         public virtual stores stores { get; set; }
-        public virtual stores stores1 { get; set; }
         public virtual supplier supplier { get; set; }
     }
 }

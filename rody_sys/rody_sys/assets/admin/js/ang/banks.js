@@ -1,8 +1,8 @@
 ﻿/// <reference path="../angular.js" />
 
-//var app = angular.module("myApp", []);
+var app = angular.module("myApp", []);
 
-angular.module('myApp').controller("banks", function ($scope, $http) {
+app.controller("banks", function ($scope, $http) {
 
 
     $scope.get_all_banks = function () {

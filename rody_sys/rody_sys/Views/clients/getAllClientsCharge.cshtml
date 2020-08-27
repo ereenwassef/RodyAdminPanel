@@ -1,14 +1,15 @@
-﻿@*@{
+﻿@{
     ViewBag.Title = "getAllClientsCharge";
     Layout = "~/Areas/adminPanel/Views/Shared/_adminLayout.cshtml";
-}*@
+}
 
-<html  xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="myApp">
+
 
 <head>
     <title></title>
-    @*<script src="~/assets/general/js/angular.js"></script>
-    <script src="~/assets/admin/js/ang/clients_charge.js"></script>*@
+    <script src="~/assets/general/js/angular.js"></script>
+        <script src="~/assets/admin/js/ang/clients_charge.js"></script>
 
     <style>
         h5 {
@@ -55,7 +56,7 @@
 
                             <table>
                                 <tr>
-                                   
+
                                     <td style="border:0px">
                                         <select ng-model="token.govern" class="form-control" style="  border-radius: 0px;">
                                             <option value=""> المحافظه</option>
@@ -68,12 +69,12 @@
                                             <option value=""> المنطقه</option>
                                             <option ng-repeat="x1 in allArea | filter: token.govern" value="{{x1.id}}">{{x1.name}}</option>
                                         </select>
-                                    </td>                                                                   
-                                   
+                                    </td>
+
                                     <td style="border:0px">
                                         <input ng-model="date" placeholder="حتي تاريخ " style="border-radius: 0px; margin-right: 25px" class="form-control" type="text" onfocus="(this.type='date')">
                                     </td>
-                                    
+
 
                                 </tr>
                                 <tr>
@@ -81,7 +82,7 @@
                                         <br />
                                         <input ng-model="startIndex" type="number" class="form-control" style="border-radius:0px" placeholder="من العميل رقم" />
                                     </td>
-                                   
+
                                     <td style="border:0px">
                                         <br />
                                         <input ng-model="endIndex" type="number" class="form-control" style="border-radius:0px" placeholder="الي العميل رقم" />
@@ -110,7 +111,7 @@
                                     <th><h3 style="padding: 5px">الرصيد </h3></th>
                                     <th><h3 style="padding: 5px">المستحق </h3></th>
                                     <th><h3 style="padding: 5px">كشف حساب</h3></th>
-                                    
+
                                 </tr>
                             </thead>
                             <tbody ng-repeat="clt in allClients | filter:{areaId:area_s} | mySliceFilter:startIndex:endIndex">
@@ -151,13 +152,13 @@
                         </table>
 
                     </div>
-</div>
-</div>
-</section>
-</section>
+                </div>
+            </div>
+        </section>
+    </section>
 
 
-    @*@{Html.RenderPartial("../management/_scriptPartial");}*@
+    @{Html.RenderPartial("../management/_scriptPartial");}
 
 </body>
 </html>

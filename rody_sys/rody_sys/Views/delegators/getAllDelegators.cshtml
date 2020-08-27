@@ -1,15 +1,15 @@
 ﻿
-@*@{
-    ViewBag.Title = "delegators";
+@{
+    ViewBag.Title = "ereee";
     Layout = "~/Areas/adminPanel/Views/Shared/_adminLayout.cshtml";
-}*@
+}
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="myApp">
 
 <head>
     <title></title>
-    @*<script src="~/assets/general/js/angular.js"></script>
-    <script src="~/assets/admin/js/ang/delegators.js"></script>*@
+    <script src="~/assets/general/js/angular.js"></script>
+    <script src="~/assets/admin/js/ang/delegators.js"></script>
 
     <style>
         h4 {
@@ -23,7 +23,7 @@
 
 </head>
 
-<body ng-controller="ctr_area">
+<body ng-controller="ctr_dele">
 
     <section id="main-content">
         <section class="wrapper">
@@ -462,7 +462,7 @@
 
 
 
-    @*@{Html.RenderPartial("../management/_scriptPartial");}*@
+    @{Html.RenderPartial("../management/_scriptPartial");}
 
 
 </body>

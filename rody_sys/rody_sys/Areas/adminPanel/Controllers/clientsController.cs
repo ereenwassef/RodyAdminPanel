@@ -24,10 +24,10 @@ namespace rody_sys.Areas.adminPanel.Controllers
         }
 //=========================================
         [HttpGet]
-        public JsonResult get_all_clients(int page)
+        public JsonResult get_all_clients(int page = 1)
         {
-            double count=DB.client.ToList().Count / 10.00;
-            double pCount=Math.Ceiling(count);
+            //double count=DB.client.ToList().Count / 10.00;
+            //double pCount=Math.Ceiling(count);
 
             return Json(new
             {
@@ -61,16 +61,18 @@ namespace rody_sys.Areas.adminPanel.Controllers
                     d.available,
                     d.notes,
                     d.MsgCharge,
-                    d.done,
-                    phones = d.phones.Select(p => new { p.number, p.shareha.name }).ToList()
-                }).OrderBy(d => d.id).Skip(page * 10).Take(10).ToList(),
-                pageCount = pCount
+                    //,
+                    //d.done,
+                    //phones = d.phones.Select(p => new { p.number, p.shareha.name }).ToList()
+                }).ToList(),
+                //pageCount = pCount
             } , JsonRequestBehavior.AllowGet);
         }
 //================================================================================
         [HttpGet]
         public JsonResult get_all_clients2()
         {
+
             return Json(new
             {
                 allClients = DB.client.Select(d => new
@@ -103,9 +105,10 @@ namespace rody_sys.Areas.adminPanel.Controllers
                     d.available,
                     d.notes,
                     d.MsgCharge,
-                    d.done,
-                    phones = d.phones.Select(p => new { p.number, p.shareha.name }).ToList()
-                }).OrderBy(d => d.id).ToList(),
+                    //d.done
+                    //,
+                    //phones = d.phones.Select(p => new { p.number, p.shareha.name }).ToList()
+                }).ToList(),
             }, JsonRequestBehavior.AllowGet);
         }
 //================================================================================

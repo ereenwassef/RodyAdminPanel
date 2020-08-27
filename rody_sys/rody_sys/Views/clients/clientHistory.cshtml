@@ -1,44 +1,45 @@
-﻿@*@{
+﻿@{
     ViewBag.Title = "client_history";
     Layout = "~/Areas/adminPanel/Views/Shared/_adminLayout.cshtml";
-}*@
+}
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="myApp">
 
 <head>
     <title></title>
     <script src="~/assets/general/js/angular.js"></script>
+    <script src="~/assets/admin/js/ang/client_history.js"></script>
+
 
     <style>
-                .divc {
-                    background: #176982;
-                    margin-left: 10px;
-                }
+        .divc {
+            background: #176982;
+            margin-left: 10px;
+        }
 
-                    .divc h3 {
-                        color: white;
-                    }
+            .divc h3 {
+                color: white;
+            }
 
 
-                /*td h4 {
+        /*td h4 {
                     vertical-align:central important!;
                 }*/
-                h4 {
-                    color: #456e82;
-                }
+        h4 {
+            color: #456e82;
+        }
 
-                h3 {
-                    color: #5c4f4f;
-                }
+        h3 {
+            color: #5c4f4f;
+        }
 
-                /*input::-webkit-input-placeholder {
+        /*input::-webkit-input-placeholder {
                     font-size: 12px;
                 }*/
 
-                h3, h4 {
-                    font-size: 13px;
-                }
-               
+        h3, h4 {
+            font-size: 13px;
+        }
     </style>
 
     @*<link href="~/assets/admin/css/popup.css" rel="stylesheet" />*@
@@ -59,7 +60,7 @@
                     <div class="panel-heading">
                         <strong style="color: #5c4f4f">كشف حساب عميل</strong>
                     </div>
-                                 
+
 
 
                     <div class="row w3-res-tb" dir="rtl">
@@ -93,7 +94,7 @@
                                         <button class="btn" ng-click="getTotal()" data-toggle="modal" data-target="#get_client_total" style="margin-right:40px">الاجمالي</button>
                                     </td>
                                     <td style="border:0px">
-                                        <button class="btn btn-warning" ng-click="add_mostahek()"  style="margin-right:10px">اضافه الي قائمه مستحقي السداد</button>
+                                        <button class="btn btn-warning" ng-click="add_mostahek()" style="margin-right:10px">اضافه الي قائمه مستحقي السداد</button>
                                     </td>
                                 </tr>
                                 @*<tr>
@@ -501,48 +502,48 @@
 
                     </div>
                     <!--========================================================-->
-                    <br/>
+                    <br />
                     @*<center>
-                        <button class="btn" ng-click="getTotal()" data-toggle="modal" data-target="#get_client_total" style="margin-right:5px;">الاجمالي</button>
-                    </center>*@
+                            <button class="btn" ng-click="getTotal()" data-toggle="modal" data-target="#get_client_total" style="margin-right:5px;">الاجمالي</button>
+                        </center>*@
 
-                    <br /><br/>
+                    <br /><br />
 
                     @*<div class="row" dir="rtl" style="margin-right:10px; margin-left:10px; margin-top:5px">
 
-                        <div class="col-lg-3">
-                            <span style="margin-right:5px">عمولات</span>
-                            <input type="text" style="background:white" dir="rtl" readonly ng-model="amola" class="form-control">
+                            <div class="col-lg-3">
+                                <span style="margin-right:5px">عمولات</span>
+                                <input type="text" style="background:white" dir="rtl" readonly ng-model="amola" class="form-control">
+                            </div>
+
+                            <div class="col-lg-3" dir="rtl">
+                                <span style="margin-right:5px">بدل تحصيل</span>
+                                <input type="text" style="background:white" dir="rtl" readonly ng-model="badal_tahseel" class="form-control">
+                            </div>
+
+                            <div class="col-lg-3">
+                                <span style="margin-right:5px">تحصيلات</span>
+                                <input type="text" style="background:white" dir="rtl" readonly ng-model="tahseel" class="form-control">
+                            </div>
+
+                            <div class="col-lg-3">
+                                <span style="margin-right:5px">مبيعات</span>
+                                <input type="text" style="background:white" dir="rtl" readonly ng-model="TS" class="form-control">
+                            </div>
                         </div>
 
-                        <div class="col-lg-3" dir="rtl">
-                            <span style="margin-right:5px">بدل تحصيل</span>
-                            <input type="text" style="background:white" dir="rtl" readonly ng-model="badal_tahseel" class="form-control">
-                        </div>
+                        <div class="row" dir="rtl" style="margin-right:10px; margin-left:10px; margin-top:5px">
+                            <br />
+                            <div class="col-lg-3 col-lg-offset-6">
+                                <span style="margin-right:5px">رصيد اخر الفتره المستحق </span>
+                                <input type="text" style="background:white" dir="rtl" readonly ng-model="badal_tahseel" class="form-control">
+                            </div>
 
-                        <div class="col-lg-3">
-                            <span style="margin-right:5px">تحصيلات</span>
-                            <input type="text" style="background:white" dir="rtl" readonly ng-model="tahseel" class="form-control">
-                        </div>
-
-                        <div class="col-lg-3">
-                            <span style="margin-right:5px">مبيعات</span>
-                            <input type="text" style="background:white" dir="rtl" readonly ng-model="TS" class="form-control">
-                        </div>
-                    </div>
-
-                    <div class="row" dir="rtl" style="margin-right:10px; margin-left:10px; margin-top:5px">
-                        <br />
-                        <div class="col-lg-3 col-lg-offset-6">
-                            <span style="margin-right:5px">رصيد اخر الفتره المستحق </span>
-                            <input type="text" style="background:white" dir="rtl" readonly ng-model="badal_tahseel" class="form-control">
-                        </div>
-
-                        <div class="col-lg-3">
-                            <span style="margin-right:5px">رصيد اخر الفتره الفعلي</span>
-                            <input type="text" style="background:white" dir="rtl" readonly ng-model="badal_tahseel" class="form-control">
-                        </div>
-                    </div>*@
+                            <div class="col-lg-3">
+                                <span style="margin-right:5px">رصيد اخر الفتره الفعلي</span>
+                                <input type="text" style="background:white" dir="rtl" readonly ng-model="badal_tahseel" class="form-control">
+                            </div>
+                        </div>*@
 
                     @*<br /><br /><br />*@
                 </div>
@@ -682,44 +683,43 @@
                     <div style="margin-left:30px;margin-right:30px; margin-left:30px">
                         <span style="margin-right:10px">مبيعات</span>
                         <input type="text" style="background:white ; width:310px" dir="rtl" readonly ng-model="TS" class="form-control">
-                        <br/>
+                        <br />
                         <span style="margin-right:10px">تحصيلات</span>
                         <input type="text" style="background: white; width: 310px" dir="rtl" readonly ng-model="tahseel" class="form-control">
-                        <br/>
+                        <br />
                         <span style="margin-right:10px">بدل تحصيل</span>
                         <input type="text" style="background: white; width: 310px" dir="rtl" readonly ng-model="badal_tahseel" class="form-control">
-                        <br/>
+                        <br />
                         <span style="margin-right:10px">عمولات</span>
                         <input type="text" style="background: white; width: 310px" dir="rtl" readonly ng-model="amola" class="form-control">
-                        <br/>
+                        <br />
                         <span style="margin-right:10px">رصيد اخر الفتره الفعلي</span>
                         <input type="text" style="background: white; width: 310px" dir="rtl" readonly ng-model="actual_charge" class="form-control">
-                         <br/>
+                        <br />
                         <span style="margin-right:10px">رصيد اخر الفتره المستحق </span>
                         <input type="text" style="background: white; width: 310px" dir="rtl" readonly ng-model="deserved" class="form-control">
 
                         @*<center>
-                            <br/>
-                            <button class="btn" data-dismiss="modal">تم</button>
-                        </center>*@
-                        
+                                <br/>
+                                <button class="btn" data-dismiss="modal">تم</button>
+                            </center>*@
+
 
                     </div>
-                   
-                 </div>
+
+                </div>
+            </div>
         </div>
     </div>
-    </div>
- <!--===================================-->
-                    @Html.Partial("_updateClientForm");
+    <!--===================================-->
+    @Html.Partial("_updateClientForm");
 
-                    <script src="~/assets/general/js/jquery.bootstrap.wizard.js"></script>
-                    <script src="~/assets/general/js/paper-bootstrap-wizard.js"></script>
-                    <script src="~/assets/general/js/jquery.validate.min.js"></script>
+    <script src="~/assets/general/js/jquery.bootstrap.wizard.js"></script>
+    <script src="~/assets/general/js/paper-bootstrap-wizard.js"></script>
+    <script src="~/assets/general/js/jquery.validate.min.js"></script>
 
-                    @*@{Html.RenderPartial("../management/_scriptPartial");}*@
+    @{Html.RenderPartial("../management/_scriptPartial");}
 
-                    @*<script src="~/assets/admin/js/ang/client_history.js"></script>*@
 
 </body>
 </html>

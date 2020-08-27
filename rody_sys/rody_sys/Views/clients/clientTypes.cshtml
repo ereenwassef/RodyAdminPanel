@@ -1,17 +1,18 @@
-﻿@*@{
+﻿@{
         ViewBag.Title = "getAllClientsCharge";
         Layout = "~/Areas/adminPanel/Views/Shared/_adminLayout.cshtml";
- }*@
+ }
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="myApp">
+
 
 <head>
     <title></title>
-    @*<script src="~/assets/general/js/angular.js"></script>
-        <script src="~/assets/admin/js/ang/clients_charge.js"></script>*@
+    <script src="~/assets/general/js/angular.js"></script>
+        <script src="~/assets/admin/js/ang/clients_charge.js"></script>
 
     <style>
-      
+
 
         h4 {
             color: #456e82;
@@ -20,8 +21,6 @@
         h3 {
             color: #5c4f4f;
         }
-
-     
     </style>
 
 
@@ -60,7 +59,7 @@
                                 </tr>
 
                             </table>
-                            
+
 
                             <br />
                         </div>
@@ -69,7 +68,7 @@
 
                     <div class="table-responsive">
 
-                        <table  class="table table-striped b-t b-light" dir="rtl" style="border: 1px solid #e9e9e9;">
+                        <table class="table table-striped b-t b-light" dir="rtl" style="border: 1px solid #e9e9e9;">
                             <thead>
                                 <tr style="background: #ddede0; padding:5px ">
                                     <th><h3 style="padding:5px;"> الكود  </h3></th>
@@ -183,7 +182,7 @@
     </div>
 
 
-    @*@{Html.RenderPartial("../management/_scriptPartial");}*@
+    @{Html.RenderPartial("../management/_scriptPartial");}
 
 </body>
 </html>

@@ -142,3 +142,36 @@ E:\Plan B\Ahmed hafez\EL Rody v2\El Rody\rody_sys\rody_sys\bin\System.Web.WebPag
 E:\Plan B\Ahmed hafez\EL Rody v2\El Rody\rody_sys\rody_sys\bin\System.Web.WebPages.Razor.xml
 E:\Plan B\Ahmed hafez\EL Rody v2\El Rody\rody_sys\rody_sys\obj\Debug\rody_sys.csproj.CopyComplete
 E:\Plan B\Ahmed hafez\EL Rody v2\El Rody\rody_sys\rody_sys\obj\Debug\rody_sys.csprojAssemblyReference.cache
+E:\Plan B\Ahmed hafez\EL Rody v2\RodyAdminPanel\rody_sys\rody_sys\bin\rody_sys.dll.config
+E:\Plan B\Ahmed hafez\EL Rody v2\RodyAdminPanel\rody_sys\rody_sys\bin\rody_sys.dll
+E:\Plan B\Ahmed hafez\EL Rody v2\RodyAdminPanel\rody_sys\rody_sys\bin\rody_sys.pdb
+E:\Plan B\Ahmed hafez\EL Rody v2\RodyAdminPanel\rody_sys\rody_sys\bin\EntityFramework.dll
+E:\Plan B\Ahmed hafez\EL Rody v2\RodyAdminPanel\rody_sys\rody_sys\bin\LinqToExcel.dll
+E:\Plan B\Ahmed hafez\EL Rody v2\RodyAdminPanel\rody_sys\rody_sys\bin\Microsoft.ReportViewer.Common.dll
+E:\Plan B\Ahmed hafez\EL Rody v2\RodyAdminPanel\rody_sys\rody_sys\bin\Microsoft.ReportViewer.ProcessingObjectModel.DLL
+E:\Plan B\Ahmed hafez\EL Rody v2\RodyAdminPanel\rody_sys\rody_sys\bin\Microsoft.ReportViewer.WebForms.DLL
+E:\Plan B\Ahmed hafez\EL Rody v2\RodyAdminPanel\rody_sys\rody_sys\bin\Microsoft.Web.Infrastructure.dll
+E:\Plan B\Ahmed hafez\EL Rody v2\RodyAdminPanel\rody_sys\rody_sys\bin\Newtonsoft.Json.dll
+E:\Plan B\Ahmed hafez\EL Rody v2\RodyAdminPanel\rody_sys\rody_sys\bin\Remotion.Data.Linq.dll
+E:\Plan B\Ahmed hafez\EL Rody v2\RodyAdminPanel\rody_sys\rody_sys\bin\Remotion.dll
+E:\Plan B\Ahmed hafez\EL Rody v2\RodyAdminPanel\rody_sys\rody_sys\bin\Remotion.Interfaces.dll
+E:\Plan B\Ahmed hafez\EL Rody v2\RodyAdminPanel\rody_sys\rody_sys\bin\System.Web.Helpers.dll
+E:\Plan B\Ahmed hafez\EL Rody v2\RodyAdminPanel\rody_sys\rody_sys\bin\System.Web.Mvc.dll
+E:\Plan B\Ahmed hafez\EL Rody v2\RodyAdminPanel\rody_sys\rody_sys\bin\System.Web.Razor.dll
+E:\Plan B\Ahmed hafez\EL Rody v2\RodyAdminPanel\rody_sys\rody_sys\bin\System.Web.WebPages.Deployment.dll
+E:\Plan B\Ahmed hafez\EL Rody v2\RodyAdminPanel\rody_sys\rody_sys\bin\System.Web.WebPages.dll
+E:\Plan B\Ahmed hafez\EL Rody v2\RodyAdminPanel\rody_sys\rody_sys\bin\System.Web.WebPages.Razor.dll
+E:\Plan B\Ahmed hafez\EL Rody v2\RodyAdminPanel\rody_sys\rody_sys\bin\EntityFramework.xml
+E:\Plan B\Ahmed hafez\EL Rody v2\RodyAdminPanel\rody_sys\rody_sys\bin\LinqToExcel.xml
+E:\Plan B\Ahmed hafez\EL Rody v2\RodyAdminPanel\rody_sys\rody_sys\bin\Newtonsoft.Json.xml
+E:\Plan B\Ahmed hafez\EL Rody v2\RodyAdminPanel\rody_sys\rody_sys\bin\System.Web.Helpers.xml
+E:\Plan B\Ahmed hafez\EL Rody v2\RodyAdminPanel\rody_sys\rody_sys\bin\System.Web.Mvc.xml
+E:\Plan B\Ahmed hafez\EL Rody v2\RodyAdminPanel\rody_sys\rody_sys\bin\System.Web.Razor.xml
+E:\Plan B\Ahmed hafez\EL Rody v2\RodyAdminPanel\rody_sys\rody_sys\bin\System.Web.WebPages.xml
+E:\Plan B\Ahmed hafez\EL Rody v2\RodyAdminPanel\rody_sys\rody_sys\bin\System.Web.WebPages.Deployment.xml
+E:\Plan B\Ahmed hafez\EL Rody v2\RodyAdminPanel\rody_sys\rody_sys\bin\System.Web.WebPages.Razor.xml
+E:\Plan B\Ahmed hafez\EL Rody v2\RodyAdminPanel\rody_sys\rody_sys\obj\Debug\rody_sys.csprojAssemblyReference.cache
+E:\Plan B\Ahmed hafez\EL Rody v2\RodyAdminPanel\rody_sys\rody_sys\obj\Debug\rody_sys.csproj.CoreCompileInputs.cache
+E:\Plan B\Ahmed hafez\EL Rody v2\RodyAdminPanel\rody_sys\rody_sys\obj\Debug\rody_sys.csproj.CopyComplete
+E:\Plan B\Ahmed hafez\EL Rody v2\RodyAdminPanel\rody_sys\rody_sys\obj\Debug\rody_sys.dll
+E:\Plan B\Ahmed hafez\EL Rody v2\RodyAdminPanel\rody_sys\rody_sys\obj\Debug\rody_sys.pdb

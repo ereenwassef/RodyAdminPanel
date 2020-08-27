@@ -1,5 +1,5 @@
 ﻿
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="myApp">
 
 <head>
     <title></title>
@@ -10,6 +10,7 @@
             background: #176982;
             margin-left: 10px;
         }
+
             .divc h3 {
                 color: white;
             }
@@ -63,7 +64,7 @@
                                             <option value=""> المحصل</option>
                                             <option ng-repeat="x1 in allArea | filter: token.govern" value="{{x1.id}}">{{x1.name}}</option>
                                         </select>
-                                    </td>   
+                                    </td>
                                     <td style="border:0px;">
                                         <button class="btn btn-info" style=" margin-right:40px">طباعه-PDF</button>
                                     </td>
@@ -76,8 +77,8 @@
                                         <input type="checkbox" style="width:14px;height:14px; margin-right:20px" />
                                         <span>تحديد الكل</span>
                                     </td>
-</tr>
-                              
+                                </tr>
+
                             </table>
 
                             <br />
@@ -96,8 +97,8 @@
                                     <th><h3 style="padding:5px;"> الرصيد </h3></th>
                                     <th><h3 style="padding: 5px">المستحق </h3></th>
                                     <th><h3 style="padding: 5px">طباعه-PDF</h3></th>
-                                    <th><h3 style="padding: 5px"> طباعه-Excel</h3></th>  
-                                    <th><h3 style="padding: 5px">اختر</h3></th>                                
+                                    <th><h3 style="padding: 5px"> طباعه-Excel</h3></th>
+                                    <th><h3 style="padding: 5px">اختر</h3></th>
                                     <th><h3 style="padding: 5px">حذف</h3></th>
                                 </tr>
                             </thead>
@@ -348,32 +349,32 @@
                                     <td>
                                         <form action="../reports/اذن استلام-pdf" target="_blank">
                                             <input type="hidden" value="{{op.id}}" name="rptId">
-                                            <button  class="fa fa-file-pdf-o btn btn-info"></button> 
+                                            <button class="fa fa-file-pdf-o btn btn-info"></button>
                                         </form>
                                     </td>
-                                    <td >
-                                        <form action="../reports/اذن استلام-excel" >
+                                    <td>
+                                        <form action="../reports/اذن استلام-excel">
                                             <input type="hidden" value="{{op.id}}" name="rptId2">
-                                            <button  class="fa fa-file-excel-o btn btn-success"></button>
+                                            <button class="fa fa-file-excel-o btn btn-success"></button>
                                         </form>
                                     </td>
 
                                     <td>
-                                    <input type="checkbox" style="width:16px;height:16px" />
+                                        <input type="checkbox" style="width:16px;height:16px" />
                                     </td>
                                     <td>
-                                        <i class="fa fa-remove btn btn-danger" ng-click="get_report(op.id)" data-toggle="modal" data-target="#delete_rpt"></i> 
+                                        <i class="fa fa-remove btn btn-danger" ng-click="get_report(op.id)" data-toggle="modal" data-target="#delete_rpt"></i>
                                     </td>
 
                                 </tr>
 
-                               
+
                             </tbody>
                         </table>
 
                     </div>
                     <br />
-                 
+
                     <br /><br />
 
                 </div>

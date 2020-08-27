@@ -16,7 +16,7 @@ app.config(["$routeProvider", function ($routeProvider, $routeParams) {
     $routeProvider.
       
     when('/agents/getAllAgents', {
-        templateUrl: '../agents/getAllAgents',
+        templateUrl: '~/agents/getAllAgents',
         controller: 'ctr_agent'
     }).
     when('/areas/getAllAreas', {
@@ -36,7 +36,7 @@ app.config(["$routeProvider", function ($routeProvider, $routeParams) {
           controller: '',
       }).
      when('/clients/getAllClients', {
-         templateUrl: '../clients/getAllClients',
+         templateUrl: '~/clients/getAllClients',
          controller: 'ctr_client'
      }).
      when('/clients/getAllClientsCharge', {
@@ -44,7 +44,7 @@ app.config(["$routeProvider", function ($routeProvider, $routeParams) {
          controller: 'ctr_clientC'
      }).
       when('/delegators/getAllDelegators', {
-          templateUrl: '../delegators/getAllDelegators',
+          templateUrl: '~/delegators/getAllDelegators',
           controller: 'ctr_dele'
       }).
      when('/governs/getAllGoverns', {

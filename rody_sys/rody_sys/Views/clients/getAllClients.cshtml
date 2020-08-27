@@ -1,12 +1,17 @@
 ﻿
 
-<html xmlns="http://www.w3.org/1999/xhtml" lang="ar">
+@{
+    ViewBag.Title = "client_history";
+    Layout = "~/Areas/adminPanel/Views/Shared/_adminLayout.cshtml";
+}
+
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="myApp">
 
 <head>
     <title></title>
-    @*<script src="~/assets/general/js/angular.js"></script>
-    <script src="~/assets/admin/js/ang/clients.js"></script>*@
-    
+    <script src="~/assets/general/js/angular.js"></script>
+        <script src="~/assets/admin/js/ang/clients.js"></script>
+
     <style>
 
         .divc {
@@ -18,22 +23,23 @@
                 color: white;
             }
 
-         h4 {
+        h4 {
             color: #456e82;
         }
+
         h5 {
             color: #456e82;
             font-weight: bold;
             font-family: Cairo;
-            font-size:15px
+            font-size: 15px
         }
 
         h3 {
             color: #5c4f4f;
         }
-        
+
         /*input::-webkit-input-placeholder {
-            font-size: 12px;            
+            font-size: 12px;
         }
         #table-body {
             direction: rtl;
@@ -51,7 +57,7 @@
             background:white;
         }*/
 
-     
+
 
     </style>
 
@@ -87,20 +93,20 @@
 
                                 </div>
                                 <div class="col-lg-2">
-                                    <select  ng-model="token.areaName" class="form-control" style="  border-radius: 0px;">
+                                    <select ng-model="token.areaName" class="form-control" style="  border-radius: 0px;">
                                         <option value="">جميع المناطق</option>
                                         <option ng-repeat="x1 in allArea | filter: token.govern">{{x1.name}}</option>
                                     </select>
                                 </div>
                                 <div class="col-lg-2">
-                                    <select  ng-model="token.govern" class="form-control" style="  border-radius: 0px;">
+                                    <select ng-model="token.govern" class="form-control" style="  border-radius: 0px;">
                                         <option value=""> المحافظه</option>
                                         <option ng-repeat="x2 in allGovern">{{x2.name}}</option>
                                     </select>
                                 </div>
                                 <div class="col-lg-2">
                                     <select ng-model="token.type" class="form-control" style="  border-radius: 0px;">
-                                        <option value="">نوع العميل</option>                                      
+                                        <option value="">نوع العميل</option>
                                         <option ng-repeat="x2 in allTypes">{{x2.type}}</option>
                                     </select>
                                 </div>
@@ -115,14 +121,14 @@
                                     <input type="text" ng-model="token.phones.number" placeholder="رقم التليفون" class="form-control" style="font-size: 12px; border-radius: 0px;" />
                                 </div>
                                 <div class="col-lg-2">
-                                    <input  type="text" placeholder="اسم العميل" class="form-control" style="font-size: 12px; border-radius: 0px;" ng-model="token.name" />
+                                    <input type="text" placeholder="اسم العميل" class="form-control" style="font-size: 12px; border-radius: 0px;" ng-model="token.name" />
                                 </div>
                                 <div class="col-lg-2">
                                     <select ng-model="token.delegatorId" class="selectpicker form-control" dir="rtl" style="border-radius:0px">
                                         <option value="">  مندوب المبيعات </option>
                                         <option ng-repeat="x2 in allDelegators | filter:agentsS" ng-value="{{x2.id}}">{{x2.name}}</option>
                                     </select>
-                                   </div>
+                                </div>
                                 <div class="col-lg-2">
                                     <select ng-model="agentsS" class="selectpicker form-control" dir="rtl" style="border-radius:0px">
                                         <option value="">  الوكيل </option>
@@ -156,7 +162,7 @@
                                 </div>
                                 <div class="col-lg-2 ">
 
-                                    <input ng-model="end"  type="number" class="form-control" style="border-radius: 0px;" placeholder="الي العميل رقم" />
+                                    <input ng-model="end" type="number" class="form-control" style="border-radius: 0px;" placeholder="الي العميل رقم" />
 
                                 </div>
 
@@ -178,7 +184,7 @@
                                         <option value="0">لم يتم التعاقد</option>
                                     </select>
                                 </div>
-                          
+
                                 <div class="col-lg-2">
 
                                     <input ng-model="to1" placeholder="الي تاريخ تفعيل" style="border-radius: 0px;" class="form-control" type="text" onfocus="(this.type='date')">
@@ -192,8 +198,8 @@
                                 </div>
                                 <div class="col-lg-2 ">
 
-                                  
-                                    <input ng-model="to" placeholder="الي تاريخ تعاقد" 
+
+                                    <input ng-model="to" placeholder="الي تاريخ تعاقد"
                                            style="border-radius: 0px;" class="form-control" type="text" onfocus="(this.type='date')">
 
 
@@ -209,9 +215,10 @@
 
                             <div class="row" dir="rtl">
                                 <div class="col-lg-2 col-lg-offset-5">
-                                    <br/>
+                                    <br />
                                     <button class="btn" style="border-radius: 0px; width: 310px;">
-                                    بحث</button>
+                                        بحث
+                                    </button>
                                 </div>
                             </div>
 
@@ -239,9 +246,12 @@
                                 </tr>
                             </thead>
 
-                            <tbody ng-repeat="c in allClients | myRangeFilter:start:end | filter:token | filter:{pName:pName2} | myContractDateFilter:from:to | myActivationDateFilter : from1 :to1" dir="rtl">
+                            @*<tbody ng-repeat="c in allClients2 | myRangeFilter:start:end | filter:token | filter:{pName:pName2} | myContractDateFilter:from:to | myActivationDateFilter : from1 :to1" dir="rtl">*@
+                            <tbody ng-repeat="c in allClients2 " dir="rtl">
 
-                                <tr class="tr" id="tbr" ng-if="c.done==1">
+                                @*<tr class="tr" id="tbr" ng-if="c.done==1">*@
+                                <tr class="tr" id="tbr">
+
                                     <td>
                                         <h4>
                                             {{c.id}}
@@ -249,10 +259,10 @@
                                     </td>
 
                                     @*<td>
-                                        <h4>
-                                            {{c.contract_date | myDateFilter |date:"dd/MM/yyyy"}}
-                                        </h4>
-                                    </td>*@
+                    <h4>
+                        {{c.contract_date | myDateFilter |date:"dd/MM/yyyy"}}
+                    </h4>
+                </td>*@
                                     <td>
                                         <h4>
                                             {{c.activation_date}}
@@ -269,10 +279,10 @@
                                         </h4>
                                     </td>
                                     @*<td>
-                                        <h4>
-                                            {{c.stay_place_get}}
-                                        </h4>
-                                    </td>*@
+                    <h4>
+                        {{c.stay_place_get}}
+                    </h4>
+                </td>*@
                                     <td>
                                         <h4>
                                             {{c.num_followers}}
@@ -315,10 +325,10 @@
                                     </td>
 
                                     @*<td>
-                                        <h4>
-                                            {{c.contract_date | myDateFilter |date:"dd/MM/yyyy"}}
-                                        </h4>
-                                    </td>*@
+                    <h4>
+                        {{c.contract_date | myDateFilter |date:"dd/MM/yyyy"}}
+                    </h4>
+                </td>*@
                                     <td>
                                         <h4>
                                             {{c.activation_date}}
@@ -335,10 +345,10 @@
                                         </h4>
                                     </td>
                                     @*<td>
-                                        <h4>
-                                            {{c.stay_place_get}}
-                                        </h4>
-                                    </td>*@
+                    <h4>
+                        {{c.stay_place_get}}
+                    </h4>
+                </td>*@
                                     <td>
                                         <h4>
                                             {{c.num_followers}}
@@ -377,15 +387,15 @@
 
 
                         <center>
-                            <br/>
-                            <button id="btn_pre"  ng-click="get_previous()" class=" btn btn-primary btn-sm" style="border-radius: 0%"> <span style="font-weight:bold; font-size:15px"  class="fa fa-angle-left"></span> السابق </button>
+                            <br />
+                            <button id="btn_pre" ng-click="get_previous()" class=" btn btn-primary btn-sm" style="border-radius: 0%"> <span style="font-weight:bold; font-size:15px" class="fa fa-angle-left"></span> السابق </button>
                             <span class="text-info" style="font-weight:bold">
                                 {{pageNum}} / {{pageCount}}
                             </span>
-                            <button  id="btn_next"  ng-click="get_next()" style="border-radius:0%" class="btn btn-sm btn-primary"> التالي <span class="fa fa-angle-right" style="font-weight:bold; font-size:15px"></span>  </button>
+                            <button id="btn_next" ng-click="get_next()" style="border-radius:0%" class="btn btn-sm btn-primary"> التالي <span class="fa fa-angle-right" style="font-weight:bold; font-size:15px"></span>  </button>
                             <br />
-                         </center>
-                        <br/>
+                        </center>
+                        <br />
                     </div>
 
                 </div>
@@ -487,14 +497,14 @@
 
                         </div>
                         @*<br />
-                <center>
-                    <button type="button" class="btn btn-default " data-dismiss="modal" style="width:100px"><h4>الغاء</h4></button>
-                </center>*@
+                            <center>
+                                <button type="button" class="btn btn-default " data-dismiss="modal" style="width:100px"><h4>الغاء</h4></button>
+                            </center>*@
 
                     </center>
 
                 </div>
-              
+
             </div>
 
         </div>
@@ -524,7 +534,7 @@
 
         </div>
     </div>
-<!--===========================================================================-->
+    <!--===========================================================================-->
     <div id="get_client" class="modal fade left" role="dialog" style="top:10%">
         <div class=" modal-dialog" style="width:400px">
             <div class="modal-content">
@@ -569,8 +579,8 @@
                                 <td style="border:0px">
                                     <h4 style="margin-left: 20px; color: #5c4f4f"> الكود</h4>
                                 </td>
-                                </tr>
-                            <tr/>
+                            </tr>
+                            <tr />
                             <tr>
                                 <td style="border:0px">
                                     <input dir="rtl" type="text" ng-model="token.name" class="form-control" placeholder="الاسم" style="border-radius: 0px; margin-top: 5px;" />
@@ -616,9 +626,9 @@
 
                         </div>
                         @*<br />
-                        <center>
-                            <button type="button" class="btn btn-default" data-dismiss="modal" style="width:100px"><h4>الغاء</h4></button>
-                        </center>*@
+                            <center>
+                                <button type="button" class="btn btn-default" data-dismiss="modal" style="width:100px"><h4>الغاء</h4></button>
+                            </center>*@
 
                     </center>
 
@@ -629,7 +639,7 @@
         </div>
     </div>
 
-<!--===========================================================================-->
+    <!--===========================================================================-->
     <div id="get_client_phones" class="modal fade left" role="dialog" style="top:10% ;z-index:9998">
         <div class=" modal-dialog" style="width:600px">
             <div class="modal-content">
@@ -640,8 +650,8 @@
                 <div class="modal-body text-left">
                     <center>
                         <br />
-                       
-                        <input type="text" ng-model="phNum" class="form-control" placeholder="رقم التليفون" style="width:300px"/>
+
+                        <input type="text" ng-model="phNum" class="form-control" placeholder="رقم التليفون" style="width:300px" />
 
                         <br />
                         <div class="table-responsive" style="height:300px; overflow:auto">
@@ -699,7 +709,7 @@
             </div>
         </div>
     </div>
-<!--====================================================================================-->
+    <!--====================================================================================-->
 
     <div id="add_new_phone" class="modal fade left" role="dialog" style="top:10% ;z-index:9998">
         <div class=" modal-dialog" style="width:400px">
@@ -710,27 +720,27 @@
                 </div>
                 <div class="modal-body text-left">
                     <center>
-                        <br /><br/>
+                        <br /><br />
                         <div class="col-sm-12">
                             <div class="form-group">
-                                <input ng-model="adPhone" type="text" class="form-control"  placeholder="رقم التليفون">
+                                <input ng-model="adPhone" type="text" class="form-control" placeholder="رقم التليفون">
                             </div>
                         </div>
                         <div class="col-sm-12">
                             <div class="form-group">
                                 <select ng-model="adShareha" class="selectpicker form-control" dir="rtl" style="border-radius:0px">
-                                     <option value="">الشريحه</option>
-                                     <option ng-repeat="x2 in kroot" ng-value="{{x2.id}}">{{x2.name}}</option>
+                                    <option value="">الشريحه</option>
+                                    <option ng-repeat="x2 in kroot" ng-value="{{x2.id}}">{{x2.name}}</option>
                                 </select>
                             </div>
                         </div>
-                                             
-                       
+
+
                         <center>
                             <br /><br />
                             <button type="button" class="btn btn-info" data-dismiss="modal" style="width:100px; margin-top:20px">الغاء</button>
                             <button type="button" class="btn btn-danger" data-dismiss="modal" style="width:100px; margin-top:20px" ng-click="addPhone()">اضافه</button>
-                          </center>
+                        </center>
 
                     </center>
 
@@ -741,7 +751,7 @@
         </div>
     </div>
 
-<!--====================================================================================-->
+    <!--====================================================================================-->
 
 
 
@@ -754,13 +764,13 @@
     @Html.Partial("_notes")
     @*@Html.Partial("_getClient")*@
 
-<!--==============================================================================-->
+    <!--==============================================================================-->
 
     <script src="~/assets/general/js/jquery.bootstrap.wizard.js"></script>
     <script src="~/assets/general/js/paper-bootstrap-wizard.js"></script>
     <script src="~/assets/general/js/jquery.validate.min.js"></script>
 
-    @*@{Html.RenderPartial("../management/_scriptPartial");}*@
+    @{Html.RenderPartial("../management/_scriptPartial");}
 
 </body>
 </html>

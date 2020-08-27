@@ -1,8 +1,9 @@
 ﻿/// <reference path="../angular.js" />
+/// <reference path="../../../general/js/angular.js" />
 
-//var app = angular.module("myApp", []);
+var app = angular.module("myApp", []);
 
-angular.module('myApp').controller("ctr_sale", function ($scope, $http) {
+app.controller("ctr_sale", function ($scope, $http) {
 
    // document.getElementById("storeOld").value = 120;
 

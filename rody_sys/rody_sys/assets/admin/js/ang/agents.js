@@ -1,10 +1,11 @@
-﻿/// <reference path="../angular.js" />
+﻿/// <reference path="../../../general/js/angular.js" />
 
+var app = angular.module("myApp", []);
 //var app = angular.module("myApp", []);
 
 //app.controller("agents", function ($scope, $http) {
 
-angular.module('myApp').controller("ctr_agent", function ($scope, $http) {
+app.controller("ctr_agent", function ($scope, $http) {
 
 
     $scope.get_all_governs = function () {

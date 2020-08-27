@@ -470,8 +470,57 @@
     <Content Include="Test\tree_css\img\pc.de\world.png" />
     <Content Include="Test\tree_css\img\pc.de\zoom.png" />
     <Content Include="Test\tree_css\jquery-explr-1.4.css" />
+    <Content Include="Views\test\wizared.html" />
     <Content Include="Web.config" />
     <Content Include="Web_.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\agents\getAllAgents.cshtml" />
+    <Content Include="Views\areas\getAllAreas.cshtml" />
+    <Content Include="Views\banks\getAllBanks.cshtml" />
+    <Content Include="Views\clients\_addClientForm.cshtml" />
+    <Content Include="Views\clients\_getClient.cshtml" />
+    <Content Include="Views\clients\_notes.cshtml" />
+    <Content Include="Views\clients\_updateClientForm.cshtml" />
+    <Content Include="Views\clients\areasSummarization.cshtml" />
+    <Content Include="Views\clients\clientHistory.cshtml" />
+    <Content Include="Views\clients\clientsMostahekElsadad.cshtml" />
+    <Content Include="Views\clients\clientsSummarization.cshtml" />
+    <Content Include="Views\clients\clientTree.cshtml" />
+    <Content Include="Views\clients\clientTypes.cshtml" />
+    <Content Include="Views\clients\getAllClients.cshtml" />
+    <Content Include="Views\clients\getAllClientsCharge.cshtml" />
+    <Content Include="Views\delegators\getAllDelegators.cshtml" />
+    <Content Include="Views\governs\getAllGoverns.cshtml" />
+    <Content Include="Views\management\_scriptPartial.cshtml" />
+    <Content Include="Views\management\controlPage.cshtml" />
+    <Content Include="Views\management\intro.cshtml" />
+    <Content Include="Views\partners\getAllPartners.cshtml" />
+    <Content Include="Views\purchases\addPurchaseOperation.cshtml" />
+    <Content Include="Views\purchases\getAllPurchases.cshtml" />
+    <Content Include="Views\sales\addSale.cshtml" />
+    <Content Include="Views\sales\getAllSales.cshtml" />
+    <Content Include="Views\sales\phoneNumHistory.cshtml" />
+    <Content Include="Views\services\getAllServices.cshtml" />
+    <Content Include="Views\services\servicesChart.cshtml" />
+    <Content Include="Views\Shared\_adminLayout.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\stores\getAllStores.cshtml" />
+    <Content Include="Views\suppliers\getAllSuppliers.cshtml" />
+    <Content Include="Views\suppliers\mainCategories.cshtml" />
+    <Content Include="Views\suppliers\subCategories.cshtml" />
+    <Content Include="Views\suppliers\supplierHistory.cshtml" />
+    <Content Include="Views\test\page_1.cshtml" />
+    <Content Include="Views\test\page_2.cshtml" />
+    <Content Include="Views\test\panel.cshtml" />
+    <Content Include="Views\test\select.cshtml" />
+    <Content Include="Views\test\testPartial.cshtml" />
+    <Content Include="Views\test\testTree.cshtml" />
+    <Content Include="Views\treasuries\addTahseel.cshtml" />
+    <Content Include="Views\treasuries\addTahseel_0.cshtml" />
+    <Content Include="Views\treasuries\getAllTreasuries.cshtml" />
+    <Content Include="Views\treasuries\treasuriesOperations.cshtml" />
+    <Content Include="Views\visitor\login.cshtml" />
+    <Content Include="Views\web.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -625,6 +674,8 @@
     <Folder Include="App_Data\" />
     <Folder Include="Areas\adminPanel\Views\general\" />
     <Folder Include="Areas\adminPanel\Views\reports\" />
+    <Folder Include="Views\general\" />
+    <Folder Include="Views\reports\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

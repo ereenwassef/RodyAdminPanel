@@ -1,16 +1,16 @@
 ﻿
-@*@{
+@{
     ViewBag.Title = "getAllBanks";
     Layout = "~/Areas/adminPanel/Views/Shared/_adminLayout.cshtml";
-}*@
+}
 
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="myApp">
 
 <head>
     <title></title>
-    @*<script src="~/assets/general/js/angular.js"></script>
-        <script src="~/assets/admin/js/ang/ctr2.js"></script>*@
+    <script src="~/assets/general/js/angular.js"></script>
+    <script src="~/assets/admin/js/ang/banks.js"></script>
 
     <style>
         h4 {
@@ -42,13 +42,13 @@
                     <div class="row w3-res-tb">
 
                         <div class="col-lg-4" dir="ltr">
-                        <input dir="rtl" style="border-radius:0px" type="text" placeholder="اسم البنك" class="form-control" ng-model="token.name" />
-                                 
+                            <input dir="rtl" style="border-radius:0px" type="text" placeholder="اسم البنك" class="form-control" ng-model="token.name" />
+
                             <br />
                         </div>
 
                         <div class="col-lg-2 col-lg-offset-6" dir="ltr">
-                           
+
                             <button class="btn btn-info" data-toggle="modal" data-target="#add">اضافه</button>
 
                             <br />
@@ -245,7 +245,7 @@
                                 </td>
 
                             </tr>
-                        
+
                         </table>
                         <br /><hr />
                         <button type="button" class="btn btn-success btn-sm" data-dismiss="modal">الغاء</button>
@@ -384,7 +384,7 @@
 
         </div>
     </div>
-     
+
 
     @*@{Html.RenderPartial("../management/_scriptPartial");}*@
 

@@ -1,8 +1,8 @@
 ﻿/// <reference path="../angular.js" />
+/// <reference path="../../../general/js/angular.js" />
 
-//var app = angular.module("myApp", []);
-
-angular.module('myApp').controller("ctr_tahseel", function ($scope, $http) {
+var app = angular.module("myApp", []);
+app.controller("ctr_tahseel", function ($scope, $http) {
    
 
     $scope.get_all_governs = function () {

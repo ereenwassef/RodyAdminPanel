@@ -8,7 +8,7 @@ var app = angular.module('myApp', [
 
 //var app = angular.module("myApp", ['ngRoute', 'ui.bootstrap']);
 
-// '/page_1' = '#!page_1'
+// '/page_1' = '/page_1'
 
 
 app.config(["$routeProvider", function ($routeProvider, $routeParams) {

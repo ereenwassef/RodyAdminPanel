@@ -1,8 +1,7 @@
-﻿/// <reference path="../angular.js" />
+﻿/// <reference path="../../../general/js/angular.js" />
 
-//var app = angular.module("myApp", []);
-
-angular.module('myApp').controller("suppliers_sub", function ($scope, $http) {
+var app = angular.module("myApp", []);
+app.controller("suppliers_sub", function ($scope, $http) {
 
     
     $scope.get_all_sub=function()

@@ -42,7 +42,7 @@
         }
     </style>
 
-    @*<link href="~/assets/admin/css/popup.css" rel="stylesheet" />*@
+    <link href="~/assets/admin/css/popup.css" rel="stylesheet" />
 
 </head>
 
@@ -713,12 +713,12 @@
     </div>
     <!--===================================-->
     @Html.Partial("_updateClientForm");
+    @{Html.RenderPartial("../management/_scriptPartial");}
 
     <script src="~/assets/general/js/jquery.bootstrap.wizard.js"></script>
     <script src="~/assets/general/js/paper-bootstrap-wizard.js"></script>
     <script src="~/assets/general/js/jquery.validate.min.js"></script>
 
-    @{Html.RenderPartial("../management/_scriptPartial");}
 
 
 </body>

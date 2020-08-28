@@ -1,5 +1,11 @@
 ﻿
+@{
+    ViewBag.Title = "client_history";
+    Layout = "~/Areas/adminPanel/Views/Shared/_adminLayout.cshtml";
+}
+
 <html xmlns="http://www.w3.org/1999/xhtml" ng-app="myApp">
+
 
 <head>
     <title></title>
@@ -407,11 +413,14 @@
     </div>
     <!--===================================-->
     @Html.Partial("_updateClientForm");
-
-    <script src="~/assets/general/js/jquery.bootstrap.wizard.js"></script>
-    <script src="~/assets/general/js/paper-bootstrap-wizard.js"></script>
+    @{Html.RenderPartial("../management/_scriptPartial");}
+    <script src="~/assets/general/js/jquery.min.js"></script>
     <script src="~/assets/general/js/jquery.validate.min.js"></script>
-
+    <script src="~/assets/general/js/jquery.validate.min.js"></script>
+    <script src="~/assets/general/js/jquery.bootstrap.wizard.js"></script>
+    <script src="~/assets/general/js/ui-bootstrap-tpls.js"></script>
+    <script src="~/assets/general/js/bootstrap.js"></script>
+    <script src="~/assets/general/js/paper-bootstrap-wizard.js"></script>
 </body>
 </html>
 

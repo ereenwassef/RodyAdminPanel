@@ -1,8 +1,8 @@
 ﻿/// <reference path="../angular.js" />
+/// <reference path="../../../general/js/angular.js" />
 
-//var app = angular.module("myApp", []);
-
-angular.module('myApp').controller("ctr_tahseel", function ($scope, $http) {
+var app = angular.module("myApp", []);
+app.controller("ctr_tahseel", function ($scope, $http) {
    
 
     $scope.get_all_governs = function () {
@@ -292,8 +292,9 @@ angular.module('myApp').controller("ctr_tahseel", function ($scope, $http) {
             {
                 $scope.add_new_get_store();
             }
-            else {
-                //$scope.add_new_give_client();
+            else
+            {
+                $scope.add_new_give_store();
             }
         }
     }
@@ -350,6 +351,32 @@ angular.module('myApp').controller("ctr_tahseel", function ($scope, $http) {
 
             $http({
                 url: "../treasuries/wared_store",
+                method: "POST",
+                data: { storeId1: storeId1, storeId2: storeId2, getValue: $scope.getValue, notes: $scope.notes, date: $scope.date },
+            }).then
+            (function (mydata) {
+                alert(mydata.data.msg);
+                document.getElementById("storeId").value = "";
+                $scope.store_value_old = "";
+            });
+        }
+
+    }
+//===============================================
+    $scope.add_new_give_store = function () {
+
+        var storeId1 = document.getElementById("storeId").value;
+        var storeId2 = document.getElementById("storeId2").value;
+
+        if (storeId2 == "" || $scope.getValue == null || storeId1 == "") {
+            alert("لم تتم الاضافه .. لا يمكن ان تدخل قيم فارغه");
+        }
+        else {
+
+            document.getElementById("addBtn").disabled = true;
+
+            $http({
+                url: "../treasuries/monsaref_store",
                 method: "POST",
                 data: { storeId1: storeId1, storeId2: storeId2, getValue: $scope.getValue, notes: $scope.notes, date: $scope.date },
             }).then

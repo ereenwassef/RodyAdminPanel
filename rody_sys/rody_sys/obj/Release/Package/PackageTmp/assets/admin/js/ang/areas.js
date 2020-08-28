@@ -1,8 +1,8 @@
 ﻿/// <reference path="../angular.js" />
 
-//var app = angular.module("myApp", []);
+var app = angular.module("myApp", []);
 
-angular.module('myApp').controller("ctr_area", function ($scope, $http) {
+app.controller("ctr_area", function ($scope, $http) {
 
 
     $scope.get_all=function()

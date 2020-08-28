@@ -1,9 +1,14 @@
 ﻿/// <reference path="../angular.js" />
+/// <reference path="../../../general/js/angular.js" />
 
-//var app = angular.module("myApp", []);
+var app = angular.module("myApp", []);
 
-angular.module('myApp').controller("ctr_dele", function ($scope, $http) {
+app.controller("ctr_dele", function ($scope, $http) {
 
+    $scope.main = function () {
+        console.log('home')
+
+    }
 
     $scope.get_all=function()
     {
@@ -14,6 +19,7 @@ angular.module('myApp').controller("ctr_dele", function ($scope, $http) {
         (function (mydata) {
             $scope.allDelegators = mydata.data.allDelegators;
         });
+        console.log('$scope.allDelegators')
     }
 
     $scope.get_all(); // to get all ...

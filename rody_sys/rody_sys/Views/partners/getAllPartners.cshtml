@@ -1,15 +1,15 @@
 ﻿
-@*@{
+@{
     ViewBag.Title = "getAllPartners";
     Layout = "~/Areas/adminPanel/Views/Shared/_adminLayout.cshtml";
-}*@
+}
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="myApp">
 
 <head>
     <title></title>
-    @*<script src="~/assets/general/js/angular.js"></script>
-        <script src="~/assets/admin/js/ang/ctr2.js"></script>*@
+    <script src="~/assets/general/js/angular.js"></script>
+        <script src="~/assets/admin/js/ang/ctr2.js"></script>
 
     <style>
         h4 {
@@ -173,7 +173,7 @@
 
                                 <td style=" border: 0px">
 
-                                    <input  ng-model="phone" type="number" class="form-control" style="border-radius:0px" dir="rtl" />
+                                    <input ng-model="phone" type="number" class="form-control" style="border-radius:0px" dir="rtl" />
 
                                 </td>
                                 <td style=" border: 0px">
@@ -259,7 +259,7 @@
 
                                 <td style=" border: 0px">
 
-                                    <input  ng-model="phone2" type="text" class="form-control" style="border-radius:0px" dir="rtl" />
+                                    <input ng-model="phone2" type="text" class="form-control" style="border-radius:0px" dir="rtl" />
 
                                 </td>
                                 <td style=" border: 0px">
@@ -306,7 +306,7 @@
     </div>
 
 
-    @*@{Html.RenderPartial("../management/_scriptPartial");}*@
+    @{Html.RenderPartial("../management/_scriptPartial");}
 
 
 </body>

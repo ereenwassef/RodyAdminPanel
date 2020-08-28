@@ -1,16 +1,16 @@
 ﻿
-@*@{
+@{
     ViewBag.Title = "sales";
     Layout = "~/Areas/adminPanel/Views/Shared/_adminLayout.cshtml";
-}*@
+}
 
 
-<html  xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="myApp">
 
 <head>
     <title></title>
-    @*<script src="~/assets/general/js/angular.js"></script>
-    <script src="~/assets/admin/js/ang/sales.js"></script>*@
+    <script src="~/assets/general/js/angular.js"></script>
+    <script src="~/assets/admin/js/ang/sales.js"></script>
 
     <style>
         td {
@@ -96,7 +96,7 @@
         /* ----- v CAN BE DELETED v ----- */
 
 
-      
+
 
     </style>
 
@@ -115,21 +115,21 @@
 
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <strong style="color: #5c4f4f">                                           
-                        حركات المبيعات
+                        <strong style="color: #5c4f4f">
+                            حركات المبيعات
                             @*<a href="/sales/addSale">
-                                <i class="fa fa-plus-circle text-info btn-lg" style="font-size: 25px; color: #5c4f4f; margin-left:-10px">
-                                </i>
-                            </a>*@
+                                    <i class="fa fa-plus-circle text-info btn-lg" style="font-size: 25px; color: #5c4f4f; margin-left:-10px">
+                                    </i>
+                                </a>*@
                         </strong>
 
                     </div>
                     <div class="row w3-res-tb">
-                                 
-                        <div class="col-lg-12" >
+
+                        <div class="col-lg-12">
 
                             <div class="row" dir="rtl">
-                               
+
                                 <div class="col-lg-3">
                                     <table>
                                         <tr style="border:0px">
@@ -164,7 +164,7 @@
                                 </div>
                             </div>
                             <br />
-                            
+
                             <div class="row" dir="rtl">
 
 
@@ -180,7 +180,7 @@
 
                                     <input type="text" placeholder="التليفون" class="form-control" style="  border-radius: 0px;" ng-model="phone" />
                                 </div>
-                              
+
                                 <div class="col-lg-3">
 
                                     <input placeholder="الي تاريخ " ng-model="to" style="border-radius: 0px;" class="form-control" type="text" onfocus="(this.type='date')">
@@ -193,12 +193,12 @@
 
                                 </div>
                             </div>
-                            <br/>
-                            <div class="row" dir="ltr">                             
-                            
-                                <div class="col-lg-3 col-lg-offset-3" >
+                            <br />
+                            <div class="row" dir="ltr">
+
+                                <div class="col-lg-3 col-lg-offset-3">
                                     <h5 class="text-center" style="background: #ffdddc; padding: 6px; height: 34px; color: gray; ">
-                                    الاجمالي   :  {{ allSells | myGenericDateFilter:from:to | myPhoneFilter:phone | filter:{clientId:client_s_id} | filter:{areaId:area_s} | filter:{sId:service} | mySliceFilter:startIndex:endIndex |sumOfSalesFilter }} جنيه
+                                        الاجمالي   :  {{ allSells | myGenericDateFilter:from:to | myPhoneFilter:phone | filter:{clientId:client_s_id} | filter:{areaId:area_s} | filter:{sId:service} | mySliceFilter:startIndex:endIndex |sumOfSalesFilter }} جنيه
                                     </h5>
                                 </div>
 
@@ -214,9 +214,9 @@
 
                                 </div>
 
-                           </div>
-                       </div>
-                       
+                            </div>
+                        </div>
+
                     </div>
                     <br />
                     <div class="table-responsive" ng-init="total = 0">
@@ -379,191 +379,191 @@
     </div>
 
     @*<div id="add" class="modal fade" role="dialog" style="">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="text-center" style="color: #5c4f4f">اضافه وكيل</h4>
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="text-center" style="color: #5c4f4f">اضافه وكيل</h4>
+                    </div>
+                    <div class="modal-body text-left">
+                        <center>
+                            <table>
+                                <tr>
+
+                                    <td>
+
+                                        <input ng-model="name" type="text" class="form-control" style="border-radius:0px" dir="rtl" />
+
+                                    </td>
+                                    <td>
+                                        <h4 style="margin-left:20px">اسم الوكيل</h4>
+                                    </td>
+
+                                </tr>
+                                <tr>
+
+                                    <td>
+
+                                        <input ng-model="phone" type="text" class="form-control" style="border-radius:0px" dir="rtl" />
+
+                                    </td>
+                                    <td>
+                                        <h4 style="margin-left:20px">التليفون</h4>
+                                    </td>
+
+                                </tr>
+                                <tr>
+
+                                    <td>
+
+                                        <input ng-model="address" type="text" class="form-control" style="border-radius:0px" dir="rtl" />
+
+                                    </td>
+                                    <td>
+                                        <h4 style="margin-left:20px">العنوان</h4>
+                                    </td>
+
+                                </tr>
+
+                                <tr>
+                                    <td style="margin-right:200px">
+                                        <div style="border-radius:0px">
+                                            <select ng-model="govern2" class="form-control" dir="rtl">
+                                                <option ng-repeat="x2 in allGovern2">{{x2.name}}</option>
+                                            </select>
+
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <h4 style="margin-left:20px">المحافظه</h4>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="margin-right:200px">
+                                        <div style="border-radius:0px">
+                                            <select ng-model="area2" class="form-control" dir="rtl">
+                                                <option value="{{x2.id}}" ng-repeat="x2 in allArea2 | filter: govern2">{{x2.name}}</option>
+                                            </select>
+
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <h4 style="margin-left:20px">المنطقه</h4>
+                                    </td>
+                                </tr>
+
+
+
+                            </table>
+                        </center>
+
+                    </div>
+                    <div class="modal-footer">
+                        <center>
+                            <button type="button" class="btn btn-success btn-sm" data-dismiss="modal">الغاء</button>
+                            <button type="submit" class="btn btn-danger btn-sm" ng-click="add()" data-dismiss="modal">اضافه</button>
+                        </center>
+                    </div>
                 </div>
-                <div class="modal-body text-left">
-                    <center>
-                        <table>
-                            <tr>
 
-                                <td>
-
-                                    <input ng-model="name" type="text" class="form-control" style="border-radius:0px" dir="rtl" />
-
-                                </td>
-                                <td>
-                                    <h4 style="margin-left:20px">اسم الوكيل</h4>
-                                </td>
-
-                            </tr>
-                            <tr>
-
-                                <td>
-
-                                    <input ng-model="phone" type="text" class="form-control" style="border-radius:0px" dir="rtl" />
-
-                                </td>
-                                <td>
-                                    <h4 style="margin-left:20px">التليفون</h4>
-                                </td>
-
-                            </tr>
-                            <tr>
-
-                                <td>
-
-                                    <input ng-model="address" type="text" class="form-control" style="border-radius:0px" dir="rtl" />
-
-                                </td>
-                                <td>
-                                    <h4 style="margin-left:20px">العنوان</h4>
-                                </td>
-
-                            </tr>
-
-                            <tr>
-                                <td style="margin-right:200px">
-                                    <div style="border-radius:0px">
-                                        <select ng-model="govern2" class="form-control" dir="rtl">
-                                            <option ng-repeat="x2 in allGovern2">{{x2.name}}</option>
-                                        </select>
-
-                                    </div>
-                                </td>
-                                <td>
-                                    <h4 style="margin-left:20px">المحافظه</h4>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td style="margin-right:200px">
-                                    <div style="border-radius:0px">
-                                        <select ng-model="area2" class="form-control" dir="rtl">
-                                            <option value="{{x2.id}}" ng-repeat="x2 in allArea2 | filter: govern2">{{x2.name}}</option>
-                                        </select>
-
-                                    </div>
-                                </td>
-                                <td>
-                                    <h4 style="margin-left:20px">المنطقه</h4>
-                                </td>
-                            </tr>
-
-
-
-                        </table>
-                    </center>
-
-                </div>
-                <div class="modal-footer">
-                    <center>
-                        <button type="button" class="btn btn-success btn-sm" data-dismiss="modal">الغاء</button>
-                        <button type="submit" class="btn btn-danger btn-sm" ng-click="add()" data-dismiss="modal">اضافه</button>
-                    </center>
-                </div>
             </div>
-
-        </div>
-    </div>*@
+        </div>*@
 
 
     @*<div id="update" class="modal fade" role="dialog" style="">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="text-center" style="color: #5c4f4f">تعديل بيانات وكيل</h4>
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="text-center" style="color: #5c4f4f">تعديل بيانات وكيل</h4>
+                    </div>
+                    <div class="modal-body text-left">
+                        <center>
+                            <table>
+                                <tr>
+
+                                    <td>
+
+                                        <input ng-model="name2" type="text" class="form-control" style="border-radius:0px" dir="rtl" />
+
+                                    </td>
+                                    <td>
+                                        <h4 style="margin-left:20px">اسم الوكيل</h4>
+                                    </td>
+
+                                </tr>
+                                <tr>
+
+                                    <td>
+
+                                        <input ng-model="phone2" type="text" class="form-control" style="border-radius:0px" dir="rtl" />
+
+                                    </td>
+                                    <td>
+                                        <h4 style="margin-left:20px">التليفون</h4>
+                                    </td>
+
+                                </tr>
+                                <tr>
+
+                                    <td>
+
+                                        <input ng-model="address2" type="text" class="form-control" style="border-radius:0px" dir="rtl" />
+
+                                    </td>
+                                    <td>
+                                        <h4 style="margin-left:20px">العنوان</h4>
+                                    </td>
+
+                                </tr>
+
+                                <tr>
+                                    <td style="margin-right:200px">
+                                        <div style="border-radius:0px">
+                                            <select ng-model="govern_update" class="form-control" dir="rtl">
+                                                <option ng-repeat="x2 in allGovern2">{{x2.name}}</option>
+                                            </select>
+
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <h4 style="margin-left:20px">المحافظه</h4>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="margin-right:200px">
+                                        <div style="border-radius:0px">
+
+                                            <select ng-model="ar_update" class="form-control" dir="rtl" ng-options="x2.id as x2.name for x2  in allArea2 | filter :govern_update"></select>
+
+                                        </div>
+                                    </td>
+                                    <td>
+
+                                        <h4 style="margin-left:20px">المنطقه</h4>
+                                    </td>
+                                </tr>
+
+
+
+                            </table>
+                        </center>
+
+                    </div>
+                    <div class="modal-footer">
+                        <center>
+                            <button type="button" class="btn btn-success btn-sm" data-dismiss="modal">الغاء</button>
+                            <button type="submit" class="btn btn-danger btn-sm" ng-click="updateDB()" data-dismiss="modal">تعديل</button>
+                        </center>
+                    </div>
                 </div>
-                <div class="modal-body text-left">
-                    <center>
-                        <table>
-                            <tr>
 
-                                <td>
-
-                                    <input ng-model="name2" type="text" class="form-control" style="border-radius:0px" dir="rtl" />
-
-                                </td>
-                                <td>
-                                    <h4 style="margin-left:20px">اسم الوكيل</h4>
-                                </td>
-
-                            </tr>
-                            <tr>
-
-                                <td>
-
-                                    <input ng-model="phone2" type="text" class="form-control" style="border-radius:0px" dir="rtl" />
-
-                                </td>
-                                <td>
-                                    <h4 style="margin-left:20px">التليفون</h4>
-                                </td>
-
-                            </tr>
-                            <tr>
-
-                                <td>
-
-                                    <input ng-model="address2" type="text" class="form-control" style="border-radius:0px" dir="rtl" />
-
-                                </td>
-                                <td>
-                                    <h4 style="margin-left:20px">العنوان</h4>
-                                </td>
-
-                            </tr>
-
-                            <tr>
-                                <td style="margin-right:200px">
-                                    <div style="border-radius:0px">
-                                        <select ng-model="govern_update" class="form-control" dir="rtl">
-                                            <option ng-repeat="x2 in allGovern2">{{x2.name}}</option>
-                                        </select>
-
-                                    </div>
-                                </td>
-                                <td>
-                                    <h4 style="margin-left:20px">المحافظه</h4>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td style="margin-right:200px">
-                                    <div style="border-radius:0px">
-                                       
-                                        <select ng-model="ar_update" class="form-control" dir="rtl" ng-options="x2.id as x2.name for x2  in allArea2 | filter :govern_update"></select>
-
-                                    </div>
-                                </td>
-                                <td>
-
-                                    <h4 style="margin-left:20px">المنطقه</h4>
-                                </td>
-                            </tr>
-
-
-
-                        </table>
-                    </center>
-
-                </div>
-                <div class="modal-footer">
-                    <center>
-                        <button type="button" class="btn btn-success btn-sm" data-dismiss="modal">الغاء</button>
-                        <button type="submit" class="btn btn-danger btn-sm" ng-click="updateDB()" data-dismiss="modal">تعديل</button>
-                    </center>
-                </div>
             </div>
-
-        </div>
-    </div>*@
+        </div>*@
 
 
 
-    @*@{Html.RenderPartial("../management/_scriptPartial");}*@
+    @{Html.RenderPartial("../management/_scriptPartial");}
 
     @Html.Partial("../clients/_getClient");
 

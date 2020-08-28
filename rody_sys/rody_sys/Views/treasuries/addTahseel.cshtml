@@ -1,14 +1,15 @@
 ﻿
-@*@{
+@{
     ViewBag.Title = "add_tahseel";
     Layout = "~/Areas/adminPanel/Views/Shared/_adminLayout.cshtml";
-}*@
+}
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="myApp">
 
 <head>
     <title></title>
-
+    <script src="~/assets/general/js/angular.js"></script>
+    <script src="~/assets/admin/js/ang/treasuries.js"></script>
     <style>
 
         td {
@@ -94,7 +95,7 @@
         /* ----- v CAN BE DELETED v ----- */
 
 
-      
+
     </style>
 
 </head>
@@ -118,115 +119,115 @@
                     <div class="row w3-res-tb">
                         @*<form action="../treasuries/add_new_get">*@
 
-                            <div class="col-sm-8 col-sm-offset-2" style="overflow:hidden">
-                                <div class="wizard-container1" style="">
-                                    <div class="card wizard-card" data-color="orange" id="wizard" style="box-shadow:none">
-                                        <form action="">
+                        <div class="col-sm-8 col-sm-offset-2" style="overflow:hidden">
+                            <div class="wizard-container1" style="">
+                                <div class="card wizard-card" data-color="orange" id="wizard" style="box-shadow:none">
+                                    <form action="">
 
-                                            <div class="wizard-navigation" style="">
-                                                <div class="progress-with-circle">
-                                                    <div class="progress-bar" role="progressbar" aria-valuenow="1" aria-valuemin="1" aria-valuemax="4" style="width: 15%;"></div>
-                                                </div>
-                                                <ul>
-                                                    <li>
-                                                        <a href="#op" data-toggle="tab" style="pointer-events:none">
-                                                            <div class="icon-circle">
-                                                                <i class="ti-bag"></i>
-                                                            </div>
-                                                            <span style="font-size:13px; font-weight:bold;width:200px">  بيانات الحركه</span>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#client" data-toggle="tab" style="pointer-events:none">
-                                                            <div class="icon-circle">
-                                                                <i class="ti-user"></i>
-                                                            </div>
-                                                            <span style="font-size:13px; font-weight:bold">   المتعامل معه </span>
-
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#charge" data-toggle="tab" style="pointer-events:none">
-                                                            <div class="icon-circle">
-                                                                <i class="ti-money"></i>
-                                                            </div>
-                                                            <span style="font-size:13px; font-weight:bold">المبلغ</span>
-
-                                                        </a>
-                                                    </li>
-
-                                                </ul>
+                                        <div class="wizard-navigation" style="">
+                                            <div class="progress-with-circle">
+                                                <div class="progress-bar" role="progressbar" aria-valuenow="1" aria-valuemin="1" aria-valuemax="4" style="width: 15%;"></div>
                                             </div>
-                                            <div class="tab-content">
-
-                                                <div class="tab-pane" id="op" style="">
-                                                    <div class="row">
-                                                        <br /><br />
-                                                        <div class="col-sm-4 " dir="rtl">
-                                                            <div class="form-group">
-                                                                <label><h4 style="margin-bottom:3px"> نوع التعامل</h4></label>
-                                                                <select class="form-control" dir="rtl" disabled>
-                                                                    <option value="">نقدي / اوراق دفع / اوراق قبض</option>
-                                                                    <option value="" selected>نقدي</option>
-                                                                    <option value="">اوراق دفع</option>
-                                                                    <option value="">اوراق قبض</option>
-                                                                </select>
-                                                            </div>
+                                            <ul>
+                                                <li>
+                                                    <a href="#op" data-toggle="tab" style="pointer-events:none">
+                                                        <div class="icon-circle">
+                                                            <i class="ti-bag"></i>
                                                         </div>
-                                                        <div class="col-sm-4 " dir="rtl">
-                                                            <div class="form-group">
-                                                                <label><h4 style="margin-bottom:3px"> نوع الاذن</h4></label>
-                                                                <select class="form-control" dir="rtl" id="opType">
-                                                                    <option value="">وارد / منصرف</option>
-                                                                    <option selected value="1">وارد</option>
-                                                                    <option value="2">منصرف</option>
-                                                                </select>
-                                                            </div>
+                                                        <span style="font-size:13px; font-weight:bold;width:200px">  بيانات الحركه</span>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#client" data-toggle="tab" style="pointer-events:none">
+                                                        <div class="icon-circle">
+                                                            <i class="ti-user"></i>
                                                         </div>
-                                                        <div class="col-sm-4 " dir="rtl">
-                                                            <div class="form-group">
-                                                                <label><h4 style="margin-bottom:3px"> الخزنه</h4></label>
-                                                                <select name="storeId" ng-change="get_store_value(store)" ng-model="store" class="form-control" dir="rtl" id="storeId">
-                                                                    <option value="">- الخزنه -</option>
-                                                                    <option ng-repeat="x2 in allStores" value="{{x2.id}}">{{x2.name}}</option>
+                                                        <span style="font-size:13px; font-weight:bold">   المتعامل معه </span>
 
-                                                                </select>
-                                                            </div>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#charge" data-toggle="tab" style="pointer-events:none">
+                                                        <div class="icon-circle">
+                                                            <i class="ti-money"></i>
+                                                        </div>
+                                                        <span style="font-size:13px; font-weight:bold">المبلغ</span>
+
+                                                    </a>
+                                                </li>
+
+                                            </ul>
+                                        </div>
+                                        <div class="tab-content">
+
+                                            <div class="tab-pane" id="op" style="">
+                                                <div class="row">
+                                                    <br /><br />
+                                                    <div class="col-sm-4 " dir="rtl">
+                                                        <div class="form-group">
+                                                            <label><h4 style="margin-bottom:3px"> نوع التعامل</h4></label>
+                                                            <select class="form-control" dir="rtl" disabled>
+                                                                <option value="">نقدي / اوراق دفع / اوراق قبض</option>
+                                                                <option value="" selected>نقدي</option>
+                                                                <option value="">اوراق دفع</option>
+                                                                <option value="">اوراق قبض</option>
+                                                            </select>
                                                         </div>
                                                     </div>
-                                                    <div class="row">
-
-                                                        <div class="col-sm-4 col-lg-offset-4" dir="rtl">
-                                                            <div class="form-group">
-                                                                <label><h4 style="margin-bottom:3px">نوع المتعامل معه</h4></label>
-                                                                <select class="form-control" dir="rtl" id="userType">
-                                                                    <option value="1">عميل</option>
-                                                                    <option value="2">مورد</option>
-                                                                    <option value="3">خزنه</option>
-                                                                </select>
-                                                            </div>
+                                                    <div class="col-sm-4 " dir="rtl">
+                                                        <div class="form-group">
+                                                            <label><h4 style="margin-bottom:3px"> نوع الاذن</h4></label>
+                                                            <select class="form-control" dir="rtl" id="opType">
+                                                                <option value="">وارد / منصرف</option>
+                                                                <option selected value="1">وارد</option>
+                                                                <option value="2">منصرف</option>
+                                                            </select>
                                                         </div>
+                                                    </div>
+                                                    <div class="col-sm-4 " dir="rtl">
+                                                        <div class="form-group">
+                                                            <label><h4 style="margin-bottom:3px"> الخزنه</h4></label>
+                                                            <select name="storeId" ng-change="get_store_value(store)" ng-model="store" class="form-control" dir="rtl" id="storeId">
+                                                                <option value="">- الخزنه -</option>
+                                                                <option ng-repeat="x2 in allStores" value="{{x2.id}}">{{x2.name}}</option>
 
-                                                        <div class="col-sm-4" dir="rtl">
-                                                            <div class="form-group">
-                                                                <label><h4 style="margin-bottom:3px">التاريخ</h4></label>
-
-                                                                <input name="date" class="form-control" type="date" ng-model="date">
-
-                                                            </div>
+                                                            </select>
                                                         </div>
-
                                                     </div>
                                                 </div>
-                                                <!--00000000000000000000000000000000000000000000000000000000000000000000000000-->
-                                                <div class="tab-pane" id="client" style="">
-                                                    <div ng-hide="check1">
+                                                <div class="row">
+
+                                                    <div class="col-sm-4 col-lg-offset-4" dir="rtl">
+                                                        <div class="form-group">
+                                                            <label><h4 style="margin-bottom:3px">نوع المتعامل معه</h4></label>
+                                                            <select class="form-control" dir="rtl" id="userType">
+                                                                <option value="1">عميل</option>
+                                                                <option value="2">مورد</option>
+                                                                <option value="3">خزنه</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-sm-4" dir="rtl">
+                                                        <div class="form-group">
+                                                            <label><h4 style="margin-bottom:3px">التاريخ</h4></label>
+
+                                                            <input name="date" class="form-control" type="date" ng-model="date">
+
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                            <!--00000000000000000000000000000000000000000000000000000000000000000000000000-->
+                                            <div class="tab-pane" id="client" style="">
+                                                <div ng-hide="check1">
                                                     <div class="row">
                                                         <br /><br />
                                                         <div class="col-sm-4 " dir="rtl">
                                                             <div class="form-group">
                                                                 <br />
-                                                                <button  type="button" class="btn-info" style="width: 205px;color:white;border-radius:4px; border: 1px solid white; height: 35px;" data-toggle="modal" data-target="#get_client" ><span style="font-style:normal">بحث</span></button>
+                                                                <button type="button" class="btn-info" style="width: 205px;color:white;border-radius:4px; border: 1px solid white; height: 35px;" data-toggle="modal" data-target="#get_client"><span style="font-style:normal">بحث</span></button>
 
                                                             </div>
                                                         </div>
@@ -262,156 +263,157 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                  </div>
-                                                    <!--555555555555555555555555555555555555555-->
-                                                    <div ng-hide="check2">
-                                                        <div class="row">
-                                                            <br /><br />
-                                                            <div class="col-sm-4 col-lg-offset-4" dir="rtl">
-                                                                <div class="form-group">
-                                                                    <br />
-                                                                    <button type="button" class="btn-info" style="width: 205px;color:white;border-radius:4px; border: 1px solid white; height: 35px;" data-toggle="modal" data-target="#get_client"><span style="font-style:normal">بحث</span></button>
-
-                                                                </div>
-                                                            </div>
-                                                            
-                                                            <div class="col-sm-4 " dir="rtl">
-                                                                <div class="form-group">
-                                                                    <label><h4 style="margin-bottom:3px"> المورد</h4></label>
-                                                                    <input dir="rtl" ng-model="cName" readonly placeholder="اسم المورد" class="form-control" type="text">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="col-sm-4 col-lg-offset-4" dir="rtl">
-                                                                <div class="form-group">
-                                                                    <label><h4 style="margin-bottom:3px">الرصيد بعد الحركه</h4></label>
-
-                                                                    <input dir="rtl" readonly ng-model="desValue" placeholder="" class="form-control" type="text" ng-style="myStyle2"  >
-
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-sm-4" dir="rtl">
-                                                                <div class="form-group">
-                                                                    <label><h4 style="margin-bottom:3px">الرصيدالحالي</h4></label>
-
-                                                                    <input dir="rtl" readonly ng-model="currentValue" placeholder="" class="form-control" type="text" ng-style="myStyle">
-
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                    <!--555555555555555555555555555555555555555-->
-                                                    <div ng-hide="check3">
-                                                        <div class="row">
-                                                            <br /><br />
-                                                                                   
-                                                            <div class="col-sm-4 col-lg-offset-8" dir="rtl">
-                                                                <div class="form-group">
-                                                                    <label><h4 style="margin-bottom:3px"> الخزنه</h4></label>
-                                                                    <select name="storeId2" ng-change="get_store_value2(store2)" ng-model="store2" class="form-control" dir="rtl" id="storeId2">
-                                                                        <option value="">- الخزنه -</option>
-                                                                        <option ng-repeat="x2 in allStores" value="{{x2.id}}">{{x2.name}}</option>
-
-                                                                    </select>                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="col-sm-4 col-lg-offset-4" dir="rtl">
-                                                                <div class="form-group">
-                                                                    <label><h4 style="margin-bottom:3px">الرصيد بعد الحركه</h4></label>
-
-                                                                    <input dir="rtl" readonly  placeholder="" class="form-control" type="text" ng-style="myStyle2" ng-hide="monsaref" value="{{currentValue3-getValue}}">
-                                                                    <input dir="rtl" readonly  placeholder="" class="form-control" type="text" ng-style="myStyle2" ng-hide="wared" value="{{currentValue3+getValue}}">
-
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-sm-4" dir="rtl">
-                                                                <div class="form-group">
-                                                                    <label><h4 style="margin-bottom:3px">الرصيدالحالي</h4></label>
-
-                                                                    <input dir="rtl" readonly ng-model="currentValue3" placeholder="" class="form-control" type="text" ng-style="myStyle">
-
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
                                                 </div>
-                                                <!--00000000000000000000000000000000000000000000000000000000000000000000000000-->
-                                                <div class="tab-pane" id="charge" style="">
+                                                <!--555555555555555555555555555555555555555-->
+                                                <div ng-hide="check2">
                                                     <div class="row">
                                                         <br /><br />
-                                                        <div class="col-sm-4 " dir="rtl">
+                                                        <div class="col-sm-4 col-lg-offset-4" dir="rtl">
                                                             <div class="form-group">
-                                                                <label><h4 style="margin-bottom:3px">الرصيد الجديد</h4></label>
-                                                                <input readonly type="number" name="storeValue" class="form-control" style="border-radius: 0px;" ng-hide="monsaref"  value="{{store_value_old+getValue}}" />
-                                                                <input readonly type="number" name="storeValue1" class="form-control" style="border-radius: 0px;" ng-hide="wared"  value="{{store_value_old-getValue}}" />
+                                                                <br />
+                                                                <button type="button" class="btn-info" style="width: 205px;color:white;border-radius:4px; border: 1px solid white; height: 35px;" data-toggle="modal" data-target="#get_client"><span style="font-style:normal">بحث</span></button>
 
                                                             </div>
                                                         </div>
-                                                        <div class="col-sm-4 " dir="rtl">
-                                                            <div class="form-group">
-                                                                <label><h4 style="margin-bottom:3px">قيمه الاذن</h4></label>
-                                                                <input name="getValue" type="number" step="0.00001" class="form-control" ng-model="getValue" />
 
-                                                            </div>
-                                                        </div>
                                                         <div class="col-sm-4 " dir="rtl">
                                                             <div class="form-group">
-                                                                <label><h4 style="margin-bottom:3px">رصيد الخزنه</h4></label>
-                                                                <input readonly class="form-control" ng-model="store_value_old" />
+                                                                <label><h4 style="margin-bottom:3px"> المورد</h4></label>
+                                                                <input dir="rtl" ng-model="cName" readonly placeholder="اسم المورد" class="form-control" type="text">
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="row">
-
-                                                        <div class="col-lg-4" dir="rtl">
+                                                        <div class="col-sm-4 col-lg-offset-4" dir="rtl">
                                                             <div class="form-group">
+                                                                <label><h4 style="margin-bottom:3px">الرصيد بعد الحركه</h4></label>
 
-                                                                <br />
-                                                                <button id="btnOmolat" ng-hide="check1" type="button" ng-click="get_omolat()" data-toggle="modal" data-target="#omola" style="width: 205px; border-radius: 4px; background: #ecb099; border: 1px solid white; height: 35px; margin-right: -10px"><span style="font-style:normal">بيان بالعمولات</span></button>
+                                                                <input dir="rtl" readonly ng-model="desValue" placeholder="" class="form-control" type="text" ng-style="myStyle2">
 
                                                             </div>
                                                         </div>
-
-                                                        <div class="col-sm-8" dir="rtl">
+                                                        <div class="col-sm-4" dir="rtl">
                                                             <div class="form-group">
-                                                                <input type="text" id="cid" required style="display:none" name="cid" />
+                                                                <label><h4 style="margin-bottom:3px">الرصيدالحالي</h4></label>
 
-                                                                <label><h4 style="margin-bottom:3px">ملاحظات</h4></label>
-                                                                <input name="notes" ng-model="notes" type="text" class="form-control" style="margin-right: -7px" />
+                                                                <input dir="rtl" readonly ng-model="currentValue" placeholder="" class="form-control" type="text" ng-style="myStyle">
+
                                                             </div>
                                                         </div>
-
                                                     </div>
                                                 </div>
-                                                <!--00000000000000000000000000000000000000000000000000000000000000000000000000-->
 
+                                                <!--555555555555555555555555555555555555555-->
+                                                <div ng-hide="check3">
+                                                    <div class="row">
+                                                        <br /><br />
 
-                                                <div class="wizard-footer1">
+                                                        <div class="col-sm-4 col-lg-offset-8" dir="rtl">
+                                                            <div class="form-group">
+                                                                <label><h4 style="margin-bottom:3px"> الخزنه</h4></label>
+                                                                <select name="storeId2" ng-change="get_store_value2(store2)" ng-model="store2" class="form-control" dir="rtl" id="storeId2">
+                                                                    <option value="">- الخزنه -</option>
+                                                                    <option ng-repeat="x2 in allStores" value="{{x2.id}}">{{x2.name}}</option>
 
-                                                    <div class="pull-right">
-                                                        <br />
-                                                        <input type='button' class='btn btn-next btn-fill btn-wd' name='next' value='التالي' style="background: rgb(140, 89, 99); border-color: rgb(140, 89, 99); "  ng-click="flip()"/>
-                                                        <input type='button' id="addBtn" class='btn btn-finish btn-fill btn-wd' name='finish' value='اضافه' ng-click="add_new_get()" style="background: rgb(140, 89, 99); border-color: rgb(140, 89, 99); " />
+                                                                </select>
+                                                            </div>
+                                                        </div>
                                                     </div>
-                                                    <div class="pull-left">
-                                                        <input type='button' ng-click="makeAddPossible()" class='btn btn-previous btn-fill btn-demo btn-wd' name='previous' value='السابق' />
-                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-sm-4 col-lg-offset-4" dir="rtl">
+                                                            <div class="form-group">
+                                                                <label><h4 style="margin-bottom:3px">الرصيد بعد الحركه</h4></label>
 
+                                                                <input dir="rtl" readonly placeholder="" class="form-control" type="text" ng-style="myStyle2" ng-hide="monsaref" value="{{currentValue3-getValue}}">
+                                                                <input dir="rtl" readonly placeholder="" class="form-control" type="text" ng-style="myStyle2" ng-hide="wared" value="{{currentValue3+getValue}}">
+
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-4" dir="rtl">
+                                                            <div class="form-group">
+                                                                <label><h4 style="margin-bottom:3px">الرصيدالحالي</h4></label>
+
+                                                                <input dir="rtl" readonly ng-model="currentValue3" placeholder="" class="form-control" type="text" ng-style="myStyle">
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
 
                                             </div>
-                                        </form>
-                                    </div>
+                                            <!--00000000000000000000000000000000000000000000000000000000000000000000000000-->
+                                            <div class="tab-pane" id="charge" style="">
+                                                <div class="row">
+                                                    <br /><br />
+                                                    <div class="col-sm-4 " dir="rtl">
+                                                        <div class="form-group">
+                                                            <label><h4 style="margin-bottom:3px">الرصيد الجديد</h4></label>
+                                                            <input readonly type="number" name="storeValue" class="form-control" style="border-radius: 0px;" ng-hide="monsaref" value="{{store_value_old+getValue}}" />
+                                                            <input readonly type="number" name="storeValue1" class="form-control" style="border-radius: 0px;" ng-hide="wared" value="{{store_value_old-getValue}}" />
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-4 " dir="rtl">
+                                                        <div class="form-group">
+                                                            <label><h4 style="margin-bottom:3px">قيمه الاذن</h4></label>
+                                                            <input name="getValue" type="number" step="0.00001" class="form-control" ng-model="getValue" />
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-4 " dir="rtl">
+                                                        <div class="form-group">
+                                                            <label><h4 style="margin-bottom:3px">رصيد الخزنه</h4></label>
+                                                            <input readonly class="form-control" ng-model="store_value_old" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+
+                                                    <div class="col-lg-4" dir="rtl">
+                                                        <div class="form-group">
+
+                                                            <br />
+                                                            <button id="btnOmolat" ng-hide="check1" type="button" ng-click="get_omolat()" data-toggle="modal" data-target="#omola" style="width: 205px; border-radius: 4px; background: #ecb099; border: 1px solid white; height: 35px; margin-right: -10px"><span style="font-style:normal">بيان بالعمولات</span></button>
+
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-sm-8" dir="rtl">
+                                                        <div class="form-group">
+                                                            <input type="text" id="cid" required style="display:none" name="cid" />
+
+                                                            <label><h4 style="margin-bottom:3px">ملاحظات</h4></label>
+                                                            <input name="notes" ng-model="notes" type="text" class="form-control" style="margin-right: -7px" />
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                            <!--00000000000000000000000000000000000000000000000000000000000000000000000000-->
+
+
+                                            <div class="wizard-footer1">
+
+                                                <div class="pull-right">
+                                                    <br />
+                                                    <input type='button' class='btn btn-next btn-fill btn-wd' name='next' value='التالي' style="background: rgb(140, 89, 99); border-color: rgb(140, 89, 99); " ng-click="flip()" />
+                                                    <input type='button' id="addBtn" class='btn btn-finish btn-fill btn-wd' name='finish' value='اضافه' ng-click="add_new_get()" style="background: rgb(140, 89, 99); border-color: rgb(140, 89, 99); " />
+                                                </div>
+                                                <div class="pull-left">
+                                                    <input type='button' ng-click="makeAddPossible()" class='btn btn-previous btn-fill btn-demo btn-wd' name='previous' value='السابق' />
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
+                        </div>
 
 
 
-                            <br /><br />
+                        <br /><br />
                         @*</form>*@
                     </div>
                 </div>
@@ -419,7 +421,7 @@
         </section>
     </section>
 
-<!--9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999-->
+    <!--9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999-->
     <div id="omola" class="modal fade left" role="dialog" style="top:10%; right:8%;width:40%">
         <div class=" modal-dialog">
             <div class="modal-content">
@@ -428,21 +430,21 @@
                     <h4 class="text-center" style="color: #5c4f4f">توزيع العمولات</h4>
                 </div>
                 <div class="modal-body text-right">
-                    
-                    <br/>
-                        <table dir="ltr" style="float: right;">
-                            <tr>
-                                <td>
-                                    <h4 ng-bind="total_omola" style="font-weight:bold;" class="text-primary"></h4>
-                                </td>
 
-                                <td>
-                                    <h4 style="font-weight: bold;margin-right:7px;" class="text-primary;"> : اجمالي العموله</h4>
-                                </td>
-                               
-                            </tr>
-                        </table>
-                    <br/><br/>
+                    <br />
+                    <table dir="ltr" style="float: right;">
+                        <tr>
+                            <td>
+                                <h4 ng-bind="total_omola" style="font-weight:bold;" class="text-primary"></h4>
+                            </td>
+
+                            <td>
+                                <h4 style="font-weight: bold;margin-right:7px;" class="text-primary;"> : اجمالي العموله</h4>
+                            </td>
+
+                        </tr>
+                    </table>
+                    <br /><br />
                     <center>
                         <table class="table table-striped b-t b-light" dir="rtl">
                             <thead>
@@ -467,102 +469,102 @@
                             <tbody></tbody>
                         </table>
                     </center>
-                    </div>
+                </div>
                 <center>
                     <button type="button" class="btn btn-default" data-dismiss="modal" style="width:100px"><h4>تم</h4></button>
                 </center>
-                </div>
             </div>
         </div>
-    
+    </div>
+
     <!--===================================================-->
 
-                        <div id="get_client" class="modal fade left" role="dialog" style="top:10%; right:8%;width:40%">
-                            <div class=" modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                        <h4 class="text-center" style="color: #5c4f4f">اختيار العميل</h4>
-                                    </div>
-                                    <div class="modal-body text-left">
-                                        <center>
-                                            <br />
-                                            <table>
-                                                <tr>
+    <div id="get_client" class="modal fade left" role="dialog" style="top:10%; right:8%;width:40%">
+        <div class=" modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="text-center" style="color: #5c4f4f">اختيار العميل</h4>
+                </div>
+                <div class="modal-body text-left">
+                    <center>
+                        <br />
+                        <table>
+                            <tr>
 
-                                                    <td >
+                                <td>
 
-                                                        <select style="border-radius:0px; margin-top:5px; width:200px" ng-model="govern" class="form-control" dir="rtl" ng-options="x2.name as x2.name for x2  in allGovern "></select>
+                                    <select style="border-radius:0px; margin-top:5px; width:200px" ng-model="govern" class="form-control" dir="rtl" ng-options="x2.name as x2.name for x2  in allGovern "></select>
 
-                                                    </td>
-                                                    <td>
-                                                        <h4 style="margin-left: 20px; color: #5c4f4f"> المحافظه</h4>
-                                                    </td>
+                                </td>
+                                <td>
+                                    <h4 style="margin-left: 20px; color: #5c4f4f"> المحافظه</h4>
+                                </td>
 
-                                                </tr>
-                                                <tr>
+                            </tr>
+                            <tr>
 
-                                                    <td>
-                                                        <select ng-model="area" class="form-control" dir="rtl" ng-options="x1.name as x1.name for x1  in allArea | filter:govern " style="border-radius: 0px; margin-top: 5px; width: 200px"></select>
+                                <td>
+                                    <select ng-model="area" class="form-control" dir="rtl" ng-options="x1.name as x1.name for x1  in allArea | filter:govern " style="border-radius: 0px; margin-top: 5px; width: 200px"></select>
 
-                                                    </td>
-                                                    <td>
-                                                        <h4 style="margin-left: 20px; color: #5c4f4f"> المنطقه</h4>
-                                                    </td>
+                                </td>
+                                <td>
+                                    <h4 style="margin-left: 20px; color: #5c4f4f"> المنطقه</h4>
+                                </td>
 
-                                                </tr>
+                            </tr>
 
-                                            </table>
+                        </table>
 
-                                            <br />
-                                            <div class="table-responsive" style="height:300px; overflow:auto">
+                        <br />
+                        <div class="table-responsive" style="height:300px; overflow:auto">
 
-                                                <table class="table table-striped b-t b-light" dir="rtl">
-                                                    <thead>
-                                                        <tr style="background:#FAFAFA; ">
-                                                            <th><h3 style="padding:2px;"> اختر  </h3></th>
-                                                            <th><h3 style="padding:2px;"> الرقم  </h3></th>
-                                                            <th><h3 style="padding:2px;"> الاسم </h3></th>
-                                                            <th><h3 style="padding:2px">المنطقه </h3></th>
+                            <table class="table table-striped b-t b-light" dir="rtl">
+                                <thead>
+                                    <tr style="background:#FAFAFA; ">
+                                        <th><h3 style="padding:2px;"> اختر  </h3></th>
+                                        <th><h3 style="padding:2px;"> الرقم  </h3></th>
+                                        <th><h3 style="padding:2px;"> الاسم </h3></th>
+                                        <th><h3 style="padding:2px">المنطقه </h3></th>
 
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody ng-repeat="c in allClients | filter:{areaName:area}">
+                                    </tr>
+                                </thead>
+                                <tbody ng-repeat="c in allClients | filter:{areaName:area}">
 
-                                                        <tr style="background:white">
-                                                            <td style="border: 2px solid #D9E4E6;">
-                                                                <button class="btn btn-sm" ng-click="get_sale_info(c.id,c.name)" type="button" data-dismiss="modal">
-                                                                    <i class="fa fa-check " style="color: #5c4f4f"></i>
-                                                                </button>
-                                                            </td>
-                                                            <td style="border: 2px solid #D9E4E6;"><h4 style="font-size:11px">{{c.id}}</h4></td>
-                                                            <td style="border: 2px solid #D9E4E6;"><h4 style="font-size:11px;">{{c.name}}</h4></td>
-                                                            <td style="border: 2px solid #D9E4E6;"><h4 style="font-size:11px"> {{c.areaName}}</h4></td>
-                                                        </tr>
-                                                    </tbody>
-
-
-                                                    <tbody></tbody>
-                                                </table>
-
-                                            </div>
-                                            <br />
-                                            <center>
-                                                <button type="button" class="btn btn-default" data-dismiss="modal" style="width:100px"><h4>الغاء</h4></button>
-                                            </center>
-
-                                        </center>
+                                    <tr style="background:white">
+                                        <td style="border: 2px solid #D9E4E6;">
+                                            <button class="btn btn-sm" ng-click="get_sale_info(c.id,c.name)" type="button" data-dismiss="modal">
+                                                <i class="fa fa-check " style="color: #5c4f4f"></i>
+                                            </button>
+                                        </td>
+                                        <td style="border: 2px solid #D9E4E6;"><h4 style="font-size:11px">{{c.id}}</h4></td>
+                                        <td style="border: 2px solid #D9E4E6;"><h4 style="font-size:11px;">{{c.name}}</h4></td>
+                                        <td style="border: 2px solid #D9E4E6;"><h4 style="font-size:11px"> {{c.areaName}}</h4></td>
+                                    </tr>
+                                </tbody>
 
 
-                                    </div>
+                                <tbody></tbody>
+                            </table>
 
-                                </div>
-                            </div>
                         </div>
+                        <br />
+                        <center>
+                            <button type="button" class="btn btn-default" data-dismiss="modal" style="width:100px"><h4>الغاء</h4></button>
+                        </center>
+
+                    </center>
+
+
+                </div>
+
+            </div>
+        </div>
+    </div>
 
 
 
-    @*@{Html.RenderPartial("../management/_scriptPartial");}*@
+    @{Html.RenderPartial("../management/_scriptPartial");}
 
 
     <script src="~/assets/general/js/jquery.bootstrap.wizard.js"></script>

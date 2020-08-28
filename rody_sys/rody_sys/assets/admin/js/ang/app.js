@@ -63,7 +63,7 @@ app.config(["$routeProvider", function ($routeProvider, $routeParams) {
         templateUrl: '../treasuries/addTahseel',
         controller: 'ctr_tahseel'
     }).
-     when('/client/clientTypes', {
+     when('/clients/clientTypes', {
          templateUrl: '../clients/clientTypes',
          controller: 'c_types'
      }).

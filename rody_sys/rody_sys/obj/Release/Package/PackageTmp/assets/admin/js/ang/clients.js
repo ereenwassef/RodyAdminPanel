@@ -1,6 +1,7 @@
 ﻿/// <reference path="../angular.js" />
+/// <reference path="../../../general/js/angular.js" />
 
-//var app = angular.module("myApp", []);
+var app = angular.module("myApp", []);
 
 var charge_first;
 var sales;
@@ -16,7 +17,7 @@ var badal2;
 var omolat2;
 var charge_last2;
 
-angular.module('myApp').controller("ctr_client", function ($scope, $http) {
+app.controller("ctr_client", function ($scope, $http) {
 
     $scope.get_all_governs = function () {
         $http({
@@ -98,20 +99,82 @@ angular.module('myApp').controller("ctr_client", function ($scope, $http) {
         });
     }
     $scope.get_all_shareeha();
-//---------------------------------------------------------
+//=========================================================
+    $scope.get_all_ct = function () {
+        $http({
+            url: "../clients/get_all_clients2",
+            method: "GET",
+        }).then
+        (function (mydata) {
+            $scope.allClients2 = mydata.data.allClients;
+        });
+    }
+    $scope.get_all_ct();
+//========================================================
+    var page = 0;
+    $scope.pageNum = 1;
+    var pageCount;
+
     $scope.get_all=function()
     {
         $http({
-            url: "../clients/get_all_clients",
+            url: "../clients/get_all_clients?page="+page,
+            method: "GET",
+        }).then
+        (function (mydata) {
+            $scope.allClients = mydata.data.allClients;
+            $scope.pageCount = mydata.data.pageCount;
+            pageCount=mydata.data.pageCount;
+        });
+        chechBtn();
+    }
+
+    $scope.get_all(); // to get all ...
+//=================================================
+    $scope.get_next = function () {
+        page +=1;
+        $scope.pageNum = page + 1;
+        $http({
+            url: "../clients/get_all_clients?page="+page,
             method: "GET",
         }).then
         (function (mydata) {
             $scope.allClients = mydata.data.allClients;
         });
+
+        chechBtn();
     }
+//================================================
+    $scope.get_previous = function () {
+        page -= 1;
+        $scope.pageNum = $scope.pageNum -1;
 
-    $scope.get_all(); // to get all ...
+        $http({
+            url: "../clients/get_all_clients?page="+page,
+            method: "GET",
+        }).then
+        (function (mydata) {
+            $scope.allClients = mydata.data.allClients;
+        });
 
+        chechBtn();
+    }
+//================================================
+    function chechBtn()
+    {
+        if ($scope.pageNum == pageCount) {
+            document.getElementById("btn_next").disabled = true;
+        } else {
+            document.getElementById("btn_next").disabled = false;
+        }
+
+        if ($scope.pageNum == 1) {
+            document.getElementById("btn_pre").disabled = true;
+        }
+        else {
+            document.getElementById("btn_pre").disabled = false;
+        }
+    }
 //==================================================
     var parentId = 0;
     $scope.choose=function(id,name)
@@ -127,12 +190,12 @@ angular.module('myApp').controller("ctr_client", function ($scope, $http) {
 
     $scope.add_client = function () {
 
-        if ($scope.name == null || parentId == 0)
-        {
-            alert("لم تتم عمليه الاضافه .. لا يمكن ان تترك قيمه اسم العميل والعميل الرئيسي فارغه ");
-        }
-        else
-        {
+        //if ($scope.name == null || parentId == 0)
+        //{
+        //    alert("لم تتم عمليه الاضافه .. لا يمكن ان تترك قيمه اسم العميل والعميل الرئيسي فارغه ");
+        //}
+        //else
+        //{
                 $http({
                     url: "../clients/add_client",
                     method: "POST",
@@ -143,7 +206,7 @@ angular.module('myApp').controller("ctr_client", function ($scope, $http) {
                         DOB: $scope.DOB,
                         idNum: $scope.idNum,
                         name: $scope.name,
-                        parentId: parentId,
+                        parentId: 56,
                         phone1: $scope.ph1,
                         shreha1: $scope.sh1,
                         phone2: $scope.ph2,
@@ -165,6 +228,9 @@ angular.module('myApp').controller("ctr_client", function ($scope, $http) {
                     }
                 }).then
                 (function (mydata) {
+
+                    document.getElementById("addBtn").disabled = true;
+
                     $scope.get_all();
                     alert(mydata.data.msg);
                 },
@@ -173,10 +239,14 @@ angular.module('myApp').controller("ctr_client", function ($scope, $http) {
                     alert("an error occurs" + errorReason.data);
                 });
             
-        }
+        //}
     }
 //=======================================================
-
+    $scope.makeAddPossible = function (c)
+    {
+        document.getElementById("addBtn").disabled = false;
+    }
+//======================================================
     var clientId = 0;
 
     $scope.update = function (c) {
@@ -388,7 +458,7 @@ angular.module('myApp').controller("ctr_client", function ($scope, $http) {
 
             $scope.currentValue = "";
             $scope.currentType = "";
-            $scope.desValue = "";
+            $scope.desValue = "sdfsdfs";
             $scope.desType = "";
             $scope.myStyle = {
                 "background-color": "none",

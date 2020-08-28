@@ -1,15 +1,17 @@
 ﻿
-@*@{
+@{
     ViewBag.Title = "getAllPurchases";
     Layout = "~/Areas/adminPanel/Views/Shared/_adminLayout.cshtml";
-}*@
+}
 
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="myApp">
 
 <head>
     <title></title>
-        <style>
+    <script src="~/assets/general/js/angular.js"></script>
+
+    <style>
         h4 {
             color: #456e82;
         }
@@ -37,7 +39,7 @@
                         <strong style="color: #5c4f4f"> حركات المشتريات</strong>
 
                     </div>
-                    <div class="row w3-res-tb" >
+                    <div class="row w3-res-tb">
 
                         <div class="col-lg-1 col-lg-offset-2" dir="ltr">
                             <button class="btn btn-info" data-toggle="modal" data-target="#getSuppliers">
@@ -49,7 +51,7 @@
                             <input dir="rtl" style="border-radius:0px" type="text" readonly placeholder="اسم المورد" class="form-control" ng-model="supName_2" />
                         </div>
                         <div class="col-lg-3" dir="ltr">
-                            <select dir="rtl" class="form-control" style="border-radius:0px"ng-model="supType">
+                            <select dir="rtl" class="form-control" style="border-radius:0px" ng-model="supType">
                                 <option value="" selected>نوع المتعامل معه</option>
                                 <option ng-value="1">مورد</option>
                                 <option ng-value="2">عميل</option>
@@ -70,11 +72,11 @@
                     <div class="row w3-res-tb">
 
                         <div class="col-lg-3 col-lg-offset-6" dir="ltr">
-                            <input dir="rtl" style="border-radius:0px" type="text" placeholder="الي تاريخ" class="form-control" ng-model="to"  onfocus="this.type='date'"/>
+                            <input dir="rtl" style="border-radius:0px" type="text" placeholder="الي تاريخ" class="form-control" ng-model="to" onfocus="this.type='date'" />
                         </div>
                         <div class="col-lg-3" dir="ltr">
                             <input dir="rtl" style="border-radius:0px" type="text" placeholder=" من تاريخ" class="form-control" ng-model="from" onfocus="this.type='date'" />
-                        </div>                     
+                        </div>
 
                     </div>
                     <br />
@@ -93,7 +95,7 @@
                                     <th><h5 style="padding: 5px" ng-click="sort('name')"> الاجمالي  <i class="fa {{icon_name}}"></i></h5></th>
                                     <th><h5 style="padding: 5px" ng-click="sort('name')"> الخصم <i class="fa {{icon_name}}"></i></h5></th>
                                     <th><h5 style="padding: 5px" ng-click="sort('name')"> الاجمالي بعد الخصم <i class="fa {{icon_name}}"></i></h5></th>
-                                  
+
                                 </tr>
                             </thead>
                             <tbody ng-repeat="t in allPurchases | myGenericDateFilter:from:to |filter:token |filter:{supId:sId} | limitTo:limit | orderBy:sortedCol">
@@ -340,7 +342,7 @@
     </div>
 
 
-<!--=================================================-->
+    <!--=================================================-->
 
     <div id="getSuppliers" class="modal fade left" role="dialog" style="top:10%">
         <div class=" modal-dialog" style="width:400px">

@@ -1,8 +1,15 @@
-﻿
-<html xmlns="http://www.w3.org/1999/xhtml">
+﻿@{
+    ViewBag.Title = "add_sale";
+    Layout = "~/Areas/adminPanel/Views/Shared/_adminLayout.cshtml";
+}
+
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="myApp">
+
 
 <head>
     <title></title>
+    <script src="~/assets/general/js/angular.js"></script>
+    <script src="~/assets/admin/js/ang/client_sale.js"></script>
     <style>
         h4 {
             color: #456e82;
@@ -51,7 +58,7 @@
 
                         </div>
 
-                       <br/><br/><br/>
+                        <br /><br /><br />
                         <div class="col-lg-3 col-lg-offset-6">
                             <h5 class="text-center" style="background: #f2f5f2; padding: 6px;
                                height: 34px; color: gray;  ">
@@ -60,16 +67,16 @@
                             </h5>
                         </div>
 
-                            <div class="col-lg-3 " dir="ltr">
-                                <h5 class="text-center" style="background: #ffdddc; padding: 6px; height: 34px; color: gray; ">
-                                    الاجمالي   :  {{ phoneHistory | myFilter2:from:to |filter:phNum | sumFilterDeptor }} جنيه
-                                </h5>
-                            </div>
-                        
+                        <div class="col-lg-3 " dir="ltr">
+                            <h5 class="text-center" style="background: #ffdddc; padding: 6px; height: 34px; color: gray; ">
+                                الاجمالي   :  {{ phoneHistory | myFilter2:from:to |filter:phNum | sumFilterDeptor }} جنيه
+                            </h5>
+                        </div>
+
 
                     </div>
 
-                 
+
 
 
 
@@ -143,6 +150,7 @@
         </section>
         <!--main content end-->
     </section>
+    @{Html.RenderPartial("../management/_scriptPartial");}
 
 </body>
 </html>

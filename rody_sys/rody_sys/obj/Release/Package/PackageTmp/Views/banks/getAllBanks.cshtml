@@ -1,0 +1,394 @@
+﻿
+@{
+    ViewBag.Title = "getAllBanks";
+    Layout = "~/Areas/adminPanel/Views/Shared/_adminLayout.cshtml";
+}
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="myApp">
+
+<head>
+    <title></title>
+    <script src="~/assets/general/js/angular.js"></script>
+    <script src="~/assets/admin/js/ang/banks.js"></script>
+
+    <style>
+        h4 {
+            color: #456e82;
+        }
+
+        h3 {
+            color: #5c4f4f;
+        }
+    </style>
+
+</head>
+
+<body ng-controller="banks">
+
+    <section id="main-content">
+        <section class="wrapper">
+            <div class="table-agile-info">
+                <ol class="breadcrumb breadcrumb-2">
+                    <li><a><i class="icon-home"></i> القائمه</a></li>
+                    <li class="active"><a style="color: #ec407a"> البنوك</a> </li>
+                </ol>
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <strong style="color: #5c4f4f"> البنوك</strong>
+
+                    </div>
+                    <div class="row w3-res-tb">
+
+                        <div class="col-lg-4" dir="ltr">
+                            <input dir="rtl" style="border-radius:0px" type="text" placeholder="اسم البنك" class="form-control" ng-model="token.name" />
+
+                            <br />
+                        </div>
+
+                        <div class="col-lg-2 col-lg-offset-6" dir="ltr">
+
+                            <button class="btn btn-info" data-toggle="modal" data-target="#add">اضافه</button>
+
+                            <br />
+                        </div>
+
+                    </div>
+                    <br />
+                    <div class="table-responsive">
+
+                        <table class="table table-striped b-t b-light" dir="rtl">
+                            <thead>
+                                <tr style="background: #ddede0; padding:5px ">
+                                    <th><h5 style="padding:5px;" ng-click="sort('id')">الكود <i class="fa {{icon_id}}"></i></h5></th>
+                                    <th><h5 style="padding: 5px" ng-click="sort('name')"> اسم البنك <i class="fa {{icon_name}}"></i></h5></th>
+                                    <th><h5 style="padding: 5px" ng-click="sort('name')"> المسئول <i class="fa {{icon_name}}"></i></h5></th>
+                                    <th><h5 style="padding: 5px">عرض / تعديل</h5></th>
+                                    <th><h5 style="padding: 5px">حذف</h5></th>
+                                </tr>
+                            </thead>
+                            <tbody ng-repeat="b in allBanks | filter: token | limitTo:limit | orderBy:sortedCol">
+
+                                <tr class="tr" id="tbr">
+                                    <td>
+                                        <h4>
+                                            {{b.id}}
+                                        </h4>
+                                    </td>
+                                    <td>
+                                        <h4>
+                                            {{b.name}}
+                                        </h4>
+                                    </td>
+                                    <td>
+                                        <h4>
+                                            {{b.responsible}}
+                                        </h4>
+                                    </td>
+                                    <td>
+                                        <button ng-click="update(b.id,b.name,b.address,b.phone1,b.phone2,b.phone3,b.fax,b.responsible,b.notes)" class="btn btn-sm btn-success" data-toggle="modal" data-target="#update">
+                                            <i class="fa fa-edit fa-lg"></i>
+                                        </button>
+
+                                    </td>
+                                    <td>
+                                        <button ng-click="get_bank(b.id)" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#delete">
+                                            <i class="fa fa-remove fa-lg"></i>
+                                        </button>
+
+                                    </td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!--main content end-->
+    </section>
+
+
+    <div id="delete" class="modal fade" role="dialog" style="background-color: rgba(25, 23, 23, 0.49); ">
+        <div class="modal-dialog modal-sm" style="top:25%">
+            <div class="modal-content">
+
+                <div class="modal-body text-left">
+                    <center>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <br />
+                        <h4 style="color:crimson"> هل تريد حذف هذاالبنك؟</h4>
+                    </center>
+
+                </div>
+                <div class="modal-footer">
+                    <center>
+                        <button type="button" class="btn btn-success btn-sm" data-dismiss="modal">الغاء</button>
+                        <button type="submit" class="btn btn-danger btn-sm" ng-click="delete()" data-dismiss="modal">حذف</button>
+                    </center>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div id="add" class="modal fade left" role="dialog" style="top: 15%; background-color: transparent !important">
+        <div class=" modal-dialog" style="width: 400px; background-color: transparent !important">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="text-center" style="color: #5c4f4f">اضافه بنك</h4>
+                </div>
+                <div class="modal-body text-left">
+                    <center>
+                        <br />
+                        <table>
+                            <tr>
+
+                                <td style=" border: 0px">
+
+                                    <input ng-model="name" type="text" class="form-control" style="border-radius:0px" dir="rtl" />
+
+                                </td>
+                                <td style=" border: 0px">
+                                    <h4 style="margin-left:20px">اسم البنك</h4>
+                                </td>
+
+                            </tr>
+                            <tr>
+
+                                <td style=" border: 0px">
+
+                                    <input ng-model="address" type="text" class="form-control" style="border-radius:0px" dir="rtl" />
+
+                                </td>
+                                <td style=" border: 0px">
+                                    <h4 style="margin-left:20px">العنوان</h4>
+                                </td>
+
+                            </tr>
+                            <tr>
+
+                                <td style=" border: 0px">
+
+                                    <input ng-model="phone1" type="text" class="form-control" style="border-radius:0px" dir="rtl" />
+
+                                </td>
+                                <td style=" border: 0px">
+                                    <h4 style="margin-left:20px">تليفون</h4>
+                                </td>
+
+                            </tr>
+
+                            <tr>
+
+                                <td style=" border: 0px">
+
+                                    <input ng-model="phone2" type="text" class="form-control" style="border-radius:0px" dir="rtl" />
+
+                                </td>
+                                <td style=" border: 0px">
+                                    <h4 style="margin-left:20px">تليفون</h4>
+                                </td>
+
+                            </tr>
+
+                            <tr>
+
+                                <td style=" border: 0px">
+
+                                    <input ng-model="phone3" type="text" class="form-control" style="border-radius:0px" dir="rtl" />
+
+                                </td>
+                                <td style=" border: 0px">
+                                    <h4 style="margin-left:20px">تليفون</h4>
+                                </td>
+
+                            </tr>
+                            <tr>
+
+                                <td style=" border: 0px">
+
+                                    <input ng-model="fax" type="text" class="form-control" style="border-radius:0px" dir="rtl" />
+
+                                </td>
+                                <td style=" border: 0px">
+                                    <h4 style="margin-left:20px">فاكس</h4>
+                                </td>
+
+                            </tr>
+
+                            <tr>
+
+                                <td style=" border: 0px">
+
+                                    <input ng-model="responsible" type="text" class="form-control" style="border-radius:0px" dir="rtl" />
+
+                                </td>
+                                <td style=" border: 0px">
+                                    <h4 style="margin-left:20px">المسئول</h4>
+                                </td>
+
+                            </tr>
+                            <tr>
+
+                                <td style=" border: 0px">
+
+                                    <input ng-model="notes" type="text" class="form-control" style="border-radius:0px" dir="rtl" />
+
+                                </td>
+                                <td style=" border: 0px">
+                                    <h4 style="margin-left:20px">الملاحظات</h4>
+                                </td>
+
+                            </tr>
+
+                        </table>
+                        <br /><hr />
+                        <button type="button" class="btn btn-success btn-sm" data-dismiss="modal">الغاء</button>
+                        <button type="submit" class="btn btn-primary btn-sm" ng-click="add()" data-dismiss="modal">اضافه</button>
+                    </center>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+
+
+    <div id="update" class="modal fade left" role="dialog" style="top: 15%; background-color: transparent !important">
+        <div class=" modal-dialog" style="width: 400px; background-color: transparent !important">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="text-center" style="color: #5c4f4f">تعديل بيانات بنك</h4>
+                </div>
+                <div class="modal-body text-left">
+                    <center>
+                        <br />
+                        <table>
+                            <tr>
+
+                                <td style=" border: 0px">
+
+                                    <input ng-model="name1" type="text" class="form-control" style="border-radius:0px" dir="rtl" />
+
+                                </td>
+                                <td style=" border: 0px">
+                                    <h4 style="margin-left:20px">اسم البنك</h4>
+                                </td>
+
+                            </tr>
+                            <tr>
+
+                                <td style=" border: 0px">
+
+                                    <input ng-model="address1" type="text" class="form-control" style="border-radius:0px" dir="rtl" />
+
+                                </td>
+                                <td style=" border: 0px">
+                                    <h4 style="margin-left:20px">العنوان</h4>
+                                </td>
+
+                            </tr>
+                            <tr>
+
+                                <td style=" border: 0px">
+
+                                    <input ng-model="phone11" type="text" class="form-control" style="border-radius:0px" dir="rtl" />
+
+                                </td>
+                                <td style=" border: 0px">
+                                    <h4 style="margin-left:20px">تليفون</h4>
+                                </td>
+
+                            </tr>
+
+                            <tr>
+
+                                <td style=" border: 0px">
+
+                                    <input ng-model="phone21" type="text" class="form-control" style="border-radius:0px" dir="rtl" />
+
+                                </td>
+                                <td style=" border: 0px">
+                                    <h4 style="margin-left:20px">تليفون</h4>
+                                </td>
+
+                            </tr>
+
+                            <tr>
+
+                                <td style=" border: 0px">
+
+                                    <input ng-model="phone31" type="text" class="form-control" style="border-radius:0px" dir="rtl" />
+
+                                </td>
+                                <td style=" border: 0px">
+                                    <h4 style="margin-left:20px">تليفون</h4>
+                                </td>
+
+                            </tr>
+                            <tr>
+
+                                <td style=" border: 0px">
+
+                                    <input ng-model="fax1" type="text" class="form-control" style="border-radius:0px" dir="rtl" />
+
+                                </td>
+                                <td style=" border: 0px">
+                                    <h4 style="margin-left:20px">فاكس</h4>
+                                </td>
+
+                            </tr>
+
+                            <tr>
+
+                                <td style=" border: 0px">
+
+                                    <input ng-model="responsible1" type="text" class="form-control" style="border-radius:0px" dir="rtl" />
+
+                                </td>
+                                <td style=" border: 0px">
+                                    <h4 style="margin-left:20px">المسئول</h4>
+                                </td>
+
+                            </tr>
+                            <tr>
+
+                                <td style=" border: 0px">
+
+                                    <input ng-model="notes1" type="text" class="form-control" style="border-radius:0px" dir="rtl" />
+
+                                </td>
+                                <td style=" border: 0px">
+                                    <h4 style="margin-left:20px">الملاحظات</h4>
+                                </td>
+
+                            </tr>
+
+                        </table>
+                        <br /><hr />
+                        <button type="button" class="btn btn-success btn-sm" data-dismiss="modal">الغاء</button>
+                        <button type="submit" class="btn btn-danger btn-sm" ng-click="updateDB()" data-dismiss="modal">تعديل</button>
+                    </center>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+
+    @*@{Html.RenderPartial("../management/_scriptPartial");}*@
+
+
+</body>
+</html>
+

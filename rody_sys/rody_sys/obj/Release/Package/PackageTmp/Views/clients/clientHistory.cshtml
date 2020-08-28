@@ -1,0 +1,726 @@
+﻿@{
+    ViewBag.Title = "client_history";
+    Layout = "~/Areas/adminPanel/Views/Shared/_adminLayout.cshtml";
+}
+
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="myApp">
+
+<head>
+    <title></title>
+    <script src="~/assets/general/js/angular.js"></script>
+    <script src="~/assets/admin/js/ang/client_history.js"></script>
+
+
+    <style>
+        .divc {
+            background: #176982;
+            margin-left: 10px;
+        }
+
+            .divc h3 {
+                color: white;
+            }
+
+
+        /*td h4 {
+                    vertical-align:central important!;
+                }*/
+        h4 {
+            color: #456e82;
+        }
+
+        h3 {
+            color: #5c4f4f;
+        }
+
+        /*input::-webkit-input-placeholder {
+                    font-size: 12px;
+                }*/
+
+        h3, h4 {
+            font-size: 13px;
+        }
+    </style>
+
+    @*<link href="~/assets/admin/css/popup.css" rel="stylesheet" />*@
+
+</head>
+
+<body ng-controller="ctr_clientH">
+
+    <section id="main-content">
+        <section class="wrapper">
+            <div class="table-agile-info">
+                <ol class="breadcrumb breadcrumb-2">
+                    <li><a><i class="icon-home"></i> القائمه</a></li>
+                    <li class="active"><a style="color: #ec407a">كشف حساب</a> </li>
+                </ol>
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <strong style="color: #5c4f4f">كشف حساب عميل</strong>
+                    </div>
+
+
+
+                    <div class="row w3-res-tb" dir="rtl">
+                        <div class="col-lg-12">
+                            <input type="hidden" value="@ViewBag.id" id="cltId" />
+                            <table>
+                                <tr>
+                                    <td style="border:0px">
+                                        <input readonly id="clientName" value="@ViewBag.name" type="text" class="form-control" style="border-radius:0px" placeholder="اسم العميل" />
+                                    </td>
+                                    <td style="border:0px">
+                                        <button class="btn btn-info" data-toggle="modal" data-target="#get_client" style="margin-right:5px">بحث</button>
+                                    </td>
+                                    <td style="border:0px">
+                                        <button data-toggle="modal" data-target="#updateClient" ng-click="update_client()" class="btn btn-success" style="margin-right:5px">عرض / تعديل</button>
+                                    </td>
+                                    @*<td style="border:0px">
+                                            <select class="form-control" style="  border-radius: 0px; margin-right:5px">
+                                                <option value="">نوع التاريخ</option>
+                                                <option>فعلي</option>
+                                                <option>استحقاق</option>
+                                            </select>
+                                        </td>*@
+                                    <td style="border:0px">
+                                        <input ng-model="from" placeholder=" من تاريخ فعلي " style="border-radius: 0px; margin-right: 15px" class="form-control" type="text" onfocus="(this.type='date')">
+                                    </td>
+                                    <td style="border:0px">
+                                        <input ng-model="to" placeholder="الي تاريخ فعلي " style="border-radius: 0px; margin-right: 25px" class="form-control" type="text" onfocus="(this.type='date')">
+                                    </td>
+                                    <td style="border:0px">
+                                        <button class="btn" ng-click="getTotal()" data-toggle="modal" data-target="#get_client_total" style="margin-right:40px">الاجمالي</button>
+                                    </td>
+                                    <td style="border:0px">
+                                        <button class="btn btn-warning" ng-click="add_mostahek()" style="margin-right:10px">اضافه الي قائمه مستحقي السداد</button>
+                                    </td>
+                                </tr>
+                                @*<tr>
+                                        <td style="border:0px">
+                                            <h4 style="font-weight:bold ;">
+                                                <br />
+                                                رصيد بدايه الفتره
+                                                : 0 جنيه
+                                            </h4>
+                                        </td>
+                                    </tr>*@
+                            </table>
+
+                            <br />
+                        </div>
+
+                    </div>
+
+                    <div class="table-responsive" style="height:300px;">
+
+                        <table class="table table-striped b-t b-light" dir="rtl">
+                            <thead>
+                                <tr style="background: #ddede0; padding:5px ">
+                                    <th><h3 style="padding:5px;"> رقم الحركه </h3></th>
+                                    <th><h3 style="padding:5px;"> التاريخ الفعلي </h3></th>
+                                    <th><h3 style="padding:5px;"> الوقت </h3></th>
+                                    <th><h3 style="padding: 5px">تاريخ الاستحقاق </h3></th>
+                                    <th><h3 style="padding: 5px">البيان</h3></th>
+                                    <th><h3 style="padding: 5px"> التليفون</h3></th>
+                                    <th><h3 style="padding: 5px">مدين</h3></th>
+                                    <th><h3 style="padding: 5px">دائن</h3></th>
+                                    <th><h3 style="padding: 5px">الرصيد</h3></th>
+                                    <th><h3 style="padding: 5px">ملاحظات</h3></th>
+                                </tr>
+                            </thead>
+                            <tbody ng-if="allOperations==null">
+                                <tr class="tr">
+
+                                    <td>
+                                        <h4>
+                                            -
+                                        </h4>
+                                    </td>
+                                    <td>
+                                        <h4>
+                                            -
+                                        </h4>
+                                    </td>
+                                    <td>
+                                        <h4>
+                                            -
+                                        </h4>
+                                    </td>
+                                    <td>
+                                        <h4>
+                                            -
+                                        </h4>
+                                    </td>
+
+
+                                    <td>
+                                        <h4>
+                                            -
+                                        </h4>
+                                    </td>
+
+                                    <td>
+                                        <h4>
+                                            -
+                                        </h4>
+                                    </td>
+                                    <td style="background:pink">
+                                        <h4>
+                                            -
+                                        </h4>
+                                    </td>
+                                    <td style="background: #7ee095; ">
+                                        <h4>
+                                            -
+                                        </h4>
+                                    </td>
+                                    <td>
+                                        <h4>
+                                            -
+                                        </h4>
+                                    </td>
+                                    <td>
+                                        <h4>
+                                            -
+                                        </h4>
+                                    </td>
+
+                                </tr>
+                                <tr class="tr">
+
+                                    <td>
+                                        <h4>
+                                            -
+                                        </h4>
+                                    </td>
+                                    <td>
+                                        <h4>
+                                            -
+                                        </h4>
+                                    </td>
+                                    <td>
+                                        <h4>
+                                            -
+                                        </h4>
+                                    </td>
+                                    <td>
+                                        <h4>
+                                            -
+                                        </h4>
+                                    </td>
+
+
+                                    <td>
+                                        <h4>
+                                            -
+                                        </h4>
+                                    </td>
+
+                                    <td>
+                                        <h4>
+                                            -
+                                        </h4>
+                                    </td>
+                                    <td style="background:pink">
+                                        <h4>
+                                            -
+                                        </h4>
+                                    </td>
+                                    <td style="background: #7ee095; ">
+                                        <h4>
+                                            -
+                                        </h4>
+                                    </td>
+                                    <td>
+                                        <h4>
+                                            -
+                                        </h4>
+                                    </td>
+                                    <td>
+                                        <h4>
+                                            -
+                                        </h4>
+                                    </td>
+
+                                </tr>
+                                <tr class="tr">
+
+                                    <td>
+                                        <h4>
+                                            -
+                                        </h4>
+                                    </td>
+                                    <td>
+                                        <h4>
+                                            -
+                                        </h4>
+                                    </td>
+                                    <td>
+                                        <h4>
+                                            -
+                                        </h4>
+                                    </td>
+                                    <td>
+                                        <h4>
+                                            -
+                                        </h4>
+                                    </td>
+
+
+                                    <td>
+                                        <h4>
+                                            -
+                                        </h4>
+                                    </td>
+
+                                    <td>
+                                        <h4>
+                                            -
+                                        </h4>
+                                    </td>
+                                    <td style="background:pink">
+                                        <h4>
+                                            -
+                                        </h4>
+                                    </td>
+                                    <td style="background: #7ee095; ">
+                                        <h4>
+                                            -
+                                        </h4>
+                                    </td>
+                                    <td>
+                                        <h4>
+                                            -
+                                        </h4>
+                                    </td>
+                                    <td>
+                                        <h4>
+                                            -
+                                        </h4>
+                                    </td>
+
+                                </tr>
+                                <tr class="tr">
+
+                                    <td>
+                                        <h4>
+                                            -
+                                        </h4>
+                                    </td>
+                                    <td>
+                                        <h4>
+                                            -
+                                        </h4>
+                                    </td>
+                                    <td>
+                                        <h4>
+                                            -
+                                        </h4>
+                                    </td>
+                                    <td>
+                                        <h4>
+                                            -
+                                        </h4>
+                                    </td>
+
+
+                                    <td>
+                                        <h4>
+                                            -
+                                        </h4>
+                                    </td>
+
+                                    <td>
+                                        <h4>
+                                            -
+                                        </h4>
+                                    </td>
+                                    <td style="background:pink">
+                                        <h4>
+                                            -
+                                        </h4>
+                                    </td>
+                                    <td style="background: #7ee095; ">
+                                        <h4>
+                                            -
+                                        </h4>
+                                    </td>
+                                    <td>
+                                        <h4>
+                                            -
+                                        </h4>
+                                    </td>
+                                    <td>
+                                        <h4>
+                                            -
+                                        </h4>
+                                    </td>
+
+                                </tr>
+                            </tbody>
+
+                            <tbody ng-repeat="op in allOperations | myActualDateFilter_in:from:to" style="height:100px;">
+
+                                <tr class="tr" ng-if="op.otherPhoneNum==null">
+                                    <td>
+                                        <h4>
+                                            {{op.id}}
+                                        </h4>
+                                    </td>
+                                    <td>
+                                        <h4>
+                                            {{op.actual_date}}
+                                        </h4>
+                                    </td>
+                                    <td>
+                                        <h4>
+                                            {{op.time}}
+                                        </h4>
+                                    </td>
+                                    <td>
+                                        <h4>
+                                            {{op.get_date}}
+                                        </h4>
+                                    </td>
+
+
+                                    <td ng-if="op.serviceName==null">
+                                        <h4>
+                                            {{op.dec}}
+                                        </h4>
+                                    </td>
+                                    <td ng-if="op.serviceName!=null">
+                                        <h4>
+                                            {{op.serviceName}}
+                                        </h4>
+                                    </td>
+                                    <td>
+                                        <h4>
+                                            {{op.phone}}
+                                        </h4>
+                                    </td>
+
+                                    <td style="background:pink">
+                                        <h4>
+                                            {{op.debtor}}
+                                        </h4>
+                                    </td>
+                                    <td style="background: #7ee095; ">
+                                        <h4>
+                                            {{op.creditor}}
+                                        </h4>
+                                    </td>
+                                    <td>
+                                        <h4>
+                                            {{op.charge}}
+                                        </h4>
+                                    </td>
+                                    <td>
+                                        <h4>
+                                            {{op.notes}}
+                                        </h4>
+                                    </td>
+                                    <td style="display:none">
+                                        <h4>
+                                            {{op.type}}
+                                        </h4>
+                                    </td>
+
+                                </tr>
+
+                                <tr class="tr" ng-if="op.otherPhoneNum!=null" style="background: #e9e9e9">
+                                    <td>
+                                        <h4>
+                                            {{op.id}}
+                                        </h4>
+                                    </td>
+                                    <td>
+                                        <h4>
+                                            {{op.actual_date}}
+                                        </h4>
+                                    </td>
+                                    <td>
+                                        <h4>
+                                            {{op.time}}
+                                        </h4>
+                                    </td>
+                                    <td>
+                                        <h4>
+                                            {{op.get_date}}
+                                        </h4>
+                                    </td>
+
+
+                                    <td ng-if="op.serviceName==null">
+                                        <h4>
+                                            {{op.dec}}
+                                        </h4>
+                                    </td>
+                                    <td ng-if="op.serviceName!=null">
+                                        <h4>
+                                            {{op.serviceName}}
+                                        </h4>
+                                    </td>
+
+                                    <td>
+                                        <h4>
+                                            {{op.otherPhoneNum}}
+                                        </h4>
+                                    </td>
+                                    <td style="background:pink">
+                                        <h4>
+                                            {{op.debtor}}
+                                        </h4>
+                                    </td>
+                                    <td style="background: #7ee095; ">
+                                        <h4>
+                                            {{op.creditor}}
+                                        </h4>
+                                    </td>
+                                    <td>
+                                        <h4>
+                                            {{op.charge}}
+                                        </h4>
+                                    </td>
+                                    <td>
+                                        <h4>
+                                            {{op.notes}}
+                                        </h4>
+                                    </td>
+                                    <td style="display:none">
+                                        <h4>
+                                            {{op.type}}
+                                        </h4>
+                                    </td>
+
+                                </tr>
+
+                            </tbody>
+                        </table>
+
+                    </div>
+                    <!--========================================================-->
+                    <br />
+                    @*<center>
+                            <button class="btn" ng-click="getTotal()" data-toggle="modal" data-target="#get_client_total" style="margin-right:5px;">الاجمالي</button>
+                        </center>*@
+
+                    <br /><br />
+
+                    @*<div class="row" dir="rtl" style="margin-right:10px; margin-left:10px; margin-top:5px">
+
+                            <div class="col-lg-3">
+                                <span style="margin-right:5px">عمولات</span>
+                                <input type="text" style="background:white" dir="rtl" readonly ng-model="amola" class="form-control">
+                            </div>
+
+                            <div class="col-lg-3" dir="rtl">
+                                <span style="margin-right:5px">بدل تحصيل</span>
+                                <input type="text" style="background:white" dir="rtl" readonly ng-model="badal_tahseel" class="form-control">
+                            </div>
+
+                            <div class="col-lg-3">
+                                <span style="margin-right:5px">تحصيلات</span>
+                                <input type="text" style="background:white" dir="rtl" readonly ng-model="tahseel" class="form-control">
+                            </div>
+
+                            <div class="col-lg-3">
+                                <span style="margin-right:5px">مبيعات</span>
+                                <input type="text" style="background:white" dir="rtl" readonly ng-model="TS" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="row" dir="rtl" style="margin-right:10px; margin-left:10px; margin-top:5px">
+                            <br />
+                            <div class="col-lg-3 col-lg-offset-6">
+                                <span style="margin-right:5px">رصيد اخر الفتره المستحق </span>
+                                <input type="text" style="background:white" dir="rtl" readonly ng-model="badal_tahseel" class="form-control">
+                            </div>
+
+                            <div class="col-lg-3">
+                                <span style="margin-right:5px">رصيد اخر الفتره الفعلي</span>
+                                <input type="text" style="background:white" dir="rtl" readonly ng-model="badal_tahseel" class="form-control">
+                            </div>
+                        </div>*@
+
+                    @*<br /><br /><br />*@
+                </div>
+                <!--====================================================-->
+                <br /><br />
+            </div>
+        </section>
+    </section>
+
+
+    <div id="get_client" class="modal fade left" role="dialog" style="top:10%">
+        <div class=" modal-dialog" style="width:400px">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="text-center" style="color: #5c4f4f">اختيار العميل</h4>
+                </div>
+                <div class="modal-body text-left">
+                    <center>
+                        <br />
+                        <table>
+                            <tr>
+
+                                <td style="border:0px">
+
+                                    <select style="border-radius:0px; margin-top:5px; width:200px" ng-model="govern" class="form-control" dir="rtl" ng-options="x2.name as x2.name for x2  in allGovern "></select>
+
+                                </td>
+                                <td style="border:0px">
+                                    <h4 style="margin-left: 20px; color: #5c4f4f"> المحافظه</h4>
+                                </td>
+
+                            </tr>
+                            <tr>
+
+                                <td style="border:0px">
+                                    <select ng-model="area" class="form-control" dir="rtl" ng-options="x1.name as x1.name for x1  in allArea | filter:govern " style="border-radius: 0px; margin-top: 5px; width: 200px"></select>
+
+                                </td>
+                                <td style="border:0px">
+                                    <h4 style="margin-left: 20px; color: #5c4f4f"> المنطقه</h4>
+                                </td>
+
+                            </tr>
+
+                        </table>
+
+                        <br />
+                        <div class="table-responsive" style="height:300px; overflow:auto">
+
+                            <table class="table table-striped b-t b-light" dir="rtl">
+                                <thead>
+                                    <tr style="background:#FAFAFA; ">
+                                        <th><h3 style="padding:2px;"> اختر  </h3></th>
+                                        <th><h3 style="padding:2px;"> الرقم  </h3></th>
+                                        <th><h3 style="padding:2px;"> الاسم </h3></th>
+                                        <th><h3 style="padding:2px">المنطقه </h3></th>
+
+                                    </tr>
+                                </thead>
+                                <tbody ng-repeat="c in allClients | filter:{areaName:area}">
+
+                                    <tr style="background:white">
+                                        @*<td><input type="radio" style="margin-top:2px" value="{{c.id}}" ng-model="$parent.aya" id="aa_{{c.id}}" /></td>*@
+                                        <td>
+                                            <button class="btn btn-default btn-sm" ng-click="choose(c.id,c.name)" type="button" data-dismiss="modal">
+                                                <i class="fa fa-check "></i>
+                                            </button>
+                                        </td>
+                                        <td><h4 style="font-size:11px">{{c.id}}</h4></td>
+                                        <td><h4 style="font-size:11px;">{{c.name}}</h4></td>
+                                        <td><h4 style="font-size:11px"> {{c.areaName}}</h4></td>
+                                    </tr>
+                                </tbody>
+
+
+                                <tbody></tbody>
+                            </table>
+
+                        </div>
+                        <br />
+                        <center>
+                            <button type="button" class="btn btn-default" data-dismiss="modal" style="width:100px"><h4>الغاء</h4></button>
+                        </center>
+
+                    </center>
+
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    @*<div id="total" class="modal fade left" role="dialog" style="top:10%; right:8%; width:500px">
+            <div class=" modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="text-center" style="color: #5c4f4f">الاجمالي</h4>
+                    </div>
+                    <div class="modal-body text-left">
+                        <center>
+
+                            <table>
+                                <tr>
+                                    <td>aaa</td>
+                                    <td>bbb</td>
+                                </tr>
+                            </table>
+
+
+                            <center>
+                                <button type="button" class="btn btn-default" data-dismiss="modal" style="width:100px"><h4>الغاء</h4></button>
+                            </center>
+
+                        </center>
+
+
+                    </div>
+
+                </div>
+            </div>
+        </div>*@
+
+    <!--===================================-->
+
+    <div id="get_client_total" class="modal fade left" role="dialog" style="top:15%">
+        <div class=" modal-dialog" style="width:405px">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="text-center" style="color: #5c4f4f"> اجمالي العمليات</h4>
+                </div>
+                <div class="modal-body text-right">
+                    <div style="margin-left:30px;margin-right:30px; margin-left:30px">
+                        <span style="margin-right:10px">مبيعات</span>
+                        <input type="text" style="background:white ; width:310px" dir="rtl" readonly ng-model="TS" class="form-control">
+                        <br />
+                        <span style="margin-right:10px">تحصيلات</span>
+                        <input type="text" style="background: white; width: 310px" dir="rtl" readonly ng-model="tahseel" class="form-control">
+                        <br />
+                        <span style="margin-right:10px">بدل تحصيل</span>
+                        <input type="text" style="background: white; width: 310px" dir="rtl" readonly ng-model="badal_tahseel" class="form-control">
+                        <br />
+                        <span style="margin-right:10px">عمولات</span>
+                        <input type="text" style="background: white; width: 310px" dir="rtl" readonly ng-model="amola" class="form-control">
+                        <br />
+                        <span style="margin-right:10px">رصيد اخر الفتره الفعلي</span>
+                        <input type="text" style="background: white; width: 310px" dir="rtl" readonly ng-model="actual_charge" class="form-control">
+                        <br />
+                        <span style="margin-right:10px">رصيد اخر الفتره المستحق </span>
+                        <input type="text" style="background: white; width: 310px" dir="rtl" readonly ng-model="deserved" class="form-control">
+
+                        @*<center>
+                                <br/>
+                                <button class="btn" data-dismiss="modal">تم</button>
+                            </center>*@
+
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--===================================-->
+    @Html.Partial("_updateClientForm");
+
+    <script src="~/assets/general/js/jquery.bootstrap.wizard.js"></script>
+    <script src="~/assets/general/js/paper-bootstrap-wizard.js"></script>
+    <script src="~/assets/general/js/jquery.validate.min.js"></script>
+
+    @{Html.RenderPartial("../management/_scriptPartial");}
+
+
+</body>
+</html>
+

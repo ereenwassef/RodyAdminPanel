@@ -1,9 +1,15 @@
-﻿
+﻿@{
+    ViewBag.Title = "add_tahseel";
+    Layout = "~/Areas/adminPanel/Views/Shared/_adminLayout.cshtml";
+}
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="myApp">
 
 <head>
     <title></title>
+    <script src="~/assets/general/js/angular.js"></script>
+    <script src="~/assets/admin/js/ang/treasuries.js"></script>
+
     <script src="~/assets/general/js/jquery.min.js"></script>
     <script src="~/assets/general/js/Chart.js"></script>
     <style>
@@ -18,13 +24,13 @@
 
 
     <script>
-        
+
         //////function fun() {
         //////    $(document).ready(function () {
 
         //////        var ctx = $("#mycanvas").get(0).getContext("2d");
 
-              
+
         //////        var data = [
 
         //////            {
@@ -49,10 +55,10 @@
         //////    });
         //////}
 
-       // fun();
+        // fun();
 
 
-     
+
     </script>
 
 
@@ -124,5 +130,7 @@
 
         <!--main content end-->
     </section>
+    @{Html.RenderPartial("../management/_scriptPartial");}
+
 </body>
 </html>

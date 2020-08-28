@@ -1,14 +1,15 @@
 ﻿
-@*@{
+@{
     ViewBag.Title = "getAllServices";
     Layout = "~/Areas/adminPanel/Views/Shared/_adminLayout.cshtml";
-}*@
+}
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="myApp">
 
 <head>
     <title></title>
-   
+    <script src="~/assets/general/js/angular.js"></script>
+    <script src="~/assets/admin/js/ang/treasuries.js"></script>
     <style>
         h4 {
             color: #456e82;
@@ -39,22 +40,22 @@
                     </div>
 
                     <div class="row w3-res-tb">
-                        <div class="col-lg-3">                           
+                        <div class="col-lg-3">
                             <select ng-model="token.shName" class="form-control" dir="rtl" style="margin-right: 35px; border-radius: 0px">
                                 <option value=""> الشريحه</option>
                                 <option ng-repeat="x2 in totalCharge">{{x2.name}}</option>
-                            </select>     
+                            </select>
                         </div>
 
                         <div class="col-sm-3">
-                           <input class="form-control" style="border-radius:0px" placeholder="اسم الخدمه" dir="rtl" ng-model="token.name"/>
+                            <input class="form-control" style="border-radius:0px" placeholder="اسم الخدمه" dir="rtl" ng-model="token.name" />
                         </div>
 
                         <div class="col-sm-1 col-lg-offset-4">
                             <button class="btn btn-info" data-target="#add" data-toggle="modal">اضافه</button>
                         </div>
                     </div>
-                    <br/><br/>
+                    <br /><br />
                     <div class="table-responsive">
 
                         <table class="table table-striped b-t b-light" dir="rtl">
@@ -63,14 +64,14 @@
                                     <th><h3 style="padding:5px;">الكود</h3></th>
                                     <th><h3 style="padding: 5px">الاسم</h3></th>
                                     <th><h3 style="padding: 5px">الشريحه</h3></th>
-                                    <th><h3 style="padding: 5px">سعر البيع</h3></th>                                   
+                                    <th><h3 style="padding: 5px">سعر البيع</h3></th>
                                     <th><h3 style="padding: 5px">تعديل</h3></th>
                                     <th><h3 style="padding: 5px">حذف</h3></th>
                                 </tr>
                             </thead>
                             <tbody ng-repeat="ser in allServices | filter: token">
 
-                                <tr class="tr" >
+                                <tr class="tr">
                                     <td>
                                         <h4>
                                             {{ser.id}}
@@ -93,7 +94,7 @@
                                     </td>
 
 
-                                   
+
                                     <td>
                                         <button ng-click="update(ser.id,ser.name,ser.sharehaId,ser.sellPrice)" class="btn btn-sm btn-success" data-toggle="modal" data-target="#update">
                                             <i class="fa fa-edit fa-lg"></i>
@@ -181,7 +182,7 @@
                                 </td>
 
                             </tr>
-                          
+
                             <tr>
                                 <td style="margin-right: 200px; border: 0px">
                                     <div style="border-radius:0px">
@@ -272,7 +273,7 @@
 
 
 
-    @*@{Html.RenderPartial("../management/_scriptPartial");}*@
+    @{Html.RenderPartial("../management/_scriptPartial");}
 
 
 </body>

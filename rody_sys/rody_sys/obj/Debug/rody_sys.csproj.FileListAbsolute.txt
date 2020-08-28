@@ -170,7 +170,6 @@ E:\Plan B\Ahmed hafez\EL Rody v2\RodyAdminPanel\rody_sys\rody_sys\bin\System.Web
 E:\Plan B\Ahmed hafez\EL Rody v2\RodyAdminPanel\rody_sys\rody_sys\bin\System.Web.WebPages.xml
 E:\Plan B\Ahmed hafez\EL Rody v2\RodyAdminPanel\rody_sys\rody_sys\bin\System.Web.WebPages.Deployment.xml
 E:\Plan B\Ahmed hafez\EL Rody v2\RodyAdminPanel\rody_sys\rody_sys\bin\System.Web.WebPages.Razor.xml
-E:\Plan B\Ahmed hafez\EL Rody v2\RodyAdminPanel\rody_sys\rody_sys\obj\Debug\rody_sys.csprojAssemblyReference.cache
 E:\Plan B\Ahmed hafez\EL Rody v2\RodyAdminPanel\rody_sys\rody_sys\obj\Debug\rody_sys.csproj.CoreCompileInputs.cache
 E:\Plan B\Ahmed hafez\EL Rody v2\RodyAdminPanel\rody_sys\rody_sys\obj\Debug\rody_sys.csproj.CopyComplete
 E:\Plan B\Ahmed hafez\EL Rody v2\RodyAdminPanel\rody_sys\rody_sys\obj\Debug\rody_sys.dll
@@ -184,3 +183,4 @@ E:\Plan B\Ahmed hafez\EL Rody v2\RodyAdminPanel\rody_sys\rody_sys\bin\System.Dat
 E:\Plan B\Ahmed hafez\EL Rody v2\RodyAdminPanel\rody_sys\rody_sys\bin\EntityFramework.SqlServer.xml
 E:\Plan B\Ahmed hafez\EL Rody v2\RodyAdminPanel\rody_sys\rody_sys\bin\Microsoft.AspNet.Identity.Core.xml
 E:\Plan B\Ahmed hafez\EL Rody v2\RodyAdminPanel\rody_sys\rody_sys\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+E:\Plan B\Ahmed hafez\EL Rody v2\RodyAdminPanel\rody_sys\rody_sys\obj\Debug\rody_sys.csprojAssemblyReference.cache

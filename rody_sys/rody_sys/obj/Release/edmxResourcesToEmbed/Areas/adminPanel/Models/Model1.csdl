@@ -21,7 +21,7 @@
     <Property Name="govId" Type="Int32" />
     <NavigationProperty Name="agent" Relationship="Self.FK_agent_area" FromRole="area" ToRole="agent" />
     <NavigationProperty Name="govern" Relationship="Self.FK_area_govern" FromRole="area" ToRole="govern" />
-    <NavigationProperty Name="client" Relationship="Self.FK_client_area" FromRole="area" ToRole="client" />
+    <NavigationProperty Name="client" Relationship="Rody_DBModel.FK_client_area" FromRole="area" ToRole="client" />
   </EntityType>
   <EntityType Name="banks">
     <Key>
@@ -37,57 +37,13 @@
     <Property Name="responsible" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
     <Property Name="notes" Type="String" MaxLength="500" FixedLength="true" Unicode="true" />
   </EntityType>
-  <EntityType Name="client">
-    <Key>
-      <PropertyRef Name="id" />
-    </Key>
-    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="my_childs" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="name" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
-    <Property Name="gender" Type="Int32" />
-    <Property Name="num_followers" Type="Int32" />
-    <Property Name="id_num" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
-    <Property Name="date_of_birth" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
-    <Property Name="client_type" Type="Int32" />
-    <Property Name="jop" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
-    <Property Name="work_name" Type="String" MaxLength="200" FixedLength="true" Unicode="true" />
-    <Property Name="work_place" Type="String" MaxLength="300" FixedLength="true" Unicode="true" />
-    <Property Name="id_place" Type="String" MaxLength="300" FixedLength="true" Unicode="true" />
-    <Property Name="stay_place" Type="String" MaxLength="300" FixedLength="true" Unicode="true" />
-    <Property Name="stay_place_flat" Type="Int32" />
-    <Property Name="stay_place_floor" Type="Int32" />
-    <Property Name="stay_place_get" Type="String" MaxLength="300" FixedLength="true" Unicode="true" />
-    <Property Name="areaId" Type="Int32" />
-    <Property Name="delegatorId" Type="Int32" />
-    <Property Name="available" Type="Int32" />
-    <Property Name="contract_state" Type="Int32" />
-    <Property Name="activation_date" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
-    <Property Name="notes" Type="String" MaxLength="200" FixedLength="true" Unicode="true" />
-    <Property Name="charge" Type="Double" />
-    <Property Name="my_parents" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="parentId" Type="Int32" />
-    <Property Name="contract_date" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
-    <Property Name="MsgCharge" Type="Double" />
-    <Property Name="done" Type="Int32" />
-    <NavigationProperty Name="area" Relationship="Self.FK_client_area" FromRole="client" ToRole="area" />
-    <NavigationProperty Name="client_type1" Relationship="Self.FK_client_client_type" FromRole="client" ToRole="client_type" />
-    <NavigationProperty Name="client1" Relationship="Self.FK_client_client1" FromRole="client" ToRole="client1" />
-    <NavigationProperty Name="client2" Relationship="Self.FK_client_client1" FromRole="client1" ToRole="client" />
-    <NavigationProperty Name="delegator" Relationship="Self.FK_client_delegator" FromRole="client" ToRole="delegator" />
-    <NavigationProperty Name="notes1" Relationship="Self.FK_notes_client" FromRole="client" ToRole="notes" />
-    <NavigationProperty Name="operations_store" Relationship="Self.FK_operations_store_client" FromRole="client" ToRole="operations_store" />
-    <NavigationProperty Name="phones" Relationship="Self.FK_phones_client" FromRole="client" ToRole="phones" />
-    <NavigationProperty Name="purchases" Relationship="Self.FK_purchases_client" FromRole="client" ToRole="purchases" />
-    <NavigationProperty Name="reportClientTahseel" Relationship="Self.FK_reportClientTahseel_client" FromRole="client" ToRole="reportClientTahseel" />
-    <NavigationProperty Name="sales" Relationship="Self.FK_sales_client" FromRole="client" ToRole="sales" />
-  </EntityType>
   <EntityType Name="client_type">
     <Key>
       <PropertyRef Name="id" />
     </Key>
     <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="type" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
-    <NavigationProperty Name="client" Relationship="Self.FK_client_client_type" FromRole="client_type" ToRole="client" />
+    <NavigationProperty Name="client" Relationship="Rody_DBModel.FK_client_client_type" FromRole="client_type" ToRole="client" />
   </EntityType>
   <EntityType Name="delegator">
     <Key>
@@ -100,7 +56,7 @@
     <Property Name="agentId" Type="Int32" />
     <Property Name="active" Type="Int32" />
     <NavigationProperty Name="agent" Relationship="Self.FK_delegator_agent" FromRole="delegator" ToRole="agent" />
-    <NavigationProperty Name="client" Relationship="Self.FK_client_delegator" FromRole="delegator" ToRole="client" />
+    <NavigationProperty Name="client" Relationship="Rody_DBModel.FK_client_delegator" FromRole="delegator" ToRole="client" />
   </EntityType>
   <EntityType Name="govern">
     <Key>
@@ -126,7 +82,7 @@
     <Property Name="date" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
     <Property Name="note" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="clientId" Type="Int32" />
-    <NavigationProperty Name="client" Relationship="Self.FK_notes_client" FromRole="notes" ToRole="client" />
+    <NavigationProperty Name="client" Relationship="Rody_DBModel.FK_notes_client" FromRole="notes" ToRole="client" />
   </EntityType>
   <EntityType Name="operations_client">
     <Key>
@@ -149,24 +105,6 @@
     <NavigationProperty Name="sales" Relationship="Self.FK_operations_client_sales" FromRole="operations_client" ToRole="sales" />
     <NavigationProperty Name="services" Relationship="Self.FK_operations_client_services" FromRole="operations_client" ToRole="services" />
     <NavigationProperty Name="phones" Relationship="Self.FK_operations_phones" FromRole="operations_client" ToRole="phones" />
-  </EntityType>
-  <EntityType Name="operations_store">
-    <Key>
-      <PropertyRef Name="id" />
-    </Key>
-    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="storeId" Type="Int32" />
-    <Property Name="get_value" Type="Double" />
-    <Property Name="clientId" Type="Int32" />
-    <Property Name="date" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
-    <Property Name="supplierId" Type="Int32" />
-    <Property Name="give_value" Type="Double" />
-    <Property Name="charge" Type="Double" />
-    <Property Name="fromToStoreId" Type="Int32" />
-    <NavigationProperty Name="client" Relationship="Self.FK_operations_store_client" FromRole="operations_store" ToRole="client" />
-    <NavigationProperty Name="stores" Relationship="Self.FK_operations_store_stores" FromRole="operations_store" ToRole="stores" />
-    <NavigationProperty Name="stores1" Relationship="Self.FK_operations_store_stores1" FromRole="operations_store" ToRole="stores" />
-    <NavigationProperty Name="supplier" Relationship="Self.FK_operations_store_supplier" FromRole="operations_store" ToRole="supplier" />
   </EntityType>
   <EntityType Name="operations_supplier">
     <Key>
@@ -200,10 +138,10 @@
     <Property Name="number" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
     <Property Name="clientId" Type="Int32" />
     <Property Name="sharehaId" Type="Int32" />
-    <NavigationProperty Name="client" Relationship="Self.FK_phones_client" FromRole="phones" ToRole="client" />
     <NavigationProperty Name="operations_client" Relationship="Self.FK_operations_phones" FromRole="phones" ToRole="operations_client" />
     <NavigationProperty Name="shareha" Relationship="Self.FK_phones_shareha" FromRole="phones" ToRole="shareha" />
     <NavigationProperty Name="sales" Relationship="Self.FK_sales_phones" FromRole="phones" ToRole="sales" />
+    <NavigationProperty Name="client" Relationship="Rody_DBModel.FK_phones_client" FromRole="phones" ToRole="client" />
   </EntityType>
   <EntityType Name="purchases">
     <Key>
@@ -219,9 +157,9 @@
     <Property Name="discount" Type="Double" />
     <Property Name="total_after" Type="Double" />
     <Property Name="clientId" Type="Int32" />
-    <NavigationProperty Name="client" Relationship="Self.FK_purchases_client" FromRole="purchases" ToRole="client" />
     <NavigationProperty Name="shareha" Relationship="Self.FK_purchases_shareha" FromRole="purchases" ToRole="shareha" />
     <NavigationProperty Name="supplier" Relationship="Self.FK_purchases_supplier" FromRole="purchases" ToRole="supplier" />
+    <NavigationProperty Name="client" Relationship="Rody_DBModel.FK_purchases_client" FromRole="purchases" ToRole="client" />
   </EntityType>
   <EntityType Name="reportClientTahseel">
     <Key>
@@ -239,8 +177,8 @@
     <Property Name="phone2" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
     <Property Name="phone3" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
     <Property Name="count" Type="Int32" />
-    <NavigationProperty Name="client" Relationship="Self.FK_reportClientTahseel_client" FromRole="reportClientTahseel" ToRole="client" />
     <NavigationProperty Name="stores" Relationship="Self.FK_reportClientTahseel_stores" FromRole="reportClientTahseel" ToRole="stores" />
+    <NavigationProperty Name="client" Relationship="Rody_DBModel.FK_reportClientTahseel_client" FromRole="reportClientTahseel" ToRole="client" />
   </EntityType>
   <EntityType Name="sales">
     <Key>
@@ -257,10 +195,10 @@
     <Property Name="otherPhoneNum" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
     <Property Name="quantity" Type="Double" />
     <Property Name="price" Type="Double" />
-    <NavigationProperty Name="client" Relationship="Self.FK_sales_client" FromRole="sales" ToRole="client" />
     <NavigationProperty Name="operations_client" Relationship="Self.FK_operations_client_sales" FromRole="sales" ToRole="operations_client" />
     <NavigationProperty Name="phones" Relationship="Self.FK_sales_phones" FromRole="sales" ToRole="phones" />
     <NavigationProperty Name="services" Relationship="Self.FK_sales_services" FromRole="sales" ToRole="services" />
+    <NavigationProperty Name="client" Relationship="Rody_DBModel.FK_sales_client" FromRole="sales" ToRole="client" />
   </EntityType>
   <EntityType Name="services">
     <Key>
@@ -292,9 +230,8 @@
     <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="name" Type="String" MaxLength="200" FixedLength="true" Unicode="true" />
     <Property Name="value" Type="Decimal" Precision="18" Scale="0" />
-    <NavigationProperty Name="operations_store" Relationship="Self.FK_operations_store_stores" FromRole="stores" ToRole="operations_store" />
-    <NavigationProperty Name="operations_store1" Relationship="Self.FK_operations_store_stores1" FromRole="stores" ToRole="operations_store" />
     <NavigationProperty Name="reportClientTahseel" Relationship="Self.FK_reportClientTahseel_stores" FromRole="stores" ToRole="reportClientTahseel" />
+    <NavigationProperty Name="operations_store" Relationship="Rody_DBModel.FK_operations_store_stores" FromRole="stores" ToRole="operations_store" />
   </EntityType>
   <EntityType Name="sub_category_supplier">
     <Key>
@@ -323,10 +260,10 @@
     <Property Name="type" Type="Int32" />
     <Property Name="business_type" Type="Int32" />
     <Property Name="charge" Type="Double" />
-    <NavigationProperty Name="operations_store" Relationship="Self.FK_operations_store_supplier" FromRole="supplier" ToRole="operations_store" />
     <NavigationProperty Name="operations_supplier" Relationship="Self.FK_operations_supplier_supplier" FromRole="supplier" ToRole="operations_supplier" />
     <NavigationProperty Name="purchases" Relationship="Self.FK_purchases_supplier" FromRole="supplier" ToRole="purchases" />
     <NavigationProperty Name="sub_category_supplier" Relationship="Self.FK_supplier_sub_category_supplier" FromRole="supplier" ToRole="sub_category_supplier" />
+    <NavigationProperty Name="operations_store" Relationship="Rody_DBModel.FK_operations_store_supplier" FromRole="supplier" ToRole="operations_store" />
   </EntityType>
   <Association Name="FK_agent_area">
     <End Role="area" Type="Self.area" Multiplicity="0..1" />
@@ -361,128 +298,6 @@
       </Principal>
       <Dependent Role="area">
         <PropertyRef Name="govId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_client_area">
-    <End Role="area" Type="Self.area" Multiplicity="0..1" />
-    <End Role="client" Type="Self.client" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="area">
-        <PropertyRef Name="id" />
-      </Principal>
-      <Dependent Role="client">
-        <PropertyRef Name="areaId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_client_client_type">
-    <End Role="client_type" Type="Self.client_type" Multiplicity="0..1" />
-    <End Role="client" Type="Self.client" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="client_type">
-        <PropertyRef Name="id" />
-      </Principal>
-      <Dependent Role="client">
-        <PropertyRef Name="client_type" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_client_client1">
-    <End Role="client" Type="Self.client" Multiplicity="0..1" />
-    <End Role="client1" Type="Self.client" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="client">
-        <PropertyRef Name="id" />
-      </Principal>
-      <Dependent Role="client1">
-        <PropertyRef Name="parentId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_client_delegator">
-    <End Role="delegator" Type="Self.delegator" Multiplicity="0..1" />
-    <End Role="client" Type="Self.client" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="delegator">
-        <PropertyRef Name="id" />
-      </Principal>
-      <Dependent Role="client">
-        <PropertyRef Name="delegatorId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_notes_client">
-    <End Role="client" Type="Self.client" Multiplicity="0..1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Role="notes" Type="Self.notes" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="client">
-        <PropertyRef Name="id" />
-      </Principal>
-      <Dependent Role="notes">
-        <PropertyRef Name="clientId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_operations_store_client">
-    <End Role="client" Type="Self.client" Multiplicity="0..1" />
-    <End Role="operations_store" Type="Self.operations_store" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="client">
-        <PropertyRef Name="id" />
-      </Principal>
-      <Dependent Role="operations_store">
-        <PropertyRef Name="clientId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_phones_client">
-    <End Role="client" Type="Self.client" Multiplicity="0..1" />
-    <End Role="phones" Type="Self.phones" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="client">
-        <PropertyRef Name="id" />
-      </Principal>
-      <Dependent Role="phones">
-        <PropertyRef Name="clientId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_purchases_client">
-    <End Role="client" Type="Self.client" Multiplicity="0..1" />
-    <End Role="purchases" Type="Self.purchases" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="client">
-        <PropertyRef Name="id" />
-      </Principal>
-      <Dependent Role="purchases">
-        <PropertyRef Name="clientId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_reportClientTahseel_client">
-    <End Role="client" Type="Self.client" Multiplicity="0..1" />
-    <End Role="reportClientTahseel" Type="Self.reportClientTahseel" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="client">
-        <PropertyRef Name="id" />
-      </Principal>
-      <Dependent Role="reportClientTahseel">
-        <PropertyRef Name="cltId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_sales_client">
-    <End Role="client" Type="Self.client" Multiplicity="0..1" />
-    <End Role="sales" Type="Self.sales" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="client">
-        <PropertyRef Name="id" />
-      </Principal>
-      <Dependent Role="sales">
-        <PropertyRef Name="clientId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -533,42 +348,6 @@
       </Principal>
       <Dependent Role="operations_client">
         <PropertyRef Name="phone_id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_operations_store_stores">
-    <End Role="stores" Type="Self.stores" Multiplicity="0..1" />
-    <End Role="operations_store" Type="Self.operations_store" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="stores">
-        <PropertyRef Name="id" />
-      </Principal>
-      <Dependent Role="operations_store">
-        <PropertyRef Name="storeId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_operations_store_stores1">
-    <End Role="stores" Type="Self.stores" Multiplicity="0..1" />
-    <End Role="operations_store" Type="Self.operations_store" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="stores">
-        <PropertyRef Name="id" />
-      </Principal>
-      <Dependent Role="operations_store">
-        <PropertyRef Name="fromToStoreId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_operations_store_supplier">
-    <End Role="supplier" Type="Self.supplier" Multiplicity="0..1" />
-    <End Role="operations_store" Type="Self.operations_store" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="supplier">
-        <PropertyRef Name="id" />
-      </Principal>
-      <Dependent Role="operations_store">
-        <PropertyRef Name="supplierId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -680,18 +459,16 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="Rody_DBEntities3" annotation:LazyLoadingEnabled="true">
+  <EntityContainer Name="Rody_DBEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="agent" EntityType="Self.agent" />
     <EntitySet Name="area" EntityType="Self.area" />
     <EntitySet Name="banks" EntityType="Self.banks" />
-    <EntitySet Name="client" EntityType="Self.client" />
     <EntitySet Name="client_type" EntityType="Self.client_type" />
     <EntitySet Name="delegator" EntityType="Self.delegator" />
     <EntitySet Name="govern" EntityType="Self.govern" />
     <EntitySet Name="main_category_supplier" EntityType="Self.main_category_supplier" />
     <EntitySet Name="notes" EntityType="Self.notes" />
     <EntitySet Name="operations_client" EntityType="Self.operations_client" />
-    <EntitySet Name="operations_store" EntityType="Self.operations_store" />
     <EntitySet Name="operations_supplier" EntityType="Self.operations_supplier" />
     <EntitySet Name="partner" EntityType="Self.partner" />
     <EntitySet Name="phones" EntityType="Self.phones" />
@@ -715,46 +492,6 @@
       <End Role="govern" EntitySet="govern" />
       <End Role="area" EntitySet="area" />
     </AssociationSet>
-    <AssociationSet Name="FK_client_area" Association="Self.FK_client_area">
-      <End Role="area" EntitySet="area" />
-      <End Role="client" EntitySet="client" />
-    </AssociationSet>
-    <AssociationSet Name="FK_client_client_type" Association="Self.FK_client_client_type">
-      <End Role="client_type" EntitySet="client_type" />
-      <End Role="client" EntitySet="client" />
-    </AssociationSet>
-    <AssociationSet Name="FK_client_client1" Association="Self.FK_client_client1">
-      <End Role="client" EntitySet="client" />
-      <End Role="client1" EntitySet="client" />
-    </AssociationSet>
-    <AssociationSet Name="FK_client_delegator" Association="Self.FK_client_delegator">
-      <End Role="delegator" EntitySet="delegator" />
-      <End Role="client" EntitySet="client" />
-    </AssociationSet>
-    <AssociationSet Name="FK_notes_client" Association="Self.FK_notes_client">
-      <End Role="client" EntitySet="client" />
-      <End Role="notes" EntitySet="notes" />
-    </AssociationSet>
-    <AssociationSet Name="FK_operations_store_client" Association="Self.FK_operations_store_client">
-      <End Role="client" EntitySet="client" />
-      <End Role="operations_store" EntitySet="operations_store" />
-    </AssociationSet>
-    <AssociationSet Name="FK_phones_client" Association="Self.FK_phones_client">
-      <End Role="client" EntitySet="client" />
-      <End Role="phones" EntitySet="phones" />
-    </AssociationSet>
-    <AssociationSet Name="FK_purchases_client" Association="Self.FK_purchases_client">
-      <End Role="client" EntitySet="client" />
-      <End Role="purchases" EntitySet="purchases" />
-    </AssociationSet>
-    <AssociationSet Name="FK_reportClientTahseel_client" Association="Self.FK_reportClientTahseel_client">
-      <End Role="client" EntitySet="client" />
-      <End Role="reportClientTahseel" EntitySet="reportClientTahseel" />
-    </AssociationSet>
-    <AssociationSet Name="FK_sales_client" Association="Self.FK_sales_client">
-      <End Role="client" EntitySet="client" />
-      <End Role="sales" EntitySet="sales" />
-    </AssociationSet>
     <AssociationSet Name="FK_sub_category_supplier_main_category_supplier" Association="Self.FK_sub_category_supplier_main_category_supplier">
       <End Role="main_category_supplier" EntitySet="main_category_supplier" />
       <End Role="sub_category_supplier" EntitySet="sub_category_supplier" />
@@ -770,18 +507,6 @@
     <AssociationSet Name="FK_operations_phones" Association="Self.FK_operations_phones">
       <End Role="phones" EntitySet="phones" />
       <End Role="operations_client" EntitySet="operations_client" />
-    </AssociationSet>
-    <AssociationSet Name="FK_operations_store_stores" Association="Self.FK_operations_store_stores">
-      <End Role="stores" EntitySet="stores" />
-      <End Role="operations_store" EntitySet="operations_store" />
-    </AssociationSet>
-    <AssociationSet Name="FK_operations_store_stores1" Association="Self.FK_operations_store_stores1">
-      <End Role="stores" EntitySet="stores" />
-      <End Role="operations_store" EntitySet="operations_store" />
-    </AssociationSet>
-    <AssociationSet Name="FK_operations_store_supplier" Association="Self.FK_operations_store_supplier">
-      <End Role="supplier" EntitySet="supplier" />
-      <End Role="operations_store" EntitySet="operations_store" />
     </AssociationSet>
     <AssociationSet Name="FK_operations_supplier_supplier" Association="Self.FK_operations_supplier_supplier">
       <End Role="supplier" EntitySet="supplier" />
@@ -844,5 +569,259 @@
       <Parameter Name="sId" Mode="In" Type="Int32" />
       <Parameter Name="value" Mode="In" Type="Double" />
     </FunctionImport>
+    <EntitySet Name="client" EntityType="Rody_DBModel.client" />
+    <AssociationSet Name="FK_client_area" Association="Rody_DBModel.FK_client_area">
+      <End Role="area" EntitySet="area" />
+      <End Role="client" EntitySet="client" />
+    </AssociationSet>
+    <AssociationSet Name="FK_client_client_type" Association="Rody_DBModel.FK_client_client_type">
+      <End Role="client_type" EntitySet="client_type" />
+      <End Role="client" EntitySet="client" />
+    </AssociationSet>
+    <AssociationSet Name="FK_client_client1" Association="Rody_DBModel.FK_client_client1">
+      <End Role="client" EntitySet="client" />
+      <End Role="client1" EntitySet="client" />
+    </AssociationSet>
+    <AssociationSet Name="FK_client_delegator" Association="Rody_DBModel.FK_client_delegator">
+      <End Role="delegator" EntitySet="delegator" />
+      <End Role="client" EntitySet="client" />
+    </AssociationSet>
+    <AssociationSet Name="FK_notes_client" Association="Rody_DBModel.FK_notes_client">
+      <End Role="client" EntitySet="client" />
+      <End Role="notes" EntitySet="notes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_phones_client" Association="Rody_DBModel.FK_phones_client">
+      <End Role="client" EntitySet="client" />
+      <End Role="phones" EntitySet="phones" />
+    </AssociationSet>
+    <AssociationSet Name="FK_purchases_client" Association="Rody_DBModel.FK_purchases_client">
+      <End Role="client" EntitySet="client" />
+      <End Role="purchases" EntitySet="purchases" />
+    </AssociationSet>
+    <AssociationSet Name="FK_reportClientTahseel_client" Association="Rody_DBModel.FK_reportClientTahseel_client">
+      <End Role="client" EntitySet="client" />
+      <End Role="reportClientTahseel" EntitySet="reportClientTahseel" />
+    </AssociationSet>
+    <AssociationSet Name="FK_sales_client" Association="Rody_DBModel.FK_sales_client">
+      <End Role="client" EntitySet="client" />
+      <End Role="sales" EntitySet="sales" />
+    </AssociationSet>
+    <EntitySet Name="operations_store" EntityType="Rody_DBModel.operations_store" />
+    <AssociationSet Name="FK_operations_store_client" Association="Rody_DBModel.FK_operations_store_client">
+      <End Role="client" EntitySet="client" />
+      <End Role="operations_store" EntitySet="operations_store" />
+    </AssociationSet>
+    <AssociationSet Name="FK_operations_store_stores" Association="Rody_DBModel.FK_operations_store_stores">
+      <End Role="stores" EntitySet="stores" />
+      <End Role="operations_store" EntitySet="operations_store" />
+    </AssociationSet>
+    <AssociationSet Name="FK_operations_store_supplier" Association="Rody_DBModel.FK_operations_store_supplier">
+      <End Role="supplier" EntitySet="supplier" />
+      <End Role="operations_store" EntitySet="operations_store" />
+    </AssociationSet>
   </EntityContainer>
+  <EntityType Name="client">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="my_childs" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="name" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+    <Property Name="gender" Type="Int32" />
+    <Property Name="num_followers" Type="Int32" />
+    <Property Name="id_num" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+    <Property Name="date_of_birth" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+    <Property Name="client_type" Type="Int32" />
+    <Property Name="jop" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+    <Property Name="work_name" Type="String" MaxLength="200" FixedLength="true" Unicode="true" />
+    <Property Name="work_place" Type="String" MaxLength="300" FixedLength="true" Unicode="true" />
+    <Property Name="id_place" Type="String" MaxLength="300" FixedLength="true" Unicode="true" />
+    <Property Name="stay_place" Type="String" MaxLength="300" FixedLength="true" Unicode="true" />
+    <Property Name="stay_place_flat" Type="Int32" />
+    <Property Name="stay_place_floor" Type="Int32" />
+    <Property Name="stay_place_get" Type="String" MaxLength="300" FixedLength="true" Unicode="true" />
+    <Property Name="areaId" Type="Int32" />
+    <Property Name="delegatorId" Type="Int32" />
+    <Property Name="available" Type="Int32" />
+    <Property Name="contract_state" Type="Int32" />
+    <Property Name="activation_date" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+    <Property Name="notes" Type="String" MaxLength="200" FixedLength="true" Unicode="true" />
+    <Property Name="charge" Type="Double" />
+    <Property Name="my_parents" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="parentId" Type="Int32" />
+    <Property Name="contract_date" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+    <Property Name="MsgCharge" Type="Double" />
+    <NavigationProperty Name="area" Relationship="Rody_DBModel.FK_client_area" FromRole="client" ToRole="area" />
+    <NavigationProperty Name="client_type1" Relationship="Rody_DBModel.FK_client_client_type" FromRole="client" ToRole="client_type" />
+    <NavigationProperty Name="client1" Relationship="Rody_DBModel.FK_client_client1" FromRole="client" ToRole="client1" />
+    <NavigationProperty Name="client2" Relationship="Rody_DBModel.FK_client_client1" FromRole="client1" ToRole="client" />
+    <NavigationProperty Name="delegator" Relationship="Rody_DBModel.FK_client_delegator" FromRole="client" ToRole="delegator" />
+    <NavigationProperty Name="notes1" Relationship="Rody_DBModel.FK_notes_client" FromRole="client" ToRole="notes" />
+    <NavigationProperty Name="phones" Relationship="Rody_DBModel.FK_phones_client" FromRole="client" ToRole="phones" />
+    <NavigationProperty Name="purchases" Relationship="Rody_DBModel.FK_purchases_client" FromRole="client" ToRole="purchases" />
+    <NavigationProperty Name="reportClientTahseel" Relationship="Rody_DBModel.FK_reportClientTahseel_client" FromRole="client" ToRole="reportClientTahseel" />
+    <NavigationProperty Name="sales" Relationship="Rody_DBModel.FK_sales_client" FromRole="client" ToRole="sales" />
+    <NavigationProperty Name="operations_store" Relationship="Rody_DBModel.FK_operations_store_client" FromRole="client" ToRole="operations_store" />
+  </EntityType>
+  <Association Name="FK_client_area">
+    <End Type="Rody_DBModel.area" Role="area" Multiplicity="0..1" />
+    <End Type="Rody_DBModel.client" Role="client" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="area">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="client">
+        <PropertyRef Name="areaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_client_client_type">
+    <End Type="Rody_DBModel.client_type" Role="client_type" Multiplicity="0..1" />
+    <End Type="Rody_DBModel.client" Role="client" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="client_type">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="client">
+        <PropertyRef Name="client_type" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_client_client1">
+    <End Type="Rody_DBModel.client" Role="client" Multiplicity="0..1" />
+    <End Type="Rody_DBModel.client" Role="client1" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="client">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="client1">
+        <PropertyRef Name="parentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_client_delegator">
+    <End Type="Rody_DBModel.delegator" Role="delegator" Multiplicity="0..1" />
+    <End Type="Rody_DBModel.client" Role="client" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="delegator">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="client">
+        <PropertyRef Name="delegatorId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_notes_client">
+    <End Type="Rody_DBModel.client" Role="client" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="Rody_DBModel.notes" Role="notes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="client">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="notes">
+        <PropertyRef Name="clientId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_phones_client">
+    <End Type="Rody_DBModel.client" Role="client" Multiplicity="0..1" />
+    <End Type="Rody_DBModel.phones" Role="phones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="client">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="phones">
+        <PropertyRef Name="clientId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_purchases_client">
+    <End Type="Rody_DBModel.client" Role="client" Multiplicity="0..1" />
+    <End Type="Rody_DBModel.purchases" Role="purchases" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="client">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="purchases">
+        <PropertyRef Name="clientId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_reportClientTahseel_client">
+    <End Type="Rody_DBModel.client" Role="client" Multiplicity="0..1" />
+    <End Type="Rody_DBModel.reportClientTahseel" Role="reportClientTahseel" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="client">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="reportClientTahseel">
+        <PropertyRef Name="cltId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_sales_client">
+    <End Type="Rody_DBModel.client" Role="client" Multiplicity="0..1" />
+    <End Type="Rody_DBModel.sales" Role="sales" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="client">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="sales">
+        <PropertyRef Name="clientId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="operations_store">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="storeId" Type="Int32" />
+    <Property Name="get_value" Type="Double" />
+    <Property Name="clientId" Type="Int32" />
+    <Property Name="date" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="supplierId" Type="Int32" />
+    <Property Name="give_value" Type="Double" />
+    <NavigationProperty Name="client" Relationship="Rody_DBModel.FK_operations_store_client" FromRole="operations_store" ToRole="client" />
+    <NavigationProperty Name="stores" Relationship="Rody_DBModel.FK_operations_store_stores" FromRole="operations_store" ToRole="stores" />
+    <NavigationProperty Name="supplier" Relationship="Rody_DBModel.FK_operations_store_supplier" FromRole="operations_store" ToRole="supplier" />
+  </EntityType>
+  <Association Name="FK_operations_store_client">
+    <End Type="Rody_DBModel.client" Role="client" Multiplicity="0..1" />
+    <End Type="Rody_DBModel.operations_store" Role="operations_store" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="client">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="operations_store">
+        <PropertyRef Name="clientId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_operations_store_stores">
+    <End Type="Rody_DBModel.stores" Role="stores" Multiplicity="0..1" />
+    <End Type="Rody_DBModel.operations_store" Role="operations_store" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="stores">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="operations_store">
+        <PropertyRef Name="storeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_operations_store_supplier">
+    <End Type="Rody_DBModel.supplier" Role="supplier" Multiplicity="0..1" />
+    <End Type="Rody_DBModel.operations_store" Role="operations_store" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="supplier">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="operations_store">
+        <PropertyRef Name="supplierId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

@@ -72,7 +72,6 @@
                         <strong style="color: #5c4f4f">بيانات العملاء</strong>
 
                         <i class="fa fa-plus-circle text-info btn-lg" data-toggle="modal" data-target="#addClient" style="font-size: 25px; color: #5c4f4f; cursor:pointer">
-
                         </i>
                     </div>
                     <div class="row w3-res-tb">
@@ -80,11 +79,11 @@
 
                             <div class="row" dir="rtl">
                                 <div class="col-lg-2">
-                                    <button class="btn" style="border-radius: 0px; width:138px" data-toggle="modal" data-target="#get_client">بحث</button>
+                                    <button class="btn" style="border-radius: 0px; width:138px" data-toggle="modal" data-target="#get_client">العميل الرئيسي</button>
 
                                 </div>
                                 <div class="col-lg-2">
-                                    <input  id="clientName" ng-model="pName2" ng-value=" " type="text" class="form-control" style="border-radius:0px ; background:white" placeholder=" العميل الرئيسي" />
+                                    <input id="clientName" ng-model="pName2" ng-value=" " type="text" class="form-control" style="border-radius:0px ; background:white" placeholder=" اسم العميل الرئيسي" />
 
                                 </div>
                                 <div class="col-lg-2">
@@ -208,6 +207,15 @@
                                 </div>
                             </div>
 
+                            <div class="row" dir="rtl">
+                                <div class="col-lg-2 col-lg-offset-5">
+                                    <br/>
+                                    <button class="btn" style="border-radius: 0px; width: 310px;">
+                                    بحث</button>
+                                </div>
+                            </div>
+
+
                         </div>
                     </div>
 
@@ -218,11 +226,11 @@
                             <thead style=" position:relative">
                                 <tr style="background: #ddede0; padding:5px ;">
                                     <th><h5 style="padding:5px;">الكود</h5></th>
-                                    <th><h5 style="padding: 5px"> تاريخ التعاقد</h5></th>
+                                    @*<th><h5 style="padding: 5px"> تاريخ التعاقد</h5></th>*@
                                     <th><h5 style="padding: 5px"> تاريخ التفعيل</h5></th>
                                     <th><h5 style="padding: 5px"> اسم العميل</h5></th>
                                     <th><h5 style="padding: 5px">المنطقه</h5></th>
-                                    <th><h5 style="padding: 5px">عنوان التحصيل</h5></th>
+                                    @*<th><h5 style="padding: 5px">عنوان التحصيل</h5></th>*@
                                     <th><h5 style="padding: 5px"> التابعين</h5></th>
                                     <th><h5 style="padding: 5px">الشجره </h5></th>
                                     <th><h5 style="padding: 5px">عرض / تعديل</h5></th>
@@ -240,11 +248,11 @@
                                         </h4>
                                     </td>
 
-                                    <td>
+                                    @*<td>
                                         <h4>
                                             {{c.contract_date | myDateFilter |date:"dd/MM/yyyy"}}
                                         </h4>
-                                    </td>
+                                    </td>*@
                                     <td>
                                         <h4>
                                             {{c.activation_date}}
@@ -260,18 +268,18 @@
                                             {{c.areaName}}
                                         </h4>
                                     </td>
-                                    <td>
+                                    @*<td>
                                         <h4>
                                             {{c.stay_place_get}}
                                         </h4>
-                                    </td>
+                                    </td>*@
                                     <td>
                                         <h4>
                                             {{c.num_followers}}
                                         </h4>
                                     </td>
                                     <td>
-                                        <a href="#!clients/clientTree/cId={{c.id}}">
+                                        <a href="/clients/clientTree/cId={{c.id}}">
                                             <button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#">
                                                 <i class="fa fa-tree fa-lg"></i>
                                             </button>
@@ -306,11 +314,11 @@
                                         </h4>
                                     </td>
 
-                                    <td>
+                                    @*<td>
                                         <h4>
                                             {{c.contract_date | myDateFilter |date:"dd/MM/yyyy"}}
                                         </h4>
-                                    </td>
+                                    </td>*@
                                     <td>
                                         <h4>
                                             {{c.activation_date}}
@@ -326,18 +334,18 @@
                                             {{c.areaName}}
                                         </h4>
                                     </td>
-                                    <td>
+                                    @*<td>
                                         <h4>
                                             {{c.stay_place_get}}
                                         </h4>
-                                    </td>
+                                    </td>*@
                                     <td>
                                         <h4>
                                             {{c.num_followers}}
                                         </h4>
                                     </td>
                                     <td>
-                                        <a href="#!clients/clientTree/cId={{c.id}}">
+                                        <a href="/clients/clientTree/cId={{c.id}}">
                                             <button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#">
                                                 <i class="fa fa-tree fa-lg"></i>
                                             </button>
@@ -366,10 +374,21 @@
 
                             </tbody>
                         </table>
+
+
+                        <center>
+                            <br/>
+                            <button id="btn_pre"  ng-click="get_previous()" class=" btn btn-primary btn-sm" style="border-radius: 0%"> <span style="font-weight:bold; font-size:15px"  class="fa fa-angle-left"></span> السابق </button>
+                            <span class="text-info" style="font-weight:bold">
+                                {{pageNum}} / {{pageCount}}
+                            </span>
+                            <button  id="btn_next"  ng-click="get_next()" style="border-radius:0%" class="btn btn-sm btn-primary"> التالي <span class="fa fa-angle-right" style="font-weight:bold; font-size:15px"></span>  </button>
+                            <br />
+                         </center>
+                        <br/>
                     </div>
 
                 </div>
-            </div>
             </div>
         </section>
 
@@ -382,9 +401,9 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="text-center" style="color: #5c4f4f">اختيار العميل </h4>
+                    <h4 class="text-center" style="color: #5c4f4f">اختيار العميل  </h4>
                 </div>
-                <div class="modal-body text-left">
+                <div class="modal-body text-left" style="top:-20px">
                     <center>
                         <br />
                         <table>
@@ -403,13 +422,33 @@
                             <tr>
 
                                 <td style="border:0px">
-                                    <select ng-model="area" class="form-control" dir="rtl" ng-options="x1.name as x1.name for x1  in allArea | filter:govern " style="border-radius: 0px; margin-top: 5px; width: 200px"></select>
+                                    <select ng-model="token2.areaName" class="form-control" dir="rtl" ng-options="x1.name as x1.name for x1  in allArea | filter:govern " style="border-radius: 0px; margin-top: 5px; width: 200px"></select>
 
                                 </td>
                                 <td style="border:0px">
                                     <h4 style="margin-left: 20px; color: #5c4f4f"> المنطقه</h4>
                                 </td>
 
+                            </tr>
+
+                            <tr>
+
+                                <td style="border:0px">
+                                    <input dir="rtl" type="text" ng-model="token2.id" class="form-control" placeholder="الكود" style="border-radius: 0px; margin-top: 5px;" />
+
+                                </td>
+                                <td style="border:0px">
+                                    <h4 style="margin-left: 20px; color: #5c4f4f"> الكود</h4>
+                                </td>
+                            </tr>
+                            <tr />
+                            <tr>
+                                <td style="border:0px">
+                                    <input dir="rtl" type="text" ng-model="token2.name" class="form-control" placeholder="الاسم" style="border-radius: 0px; margin-top: 5px;" />
+                                </td>
+                                <td style="border:0px">
+                                    <h4 style="margin-left: 20px; color: #5c4f4f"> الاسم</h4>
+                                </td>
                             </tr>
 
                         </table>
@@ -427,7 +466,7 @@
 
                                     </tr>
                                 </thead>
-                                <tbody ng-repeat="c in allClients | filter:{areaName:area}">
+                                <tbody ng-repeat="c in allClients2 | filter:token2">
 
                                     <tr style="background:white">
                                         @*<td><input type="radio" style="margin-top:2px" value="{{c.id}}" ng-model="$parent.aya" id="aa_{{c.id}}" /></td>*@
@@ -447,10 +486,10 @@
                             </table>
 
                         </div>
-                        <br />
-                        <center>
-                            <button type="button" class="btn btn-default " data-dismiss="modal" style="width:100px"><h4>الغاء</h4></button>
-                        </center>
+                        @*<br />
+                <center>
+                    <button type="button" class="btn btn-default " data-dismiss="modal" style="width:100px"><h4>الغاء</h4></button>
+                </center>*@
 
                     </center>
 
@@ -491,9 +530,9 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="text-center" style="color: #5c4f4f">اختيار العميل</h4>
+                    <h4 class="text-center" style="color: #5c4f4f">اختيار العميل </h4>
                 </div>
-                <div class="modal-body text-left">
+                <div class="modal-body text-left" style="top:-20px">
                     <center>
                         <br />
                         <table>
@@ -512,13 +551,33 @@
                             <tr>
 
                                 <td style="border:0px">
-                                    <select ng-model="area" class="form-control" dir="rtl" ng-options="x1.name as x1.name for x1  in allArea | filter:govern " style="border-radius: 0px; margin-top: 5px; width: 200px"></select>
+                                    <select ng-model="token.areaName" class="form-control" dir="rtl" ng-options="x1.name as x1.name for x1  in allArea | filter:govern " style="border-radius: 0px; margin-top: 5px; width: 200px"></select>
 
                                 </td>
                                 <td style="border:0px">
                                     <h4 style="margin-left: 20px; color: #5c4f4f"> المنطقه</h4>
                                 </td>
 
+                            </tr>
+
+                            <tr>
+
+                                <td style="border:0px">
+                                    <input dir="rtl" type="text" ng-model="token.id" class="form-control" placeholder="الكود" style="border-radius: 0px; margin-top: 5px;" />
+
+                                </td>
+                                <td style="border:0px">
+                                    <h4 style="margin-left: 20px; color: #5c4f4f"> الكود</h4>
+                                </td>
+                                </tr>
+                            <tr/>
+                            <tr>
+                                <td style="border:0px">
+                                    <input dir="rtl" type="text" ng-model="token.name" class="form-control" placeholder="الاسم" style="border-radius: 0px; margin-top: 5px;" />
+                                </td>
+                                <td style="border:0px">
+                                    <h4 style="margin-left: 20px; color: #5c4f4f"> الاسم</h4>
+                                </td>
                             </tr>
 
                         </table>
@@ -530,13 +589,13 @@
                                 <thead>
                                     <tr style="background:#FAFAFA; ">
                                         <th><h3 style="padding:2px;"> اختر  </h3></th>
-                                        <th><h3 style="padding:2px;"> الرقم  </h3></th>
+                                        <th><h3 style="padding:2px;"> الكود  </h3></th>
                                         <th><h3 style="padding:2px;"> الاسم </h3></th>
                                         <th><h3 style="padding:2px">المنطقه </h3></th>
 
                                     </tr>
                                 </thead>
-                                <tbody ng-repeat="c in allClients | filter:{areaName:area}">
+                                <tbody ng-repeat="c in allClients2 | filter:token">
 
                                     <tr style="background:white">
                                         @*<td><input type="radio" style="margin-top:2px" value="{{c.id}}" ng-model="$parent.aya" id="aa_{{c.id}}" /></td>*@
@@ -556,10 +615,10 @@
                             </table>
 
                         </div>
-                        <br />
+                        @*<br />
                         <center>
                             <button type="button" class="btn btn-default" data-dismiss="modal" style="width:100px"><h4>الغاء</h4></button>
-                        </center>
+                        </center>*@
 
                     </center>
 

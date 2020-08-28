@@ -1,0 +1,164 @@
+﻿@{
+    ViewBag.Title = "getAllClientsCharge";
+    Layout = "~/Areas/adminPanel/Views/Shared/_adminLayout.cshtml";
+}
+
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="myApp">
+
+
+<head>
+    <title></title>
+    <script src="~/assets/general/js/angular.js"></script>
+        <script src="~/assets/admin/js/ang/clients_charge.js"></script>
+
+    <style>
+        h5 {
+            color: #456e82;
+            font-weight: bold;
+            font-family: Cairo;
+            font-size: 15px;
+        }
+
+        h4 {
+            color: #456e82;
+        }
+
+        h3 {
+            color: #5c4f4f;
+        }
+
+        input::-webkit-input-placeholder {
+            font-size: 12px;
+        }
+    </style>
+
+
+
+</head>
+
+<body ng-controller="ctr_clientC">
+
+    <section id="main-content">
+        <section class="wrapper">
+            <div class="table-agile-info">
+                <ol class="breadcrumb breadcrumb-2">
+                    <li><a><i class="icon-home"></i> القائمه</a></li>
+                    <li class="active"><a style="color: #ec407a">قائمه بأرصده العملاء</a> </li>
+                </ol>
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <strong style="color: #5c4f4f">قائمه بأرصده العملاء</strong>
+                    </div>
+
+                    <div class="row w3-res-tb" dir="rtl">
+                        <div class="col-lg-12">
+
+                            <table>
+                                <tr>
+
+                                    <td style="border:0px">
+                                        <select ng-model="token.govern" class="form-control" style="  border-radius: 0px;">
+                                            <option value=""> المحافظه</option>
+                                            <option ng-repeat="x2 in allGovern">{{x2.name}}</option>
+                                        </select>
+                                    </td>
+                                    <td style="border:0px">
+
+                                        <select ng-model="area_s" class="form-control" style="  border-radius: 0px;">
+                                            <option value=""> المنطقه</option>
+                                            <option ng-repeat="x1 in allArea | filter: token.govern" value="{{x1.id}}">{{x1.name}}</option>
+                                        </select>
+                                    </td>
+
+                                    <td style="border:0px">
+                                        <input ng-model="date" placeholder="حتي تاريخ " style="border-radius: 0px; margin-right: 25px" class="form-control" type="text" onfocus="(this.type='date')">
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td style="border:0px">
+                                        <br />
+                                        <input ng-model="startIndex" type="number" class="form-control" style="border-radius:0px" placeholder="من العميل رقم" />
+                                    </td>
+
+                                    <td style="border:0px">
+                                        <br />
+                                        <input ng-model="endIndex" type="number" class="form-control" style="border-radius:0px" placeholder="الي العميل رقم" />
+                                    </td>
+                                    <td style="border:0px">
+                                        <br />
+                                        <h4>
+                                            <i ng-click="get_all()" class="btn fa fa-arrow-down"></i>
+                                        </h4>
+                                    </td>
+                                </tr>
+                            </table>
+
+                            <br />
+                        </div>
+
+                    </div>
+
+                    <div class="table-responsive">
+
+                        <table class="table table-striped b-t b-light" dir="rtl" style="border: 1px solid #e9e9e9;">
+                            <thead>
+                                <tr style="background: #ddede0; padding:5px ">
+                                    <th><h3 style="padding:5px;"> الكود  </h3></th>
+                                    <th><h3 style="padding:5px;"> اسم العميل </h3></th>
+                                    <th><h3 style="padding: 5px">الرصيد </h3></th>
+                                    <th><h3 style="padding: 5px">المستحق </h3></th>
+                                    <th><h3 style="padding: 5px">كشف حساب</h3></th>
+
+                                </tr>
+                            </thead>
+                            <tbody ng-repeat="clt in allClients | filter:{areaId:area_s} | mySliceFilter:startIndex:endIndex">
+
+                                <tr class="tr">
+                                    <td>
+                                        <h4>
+                                            {{clt.id}}
+                                        </h4>
+                                    </td>
+                                    <td>
+                                        <h4>
+                                            {{clt.name}}
+                                        </h4>
+                                    </td>
+                                    <td>
+                                        <h4>
+                                            {{clt.charge}}
+                                        </h4>
+                                    </td>
+                                    <td>
+                                        <h4>
+                                            {{clt.notes}}
+                                        </h4>
+                                    </td>
+
+                                    <td>
+                                        <h4>
+                                            <a href="/clients/clientHistory/id={{clt.id}}">
+                                                <i class="btn btn-success fa fa-cog"></i>
+                                            </a>
+                                        </h4>
+                                    </td>
+
+                                </tr>
+
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+    </section>
+
+
+    @{Html.RenderPartial("../management/_scriptPartial");}
+
+</body>
+</html>

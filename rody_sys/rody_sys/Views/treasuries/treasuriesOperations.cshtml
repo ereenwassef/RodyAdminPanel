@@ -1,9 +1,14 @@
-﻿
-<html xmlns="http://www.w3.org/1999/xhtml">
+﻿@{
+    ViewBag.Title = "add_tahseel";
+    Layout = "~/Areas/adminPanel/Views/Shared/_adminLayout.cshtml";
+}
+
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="myApp">
 
 <head>
     <title></title>
-
+    <script src="~/assets/general/js/angular.js"></script>
+    <script src="~/assets/admin/js/ang/treasuries.js"></script>
     <style>
         h4 {
             color: #456e82;
@@ -57,7 +62,7 @@
                         <div class="col-lg-3 col-lg-offset-3">
                             <h5 class="text-center" style="background: #f2f5f2; padding: 6px;
                                height: 34px; color: gray;  ">
-                              العدد :
+                                العدد :
                                 <span>{{(allOperations | filter:{storeId:store} | myGenericDateFilter:from:to).length}} حركات</span>
                             </h5>
                         </div>
@@ -84,12 +89,12 @@
                                     <th><h5 style="padding: 5px" ng-click="sort('name')"> التاريخ <i class="fa {{icon_name}}"></i></h5></th>
                                     <th><h5 style="padding: 5px" ng-click="sort('name')"> الخزنه <i class="fa {{icon_name}}"></i></h5></th>
                                     <th><h5 style="padding: 5px" ng-click="sort('name')"> البيان <i class="fa {{icon_name}}"></i></h5></th>
-                                     <th><h5 style="padding: 5px" ng-click="sort('name')"> نوع البيان <i class="fa {{icon_name}}"></i></h5></th>
+                                    <th><h5 style="padding: 5px" ng-click="sort('name')"> نوع البيان <i class="fa {{icon_name}}"></i></h5></th>
                                     <th><h5 style="padding: 5px" ng-click="sort('name')">  وارد <i class="fa {{icon_name}}"></i></h5></th>
                                     <th><h5 style="padding: 5px" ng-click="sort('name')"> منصرف <i class="fa {{icon_name}}"></i></h5></th>
                                     <th><h5 style="padding: 5px" ng-click="sort('name')"> الرصيد <i class="fa {{icon_name}}"></i></h5></th>
 
-                                  </tr>
+                                </tr>
                             </thead>
                             <tbody ng-repeat="t in allOperations | filter:{storeId:store} | myGenericDateFilter:from:to ">
 
@@ -303,6 +308,8 @@
 
         </div>
     </div>
+    @{Html.RenderPartial("../management/_scriptPartial");}
+
 </body>
 </html>
 

@@ -1,15 +1,15 @@
 ﻿
-@*@{
+@{
     ViewBag.Title = "supplierHistory";
     Layout = "~/Areas/adminPanel/Views/Shared/_adminLayout.cshtml";
-}*@
+}
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="myApp">
 
 <head>
     <title></title>
-    @*<script src="~/assets/general/js/angular.js"></script>
-        <script src="~/assets/admin/js/ang/ctr2.js"></script>*@
+    <script src="~/assets/general/js/angular.js"></script>
+    @*<script src="~/assets/admin/js/ang/ctr2.js"></script>*@
 
     <style>
         h4 {
@@ -50,26 +50,26 @@
 
                         <div class="col-sm-3">
                             <div class="form-group">
-                                <input type="text" class="form-control" readonly ng-model="supName" placeholder="اسم المورد" dir="rtl"/>
+                                <input type="text" class="form-control" readonly ng-model="supName" placeholder="اسم المورد" dir="rtl" />
                             </div>
                             <br />
                         </div>
-                        
+
 
 
                         <div class="col-lg-3" dir="ltr">
                             <input dir="rtl" style="border-radius:0px" type="text" placeholder="الي تاريخ" class="form-control" ng-model="to" onfocus="this.type='date'" />
                             <br />
-                         </div>
+                        </div>
                         <div class="col-lg-3" dir="ltr">
                             <input dir="rtl" style="border-radius:0px" type="text" placeholder=" من تاريخ" class="form-control" ng-model="from" onfocus="this.type='date'" />
                             <br />
-                        </div>  
-
-                            
                         </div>
 
-                     
+
+                    </div>
+
+
 
                     <div class="table-responsive">
 
@@ -536,7 +536,7 @@
                             </tr>
                             <tr>
                                 <td style="border:0px">
-                                    <input  type="text" placeholder="اسم المندوب" class="form-control" style="border-radius:0px; margin-top:5px" ng-model="token.name" dir="rtl" />
+                                    <input type="text" placeholder="اسم المندوب" class="form-control" style="border-radius:0px; margin-top:5px" ng-model="token.name" dir="rtl" />
                                 </td>
                             </tr>
 
@@ -599,7 +599,7 @@
     </div>
 
 
-    @*@{Html.RenderPartial("../management/_scriptPartial");}*@
+    @{Html.RenderPartial("../management/_scriptPartial");}
 
 
 </body>

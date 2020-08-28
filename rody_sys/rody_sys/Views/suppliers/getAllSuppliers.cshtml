@@ -1,15 +1,15 @@
 ﻿
-@*@{
+@{
     ViewBag.Title = "getAllSuppliers";
     Layout = "~/Areas/adminPanel/Views/Shared/_adminLayout.cshtml";
-}*@
+}
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="myApp">
 
 <head>
     <title></title>
-    @*<script src="~/assets/general/js/angular.js"></script>
-        <script src="~/assets/admin/js/ang/ctr2.js"></script>*@
+    <script src="~/assets/general/js/angular.js"></script>
+    @*<script src="~/assets/admin/js/ang/ctr2.js"></script>*@
 
     <style>
         h4 {
@@ -41,7 +41,7 @@
                     </div>
                     <div class="row w3-res-tb">
 
-                    
+
 
                         <div class="col-lg-8" dir="rtl">
 
@@ -61,14 +61,14 @@
                                         <select ng-model="token.subc" class="form-control" dir="rtl" style="margin-right:33px; border-radius:0px">
                                             <option value=""> التصنيف الفرعي</option>
                                             <option ng-repeat="x2 in all_sub_category | filter:t" value="{{x2.id}}">{{x2.tasneef_name}}</option>
-                                       
-                                         </select>
+
+                                        </select>
                                     </td>
                                     <td style="border:0px; ">&nbsp; &nbsp; </td>
                                     <td style="border:0px">
-                                        <input  dir="rtl" style="border-radius: 0px; margin-right: 33px;" type="text" placeholder="اسم المورد" class="form-control" ng-model="token.name" />
+                                        <input dir="rtl" style="border-radius: 0px; margin-right: 33px;" type="text" placeholder="اسم المورد" class="form-control" ng-model="token.name" />
                                     </td>
-                                    
+
                                 </tr>
 
                             </table>
@@ -79,7 +79,7 @@
 
                         <div class="col-lg-2 col-lg-offset-2" dir="ltr">
 
-                      <button class="btn btn-info" data-target="#add" data-toggle="modal">اضافه</button>
+                            <button class="btn btn-info" data-target="#add" data-toggle="modal">اضافه</button>
 
                             <br />
                         </div>
@@ -95,7 +95,7 @@
                                     <th><h5 style="padding:5px;" ng-click="sort('id')">الكود <i class="fa {{icon_id}}"></i></h5></th>
                                     <th><h5 style="padding: 5px" ng-click="sort('name')">الاسم <i class="fa {{icon_name}}"></i></h5></th>
                                     <th><h5 style="padding: 5px" ng-click="sort('name')">المسئول <i class="fa {{icon_name}}"></i></h5></th>
-                                   
+
                                     <th><h5 style="padding: 5px">عرض/تعديل</h5></th>
                                     <th><h5 style="padding: 5px">حذف</h5></th>
                                 </tr>
@@ -288,7 +288,7 @@
 
                                     <select class="form-control" dir="rtl" ng-model="type" style="border-radius:0px" id="type">
                                         <option value="">محلي / خارجي</option>
-                                         <option value="0">محلي</option>
+                                        <option value="0">محلي</option>
                                         <option value="1">خارجي</option>
                                     </select>
 
@@ -312,7 +312,7 @@
 
                             </tr>
 
-                          
+
 
                         </table>
                         <br /><hr />
@@ -464,7 +464,7 @@
 
                                 <td style=" border: 0px">
 
-                                    <input ng-model="charge" type="text" class="form-control" style="border-radius:0px" dir="rtl" readonly/>
+                                    <input ng-model="charge" type="text" class="form-control" style="border-radius:0px" dir="rtl" readonly />
 
                                 </td>
                                 <td style=" border: 0px">
@@ -502,10 +502,10 @@
     </div>
 
 
-  
 
 
-    @*@{Html.RenderPartial("../management/_scriptPartial");}*@
+
+    @{Html.RenderPartial("../management/_scriptPartial");}
 
 
 </body>

@@ -763,6 +763,289 @@ angular.module('myApp').filter('myDateFilter', function () {
 
 
 });
+
+//============================== ** custom filters ** ============================================
+
+function get_js_date(date) {
+
+    var dateTokens = date.split("/");
+
+    var day = parseInt(dateTokens[0]);
+    var month = parseInt(dateTokens[1]) - 1;
+    var year = parseInt(dateTokens[2]);
+
+    var jsDate = new Date(year, month, day);
+
+    return jsDate;
+}
+//=========================================================
+function get_js_date_from_to(date) {
+
+    var dateTokens = date.split("-");
+
+    var day = parseInt(dateTokens[2]);
+    var month = parseInt(dateTokens[1]) - 1;
+    var year = parseInt(dateTokens[0]);
+
+    var jsDate = new Date(year, month, day);
+
+    return jsDate;
+}
+//=======================================================
+angular.module('myApp').filter('myGenericDateFilter', function () {
+    return function (list, from, to) {
+
+        //  alert("aaa");
+
+        if (from || to) {
+
+            var result = [];
+
+            for (var i = 0; i < list.length; i++) {
+
+                var date = get_js_date(list[i].date);
+
+                if (from == null || from == "" && to != null) {
+                    if (date <= get_js_date_from_to(to)) {
+
+                        result.push(list[i]);
+                    }
+                }
+                else if (to == null || to == "" && from != null) {
+                    if (date >= get_js_date_from_to(from)) {
+
+                        result.push(list[i]);
+                    }
+                }
+                else {
+                    if (date >= get_js_date_from_to(from) && date <= get_js_date_from_to(to)) {
+
+                        result.push(list[i]);
+                    }
+                }
+            }
+
+            return result;
+        }
+        else {
+            return list;
+        }
+    };
+});
+//=========================================================================
+angular.module('myApp').filter('myActualDateFilter', function () {
+    return function (list, from, to) {
+
+        if (from || to) {
+
+            var result = [];
+
+            for (var i = 0; i < list.length; i++) {
+
+                var date = get_js_date(list[i].actual_date);
+
+                if (from == null || from == "" && to != null) {
+                    if (date <= get_js_date_from_to(to)) {
+
+                        result.push(list[i]);
+                    }
+                }
+                else if (to == null || to == "" && from != null) {
+                    if (date >= get_js_date_from_to(from)) {
+
+                        result.push(list[i]);
+                    }
+                }
+                else {
+                    if (date >= get_js_date_from_to(from) && date <= get_js_date_from_to(to)) {
+
+                        result.push(list[i]);
+                    }
+                }
+            }
+
+            return result;
+        }
+        else {
+            return list;
+        }
+
+
+    };
+});
+//=========================================================================
+angular.module('myApp').filter('myContractDateFilter', function () {
+    return function (list, from, to) {
+
+        if (from || to) {
+
+            var result = [];
+
+            for (var i = 0; i < list.length; i++) {
+
+                var date = get_js_date(list[i].contract_date);
+
+                if (from == null || from == "" && to != null) {
+                    if (date <= get_js_date_from_to(to)) {
+
+                        result.push(list[i]);
+                    }
+                }
+                else if (to == null || to == "" && from != null) {
+                    if (date >= get_js_date_from_to(from)) {
+
+                        result.push(list[i]);
+                    }
+                }
+                else {
+                    if (date >= get_js_date_from_to(from) && date <= get_js_date_from_to(to)) {
+
+                        result.push(list[i]);
+                    }
+                }
+            }
+
+            return result;
+        }
+        else {
+            return list;
+        }
+    };
+});
+//==========================================================================
+angular.module('myApp').filter('myActivationDateFilter', function () {
+    return function (list, from, to) {
+
+        if (from || to) {
+
+            var result = [];
+
+            for (var i = 0; i < list.length; i++) {
+
+                var date = get_js_date(list[i].activation_date);
+
+                if (from == null || from == "" && to != null) {
+                    if (date <= get_js_date_from_to(to)) {
+
+                        result.push(list[i]);
+                    }
+                }
+                else if (to == null || to == "" && from != null) {
+                    if (date >= get_js_date_from_to(from)) {
+
+                        result.push(list[i]);
+                    }
+                }
+                else {
+                    if (date >= get_js_date_from_to(from) && date <= get_js_date_from_to(to)) {
+
+                        result.push(list[i]);
+                    }
+                }
+            }
+
+            return result;
+        }
+        else {
+            return list;
+        }
+    };
+});
+//==========================================================================
+angular.module('myApp').filter('sumOfSalesFilter', function () {
+    return function (list) {
+        var sum = 0;
+        for (var i = 0; i < list.length; i++) {
+
+            sum += list[i].total;
+        }
+        return sum;
+    }
+});
+//==========================================================================
+angular.module('myApp').filter('mySliceFilter', function () {
+    return function (list, start, end) {
+
+        // alert(list.length);
+
+        if (start || end) {
+            if (start == null || start == "" && end != null) {
+                //  alert("end=" + end);
+
+                return list.slice(0, end);
+            }
+            else if (end == null || end == "" && start != null) {
+                return list.slice(start - 1, list.length);
+            }
+            else if (start != null && end != null) {
+                return list.slice(start - 1, end);
+            }
+        }
+        else {
+            return list;
+        }
+
+    }
+});
+//==========================================================================
+angular.module('myApp').filter('myPhoneFilter', function () {
+    return function (list, phone) {
+
+        if (phone != "" && phone != null) {
+
+            var result = [];
+            for (var i = 0; i < list.length; i++) {
+                if (list[i].number != null) {
+                    if (list[i].number.includes(phone)) {
+                        result.push(list[i]);
+                    }
+                } else if (list[i].otherPhoneNum != null) {
+                    if (list[i].otherPhoneNum.includes(phone)) {
+                        result.push(list[i]);
+                    }
+                }
+            }
+
+            return result;
+        }
+        else {
+            return list;
+        }
+    }
+});
+//==========================================================================
+angular.module('myApp').filter('myRangeFilter', function () {
+    return function (list, start, end) {
+
+        if (start != null || end != null) {
+
+            var result = [];
+            for (var i = 0; i < list.length; i++) {
+                if (start != null && end != null) {
+                    if (list[i].id <= end && list[i].id >= start) {
+                        result.push(list[i]);
+                    }
+                }
+                else if (start != null && end == null) {
+                    if (list[i].id >= start) {
+                        result.push(list[i]);
+                    }
+                }
+                else if (start == null && end != null) {
+                    if (list[i].id <= end) {
+                        result.push(list[i]);
+                    }
+                }
+            }
+
+            return result;
+        }
+        else {
+            return list;
+        }
+    }
+});
+
 //=======================================================
 
 function get_js_date(date)

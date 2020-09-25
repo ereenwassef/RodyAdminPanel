@@ -213,14 +213,14 @@
                                 </div>
                             </div>
 
-                            <div class="row" dir="rtl">
+                            @*<div class="row" dir="rtl">
                                 <div class="col-lg-2 col-lg-offset-5">
                                     <br />
                                     <button class="btn" style="border-radius: 0px; width: 310px;">
                                         بحث
                                     </button>
                                 </div>
-                            </div>
+                            </div>*@
 
 
                         </div>
@@ -246,8 +246,8 @@
                                 </tr>
                             </thead>
 
-                            @*<tbody ng-repeat="c in allClients2 | myRangeFilter:start:end | filter:token | filter:{pName:pName2} | myContractDateFilter:from:to | myActivationDateFilter : from1 :to1" dir="rtl">*@
-                            <tbody ng-repeat="c in allClients2 " dir="rtl">
+                            @*<tbody ng-repeat="c in allClients2 | filter:token | filter:{pName:pName2}  | myRangeFilter:start:end |  myContractDateFilter:from:to | myActivationDateFilter : from1 :to1   " dir="rtl">*@
+                            <tbody ng-repeat="c in allClients2  | myRangeFilter:start:end | filter:token | filter:{pName:pName2} | myContractDateFilter:from:to | myActivationDateFilter : from1 :to1" dir="rtl">
 
                                 @*<tr class="tr" id="tbr" ng-if="c.done==1">*@
                                 <tr class="tr" id="tbr">
